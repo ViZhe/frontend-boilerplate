@@ -1,0 +1,49 @@
+/*! ==== Сетка ==== */
+
+.container
+	width $site-width
+	margin-right auto
+	margin-left auto
+
+	clearfix()
+
+	if $responsive
+		@media $media-for_desktop
+			width $site-width_md
+
+		@media $media-for_tablet
+			width $site-width_sm
+
+		@media $media-for_mobile
+			width $site-width_xs
+
+
+.row
+	display flex
+	flex-wrap wrap
+
+	clearfix()
+
+	& .row
+		margin-right -1vw
+		margin-left -1vw
+
+
+$grid()
+
+if $responsive
+	@media $media-for_desktop
+		$grid("_md")
+
+	@media $media-for_tablet
+		$grid("_sm")
+
+	@media $media-for_mobile
+		$grid("_xs")
+
+td.col
+th.col
+	display table-cell
+	float none
+
+/*! ==== / Сетка ==== */

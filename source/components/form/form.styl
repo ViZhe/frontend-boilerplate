@@ -1,0 +1,126 @@
+/*
+*
+* Формы.
+*
+* .b-form							- Класс обертка для тега form.
+*
+* .b-form__input					- Класс для соответствующего input-а.
+* .b-form__textarea					- Класс для textarea.
+* .b-form__radio					- Класс для соответствующего input-а.
+* .b-form__checkbox					- Класс для соответствующего input-а.
+*
+* .b-form__label					- Класс для всех label-ов.
+* .b-form__label_checkbox			- Модификатор для label, которым обернут checkbox.
+* .b-form__label_radio				- Модификатор для label, которым обернут radio.
+* .b-form__label_disable			- Применяем вовместно с атрибутом disabled для внутреннего input.
+*
+* .b-icon-form						- С этого начинаются все иконки.
+* .b-icon-form_check_normal			- Элемент для псевдостандартного checkbox.
+* .b-icon-form_check_simple			- Элемент для минималистичного checkbox.
+* .b-icon-form_check_modern			- Элемент для современного checkbox.
+* .b-icon-form_radio				- Элемент для псевдостандартного radio.
+*
+* .b-form-group-line				- Группа элементов.
+*
+*/
+
+@import 'form-icons'
+
+$checkbox_normal = true // Псевдостандартный checkbox включен.
+$checkbox_simple = true // Минималистичный checkbox включен.
+$checkbox_modern = true // Современный checkbox включен.
+
+
+.b-form
+	display block
+
+
+.b-form__input
+.b-form__textarea
+	background $white
+	border 2px solid $lightgrey
+	border-radius 3px
+	color $black
+	max-width 100%
+	min-width 100%
+	margin-bottom 10px
+	width 100%
+	padding 5px
+
+	&:focus
+		border 2px solid darken($lightgrey,30%)
+
+.b-form__radio
+.b-form__checkbox
+	display none
+
+
+.b-form__label
+	margin-bottom 5px
+	display block
+
+.b-form__label_checkbox
+.b-form__label_radio
+	display block
+	cursor pointer
+
+.b-form__label_checkbox
+	if $checkbox_normal
+		& .b-icon-form_check_normal::before
+			content "\e002"
+
+		& :checked + .b-icon-form_check_normal::before
+			content "\e000"
+
+	if $checkbox_simple
+		& .b-icon-form_check_simple::before
+			content "\e001"
+
+		& :checked + .b-icon-form_check_simple::before
+			content "\e005"
+
+	if $checkbox_modern
+		& .b-icon-form_check_modern
+			display inline-block
+			size 45px false
+			vertical-align bottom
+			background $red
+			border-radius 10px
+			transition all .2s ease 0s
+
+		& .b-icon-form_check_modern::after
+			content ""
+			display block
+			size 15px
+			margin 3px 0px
+			transform translateX(3px)
+			background $white
+			border-radius 50%
+			transition all .2s ease 0s
+
+		& :checked + .b-icon-form_check_modern
+			background $green
+
+		& :checked +  .b-icon-form_check_modern::after
+			transform translateX(27px)
+
+
+.b-form__label_radio
+	& .b-icon-form_radio::before
+		content "\e003"
+
+	& :checked + .b-icon-form_radio::before
+		content "\e004"
+
+
+.b-form__label_disable
+	color darken($lightgrey,20%)
+	cursor default
+
+	if $checkbox_modern
+		& .b-icon-form_check_modern
+			background @color
+
+
+.b-form-group-line
+	margin-bottom 10px

@@ -1,0 +1,121 @@
+/*! ==== Глобальные стили === */
+
+body
+	color $black
+	background darken($white, 5%)
+	font-family "Roboto", Arial, sans-serif
+	font-size $site_font_size
+	line-height 1.4
+	min-width 320px
+
+a
+	text-decoration none
+	color $blue
+
+	&:hover
+	&:focus
+		color lighten($blue,40%)
+
+	&:active
+		color $red
+
+
+h1
+h2
+h3
+h4
+h5
+h6
+	font-weight 700
+	line-height 1.1
+
+h1
+	margin-top 0
+	margin-bottom 15px
+	font-size $site_font_size +.12
+
+h2
+h3
+	margin-top 20px
+	margin-bottom 15px
+
+h4
+h5
+h6
+	margin-top 15px
+	margin-bottom 10px
+
+h2
+	font-size $site_font_size + .1
+
+h3
+	font-size $site_font_size + .08
+
+h4
+	font-size $site_font_size + .06
+
+h5
+	font-size $site_font_size + .04
+
+h6
+	font-size $site_font_size + .02
+
+
+.i-
+	&cf
+		clearfix()
+
+	&text-space
+		& p
+			padding-bottom 15px
+
+		& ul
+		& ol
+			padding-left 15px
+			padding-bottom 15px
+
+
+	&float
+		&_right
+			float right !important
+
+		&_left
+			float left !important
+
+
+	&hide
+		display none !important
+
+	&show
+		display block !important
+
+
+	&align
+		&_left
+			text-align left !important
+
+		&_right
+			text-align right !important
+
+		&_center
+			text-align center !important
+
+
+	&font
+		&_bold
+			font-weight 700 !important
+
+		&_italic
+			font-style italic !important
+
+		&_big
+			font-size 120% !important
+
+		&_small
+			font-size 80% !important
+
+	&color
+		for name, color in $colors
+			&_{name}
+				color color
+/*! ==== / Глобальные стили ==== */

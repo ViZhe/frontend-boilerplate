@@ -1,0 +1,53 @@
+/* ==== Переменные ==== */
+
+$responsive = true // Адаптивный сайт
+
+$site_font_size = .16rem // Размер шрифта сайта
+
+/* Ширина сайта */
+
+$site-width = 1240px // Обычный десктоп. Фактически: 1210px
+$site-width_md = 980px // Маленький десктоп. Фактически: 960px
+$site-width_sm = 750px // Планшеты. Фактически: 740px
+$site-width_xs = 100% // Смартфоны и портретные планшеты.
+
+
+/* Точка перехода */
+
+$site-media_md = 1260px // C Обычного на Маленький десктоп.
+$site-media_sm = 1000px // C Маленького десктопа на Планшеты(альбомная).
+$site-media_xs = 768px // C Планшетов(альбомная) на Смартфоны и Планшеты(портретная).
+
+
+/* Медиа условия */
+
+$media-for_desktop = "(min-width: $site-media_sm) and (max-width: $site-media_md)"
+$media-for_tablet = "(min-width: $site-media_xs) and (max-width: $site-media_sm - 1)"
+$media-for_mobile = "(max-width: $site-media_xs - 1)"
+$media-for_tablet-and-mobile = "(max-width: $site-media_sm - 1)"
+
+
+/* Набор цветов */
+
+$white = #fff
+$lightgrey = #BDC3C7
+$black = #000
+$blue = #1D8BDF
+$orange = #F27935
+$purple = #8E44AD
+$red = #E84C3D
+$yellow = #F1C40F
+$green = #66bb6a
+
+/* Хэш цветов для генерации цветов кнопок, текста и др. */
+
+$colors = {
+	lightgrey: $lightgrey,
+	black: $black,
+	red: $red,
+	orange: $orange,
+	yellow: $yellow,
+	green: $green,
+	blue: $blue,
+	purple: $purple
+}

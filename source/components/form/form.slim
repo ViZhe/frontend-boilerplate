@@ -1,0 +1,79 @@
+﻿h2 Формы
+h3 Элементы
+
+form.b-form
+	.row
+		.col.w1-3
+			.b-form-group-line
+				h4 Поля
+				label.b-form__label Инпут
+				input.b-form__input type="text" placeholder="Simple text input"
+
+				label.b-form__label Текстовая область
+				textarea.b-form__textarea placeholder="Simple textarea"
+
+		.col.w1-3
+			.b-form-group-line
+				h4 Простые check
+				label.b-form__label.b-form__label_checkbox
+					input.b-form__checkbox type="checkbox" checked=""
+					i.b-icon-form.b-icon-form_check_simple
+					| Первый checkbox (активный)
+				label.b-form__label.b-form__label_checkbox
+					input.b-form__checkbox type="checkbox"
+					i.b-icon-form.b-icon-form_check_simple
+					| Второй checkbox
+				label.b-form__label.b-form__label_checkbox.b-form__label_disable
+					input.b-form__checkbox type="checkbox" disabled=""
+					i.b-icon-form.b-icon-form_check_simple
+					| Третий checkbox (отключен)
+
+			.b-form-group-line
+				h4 Современные check
+				label.b-form__label.b-form__label_checkbox
+					input.b-form__checkbox type="checkbox" checked=""
+					i.b-icon-form.b-icon-form_check_modern
+					| Первый checkbox (активный)
+				label.b-form__label.b-form__label_checkbox
+					input.b-form__checkbox type="checkbox"
+					i.b-icon-form.b-icon-form_check_modern
+					| Второй checkbox
+				label.b-form__label.b-form__label_checkbox.b-form__label_disable
+					input.b-form__checkbox type="checkbox" disabled=""
+					i.b-icon-form.b-icon-form_check_modern
+					| Третий checkbox (отключен)
+
+		.col.w1-3
+			.b-form-group-line
+				h4 Стандартные check
+				label.b-form__label.b-form__label_checkbox
+					input.b-form__checkbox type="checkbox" checked=""
+					i.b-icon-form.b-icon-form_check_normal
+					| Первый checkbox (активный)
+				label.b-form__label.b-form__label_checkbox
+					input.b-form__checkbox type="checkbox"
+					i.b-icon-form.b-icon-form_check_normal
+					| Второй checkbox
+				label.b-form__label.b-form__label_checkbox.b-form__label_disable
+					input.b-form__checkbox type="checkbox" disabled=""
+					i.b-icon-form.b-icon-form_check_normal
+					| Третий checkbox - отключен
+
+			.b-form-group-line
+				h4 Стандартные radio
+				label.b-form__label.b-form__label_radio
+					input.b-form__radio type="radio"  name="radioName2" checked=""
+					i.b-icon-form.b-icon-form_radio
+					| Первый radio (активный)
+				label.b-form__label.b-form__label_radio
+					input.b-form__radio type="radio" name="radioName2"
+					i.b-icon-form.b-icon-form_radio
+					| Второй radio
+				label.b-form__label.b-form__label_radio.b-form__label_disable
+					input.b-form__radio type="radio" name="radioName2"  disabled=""
+					i.b-icon-form.b-icon-form_radio
+					| Третий radio (отключен)
+
+		.col
+			.b-form-group-line
+				.b-btn.b-btn_color_green Послать

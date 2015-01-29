@@ -1,0 +1,48 @@
+/*
+*
+* Таблицы.
+*
+* .b-table							- Стандартная обертка таблицы.
+*
+* .b-table_striped					- Выделяем нечетные строчки.
+* .b-table_hovered					- Подсвечиваем строчку при наведении.
+* .b-table_nowrap					- Не ломаем текст.
+
+* .b-table__overflow				- Оборачиваем в это если нужна прокрутка на маленьких экранах.
+*
+*/
+
+.b-table
+	size 100% false
+
+	& thead
+		border-bottom 2px solid $lightgrey
+		color lighten($black, 30%)
+
+		& th
+			padding 10px
+
+	& tbody
+		& td
+		& th
+			padding 5px 10px
+			border-bottom 1px solid $lightgrey
+
+
+
+.b-table_striped
+	& tbody tr:nth-of-type(2n+1)
+		background $lightgrey + 70%
+
+
+.b-table_hovered
+	& tbody tr:hover
+		background $lightgrey + 50%
+
+
+.b-table_nowrap
+	white-space nowrap
+
+
+.b-table__overflow
+	overflow auto

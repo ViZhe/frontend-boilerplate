@@ -1,0 +1,128 @@
+/*
+*
+* Кнопки.
+*
+* .b-btn								- Полуфабрикат и без модификаторов не живет.
+* .b-btn_color_[colors]					- Добавляет кнопке цвет, по сути обязательный класс для кнопки. Цвета в var.
+**
+* .b-btn_size_[xs, sm, lg]				- Модификаторы размеры кнопки.
+* .b-btn_style_3d						- Делаем 3д кнопку.
+*
+* .b-btn__group							- Обертка группы кнопок.
+* .b-btn__group_divider					- Разделитель в группу кнопок. (Опционально)
+*
+*/
+
+$btn_style_3d = true // 3d кнопки включены
+$btn_radius = 3px // Определяем радиус закругрения кнопок. 0 для отключения
+
+
+.b-btn
+	display inline-block
+	padding .5em 1.5em
+	margin 5px
+	cursor pointer
+	color $white
+	font-weight 700
+	transition all 0.2s
+	user-select none
+	font-size $site_font_size
+	vertical-align bottom
+
+	if $btn_radius != 0
+		border-radius $btn_radius
+
+
+.b-btn_color
+	for name, color in $colors
+		&_{name}
+			background color
+
+			&:hover
+			&:focus
+				if(light(color))
+					background darken(color, 10%)
+				else
+					background lighten(color, 10%)
+
+			&:active
+				if(light(color))
+					background darken(color, 20%)
+				else
+					background lighten(color, 20%)
+
+
+			if $btn_style_3d
+				.b-btn_style_3d&
+					if(light(@background))
+						box-shadow 0 5px 0 0 darken(color, 30%)
+					else
+						box-shadow 0 5px 0 0 lighten(color, 30%)
+
+					&:hover
+					&:focus
+						background lighten(color, 15%)
+
+					&:active
+						if(light(@background))
+							box-shadow 0 0 0 0 darken(color, 30%)
+						else
+							box-shadow 0 0 0 0 lighten(color, 30%)
+
+						margin-top 10px
+						margin-bottom 0
+
+
+.b-btn_size
+	&_xs
+		font-size $site_font_size - 30%
+
+	&_sm
+		font-size $site_font_size - 20%
+
+	&_lg
+		font-size $site_font_size + 20%
+
+
+.b-btn__group
+	font-size 0
+	display inline-block
+	position relative
+	vertical-align middle
+
+	.b-btn
+		margin-left 0
+		margin-right 2px
+		if $btn_radius != 0
+			border-radius 0
+
+		&:first-of-type
+			margin-left 5px
+
+			if $btn_radius != 0
+					border-radius $btn_radius 0 0 $btn_radius
+
+		&:last-of-type
+			margin-right 5px
+
+			if $btn_radius != 0
+				border-radius 0 $btn_radius $btn_radius 0
+
+
+.b-btn__group_divider
+	display inline-block
+	absolute 0 false
+	height 100%
+
+	&::after
+		content ""
+		absolute 0 false 0 -10px
+		z-index 5
+		margin auto
+		padding 5px 0px 5px 5px
+		background darken($lightgrey, 20%)
+		border-radius 50%
+		font-size 70%
+		font-weight 100
+		size 18px
+		border 2px solid $white
