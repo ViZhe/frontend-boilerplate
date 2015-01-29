@@ -18,13 +18,12 @@
 * Необходимо оборачивать radio и checkbox input с их текстом в ```<label>```, при этом атрибут ```for=""``` не нужен, т.к. оборачивание автоматически их свяжет.
 * Не нужно уставнавливать значения для атрибутов, которые в нем не нуждаются.
   ```
-  <input type="text" disabled>
+  input type="text" disabled=""
 
-  <input type="checkbox" value="Yes" checked>
+  input type="checkbox" value="Yes" checked=""
 
-  <select>
-    <option value="yes" selected>Yes</option>
-  </select>
+  select
+    option value="yes" selected="" Yes
   ```
 
 
