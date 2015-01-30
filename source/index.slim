@@ -9,6 +9,7 @@ html lang="ru-RU"
 		section
 			.container: .row
 				.col
+					== Slim::Template.new('components/breadcrumb/breadcrumb.slim').render
 					== Slim::Template.new('components/form/form.slim').render
 					== Slim::Template.new('components/list/list.slim').render
 					== Slim::Template.new('components/table/table.slim').render
