@@ -1,0 +1,59 @@
+/*
+*
+* Нумерация страниц.
+*
+* .b-pagination					- Обертка пагинации.
+*
+* .b-pagination__item			- Пункт пугинации.
+*
+* .b-pagination__active			- Активный элемент пункта пугинации.
+* .b-pagination__link			- Ссылка-элемент пункта пугинации.
+* .b-pagination__divider		- Разделитель для пропуска пунктов.
+*
+*/
+
+
+.b-pagination
+	display flex
+	list-style none
+	justify-content flex-end
+	// или
+	// justify-content center
+	// или
+	// без justify-content
+	margin 15px 0 30px
+
+
+.b-pagination__item
+	margin 3px
+
+
+.b-pagination__divider
+.b-pagination__active
+.b-pagination__link
+	padding 5px 10px
+	display block
+	border-radius 3px
+
+.b-pagination__divider
+	&::after
+		color $grey
+		content "..."
+
+.b-pagination__active
+	background $grey
+	color $white
+
+.b-pagination__link
+	background $blue
+	color $white !important
+
+	&:hover
+	&:focus
+		background lighten(@background, 40%)
+
+	&:active
+		background $red
+
+
+

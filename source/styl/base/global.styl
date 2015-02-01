@@ -5,12 +5,12 @@
 */
 
 body
-	color $black
 	background darken($white, 5%)
+	min-width 320px
 	font-family "Roboto", Arial, sans-serif
 	font-size $site_font_size
 	line-height 1.4
-	min-width 320px
+	color $black
 
 a
 	text-decoration none
@@ -18,7 +18,7 @@ a
 
 	&:hover
 	&:focus
-		color lighten($blue,40%)
+		color lighten(@color,40%)
 
 	&:active
 		color $red
@@ -122,4 +122,3 @@ h6
 		for name, color in $colors
 			&_{name}
 				color color
-/*! ==== / Глобальные стили ==== */
