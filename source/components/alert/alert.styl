@@ -1,0 +1,34 @@
+/*
+*
+* Информационные сообщения.
+*
+* .b-alert							- Полуфабрикат и без модификаторов не живет.
+* .b-alert_color_[colors]			- Добавляет кнопке цвет, по сути обязательный класс для кнопки. Цвета в var.
+*
+* .b-alert__header					- Заголовок сообщения.
+*
+*/
+
+
+.b-alert
+	padding 15px 30px
+	margin 15px 0 30px
+	border-radius 3px
+	border 1px solid
+	border-width 0px 0px
+	color $white
+	font-size $site_font_size + .01
+
+.b-alert_color
+	for name, color in $colors
+		&_{name}
+			background color
+			if(light(color))
+				border-color darken(color, 20%)
+			else
+				border-color lighten(color, 20%)
+
+
+.b-alert__header
+	font-size $site_font_size + .05
+	font-weight 700
