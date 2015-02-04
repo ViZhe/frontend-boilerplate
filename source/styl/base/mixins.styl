@@ -93,11 +93,11 @@ linear-gradient(start, colors...)
  */
 
 clearfix()
-	&:before
-	&:after
+	&::before
+	&::after
 		content: ""
 		display: block
-	&:after
+	&::after
 		clear: both
 
 
