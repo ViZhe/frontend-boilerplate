@@ -8,20 +8,12 @@
  */
 
 $grid(pref = "")
-	if pref == ""
-		.col
-			float left // if not support flexbox
-			padding-right 1vw
-			padding-left 1vw
-			width 100%
-
-	else
-		.col{pref}
-			width 100%
+	.w1-1{pref}
+		width 100%
 
 	for i in 1...12
 		for j in i+1..12
-			&.w{i}-{j}{pref}
+			.w{i}-{j}{pref}
 				width (i/j) * 100%
 
 
@@ -41,7 +33,7 @@ offset(arg...)
 $offset(pref)
 	for i in 1...12
 		for j in i+1..12
-			&.o{i}-{j}{pref}
+			.o{i}-{j}{pref}
 				margin-left (i/j) * 100%
 
 
@@ -97,6 +89,7 @@ clearfix()
 	&::after
 		content  ""
 		display block
+
 	&::after
 		clear both
 
