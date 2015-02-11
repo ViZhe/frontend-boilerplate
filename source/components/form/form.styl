@@ -39,16 +39,28 @@ $checkbox_modern = true // Современный checkbox включен.
 .b-form__textarea
 	background $white
 	border 2px solid lighten($grey,20%)
-	border-radius 3px
 	color $black
 	max-width 100%
 	min-width 100%
 	margin-bottom 10px
 	width 100%
 	padding 5px
+	transition border 0.5s ease 0s
+	box-shadow 0 0 0 rgba(0,0,0,0)
+
+	if $site_border-radius != 0
+		border-radius $site_border-radius
 
 	&:focus
-		border 2px solid $grey
+		border-color $blue
+
+.b-form__input_valid
+.b-form__textarea_valid
+	border-color $green
+
+.b-form__input_invalid
+.b-form__textarea_invalid
+	border-color $red
 
 .b-form__radio
 .b-form__checkbox

@@ -14,7 +14,6 @@
 */
 
 $btn_style_3d = true // 3d кнопки включены
-$btn_radius = 3px // Определяем радиус закругрения кнопок. 0 для отключения
 
 
 .b-btn
@@ -30,8 +29,8 @@ $btn_radius = 3px // Определяем радиус закругрения к
 	font-size $site_font_size
 	vertical-align bottom
 
-	if $btn_radius != 0
-		border-radius $btn_radius
+	if $site_border-radius != 0
+		border-radius $site_border-radius
 
 
 .b-btn_color
@@ -94,20 +93,20 @@ $btn_radius = 3px // Определяем радиус закругрения к
 	.b-btn
 		margin-left 0
 		margin-right 2px
-		if $btn_radius != 0
+		if $site_border-radius != 0
 			border-radius 0
 
 		&:first-of-type
 			margin-left 5px
 
-			if $btn_radius != 0
-					border-radius $btn_radius 0 0 $btn_radius
+			if $site_border-radius != 0
+					border-radius $site_border-radius 0 0 $site_border-radius
 
 		&:last-of-type
 			margin-right 5px
 
-			if $btn_radius != 0
-				border-radius 0 $btn_radius $btn_radius 0
+			if $site_border-radius != 0
+				border-radius 0 $site_border-radius $site_border-radius 0
 
 
 .b-btn__group_divider

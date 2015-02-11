@@ -5,21 +5,21 @@
 */
 
 .container
-	width $site-width
+	width $site_width
 	margin-right auto
 	margin-left auto
 
 	clearfix()
 
-	if $responsive
-		@media $media-for_desktop
-			width $site-width_md
+	if $site_responsive
+		@media $media_for_desktop
+			width $site_width_md
 
-		@media $media-for_tablet
-			width $site-width_sm
+		@media $media_for_tablet
+			width $site_width_sm
 
-		@media $media-for_mobile
-			width $site-width_xs
+		@media $media_for_mobile
+			width $site_width_xs
 
 
 .row
@@ -41,14 +41,14 @@
 
 $grid()
 
-if $responsive
-	@media $media-for_desktop
+if $site_responsive
+	@media $media_for_desktop
 		$grid("_md")
 
-	@media $media-for_tablet
+	@media $media_for_tablet
 		$grid("_sm")
 
-	@media $media-for_mobile
+	@media $media_for_mobile
 		$grid("_xs")
 
 td.col

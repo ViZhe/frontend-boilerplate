@@ -21,13 +21,10 @@ $breadcrumbs_font_size = $site_font_size - 10%
 .b-breadcrumb__item
 	color $grey
 
-	&::after
+	&:not(:last-of-type)::after
 		font-size $breadcrumbs_font_size
 		content "›"
 		margin 0 5px
-
-	&:last-of-type::after
-		content ""
 
 .b-breadcrumb__item_active
 .b-breadcrumb__link

@@ -5,7 +5,11 @@ form.b-form
 			.b-form-group-line
 				h4.b-heading.b-heading_level_4 Поля
 				label.b-form__label Инпут
-				input.b-form__input type="text" placeholder="Simple text input"
+				input.b-form__input type="text" placeholder="Simple text input"  required=""
+				label.b-form__label Инпут валидный
+				input.b-form__input.b-form__input_valid type="text" placeholder="Simple text input"
+				label.b-form__label Инпут с ошибкой
+				input.b-form__input.b-form__input_invalid type="text" placeholder="Simple text input"
 
 				label.b-form__label Текстовая область
 				textarea.b-form__textarea placeholder="Simple textarea"
