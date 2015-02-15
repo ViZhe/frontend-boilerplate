@@ -6,14 +6,15 @@
 ##Настройка gulp
 
 0) Для Slim'a нужны [Ruby и DevKit](http://rubyinstaller.org/downloads/)
-```
-gem install bundler
-gem install slim
- ```
-Добавить в ```(Путь до папки в которую установили Ruby и DevKit)\lib\ruby\gems\2.1.0\gems\slim-3.0.2\lib\slim.rb```
-```
-require 'slim/include'
-```
+	* Открываем Start Command Prompt with Ruby и устанавливаем
+	```
+	gem install bundler
+	gem install slim
+	 ```
+	* Добавляем в ```(Путь до папки Ruby и DevKit)\lib\ruby\gems\2.1.0\gems\slim-3.0.2\lib\slim.rb```
+	```
+	require 'slim/include'
+	```
 1) Установить зависимости
  ```
 npm install
