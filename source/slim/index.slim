@@ -1,0 +1,22 @@
+doctype html
+html lang="ru-RU"
+	head
+		include source/slim/base/head.slim
+
+	body
+		include source/blocks/header/header.slim
+
+		section
+			.container: .row
+				.col.w1-1
+					include source/components/alert/alert.slim
+					include source/components/pagination/pagination.slim
+					include source/components/breadcrumb/breadcrumb.slim
+					include source/components/form/form.slim
+					include source/components/list/list.slim
+					include source/components/table/table.slim
+					include source/components/btn/btn.slim
+
+		include source/blocks/footer/footer.slim
+
+		script src="frontend/js/hoppas.js"
