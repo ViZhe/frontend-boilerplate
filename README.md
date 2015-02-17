@@ -7,6 +7,7 @@
 
 0) Для Slim'a нужны [Ruby и DevKit](http://rubyinstaller.org/downloads/)
  * Открываем Start Command Prompt with Ruby и устанавливаем
+
  ```
  gem install bundler
  gem install slim

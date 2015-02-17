@@ -11,8 +11,11 @@ var	gulp = require('gulp'), // Gulp JS
 	gzip = require('gulp-gzip'),// Gzip сжатие - проверить пользу. Если есть польза протестить в паре с gulp-csscomb.
 	concat = require('gulp-concat'), // Склейка файлов
 	del = require('del'),
+	colors = require('colors/safe'), // Раскрашиваем текст
+	saneWatch = require('gulp-sane-watch'), // Следим за файлами
 
 	browserSync = require("browser-sync"), // http://www.browsersync.io/docs/gulp/
+	notify = browserSync.notify,
 	reload = browserSync.reload,
 
 	stylus = require('gulp-stylus'),
@@ -22,6 +25,7 @@ var	gulp = require('gulp'), // Gulp JS
 
 	slim = require('gulp-slim'),
 
+	changed = require('gulp-changed'), // Обрабатываем только измененные файлы(картинки)
 	imagemin = require('gulp-image'),// Минификация png, jpg, gif, svg.
 	teenypng = require('gulp-teenypng'),  // png & jpg < 5mb / 500 шт в месяц  -  https://tinypng.com
 
@@ -38,10 +42,10 @@ var	gulp = require('gulp'), // Gulp JS
 function log(error) {
 	console.log([
 		'',
-		"----------ERROR MESSAGE START----------".bold.red.underline,
-		("[" + error.name + " in " + error.plugin + "]").red.bold.inverse,
+		colors.red("---------- ERROR MESSAGE START ----------"),
+		colors.red.inverse("[" + error.name + " in " + error.plugin + "]"),
 		error.message,
-		"----------ERROR MESSAGE END----------".bold.red.underline,
+		colors.red("---------- ERROR MESSAGE END ------------"),
 		''
 	].join('\n'));
 	this.end();
@@ -55,10 +59,11 @@ function log(error) {
  *
  */
 
-gulp.task('stylus-main', function() {
+gulp.task('stylus-main_watch', function() {
 	gulp.src('./source/styl/[^-]*.styl')
 		.pipe(stylus())
 		.on('error', log)
+		// base64
 		.pipe(rebaseUrls())
 		.pipe(autoprefixer({
 			browser: ['last 7 versions']
@@ -68,7 +73,7 @@ gulp.task('stylus-main', function() {
 
 });
 
-gulp.task('stylus-fonts', function() {
+gulp.task('stylus-fonts_watch', function() {
 	gulp.src('./source/styl/fonts/[^-]*.styl')
 		.pipe(stylus())
 		.on('error', log)
@@ -81,10 +86,11 @@ gulp.task('stylus-fonts', function() {
 });
 
 
-gulp.task('build:stylus', function () {
+gulp.task('stylus_build', function () {
 	gulp.src('./source/styl/[^-]*.styl')
 		.pipe(stylus())
 		.on('error', log)
+		// base64
 		.pipe(rebaseUrls())
 		.pipe(autoprefixer({
 			browser: ['last 7 versions']
@@ -126,14 +132,30 @@ gulp.task('build:stylus', function () {
  */
 
 // http://rubyinstaller.org/downloads/
-// Ruby 2.1.5 and DevKit
+// Ruby 2.1.5 (2 последних чекбокса в процессе установки )
+// DevKit (распаковать в туже папку)
 //
-// gem install bundler
-// gem install slim
+// Запускаем "Start Command Prompt with Ruby"
 //
-// C:\Program Files\Ruby21-x64\lib\ruby\gems\2.1.0\gems\slim-3.0.2\lib\slim.rb
+// ruby dk.rb init
+// ruby dk.rb review
+// ruby dk.rb install
+// gem source --add http://rubygems.org
+// gem install bundle slim
+//
+// (Путь до папки Ruby и DevKit)\lib\ruby\gems\2.1.0\gems\slim-3.0.2\lib\slim.rb
 // require 'slim/include'
-gulp.task('multi:slim', function () {
+gulp.task('slim_watch', function () {
+	gulp.src('./source/slim/[^-]*.slim')
+		.pipe(slim({
+			pretty: true
+		}))
+		.on('error', log)
+		.pipe(gulp.dest('./'))
+		.pipe(reload({stream:true}));
+});
+
+gulp.task('slim_build', function () {
 	gulp.src('./source/slim/[^-]*.slim')
 		.pipe(slim({
 			pretty: true
@@ -150,7 +172,7 @@ gulp.task('multi:slim', function () {
  *
  */
 
-gulp.task('js', function () {
+gulp.task('js_watch', function () {
 	gulp.src('./source/js/[^-]*.js')
 		.pipe(concat("hoppas.js"))
 		.pipe(gulp.dest('./frontend/js'))
@@ -158,7 +180,7 @@ gulp.task('js', function () {
 });
 
 
-gulp.task('build:js', function () {
+gulp.task('js_build', function () {
 	gulp.src('./source/js/[^-]*.js')
 		.pipe(concat("hoppas.js"))
 		.pipe(sourcemaps.init())
@@ -178,8 +200,9 @@ gulp.task('build:js', function () {
  *
  */
 
-gulp.task('imagemin-style', function () {
+gulp.task('img_watch', function () {
 	gulp.src('./source/img/**/*')
+		.pipe(changed('./frontend/img/'))
 		.pipe(imagemin({
 			optimizationLevel: 3,
 			progressive: true,
@@ -189,8 +212,9 @@ gulp.task('imagemin-style', function () {
 		.pipe(reload({stream:true}));
 });
 
-gulp.task('imagemin-content', function () {
+gulp.task('img-c_watch', function () {
 	gulp.src('./source/img-c/**/*')
+		.pipe(changed('./frontend/img-c/'))
 		.pipe(imagemin({
 			optimizationLevel: 3,
 			progressive: true,
@@ -201,7 +225,7 @@ gulp.task('imagemin-content', function () {
 });
 
 
-gulp.task('build:imagemin', function () {
+gulp.task('images_build', function () {
 	gulp.src(['./source/img/**/*.gif', './source/img/**/*.svg', './source/img/**/*.ico'])
 		.pipe(imagemin({
 			optimizationLevel: 3,
@@ -241,7 +265,7 @@ gulp.task('browser-sync', function() {
 		server: {
 			baseDir: "./",
 			proxy: "hoppas.dev",
-			notify: false // Сообщения в браузере
+			notify: true
 		}
 	});
 });
@@ -256,7 +280,6 @@ gulp.task('browser-sync', function() {
 
 gulp.task('clean', function() {
 	del(['./frontend/','./*.html']);
-	console.log("123");
 });
 
 
@@ -270,28 +293,42 @@ gulp.task('clean', function() {
 // Собираем релиз
 gulp.task('build',['clean'], function() {
 	setTimeout(function () {
-		gulp.start(['build:stylus','multi:slim','build:js','build:imagemin']);
+		gulp.start(['stylus_build','slim_build','js_build','images_build']);
 	}, 500);
 
 });
 
 
 // Собираем дев и следим за изменениями
-// Возможно нужно будет следить за всеми стилями и шаблонами проверить
+// Нужно начинать следить и запускать сервер только после сборки воч проекта
+// Изменения в стайле запускают генератор слимов посмотреть
 gulp.task('watch',['clean'], function() {
 	setTimeout(function () {
-		gulp.start(['stylus-main','stylus-fonts','multi:slim','js','imagemin-style','imagemin-content','browser-sync']);
-	}, 500);
+		gulp.start(['stylus-main_watch','stylus-fonts_watch','slim_watch','js_watch','img_watch','img-c_watch','browser-sync']);
+	}, 1000);
 
-	gulp.watch('./source/styl/*.styl', ['stylus-main']);
-	gulp.watch('./source/styl/fonts/*.styl', ['stylus-fonts']);
+	saneWatch(['./source/styl/*.styl','./source/styl/base/*.styl','./source/components/**/*.styl','./source/blocks/**/*.styl'], {debounce: 300}, function() {
+		gulp.start(['stylus-main_watch']);
+	});
+	saneWatch(['./source/styl/fonts/*.styl'], {debounce: 300}, function() {
+		gulp.start(['stylus-fonts_watch']);
+	});
 
-	gulp.watch('./source/slim/*.slim', ['multi:slim']);
+	saneWatch(['./source/slim/*.slim','./source/slim/base/*.slim','./source/components/**/*.slim','./source/blocks/**/*.slim'], {debounce: 300}, function() {
+		gulp.start(['slim_watch']);
+	});
 
-	gulp.watch('./source/js/*.js', ['js']);
+	saneWatch(['./source/js/*.js'], {debounce: 300}, function() {
+		gulp.start(['js_watch']);
+	});
 
-	gulp.watch('./source/img/**/*', ['imagemin-style']);
-	gulp.watch('./source/img-c/**/*', ['imagemin-content']);
+	saneWatch(['./source/img/**/*'], {debounce: 300}, function() {
+		gulp.start(['img_watch']);
+	});
+	saneWatch(['./source/img-c/**/*'], {debounce: 300}, function() {
+		gulp.start(['img-c_watch']);
+	});
+
 });
 
 gulp.task('default', ['watch']);
