@@ -63,7 +63,7 @@ gulp.task('stylus-main_watch', function() {
 	gulp.src('./source/styl/[^-]*.styl')
 		.pipe(stylus())
 		.on('error', log)
-		// base64
+		// TODO base64
 		.pipe(rebaseUrls())
 		.pipe(autoprefixer({
 			browser: ['last 7 versions']
@@ -77,7 +77,7 @@ gulp.task('stylus-fonts_watch', function() {
 	gulp.src('./source/styl/fonts/[^-]*.styl')
 		.pipe(stylus())
 		.on('error', log)
-		// Все включения должны быть в base64
+		// TODO Все включения должны быть в base64
 		.pipe(autoprefixer({
 			browser: ['last 7 versions']
 		}))
@@ -90,7 +90,7 @@ gulp.task('stylus_build', function () {
 	gulp.src('./source/styl/[^-]*.styl')
 		.pipe(stylus())
 		.on('error', log)
-		// base64
+		// TODO base64
 		.pipe(rebaseUrls())
 		.pipe(autoprefixer({
 			browser: ['last 7 versions']
@@ -305,7 +305,7 @@ gulp.task('watch',['stylus-main_watch','stylus-fonts_watch','slim_watch','js_wat
 
 
 // Cледим за изменениями
-// -- Не инклюдятся вложенные инклюды
+// FIXME Не инклюдятся вложенные инклюды
 gulp.task('sane-watch',['clean'], function() {
 	setTimeout(function () {
 		gulp.start(['watch']);
