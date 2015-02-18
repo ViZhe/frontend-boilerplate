@@ -294,41 +294,46 @@ gulp.task('clean', function() {
 gulp.task('build',['clean'], function() {
 	setTimeout(function () {
 		gulp.start(['stylus_build','slim_build','js_build','images_build']);
-	}, 500);
+	}, 1000);	// Ждем пока файлы удалятся физически
 
 });
 
+// Собираем дев
+gulp.task('watch',['stylus-main_watch','stylus-fonts_watch','slim_watch','js_watch','img_watch','img-c_watch'], function() {
+	gulp.start(['browser-sync']);
+});
 
-// Собираем дев и следим за изменениями
-// Нужно начинать следить и запускать сервер только после сборки воч проекта
-// Изменения в стайле запускают генератор слимов посмотреть
-gulp.task('watch',['clean'], function() {
+
+// Cледим за изменениями
+// -- Не инклюдятся вложенные инклюды
+gulp.task('sane-watch',['clean'], function() {
 	setTimeout(function () {
-		gulp.start(['stylus-main_watch','stylus-fonts_watch','slim_watch','js_watch','img_watch','img-c_watch','browser-sync']);
-	}, 1000);
+		gulp.start(['watch']);
+	}, 1000);	// Ждем пока файлы удалятся физически
 
-	saneWatch(['./source/styl/*.styl','./source/styl/base/*.styl','./source/components/**/*.styl','./source/blocks/**/*.styl'], {debounce: 300}, function() {
+	saneWatch(['./source/styl/*.styl','./source/styl/base/*.styl','./source/components/**/*.styl','./source/blocks/**/*.styl'], {debounce: 500}, function() {
 		gulp.start(['stylus-main_watch']);
 	});
-	saneWatch(['./source/styl/fonts/*.styl'], {debounce: 300}, function() {
+
+	saneWatch(['./source/styl/fonts/*.styl'], {debounce: 500}, function() {
 		gulp.start(['stylus-fonts_watch']);
 	});
 
-	saneWatch(['./source/slim/*.slim','./source/slim/base/*.slim','./source/components/**/*.slim','./source/blocks/**/*.slim'], {debounce: 300}, function() {
+	saneWatch(['./source/slim/*.slim','./source/slim/base/*.slim','./source/components/**/*.slim','./source/blocks/**/*.slim'], {debounce: 500}, function() {
 		gulp.start(['slim_watch']);
 	});
 
-	saneWatch(['./source/js/*.js'], {debounce: 300}, function() {
+	saneWatch(['./source/js/*.js'], {debounce: 500}, function() {
 		gulp.start(['js_watch']);
 	});
 
-	saneWatch(['./source/img/**/*'], {debounce: 300}, function() {
+	saneWatch(['./source/img/**/*'], {debounce: 500}, function() {
 		gulp.start(['img_watch']);
 	});
-	saneWatch(['./source/img-c/**/*'], {debounce: 300}, function() {
+
+	saneWatch(['./source/img-c/**/*'], {debounce: 500}, function() {
 		gulp.start(['img-c_watch']);
 	});
-
 });
 
-gulp.task('default', ['watch']);
+gulp.task('default', ['sane-watch']);
