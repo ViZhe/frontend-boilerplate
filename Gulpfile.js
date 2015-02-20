@@ -19,7 +19,8 @@ var	gulp = require('gulp'), // Gulp JS
 	reload = browserSync.reload,
 
 	stylus = require('gulp-stylus'),
-	rebaseUrls = require('gulp-css-rebase-urls'), // Относительный путь в css - оттестить
+	base64 = require('gulp-base64'),
+	urlAdjuster = require('gulp-css-url-adjuster'), // Правим путь
 	autoprefixer = require('gulp-autoprefixer'), // Префиксы
 	cleancss = require('gulp-cleancss'), // Минификация CSS
 
@@ -63,8 +64,14 @@ gulp.task('stylus-main_watch', function() {
 	gulp.src('./source/styl/[^-]*.styl')
 		.pipe(stylus())
 		.on('error', log)
-		// TODO base64
-		.pipe(rebaseUrls())
+		// fixme кодит картинки из дева, а нужно сжатые из релиза, возможно после записи в цсс обрабатывать его
+		//.pipe(base64({
+		//	extensions: ['png','svg','jpg'],
+		//	maxImageSize: 10*1024 // 10 kb
+		//}))
+		.pipe(urlAdjuster({
+			replace:  ['../../img/','../img/']
+		}))
 		.pipe(autoprefixer({
 			browser: ['last 7 versions']
 		}))
@@ -77,7 +84,10 @@ gulp.task('stylus-fonts_watch', function() {
 	gulp.src('./source/styl/fonts/[^-]*.styl')
 		.pipe(stylus())
 		.on('error', log)
-		// TODO Все включения должны быть в base64
+		.pipe(base64({
+			extensions: ['woff'],
+			maxImageSize: 1024*1024
+		}))
 		.pipe(autoprefixer({
 			browser: ['last 7 versions']
 		}))
@@ -90,8 +100,14 @@ gulp.task('stylus_build', function () {
 	gulp.src('./source/styl/[^-]*.styl')
 		.pipe(stylus())
 		.on('error', log)
-		// TODO base64
-		.pipe(rebaseUrls())
+		// fixme кодит картинки из дева, а нужно сжатые из релиза, возможно после записи в цсс обрабатывать его
+		//.pipe(base64({
+		//	extensions: ['png','svg','jpg'],
+		//	maxImageSize: 10*1024 // 10 kb
+		//}))
+		.pipe(urlAdjuster({
+			replace:  ['../../img/','../img/']
+		}))
 		.pipe(autoprefixer({
 			browser: ['last 7 versions']
 		}))
@@ -105,6 +121,10 @@ gulp.task('stylus_build', function () {
 	gulp.src('./source/styl/fonts/[^-]*.styl')
 		.pipe(stylus())
 		.on('error', log)
+		.pipe(base64({
+			extensions: ['woff'],
+			maxImageSize: 1024*1024 // 1 mb
+		}))
 		.pipe(autoprefixer({
 			browser: ['last 7 versions']
 		}))
@@ -115,13 +135,6 @@ gulp.task('stylus_build', function () {
 		.pipe(gzip())
 		.pipe(gulp.dest('./frontend/css/fonts/'));
 });
-
-
-// ==========================================================================================
-//
-// base64   https://www.npmjs.com/package/gulp-base64
-//
-// ==========================================================================================
 
 
 
@@ -305,7 +318,6 @@ gulp.task('watch',['stylus-main_watch','stylus-fonts_watch','slim_watch','js_wat
 
 
 // Cледим за изменениями
-// FIXME Не инклюдятся вложенные инклюды
 gulp.task('sane-watch',['clean'], function() {
 	setTimeout(function () {
 		gulp.start(['watch']);
