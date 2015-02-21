@@ -64,11 +64,6 @@ gulp.task('stylus-main_watch', function() {
 	gulp.src('./source/styl/[^-]*.styl')
 		.pipe(stylus())
 		.on('error', log)
-		// fixme кодит картинки из дева, а нужно сжатые из релиза, возможно после записи в цсс обрабатывать его
-		//.pipe(base64({
-		//	extensions: ['png','svg','jpg'],
-		//	maxImageSize: 10*1024 // 10 kb
-		//}))
 		.pipe(urlAdjuster({
 			replace:  ['../../img/','../img/']
 		}))
@@ -100,19 +95,21 @@ gulp.task('stylus_build', function () {
 	gulp.src('./source/styl/[^-]*.styl')
 		.pipe(stylus())
 		.on('error', log)
-		// fixme кодит картинки из дева, а нужно сжатые из релиза, возможно после записи в цсс обрабатывать его
-		//.pipe(base64({
-		//	extensions: ['png','svg','jpg'],
-		//	maxImageSize: 10*1024 // 10 kb
-		//}))
 		.pipe(urlAdjuster({
-			replace:  ['../../img/','../img/']
+			replace:  ['../../img/','../../frontend/img/'] // Меняем пути чтобы брать минимизированные картинки для base63
+		}))
+		.pipe(base64({
+			extensions: ['png','svg','jpg'],
+			maxImageSize: 10*1024 // 10 kb
+		}))
+		.pipe(urlAdjuster({
+			replace:  ['../../frontend/img/','../img/']
 		}))
 		.pipe(autoprefixer({
 			browser: ['last 7 versions']
 		}))
 		.pipe(sourcemaps.init())
-		.pipe(cleancss())
+		//.pipe(cleancss())
 		.pipe(sourcemaps.write('.'))
 		.pipe(gulp.dest('./frontend/css/'))
 		.pipe(gzip())
