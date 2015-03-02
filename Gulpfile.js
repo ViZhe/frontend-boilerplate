@@ -6,31 +6,31 @@
  *
  */
 
-var	gulp = require('gulp'), // Gulp JS
-	sourcemaps = require('gulp-sourcemaps'),
-	gzip = require('gulp-gzip'),// Gzip сжатие - проверить пользу. Если есть польза протестить в паре с gulp-csscomb.
-	concat = require('gulp-concat'), // Склейка файлов
-	del = require('del'),
-	colors = require('colors/safe'), // Раскрашиваем текст
-	saneWatch = require('gulp-sane-watch'), // Следим за файлами
+var	gulp			= require('gulp'), // Gulp JS
+	sourcemaps		= require('gulp-sourcemaps'),
+	gzip 			= require('gulp-gzip'),// Gzip сжатие - проверить пользу. Если есть польза протестить в паре с gulp-csscomb.
+	concat			= require('gulp-concat'), // Склейка файлов
+	del				= require('del'),
+	colors			= require('colors/safe'), // Раскрашиваем текст
+	saneWatch		= require('gulp-sane-watch'), // Следим за файлами
 
-	browserSync = require("browser-sync"), // http://www.browsersync.io/docs/gulp/
-	notify = browserSync.notify,
-	reload = browserSync.reload,
+	browserSync		= require("browser-sync"), // http://www.browsersync.io/docs/gulp/
+	notify			= browserSync.notify,
+	reload			= browserSync.reload,
 
-	stylus = require('gulp-stylus'),
-	base64 = require('gulp-base64'),
-	urlAdjuster = require('gulp-css-url-adjuster'), // Правим путь
-	autoprefixer = require('gulp-autoprefixer'), // Префиксы
-	cleancss = require('gulp-cleancss'), // Минификация CSS
+	stylus			= require('gulp-stylus'),
+	base64			= require('gulp-base64'),
+	urlAdjuster		= require('gulp-css-url-adjuster'), // Правим путь
+	autoprefixer	= require('gulp-autoprefixer'), // Префиксы
+	cleancss		= require('gulp-cleancss'), // Минификация CSS
 
-	slim = require('gulp-slim'),
+	slim			= require('gulp-slim'),
 
-	changed = require('gulp-changed'), // Обрабатываем только измененные файлы(картинки)
-	imagemin = require('gulp-image'),// Минификация png, jpg, gif, svg.
-	teenypng = require('gulp-teenypng'),  // png & jpg < 5mb / 500 шт в месяц  -  https://tinypng.com
+	changed			= require('gulp-changed'), // Обрабатываем только измененные файлы(картинки)
+	imagemin		= require('gulp-image'),// Минификация png, jpg, gif, svg.
+	teenypng		= require('gulp-teenypng'),  // png & jpg < 5mb / 500 шт в месяц  -  https://tinypng.com
 
-	uglify = require('gulp-uglify'); // Минификация JS
+	uglify			= require('gulp-uglify'); // Минификация JS
 
 
 
@@ -109,7 +109,7 @@ gulp.task('stylus_build', function () {
 			browser: ['last 7 versions']
 		}))
 		.pipe(sourcemaps.init())
-		//.pipe(cleancss())
+		.pipe(cleancss())
 		.pipe(sourcemaps.write('.'))
 		.pipe(gulp.dest('./frontend/css/'))
 		.pipe(gzip())
@@ -236,7 +236,7 @@ gulp.task('img-c_watch', function () {
 
 
 gulp.task('images_build', function () {
-	gulp.src(['./source/img/**/*.gif', './source/img/**/*.svg', './source/img/**/*.ico'])
+	gulp.src(['./source/img/**/*.{svg,ico,gif}'])
 		.pipe(imagemin({
 			optimizationLevel: 3,
 			progressive: true,
@@ -244,11 +244,11 @@ gulp.task('images_build', function () {
 		}))
 		.pipe(gulp.dest('./frontend/img/'));
 
-	gulp.src(['./source/img/**/*.png', './source/img/**/*.jpg'])
+	gulp.src(['./source/img/**/*.{png,jpg}'])
 		.pipe(teenypng({"apikey": "fCeE49eA1dVhUEepFD0-XuqQq7bTcr3J" }))
 		.pipe(gulp.dest('./frontend/img/'));
 
-	gulp.src(['./source/img-c/**/*.gif', './source/img-c/**/*.svg'])
+	gulp.src(['./source/img-c/**/*.{svg,gif}'])
 		.pipe(imagemin({
 			optimizationLevel: 3,
 			progressive: true,
@@ -256,7 +256,7 @@ gulp.task('images_build', function () {
 		}))
 		.pipe(gulp.dest('./frontend/img-c/'));
 
-	gulp.src(['./source/img-c/**/*.png', './source/img-c/**/*.jpg'])
+	gulp.src(['./source/img-c/**/*.{png,jpg}'])
 		.pipe(teenypng({"apikey": "fCeE49eA1dVhUEepFD0-XuqQq7bTcr3J" }))
 		.pipe(gulp.dest('./frontend/img-c/'));
 });
