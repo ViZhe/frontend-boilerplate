@@ -1,0 +1,16 @@
+
+.b-btn_line
+	for name, color in $colors
+		&_{name}
+			border 2px solid color
+			color color
+			background rgba(0,0,0,0)
+
+			&:hover
+			&:focus
+				background color
+				color $white
+
+			&:active
+				background lighten(color, 30%)
+

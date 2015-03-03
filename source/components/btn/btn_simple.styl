@@ -1,0 +1,13 @@
+
+.b-btn_simple
+	for name, color in $colors
+		&_{name}
+			background color
+
+			&:focus
+			&:hover
+				background lighten(color, 20%)
+
+			&:active
+				background lighten(color, 40%)
+

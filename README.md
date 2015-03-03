@@ -1,6 +1,6 @@
 #Hoppas
 
-Универсальный HTML (Slim), CSS (Stylus) Framework. Простой, легкий и адаптивный.
+Универсальный HTML (Slim), CSS (Stylus) Framework.
 
 
 ##Настройка gulp

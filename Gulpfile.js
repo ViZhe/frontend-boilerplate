@@ -222,19 +222,6 @@ gulp.task('img_watch', function () {
 		.pipe(reload({stream:true}));
 });
 
-gulp.task('img-c_watch', function () {
-	gulp.src('./source/img-c/**/*')
-		.pipe(changed('./frontend/img-c/'))
-		.pipe(imagemin({
-			optimizationLevel: 3,
-			progressive: true,
-			interlaced: true
-		}))
-		.pipe(gulp.dest('./frontend/img-c/'))
-		.pipe(reload({stream:true}));
-});
-
-
 gulp.task('images_build', function () {
 	gulp.src(['./source/img/**/*.{svg,ico,gif}'])
 		.pipe(imagemin({
@@ -247,18 +234,6 @@ gulp.task('images_build', function () {
 	gulp.src(['./source/img/**/*.{png,jpg}'])
 		.pipe(teenypng({"apikey": "fCeE49eA1dVhUEepFD0-XuqQq7bTcr3J" }))
 		.pipe(gulp.dest('./frontend/img/'));
-
-	gulp.src(['./source/img-c/**/*.{svg,gif}'])
-		.pipe(imagemin({
-			optimizationLevel: 3,
-			progressive: true,
-			interlaced: true
-		}))
-		.pipe(gulp.dest('./frontend/img-c/'));
-
-	gulp.src(['./source/img-c/**/*.{png,jpg}'])
-		.pipe(teenypng({"apikey": "fCeE49eA1dVhUEepFD0-XuqQq7bTcr3J" }))
-		.pipe(gulp.dest('./frontend/img-c/'));
 });
 
 
@@ -309,7 +284,7 @@ gulp.task('build',['clean'], function() {
 });
 
 // Собираем дев
-gulp.task('watch',['stylus-main_watch','stylus-fonts_watch','slim_watch','js_watch','img_watch','img-c_watch'], function() {
+gulp.task('watch',['stylus-main_watch','stylus-fonts_watch','slim_watch','js_watch','img_watch'], function() {
 	gulp.start(['browser-sync']);
 });
 
@@ -338,10 +313,6 @@ gulp.task('sane-watch',['clean'], function() {
 
 	saneWatch(['./source/img/**/*'], {debounce: 500}, function() {
 		gulp.start(['img_watch']);
-	});
-
-	saneWatch(['./source/img-c/**/*'], {debounce: 500}, function() {
-		gulp.start(['img-c_watch']);
 	});
 });
 
