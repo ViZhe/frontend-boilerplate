@@ -1,4 +1,5 @@
-node_modules/
-.idea/
-frontend/
+node_modules
+npm-debug.log
+.idea
+frontend
 *.html
