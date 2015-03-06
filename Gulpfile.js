@@ -7,8 +7,7 @@
  */
 
 var	gulp			= require('gulp'), // Gulp JS
-	sourcemaps		= require('gulp-sourcemaps'),
-	gzip 			= require('gulp-gzip'),// Gzip сжатие - проверить пользу. Если есть польза протестить в паре с gulp-csscomb.
+												// Gzip сжатие - проверить пользу. Если есть польза протестить в паре с gulp-csscomb.
 	concat			= require('gulp-concat'), // Склейка файлов
 	del				= require('del'),
 	colors			= require('colors/safe'), // Раскрашиваем текст
@@ -108,11 +107,7 @@ gulp.task('stylus_build', function () {
 		.pipe(autoprefixer({
 			browser: ['last 7 versions']
 		}))
-		.pipe(sourcemaps.init())
 		.pipe(cleancss())
-		.pipe(sourcemaps.write('.'))
-		.pipe(gulp.dest('./frontend/css/'))
-		.pipe(gzip())
 		.pipe(gulp.dest('./frontend/css/'));
 
 	gulp.src('./source/styl/fonts/[^-]*.styl')
@@ -125,11 +120,7 @@ gulp.task('stylus_build', function () {
 		.pipe(autoprefixer({
 			browser: ['last 7 versions']
 		}))
-		.pipe(sourcemaps.init())
 		.pipe(cleancss())
-		.pipe(sourcemaps.write('.'))
-		.pipe(gulp.dest('./frontend/css/fonts/'))
-		.pipe(gzip())
 		.pipe(gulp.dest('./frontend/css/fonts/'));
 });
 
@@ -193,12 +184,8 @@ gulp.task('js_watch', function () {
 gulp.task('js_build', function () {
 	gulp.src('./source/js/[^-]*.js')
 		.pipe(concat("hoppas.js"))
-		.pipe(sourcemaps.init())
 		.pipe(uglify())
 		.on('error', log)
-		.pipe(sourcemaps.write('.'))
-		.pipe(gulp.dest('./frontend/js'))
-		.pipe(gzip())
 		.pipe(gulp.dest('./frontend/js'));
 });
 
