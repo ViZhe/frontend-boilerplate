@@ -208,7 +208,7 @@ gulp.task('img_watch', function () {
 		.pipe(reload({stream:true}));
 });
 
-gulp.task('images_build', function () {
+gulp.task('img_build', function () {
 	gulp.src(['./source/img/**/*.{svg,ico,gif}'])
 		.pipe(imagemin({
 			optimizationLevel: 3,
@@ -264,7 +264,7 @@ gulp.task('clean', function() {
 // Собираем релиз
 gulp.task('build',['clean'], function() {
 	setTimeout(function () {
-		gulp.start(['stylus_build','slim_build','js_build','images_build']);
+		gulp.start(['stylus_build','slim_build','js_build','img_build']);
 	}, 1000);	// Ждем пока файлы удалятся физически
 
 });
