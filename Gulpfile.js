@@ -7,7 +7,6 @@
  */
 
 var	gulp			= require('gulp'), // Gulp JS
-												// Gzip сжатие - проверить пользу. Если есть польза протестить в паре с gulp-csscomb.
 	concat			= require('gulp-concat'), // Склейка файлов
 	del				= require('del'),
 	colors			= require('colors/safe'), // Раскрашиваем текст
