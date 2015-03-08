@@ -11,16 +11,6 @@
 
 	clearfix()
 
-	if $site_responsive
-		@media $media_for_desktop
-			width $site_width_md
-
-		@media $media_for_tablet
-			width $site_width_sm
-
-		@media $media_for_mobile
-			width $site_width_xs
-
 
 .row
 	display flex
@@ -42,17 +32,9 @@
 	padding-right 1vw
 	padding-left 1vw
 
+
 $grid()
 
-if $site_responsive
-	@media $media_for_desktop
-		$grid("_md")
-
-	@media $media_for_tablet
-		$grid("_sm")
-
-	@media $media_for_mobile
-		$grid("_xs")
 
 td.col
 th.col

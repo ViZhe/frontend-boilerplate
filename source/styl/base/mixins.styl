@@ -3,17 +3,17 @@
  *	# Grid
  *
  *	$grid()				=> .col{...}.w1-12{width:8.33333%;}
- *	$grid("_prefix")		=> .col_prefix{...}.w1-12_prefix{width:8.33333%;}
+ *	$grid("_postfix")		=> .col_postfix{...}.w1-12_postfix{width:8.33333%;}
  *
  */
 
-$grid(pref = "")
-	.w1-1{pref}
+$grid(postfix = "")
+	.w1-1{postfix}
 		width 100%
 
 	for i in 1...12
 		for j in i+1..12
-			.w{i}-{j}{pref}
+			.w{i}-{j}{postfix}
 				width (i/j) * 100%
 
 
@@ -23,17 +23,17 @@ $grid(pref = "")
  *
  *	offset 1 of 12			=> margin-left:8.33333%;
  *	$offset()				=> .o1-12{margin-left:8.33333%;}
- *	$offset("_prefix")		=> .o1-12_prefix{margin-left:8.33333%;}
+ *	$offset("_postfix")		=> .o1-12_postfix{margin-left:8.33333%;}
  *
  */
 
 offset(arg...)
 	margin-left (arg[0]/arg[2])*100%
 
-$offset(pref)
+$offset(postfix)
 	for i in 1...12
 		for j in i+1..12
-			.o{i}-{j}{pref}
+			.o{i}-{j}{postfix}
 				margin-left (i/j) * 100%
 
 
