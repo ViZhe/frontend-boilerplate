@@ -1,0 +1,10 @@
+
+.b-alert_line
+	color $black
+	border-left 5px solid
+
+.b-alert_line
+	for name, color in $colors
+		&_{name}
+			background lighten(color,70%)
+			border-color color

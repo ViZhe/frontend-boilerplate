@@ -4,13 +4,13 @@
 *
 * .b-alert							- Полуфабрикат и без модификаторов не живет.
 *
-* .b-alert__full					- Сообщение с монотонным фоном.
-* .b-alert__full_color_[colors]		- Добавляет кнопке цвет.
-*
-* .b-alert__line					- Сообщение с блеклым фоном и линией слева.
-* .b-alert__line_color_[colors]		- Добавляет кнопке цвет.
-*
 * .b-alert__header					- Заголовок сообщения.
+*
+* .b-alert_full						- Сообщение с монотонным фоном.
+* .b-alert_full_[colors]			- Добавляет кнопке цвет.
+*
+* .b-alert_line						- Сообщение с блеклым фоном и линией слева.
+* .b-alert_line_[colors]			- Добавляет кнопке цвет.
 *
 */
 
@@ -22,26 +22,6 @@
 
 	if $site_border-radius != 0
 		border-radius $site_border-radius
-
-
-.b-alert__full
-	color $white
-
-.b-alert__full_color
-	for name, color in $colors
-		&_{name}
-			background color
-
-
-.b-alert__line
-	color $black
-	border-left 5px solid
-
-.b-alert__line_color
-	for name, color in $colors
-		&_{name}
-			background lighten(color,70%)
-			border-color color
 
 
 .b-alert__heading
