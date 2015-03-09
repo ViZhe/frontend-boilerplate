@@ -2,137 +2,49 @@
 *
 * Формы.
 *
-* .b-form							- Класс обертка для тега form.
+* .b-form										- Класс обертка для тега form.
 *
-* .b-form__input					- Класс для соответствующего input-а.
-* .b-form__textarea					- Класс для textarea.
-* .b-form__radio					- Класс для соответствующего input-а.
-* .b-form__checkbox					- Класс для соответствующего input-а.
+* .b-form__field								- Класс для текстовых полей и textarea.
+* .b-form__field_textarea						- Модификатор textarea.
+* .b-form__field_valid							- Модификатор валидного поля.
+* .b-form__field_invalid						- Модификатор поля с ошибкой.
 *
-* .b-form__label					- Класс для всех label-ов.
-* .b-form__label_checkbox			- Модификатор для label, которым обернут checkbox.
-* .b-form__label_radio				- Модификатор для label, которым обернут radio.
-* .b-form__label_disable			- Применяем вовместно с атрибутом disabled для внутреннего input.
+* .b-form__radio								- Класс для соответствующего input-а.
+* .b-form__checkbox								- Класс для соответствующего input-а.
 *
-* .b-icon-form						- С этого начинаются все иконки.
-* .b-icon-form_check_normal			- Элемент для псевдостандартного checkbox.
-* .b-icon-form_check_simple			- Элемент для минималистичного checkbox.
-* .b-icon-form_check_modern			- Элемент для современного checkbox.
-* .b-icon-form_radio				- Элемент для псевдостандартного radio.
+* .b-form__checkbox_[normal,simple,modern]		- Элемент для label, который опредеяет стиль checkbox.
+* .b-form__radio							- Элемент для label, которым обернут radio.
 *
-* .b-form-group-line				- Группа элементов.
+* .b-form__label								- Класс для всех label-ов.
+* .b-form__label_disable						- Применяем вовместно с атрибутом disabled для внутреннего input.
+*
+* .b-form__icon									- Элемент иконок.
+*
+* .b-form__group-line							- Группа элементов.
 *
 */
 
-@import 'form-icons'
-
-$checkbox_normal = true // Псевдостандартный checkbox включен.
-$checkbox_simple = true // Минималистичный checkbox включен.
-$checkbox_modern = true // Современный checkbox включен.
-
-
 .b-form
 	display block
-
-
-.b-form__input
-.b-form__textarea
-	background $white
-	border 2px solid lighten($grey,20%)
-	color $black
-	max-width 100%
-	min-width 100%
-	margin-bottom 10px
-	width 100%
-	padding 5px
-	transition border 0.5s ease 0s
-	box-shadow 0 0 0 rgba(0,0,0,0)
-
-	if $site_border-radius != 0
-		border-radius $site_border-radius
-
-	&:focus
-		border-color $blue
-
-.b-form__input_valid
-.b-form__textarea_valid
-	border-color $green
-
-.b-form__input_invalid
-.b-form__textarea_invalid
-	border-color $red
-
-.b-form__radio
-.b-form__checkbox
-	display none
 
 
 .b-form__label
 	margin-bottom 5px
 	display block
 
-.b-form__label_checkbox
-.b-form__label_radio
-	display block
-	cursor pointer
-
-.b-form__label_checkbox
-	if $checkbox_normal
-		& .b-icon-form_check_normal::before
-			content "\e002"
-
-		& :checked + .b-icon-form_check_normal::before
-			content "\e000"
-
-	if $checkbox_simple
-		& .b-icon-form_check_simple::before
-			content "\e001"
-
-		& :checked + .b-icon-form_check_simple::before
-			content "\e005"
-
-	if $checkbox_modern
-		& .b-icon-form_check_modern
-			display inline-block
-			size 45px false
-			vertical-align bottom
-			background $red
-			border-radius 10px
-			transition all .2s ease 0s
-
-		& .b-icon-form_check_modern::after
-			content ""
-			display block
-			size 15px
-			margin 3px 0px
-			transform translateX(3px)
-			background $white
-			border-radius 50%
-			transition all .2s ease 0s
-
-		& :checked + .b-icon-form_check_modern
-			background $green
-
-		& :checked +  .b-icon-form_check_modern::after
-			transform translateX(27px)
-
-
-.b-form__label_radio
-	& .b-icon-form_radio::before
-		content "\e003"
-
-	& :checked + .b-icon-form_radio::before
-		content "\e004"
-
-
 .b-form__label_disable
 	color $grey
 	cursor default
 
-	if $checkbox_modern
-		& .b-icon-form_check_modern
-			background @color
+
+.b-form__radio
+.b-form__checkbox
+	cursor pointer
+
+.b-form__radio input
+.b-form__checkbox input
+	display none
 
 
-.b-form-group-line
+.b-form__group-line
 	margin-bottom 10px
