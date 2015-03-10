@@ -7,10 +7,11 @@
  */
 
 var	gulp			= require('gulp'), // Gulp JS
-	concat			= require('gulp-concat'), // Склейка файлов
-	del				= require('del'),
+	del				= require('gulp-clean'),
 	colors			= require('colors/safe'), // Раскрашиваем текст
 	saneWatch		= require('gulp-sane-watch'), // Следим за файлами
+	includeFile		= require('gulp-file-include'), // Инклюдинг файлов
+	sequence 		= require('gulp-sequence'), // Последовательность выполения тасков
 
 	browserSync		= require("browser-sync"), // http://www.browsersync.io/docs/gulp/
 	notify			= browserSync.notify,
@@ -58,10 +59,14 @@ function log(error) {
  *
  */
 
-gulp.task('stylus-main_watch', function() {
-	gulp.src('./source/styl/[^-]*.styl')
+gulp.task('stylus_dev', function() {
+	return gulp.src(['./source/styl/[^-]*.styl', './source/styl/fonts/[^-]*.styl'])
 		.pipe(stylus())
 		.on('error', log)
+		.pipe(base64({
+			extensions: ['woff'],
+			maxImageSize: 1024*1024 // 1 mb
+		}))
 		.pipe(urlAdjuster({
 			replace:  ['../../img/','../img/']
 		}))
@@ -70,29 +75,18 @@ gulp.task('stylus-main_watch', function() {
 		}))
 		.pipe(gulp.dest('./frontend/css/'))
 		.pipe(reload({stream:true}));
-
 });
 
-gulp.task('stylus-fonts_watch', function() {
-	gulp.src('./source/styl/fonts/[^-]*.styl')
+
+
+gulp.task('stylus_build', function () {
+	return gulp.src(['./source/styl/[^-]*.styl', './source/styl/fonts/[^-]*.styl'])
 		.pipe(stylus())
 		.on('error', log)
 		.pipe(base64({
 			extensions: ['woff'],
-			maxImageSize: 1024*1024
+			maxImageSize: 1024*1024 // 1 mb
 		}))
-		.pipe(autoprefixer({
-			browser: ['last 7 versions']
-		}))
-		.pipe(gulp.dest('./frontend/css/fonts/'))
-		.pipe(reload({stream:true}));
-});
-
-
-gulp.task('stylus_build', function () {
-	gulp.src('./source/styl/[^-]*.styl')
-		.pipe(stylus())
-		.on('error', log)
 		.pipe(urlAdjuster({
 			replace:  ['../../img/','../../frontend/img/'] // Меняем пути чтобы брать минимизированные картинки для base63
 		}))
@@ -108,19 +102,6 @@ gulp.task('stylus_build', function () {
 		}))
 		.pipe(cleancss())
 		.pipe(gulp.dest('./frontend/css/'));
-
-	gulp.src('./source/styl/fonts/[^-]*.styl')
-		.pipe(stylus())
-		.on('error', log)
-		.pipe(base64({
-			extensions: ['woff'],
-			maxImageSize: 1024*1024 // 1 mb
-		}))
-		.pipe(autoprefixer({
-			browser: ['last 7 versions']
-		}))
-		.pipe(cleancss())
-		.pipe(gulp.dest('./frontend/css/fonts/'));
 });
 
 
@@ -145,8 +126,8 @@ gulp.task('stylus_build', function () {
 //
 // (Путь до папки Ruby и DevKit)\lib\ruby\gems\2.1.0\gems\slim-3.0.2\lib\slim.rb
 // require 'slim/include'
-gulp.task('slim_watch', function () {
-	gulp.src('./source/slim/[^-]*.slim')
+gulp.task('slim_dev', function () {
+	return gulp.src('./source/slim/[^-]*.slim')
 		.pipe(slim({
 			pretty: true
 		}))
@@ -156,7 +137,7 @@ gulp.task('slim_watch', function () {
 });
 
 gulp.task('slim_build', function () {
-	gulp.src('./source/slim/[^-]*.slim')
+	return gulp.src('./source/slim/[^-]*.slim')
 		.pipe(slim({
 			pretty: true
 		}))
@@ -172,17 +153,17 @@ gulp.task('slim_build', function () {
  *
  */
 
-gulp.task('js_watch', function () {
-	gulp.src('./source/js/[^-]*.js')
-		.pipe(concat("hoppas.js"))
+gulp.task('js_dev', function () {
+	return gulp.src('./source/js/[^-]*.js')
+		.pipe(includeFile())
 		.pipe(gulp.dest('./frontend/js'))
 		.pipe(reload({stream:true}));
 });
 
 
 gulp.task('js_build', function () {
-	gulp.src('./source/js/[^-]*.js')
-		.pipe(concat("hoppas.js"))
+	return gulp.src('./source/js/[^-]*.js')
+		.pipe(includeFile())
 		.pipe(uglify())
 		.on('error', log)
 		.pipe(gulp.dest('./frontend/js'));
@@ -196,8 +177,8 @@ gulp.task('js_build', function () {
  *
  */
 
-gulp.task('img_watch', function () {
-	gulp.src('./source/img/**/*')
+gulp.task('img_dev', function () {
+	return gulp.src('./source/img/**/*')
 		.pipe(changed('./frontend/img/'))
 		.pipe(imagemin({
 			optimizationLevel: 3,
@@ -209,7 +190,7 @@ gulp.task('img_watch', function () {
 });
 
 gulp.task('img_build', function () {
-	gulp.src(['./source/img/**/*.{svg,ico,gif}'])
+	return gulp.src(['./source/img/**/*.{svg,ico,gif}'])
 		.pipe(imagemin({
 			optimizationLevel: 3,
 			progressive: true,
@@ -217,7 +198,7 @@ gulp.task('img_build', function () {
 		}))
 		.pipe(gulp.dest('./frontend/img/'));
 
-	gulp.src(['./source/img/**/*.{png,jpg}'])
+	return gulp.src(['./source/img/**/*.{png,jpg}'])
 		.pipe(teenypng({"apikey": "fCeE49eA1dVhUEepFD0-XuqQq7bTcr3J" }))
 		.pipe(gulp.dest('./frontend/img/'));
 });
@@ -250,7 +231,7 @@ gulp.task('browser-sync', function() {
  */
 
 gulp.task('clean', function() {
-	del(['./frontend/','./*.html']);
+	return gulp.src(['./frontend/','./*.html'], {read: false}).pipe(del({force: true}));
 });
 
 
@@ -262,43 +243,38 @@ gulp.task('clean', function() {
  */
 
 // Собираем релиз
-gulp.task('build',['clean'], function() {
-	setTimeout(function () {
-		gulp.start(['stylus_build','slim_build','js_build','img_build']);
-	}, 1000);	// Ждем пока файлы удалятся физически
+gulp.task('build', sequence(
+	['clean'],
+	['stylus_build','slim_build','js_build', 'img_build']
+));
 
-});
 
 // Собираем дев
-gulp.task('watch',['stylus-main_watch','stylus-fonts_watch','slim_watch','js_watch','img_watch'], function() {
-	gulp.start(['browser-sync']);
-});
+gulp.task('dev', sequence(
+	['clean'],
+	['stylus_dev','slim_dev','js_dev','img_dev']
+));
 
 
 // Cледим за изменениями
-gulp.task('sane-watch',['clean'], function() {
-	setTimeout(function () {
-		gulp.start(['watch']);
-	}, 1000);	// Ждем пока файлы удалятся физически
+gulp.task('sane-watch', ['dev'], function() {
 
-	saneWatch(['./source/styl/*.styl','./source/styl/base/*.styl','./source/components/**/*.styl','./source/blocks/**/*.styl'], {debounce: 500}, function() {
-		gulp.start(['stylus-main_watch']);
+	gulp.start(['browser-sync']);
+
+	saneWatch(['./source/styl/*.styl','./source/styl/fonts/*.styl'], {debounce: 500}, function() {
+		gulp.start(['stylus_dev']);
 	});
 
-	saneWatch(['./source/styl/fonts/*.styl'], {debounce: 500}, function() {
-		gulp.start(['stylus-fonts_watch']);
-	});
-
-	saneWatch(['./source/slim/*.slim','./source/slim/base/*.slim','./source/components/**/*.slim','./source/blocks/**/*.slim'], {debounce: 500}, function() {
-		gulp.start(['slim_watch']);
+	saneWatch(['./source/slim/*.slim'], {debounce: 500}, function() {
+		gulp.start(['slim_dev']);
 	});
 
 	saneWatch(['./source/js/*.js'], {debounce: 500}, function() {
-		gulp.start(['js_watch']);
+		gulp.start(['js_dev']);
 	});
 
 	saneWatch(['./source/img/**/*'], {debounce: 500}, function() {
-		gulp.start(['img_watch']);
+		gulp.start(['img_dev']);
 	});
 });
 

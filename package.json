@@ -5,21 +5,21 @@
   "devDependencies": {
     "browser-sync": "^2.1.1",
     "colors": "^1.0.3",
-    "del": "^1.1.1",
     "gulp": "^3.8.11",
     "gulp-autoprefixer": "^2.1.0",
     "gulp-base64": "^0.1.2",
     "gulp-changed": "^1.1.1",
+    "gulp-clean": "^0.3.1",
     "gulp-cleancss": "^0.2.2",
-    "gulp-concat": "^2.5.0",
     "gulp-css-url-adjuster": "^0.2.3",
+    "gulp-file-include": "^0.8.0",
     "gulp-image": "^0.5.6",
     "gulp-sane-watch": "0.0.8",
+    "gulp-sequence": "^0.3.2",
     "gulp-slim": "^0.0.13",
     "gulp-stylus": "^2.0.0",
     "gulp-teenypng": "^0.2.0",
-    "gulp-uglify": "^1.1.0",
-    "run-sequence": "^1.0.2"
+    "gulp-uglify": "^1.1.0"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
