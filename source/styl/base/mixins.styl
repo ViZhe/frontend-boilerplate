@@ -8,6 +8,10 @@
  */
 
 $grid(postfix = "")
+
+	.w0-0{postfix}
+		flex 1
+
 	.w1-1{postfix}
 		width 100%
 
@@ -15,6 +19,10 @@ $grid(postfix = "")
 		for j in i+1..12
 			.w{i}-{j}{postfix}
 				width (i/j) * 100%
+
+	for i in 1..12
+		.o{i}{postfix}
+			order i
 
 
 /*
@@ -33,7 +41,7 @@ offset(arg...)
 $offset(postfix)
 	for i in 1...12
 		for j in i+1..12
-			.o{i}-{j}{postfix}
+			.os{i}-{j}{postfix}
 				margin-left (i/j) * 100%
 
 

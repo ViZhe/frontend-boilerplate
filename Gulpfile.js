@@ -7,7 +7,8 @@
  */
 
 var	gulp			= require('gulp'), // Gulp JS
-	del				= require('gulp-clean'),
+	vinylPaths		= require('vinyl-paths'),
+	del				= require('del'),
 	colors			= require('colors/safe'), // Раскрашиваем текст
 	saneWatch		= require('gulp-sane-watch'), // Следим за файлами
 	includeFile		= require('gulp-file-include'), // Инклюдинг файлов
@@ -71,7 +72,7 @@ gulp.task('stylus_dev', function() {
 			replace:  ['../../img/','../img/']
 		}))
 		.pipe(autoprefixer({
-			browser: ['last 7 versions']
+			browser: ['> 5%', 'last 2 versions', 'android 4']
 		}))
 		.pipe(gulp.dest('./frontend/css/'))
 		.pipe(reload({stream:true}));
@@ -98,7 +99,7 @@ gulp.task('stylus_build', function () {
 			replace:  ['../../frontend/img/','../img/']
 		}))
 		.pipe(autoprefixer({
-			browser: ['last 7 versions']
+			browser: ['> 5%', 'last 2 versions', 'android 4']
 		}))
 		.pipe(cleancss())
 		.pipe(gulp.dest('./frontend/css/'));
@@ -211,7 +212,6 @@ gulp.task('img_build', function () {
  *
  */
 
-
 gulp.task('browser-sync', function() {
 	browserSync({
 		server: {
@@ -231,7 +231,8 @@ gulp.task('browser-sync', function() {
  */
 
 gulp.task('clean', function() {
-	return gulp.src(['./frontend/','./*.html'], {read: false}).pipe(del({force: true}));
+   return gulp.src(['./frontend/','./*.html'])
+      .pipe(vinylPaths(del));
 });
 
 
@@ -265,7 +266,7 @@ gulp.task('sane-watch', ['dev'], function() {
 		gulp.start(['stylus_dev']);
 	});
 
-	saneWatch(['./source/slim/*.slim'], {debounce: 500}, function() {
+	saneWatch(['./source/slim/*.slim','./source/**/*.slim'], {debounce: 500}, function() {
 		gulp.start(['slim_dev']);
 	});
 
