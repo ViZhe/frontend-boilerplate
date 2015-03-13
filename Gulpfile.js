@@ -10,7 +10,7 @@ var	gulp			= require('gulp'), // Gulp JS
 	vinylPaths		= require('vinyl-paths'),
 	del				= require('del'),
 	colors			= require('colors/safe'), // Раскрашиваем текст
-	saneWatch		= require('gulp-sane-watch'), // Следим за файлами
+	watch			= require('gulp-watch'), // Следим за файлами
 	includeFile		= require('gulp-file-include'), // Инклюдинг файлов
 	sequence 		= require('gulp-sequence'), // Последовательность выполения тасков
 
@@ -179,7 +179,7 @@ gulp.task('js_build', function () {
  */
 
 gulp.task('img_dev', function () {
-	return gulp.src('./source/img/**/*')
+	return gulp.src('./source/img/**/*[^.ico]')
 		.pipe(changed('./frontend/img/'))
 		.pipe(imagemin({
 			optimizationLevel: 3,
@@ -190,7 +190,12 @@ gulp.task('img_dev', function () {
 		.pipe(reload({stream:true}));
 });
 
-gulp.task('img_build', function () {
+gulp.task('img_build', sequence(
+	['img_build_imagemin'],
+	['img_build_teenypng']
+));
+
+gulp.task('img_build_imagemin', function () {
 	return gulp.src(['./source/img/**/*.{svg,ico,gif}'])
 		.pipe(imagemin({
 			optimizationLevel: 3,
@@ -198,7 +203,9 @@ gulp.task('img_build', function () {
 			interlaced: true
 		}))
 		.pipe(gulp.dest('./frontend/img/'));
+});
 
+gulp.task('img_build_teenypng', function () {
 	return gulp.src(['./source/img/**/*.{png,jpg}'])
 		.pipe(teenypng({"apikey": "fCeE49eA1dVhUEepFD0-XuqQq7bTcr3J" }))
 		.pipe(gulp.dest('./frontend/img/'));
@@ -213,7 +220,7 @@ gulp.task('img_build', function () {
  */
 
 gulp.task('browser-sync', function() {
-	browserSync({
+	return browserSync({
 		server: {
 			baseDir: "./",
 			proxy: "hoppas.dev",
@@ -258,25 +265,24 @@ gulp.task('dev', sequence(
 
 
 // Cледим за изменениями
-gulp.task('sane-watch', ['dev'], function() {
-
-	gulp.start(['browser-sync']);
-
-	saneWatch(['./source/styl/*.styl','./source/styl/fonts/*.styl'], {debounce: 500}, function() {
+gulp.task('sane-watch', function() {
+	watch('./source/**/*.styl', function () {
 		gulp.start(['stylus_dev']);
 	});
-
-	saneWatch(['./source/slim/*.slim','./source/**/*.slim'], {debounce: 500}, function() {
+	watch('./source/**/*.slim', function () {
 		gulp.start(['slim_dev']);
 	});
-
-	saneWatch(['./source/js/*.js'], {debounce: 500}, function() {
+	watch('./source/**/*.js', function () {
 		gulp.start(['js_dev']);
 	});
-
-	saneWatch(['./source/img/**/*'], {debounce: 500}, function() {
+	watch('./source/img/**/*', function () {
 		gulp.start(['img_dev']);
 	});
 });
 
-gulp.task('default', ['sane-watch']);
+
+gulp.task('default', sequence(
+	['dev'],
+	['sane-watch'],
+	['browser-sync']
+));
