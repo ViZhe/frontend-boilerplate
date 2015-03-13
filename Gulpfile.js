@@ -179,8 +179,8 @@ gulp.task('js_build', function () {
  */
 
 gulp.task('img_dev', function () {
-	return gulp.src('./source/img/**/*[^.ico]')
-		.pipe(changed('./frontend/img/'))
+	return gulp.src('./source/img/**/*')
+	//	.pipe(changed('./frontend/img/'))
 		.pipe(imagemin({
 			optimizationLevel: 3,
 			progressive: true,
