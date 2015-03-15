@@ -265,7 +265,7 @@ gulp.task('dev', sequence(
 
 
 // Cледим за изменениями
-gulp.task('sane-watch', function() {
+gulp.task('watch', function() {
 	watch('./source/**/*.styl', function () {
 		gulp.start(['stylus_dev']);
 	});
@@ -283,6 +283,6 @@ gulp.task('sane-watch', function() {
 
 gulp.task('default', sequence(
 	['dev'],
-	['sane-watch'],
+	['watch'],
 	['browser-sync']
 ));
