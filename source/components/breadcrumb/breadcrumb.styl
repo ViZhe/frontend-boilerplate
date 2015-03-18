@@ -2,12 +2,9 @@
 *
 * Хлебные крошки.
 *
-* .b-breadcrumb				- Стандартная обертка хлебных крошек.
+* .b-breadcrumb					- Стандартная обертка хлебных крошек.
 *
 * .b-breadcrumb__item			- Пункт крошек.
-* .b-breadcrumb__item_active	- Активный пункт крошек.
-*
-* .b-breadcrumb__link			- Ссылки крошек.
 *
 */
 
@@ -16,16 +13,11 @@ $breadcrumbs_font_size = $site_font_size - 10%
 .b-breadcrumb
 	display flex
 	list-style none
-	font-size 0
+	font-size $breadcrumbs_font_size
 
 .b-breadcrumb__item
 	color $grey
 
 	&:not(:last-of-type)::after
-		font-size $breadcrumbs_font_size
 		content "›"
 		margin 0 5px
-
-.b-breadcrumb__item_active
-.b-breadcrumb__link
-	font-size $breadcrumbs_font_size
