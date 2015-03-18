@@ -2,7 +2,7 @@
 h2.b-heading.b-heading_level_2 Формы
 form.b-form
 	.row
-		.col.w1-3
+		.col.w0-0
 			.b-form__group-line
 				h4.b-heading.b-heading_level_4 Поля
 				label.b-form__label Инпут
@@ -11,11 +11,15 @@ form.b-form
 				input.b-form__field.b-form__field_valid type="text" placeholder="Simple text input"
 				label.b-form__label Инпут с ошибкой
 				input.b-form__field.b-form__field_invalid type="text" placeholder="Simple text input"
+				label.b-form__label Инпут c префиксом
+				.b-form__append
+					input.b-form__field type="text" placeholder="Simple text input"  required=""
+					.b-form__addon.b-btn.b-btn_full_lightgrey Отправить
 
 				label.b-form__label Текстовая область
 				textarea.b-form__field.b-form__field_textarea placeholder="Simple textarea"
 
-		.col.w1-3
+		.col.w0-0
 			.b-form__group-line
 				h4.b-heading.b-heading_level_4 Простые check
 				label.b-form__label.b-form__checkbox.b-form__checkbox_simple
@@ -46,7 +50,7 @@ form.b-form
 					i.b-form__icon
 					| Третий checkbox (отключен)
 
-		.col.w1-3
+		.col.w0-0
 			.b-form__group-line
 				h4.b-heading.b-heading_level_4 Стандартные check
 				label.b-form__label.b-form__checkbox.b-form__checkbox_normal
@@ -77,6 +81,6 @@ form.b-form
 					i.b-form__icon
 					| Третий radio (отключен)
 
-		.col
+		.col.w1-1
 			.b-form__group-line
-				.b-btn.b-btn_simple_green Послать
+				.b-btn.b-btn_full_green Послать
