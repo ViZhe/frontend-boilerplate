@@ -253,7 +253,8 @@ gulp.task('clean', function() {
 // Собираем релиз
 gulp.task('build', sequence(
 	['clean'],
-	['stylus_build','slim_build','js_build', 'img_build']
+	['img_build'],
+	['stylus_build','slim_build','js_build']
 ));
 
 
