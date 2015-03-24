@@ -2,6 +2,10 @@
 
 Универсальный HTML (Slim), CSS (Stylus) Framework.
 
+## Поддержка браузеров
+* Последние Chrome и Firefox
+* IE10+
+* Safari 6+
 
 ##Настройка gulp
 
