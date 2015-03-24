@@ -7,17 +7,20 @@
 * .b-alert__header					- Заголовок сообщения.
 *
 * .b-alert_full						- Сообщение с монотонным фоном.
-* .b-alert_full_[colors]			- Добавляет кнопке цвет.
+* .b-alert_full_[colors]			- Задает цвет сообщения.
 *
 * .b-alert_line						- Сообщение с блеклым фоном и линией слева.
-* .b-alert_line_[colors]			- Добавляет кнопке цвет.
+* .b-alert_line_[colors]			- Задает цвет сообщения.
+*
+* .b-alert_outline					- Сообщение с блеклым фоном и линией вокруг.
+* .b-alert_outline_[colors]			- Задает цвет сообщения.
 *
 */
 
 
 .b-alert
 	padding 15px 30px
-	margin 15px 0 30px
+	margin 15px 0
 	font-size $site_font_size + .01
 
 	if $site_border-radius != 0
