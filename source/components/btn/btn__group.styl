@@ -4,20 +4,15 @@
 	position relative
 
 .b-btn__group .b-btn
-	margin-left 0
-	margin-right 2px
-
 	if $site_border-radius != 0
 		border-radius 0
 
-	&:first-of-type
-		margin-left 5px
+	&:not(:first-of-type)
+		margin-left 2px
 
-		if $site_border-radius != 0
-				border-radius $site_border-radius 0 0 $site_border-radius
+	if $site_border-radius != 0
+		&:first-of-type
+			border-radius $site_border-radius 0 0 $site_border-radius
 
-	&:last-of-type
-		margin-right 5px
-
-		if $site_border-radius != 0
+		&:last-of-type
 			border-radius 0 $site_border-radius $site_border-radius 0
