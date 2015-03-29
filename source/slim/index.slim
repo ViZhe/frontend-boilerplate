@@ -1,14 +1,15 @@
 doctype html
 html lang="ru-RU"
 	head
-		include source/slim/base/head.slim
+		include source/slim/chunks/base/head.slim
 
 	body
-		include source/blocks/header/header.slim
+		include source/slim/chunks/base/header.slim
 
 		section
 			.container: .row
 				.col.w0-0
+					// Example
 					include source/components/popup/popup.slim
 					include source/components/alert/alert.slim
 					include source/components/pagination/pagination.slim
@@ -17,7 +18,8 @@ html lang="ru-RU"
 					include source/components/list/list.slim
 					include source/components/table/table.slim
 					include source/components/btn/btn.slim
+					// Example
 
-		include source/blocks/footer/footer.slim
+		include source/slim/chunks/base/footer.slim
 
 		script src="frontend/js/hoppas.js"
