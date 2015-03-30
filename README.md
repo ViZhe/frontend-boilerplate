@@ -5,7 +5,7 @@
 ## Поддержка браузеров
 * Последние Chrome и Firefox
 * IE10+
-* Safari 6+
+* Safari 7+
 
 ##Настройка gulp
 
