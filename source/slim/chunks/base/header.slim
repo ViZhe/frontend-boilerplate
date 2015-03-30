@@ -1,2 +1,11 @@
 
-include source/blocks/header/header.slim
+header.b-header
+	.container: .row
+		.col.w3-12
+			a href="/": img.b-header__logo-img src="frontend/img/logo.png" alt=""
+		.col.w9-12
+			ul.b-header-menu
+				li.b-header-menu__item: a.b-header-menu__link href=""
+				li.b-header-menu__item.b-header-menu__active: a.b-header-menu__link href=""
+				li.b-header-menu__item: a.b-header-menu__link href=""
+				li.b-header-menu__item: a.b-header-menu__link href=""
