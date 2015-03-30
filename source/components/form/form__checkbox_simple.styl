@@ -1,7 +1,15 @@
 
+@font-face
+	font-family "Icon Form Checkbox Simple"
+	src url("source/components/form/form__icon_checkbox_simple.woff") format("woff")
+	font-weight normal
+	font-style normal
+
+
 .b-form__checkbox_simple
 	& .b-form__icon::before
-		content "\e001"
+		font-family "Icon Form Checkbox Simple"
+		content "\e000"
 
 	& :checked + .b-form__icon::before
-		content "\e005"
+		content "\e001"

@@ -1,7 +1,15 @@
 
+@font-face
+	font-family "Icon Form Radio"
+	src url("source/components/form/form__icon_radio.woff") format("woff")
+	font-weight normal
+	font-style normal
+
+
 .b-form__radio
 	& .b-form__icon::before
-		content "\e003"
+		font-family "Icon Form Radio"
+		content "\e000"
 
 	& :checked + .b-form__icon::before
-		content "\e004"
+		content "\e001"
