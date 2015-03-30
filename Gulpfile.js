@@ -89,7 +89,7 @@ gulp.task('stylus_build', function () {
 			maxImageSize: 1024*1024 // 1 mb
 		}))
 		.pipe(urlAdjuster({
-			replace:  ['../../img/','../../frontend/img/'] // Меняем пути чтобы брать минимизированные картинки для base63
+			replace:  ['../../img/','../../frontend/img/'] // Меняем пути чтобы брать минимизированные картинки для base64
 		}))
 		.pipe(base64({
 			extensions: ['png','svg','jpg'],
