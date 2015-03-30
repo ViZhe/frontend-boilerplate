@@ -2,18 +2,16 @@
 *
 * Информационные сообщения.
 *
-* .b-alert							- Полуфабрикат и без модификаторов не живет.
+* .b-alert								- Полуфабрикат и без модификаторов не живет.
 *
-* .b-alert__header					- Заголовок сообщения.
+* .b-alert_full							- Сообщение с монотонным фоном.
+* .b-alert_full_[$colors_alert]			- Задает цвет сообщения.
 *
-* .b-alert_full						- Сообщение с монотонным фоном.
-* .b-alert_full_[colors]			- Задает цвет сообщения.
+* .b-alert_line							- Сообщение с блеклым фоном и линией слева.
+* .b-alert_line_[$colors_alert]			- Задает цвет сообщения.
 *
-* .b-alert_line						- Сообщение с блеклым фоном и линией слева.
-* .b-alert_line_[colors]			- Задает цвет сообщения.
-*
-* .b-alert_outline					- Сообщение с блеклым фоном и линией вокруг.
-* .b-alert_outline_[colors]			- Задает цвет сообщения.
+* .b-alert_outline						- Сообщение с блеклым фоном и линией вокруг.
+* .b-alert_outline_[$colors_alert]		- Задает цвет сообщения.
 *
 */
 
@@ -21,12 +19,7 @@
 .b-alert
 	padding 15px 30px
 	margin 15px 0
-	font-size $site_font_size + .01
+	font-size $site_font_size + 1
 
 	if $site_border-radius != 0
 		border-radius $site_border-radius
-
-
-.b-alert__heading
-	font-size $site_font_size + .05
-	font-weight 700
