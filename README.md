@@ -1,6 +1,6 @@
 #Hoppas
 
-Универсальный HTML (Slim), CSS (Stylus) Framework.
+HTML (Slim), CSS (Stylus) Kit Starter.
 
 ## Поддержка браузеров
 * Последние Chrome и Firefox
