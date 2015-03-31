@@ -2,7 +2,7 @@
 .b-btn_3d
 	for name, color in $colors_btn
 		&_{name}
-			background color
+			background-color color
 
 			if(color == #000)
 				box-shadow 0 5px 0 0 lighten(color, 20%)
@@ -11,7 +11,7 @@
 
 			&:focus
 			&:hover
-				background lighten(color, 20%)
+				background-color lighten(color, 20%)
 
 			&:active
 				box-shadow 0 0 0 0 color
