@@ -4,11 +4,12 @@
 *
 * .b-pagination					- Обертка пагинации.
 *
-* .b-pagination__item			- Пункт пугинации.
+* .b-pagination__item			- Пункт пагинации.
 *
-* .b-pagination__active			- Активный элемент пункта пугинации.
-* .b-pagination__link			- Ссылка-элемент пункта пугинации.
 * .b-pagination__divider		- Разделитель для пропуска пунктов.
+* .b-pagination__active			- Активный элемент пункта пагинации.
+* .b-pagination__disable		- Отключенный элемент пункта пагинации.
+* .b-pagination__link			- Ссылка-элемент пункта пагинации.
 *
 */
 
@@ -21,15 +22,15 @@
 	// justify-content center
 	// или
 	// без justify-content
-	margin 15px 0 30px
+	padding 15px 0 30px
 
 
 .b-pagination__item
 	margin 3px
 
-
 .b-pagination__divider
 .b-pagination__active
+.b-pagination__disable
 .b-pagination__link
 	padding 5px 10px
 	display block
@@ -43,12 +44,15 @@
 		content "..."
 
 .b-pagination__active
+.b-pagination__disable
 	background $gray
 	color $white
+	cursor default
 
 .b-pagination__link
 	background $blue
 	color $white !important
+	text-decoration none
 
 	&:hover
 	&:focus
