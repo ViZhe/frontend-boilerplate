@@ -3,6 +3,7 @@
 * Кнопки.
 *
 * .b-btn								- Полуфабрикат и без модификаторов не живет.
+* .b-btn_block							- Делаем кнопку блочной.
 *
 * .b-btn_full_[$colors_btn]				- Задает стиль flat.
 * .b-btn_3d_[$colors_btn]				- Задает стиль 3d.
@@ -31,3 +32,7 @@
 
 	if $site_border-radius != 0
 		border-radius $site_border-radius
+
+.b-btn_block
+	display block
+	text-align center
