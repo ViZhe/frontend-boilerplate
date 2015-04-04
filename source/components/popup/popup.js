@@ -3,10 +3,10 @@ var popup = (function() {
  	return {
 		scrollWidth: function(act) {
 			if(act == "show"){
-				var b = body.offsetWidth;
+				let b = body.offsetWidth;
 				body.classList.add("b-popup__body");
-				var c = body.offsetWidth;
-				var scrollWidth = c - b + "px";
+				let c = body.offsetWidth;
+				let scrollWidth = c - b + "px";
 				body.style.marginRight = scrollWidth;
 			} else {
 				body.classList.remove("b-popup__body");
@@ -14,7 +14,7 @@ var popup = (function() {
 			}
 		},
 		createdAddElem: function(elem, parent) {
-			newItem = document.createElement("div");
+			let newItem = document.createElement("div");
 			newItem.className = elem;
 			parent.insertBefore(newItem, parent.firstChild);
 			popup.addEvent(elem);
@@ -28,9 +28,9 @@ var popup = (function() {
 			});
 		},
 		show: function() {
-			e = this.getAttribute('data-popup');
-			itemInner = document.querySelector(e + " .b-popup__inner");
-			itemContent = document.querySelector(e + " .b-popup__content");
+			let e = this.getAttribute('data-popup');
+			let itemInner = document.querySelector(e + " .b-popup__inner");
+			let itemContent = document.querySelector(e + " .b-popup__content");
 			popup.createdAddElem("b-popup__shadow", itemInner);
 			popup.createdAddElem("b-popup__close", itemContent);
 			popup.scrollWidth("show");

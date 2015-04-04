@@ -159,6 +159,7 @@ gulp.task('js_dev', function () {
 	return gulp.src('./source/js/[^-]*.js')
 		.pipe(includeFile())
 		.pipe(babel())
+		.on('error', log)
 		.pipe(gulp.dest('./frontend/js'))
 		.pipe(reload({stream:true}));
 });
