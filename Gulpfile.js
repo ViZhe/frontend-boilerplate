@@ -27,7 +27,7 @@ var	gulp			= require('gulp'), // Gulp JS
 	slim			= require('gulp-slim'),
 
 	changed			= require('gulp-changed'), // Обрабатываем только измененные файлы(картинки)
-	imagemin		= require('gulp-image'),// Минификация png, jpg, gif, svg.
+	imagemin		= require('gulp-image'), // Минификация png, jpg, gif, svg.
 	teenypng		= require('gulp-teenypng'),  // png & jpg < 5mb / 500 шт в месяц  -  https://tinypng.com
 
 	uglify			= require('gulp-uglify'); // Минификация JS
