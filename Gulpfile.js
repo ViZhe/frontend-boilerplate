@@ -30,6 +30,7 @@ var	gulp			= require('gulp'), // Gulp JS
 	imagemin		= require('gulp-image'), // Минификация png, jpg, gif, svg.
 	teenypng		= require('gulp-teenypng'),  // png & jpg < 5mb / 500 шт в месяц  -  https://tinypng.com
 
+	babel			= require("gulp-babel"),
 	uglify			= require('gulp-uglify'); // Минификация JS
 
 
@@ -157,6 +158,7 @@ gulp.task('slim_build', function () {
 gulp.task('js_dev', function () {
 	return gulp.src('./source/js/[^-]*.js')
 		.pipe(includeFile())
+		.pipe(babel())
 		.pipe(gulp.dest('./frontend/js'))
 		.pipe(reload({stream:true}));
 });
@@ -165,6 +167,7 @@ gulp.task('js_dev', function () {
 gulp.task('js_build', function () {
 	return gulp.src('./source/js/[^-]*.js')
 		.pipe(includeFile())
+		.pipe(babel())
 		.pipe(uglify())
 		.on('error', log)
 		.pipe(gulp.dest('./frontend/js'));
