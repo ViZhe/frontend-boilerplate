@@ -158,7 +158,7 @@ gulp.task('slim_build', function () {
 gulp.task('js_dev', function () {
 	return gulp.src('./source/js/[^-]*.js')
 		.pipe(includeFile())
-		.pipe(babel())
+		//.pipe(babel())
 		.on('error', log)
 		.pipe(gulp.dest('./frontend/js'))
 		.pipe(reload({stream:true}));
@@ -168,7 +168,7 @@ gulp.task('js_dev', function () {
 gulp.task('js_build', function () {
 	return gulp.src('./source/js/[^-]*.js')
 		.pipe(includeFile())
-		.pipe(babel())
+		//.pipe(babel())
 		.pipe(uglify())
 		.on('error', log)
 		.pipe(gulp.dest('./frontend/js'));
