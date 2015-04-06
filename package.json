@@ -15,6 +15,7 @@
     "gulp-css-url-adjuster": "^0.2.3",
     "gulp-file-include": "^0.8.0",
     "gulp-image": "^0.5.6",
+    "gulp-packer": "^0.1.1",
     "gulp-sequence": "^0.3.2",
     "gulp-slim": "^0.0.13",
     "gulp-stylus": "^2.0.0",

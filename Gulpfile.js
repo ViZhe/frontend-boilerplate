@@ -31,7 +31,8 @@ var	gulp			= require('gulp'), // Gulp JS
 	teenypng		= require('gulp-teenypng'),  // png & jpg < 5mb / 500 шт в месяц  -  https://tinypng.com
 
 	babel			= require("gulp-babel"),
-	uglify			= require('gulp-uglify'); // Минификация JS
+	uglify			= require('gulp-uglify'), // Минификация JS
+	packer			= require('gulp-packer'); // Больше сжатий богу сжатий
 
 
 
@@ -170,6 +171,7 @@ gulp.task('js_build', function () {
 		.pipe(includeFile())
 		//.pipe(babel())
 		.pipe(uglify())
+		.pipe(packer({base62: true, shrink: true}))
 		.on('error', log)
 		.pipe(gulp.dest('./frontend/js'));
 });
