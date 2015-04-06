@@ -1,9 +1,9 @@
 
 /* Base */
 
-@@include('base/dom.js')
+//@ @include('base/dom.js')
 // или
-// @ @include('base/jquery-2.1.3.js')
+@@include('base/jquery-2.1.3.js')
 
 
 /* dom */
@@ -20,6 +20,8 @@
 
 
 /* jQuery */
+@@include('../components/light-gallery/light-gallery.jquery.js')
+$('.js-light-gallery').lightGallery();
 
 // $(document).ready(function() {
 //

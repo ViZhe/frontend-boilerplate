@@ -1,0 +1,466 @@
+/*
+*
+* Галерея изоражений.
+*
+* lightGallery.js v1.1.5 (29.03.2015) + Modification by ViZhe (06.04.2015)
+* http://sachinchoolur.github.io/lightGallery/
+*
+*/
+
+@font-face
+	font-family "Slide-icons"
+	font-style normal
+	font-weight 400
+	src local("Slide-icons"),
+	url("./../components/light-gallery/light-gallery.woff") format("woff")
+
+[data-icon]:before
+	font-family 'Slide-icons'
+	content attr(data-icon)
+	speak none
+	font-weight normal
+	font-variant normal
+	text-transform none
+	line-height 1
+	-webkit-font-smoothing antialiased
+	-moz-osx-font-smoothing grayscale
+
+
+.group
+	clearfix()
+
+.light-gallery
+	overflow hidden!important
+
+
+#lg-outer
+	width 100%
+	height 100%
+	position fixed
+	top 0
+	left 0
+	z-index 99999!important
+	overflow hidden
+	user-select none
+	opacity 1
+	transition opacity 0.35s ease
+	background rgba(0, 0, 0, 0.98)
+
+#lg-outer .lg-slide
+	position relative
+
+
+#lg-gallery img
+	border none!important
+
+#lg-gallery.opacity
+	opacity 1
+	transition opacity 1s ease 0s
+
+#lg-gallery.opacity .thumb-cont
+	opacity 1
+
+#lg-gallery.fade-m
+	opacity 0
+	transition opacity 0.5s ease 0s
+
+#lg-gallery
+	height 100%
+	opacity 0
+	width 100%
+	position relative
+	transition opacity 1s ease 0s
+
+
+#lg-slider
+	height 100%
+	left 0
+	top 0
+	width 100%
+	position absolute
+	white-space nowrap
+
+#lg-slider .lg-slide
+	background url("../../img/light-gallery/loading.gif") no-repeat scroll center center transparent
+	display inline-block
+	height 100%
+	text-align center
+	width 100%
+
+#lg-slider .lg-slide.complete
+	background-image none
+
+
+#lg-gallery.show-after-load .lg-slide > *
+	opacity 0
+
+#lg-gallery.show-after-load .lg-slide.complete > *
+	opacity 1
+
+
+#lg-slider.slide .lg-slide
+#lg-slider.use-left .lg-slide
+	position absolute
+	opacity 0.4
+
+#lg-slider.fade-m .lg-slide
+	position absolute
+	left 0
+	opacity 0
+
+#lg-slider.animate .lg-slide
+	position absolute
+	left 0
+
+#lg-slider.fade-m .current
+	opacity 1
+	z-index 9
+
+#lg-slider .lg-slide:before
+	content ""
+	display inline-block
+	height 50%
+	width 1px
+	margin-right -1px
+
+#lg-gallery.opacity .lg-slide .object
+	transform scale3d(1, 1, 1)
+
+.lg-slide .object
+	transform scale3d(0.5, 0.5, 0.5)
+	transition transform 1s cubic-bezier(0, 0, 0.25, 1) 0s, opacity 0.5s ease 0s
+
+#lg-gallery.fade-m .lg-slide .object
+	transform scale3d(0.5, 0.5, 0.5)
+
+#lg-slider.fade-m.on .current
+	opacity 1
+	transition opacity 0.5s ease 0s
+
+#lg-slider.fade-m .lg-slide
+	transition opacity 0.4s ease 0s
+
+#lg-slider.slide .lg-slide
+	transform translate3d(100%, 0px, 0px)
+
+#lg-slider.slide.on .lg-slide
+	opacity 0
+
+#lg-slider.slide .lg-slide.current
+	opacity 1 !important
+	transform translate3d(0px, 0px, 0px) !important
+
+#lg-slider.slide .lg-slide.prev-slide
+	opacity 0
+	transform translate3d(-100%, 0px, 0px)
+
+#lg-slider.slide .lg-slide.next-slide
+	opacity 0
+	transform translate3d(100%, 0px, 0px)
+
+#lg-slider.use-left .lg-slide
+	left 100%
+
+#lg-slider.use-left.on .lg-slide
+	opacity 0
+
+#lg-slider.use-left .lg-slide.current
+	opacity 1 !important
+	left 0% !important
+
+#lg-slider.use-left .lg-slide.prev-slide
+	opacity 0
+	left -100%
+
+#lg-slider.use-left .lg-slide.next-slide
+	opacity 0
+	left 100%
+
+#lg-slider.slide.on .lg-slide
+#lg-slider.slide.on .current
+#lg-slider.slide.on .prev-slide
+#lg-slider.slide.on .next-slide
+	transition transform 1s cubic-bezier(0, 0, 0.25, 1) 0s, opacity 1s ease 0s
+
+#lg-slider.speed .lg-slide
+#lg-slider.speed .current
+#lg-slider.speed .prev-slide
+#lg-slider.speed .next-slide
+	transition-duration inherit !important
+
+#lg-slider.timing .lg-slide
+#lg-slider.timing .current
+#lg-slider.timing .prev-slide
+#lg-slider.timing .next-slide
+	transition-timing-function inherit !important
+
+#lg-slider .lg-slide img
+	display inline-block
+	max-height 100%
+	max-width 100%
+	cursor grab
+	margin 0
+	padding 0
+	width auto
+	height auto
+	vertical-align middle
+
+#lg-gallery .thumb-cont .thumb-inner
+	transition transform 1s cubic-bezier(0, 0, 0.25, 1) 0s
+
+
+@keyframes rightEnd
+	0%
+		left 0
+
+	50%
+		left -30px
+
+	100%
+		left 0
+
+@keyframes leftEnd
+	0%
+		left 0
+
+	50%
+		left 30px
+
+	100%
+		left 0
+
+.lg-slide .object.right-end
+	animation rightEnd 0.3s
+	position relative
+
+.lg-slide .object.left-end
+	animation leftEnd 0.3s
+	position relative
+
+
+#lg-action
+	bottom 20px
+	position fixed
+	left 50%
+	margin-left -30px
+	z-index 9
+	-webkit-backface-visibility hidden
+
+#lg-action.has-thumb
+	margin-left -46px
+
+
+#lg-action a
+	margin 0 3px 0 0 !important
+	border-radius 2px
+	position relative
+	top auto
+	left auto
+	bottom auto
+	right auto
+	display inline-block
+	vertical-align middle
+	background-color rgba(0, 0, 0, 0.65)
+	font-size 16px
+	width 28px
+	height 28px
+	font-family 'Slide-icons'
+	color #FFF
+	cursor pointer
+
+#lg-action a.disabled
+	opacity 0.6
+	cursor default
+	background-color rgba(0, 0, 0, 0.65) !important
+
+#lg-action a:hover
+#lg-action a:focus
+	background-color rgba(0, 0, 0, 0.85)
+
+#lg-action a#lg-prev:before
+#lg-action a#lg-next:after
+	left 5px
+	bottom 3px
+	position absolute
+
+#lg-action a#lg-prev:before
+	content "\e01d"
+
+#lg-action a#lg-next:after
+	content "\e01b"
+
+#lg-action a.cl-thumb:after
+	font-family 'Slide-icons'
+	content "\e01c"
+	left 6px
+	bottom 4px
+	font-size 16px
+	position absolute
+
+
+#lg-counter
+	bottom 52px
+	text-align center
+	width 100%
+	position absolute
+	z-index 9
+	color #FFFFFF
+
+
+#lg-gallery .thumb-cont
+	position absolute
+	bottom 0
+	width 100%
+	box-sizing border-box
+	background-color #000000
+	transition max-height 0.4s ease-in-out
+	z-index 9
+	max-height 0
+	opacity 0
+
+#lg-gallery.open .thumb-cont
+	max-height 350px
+
+#lg-gallery .thumb-cont .thumb-inner
+	margin-left -12px
+	padding 12px
+	max-height 290px
+	overflow-y auto
+	box-sizing content-box
+
+#lg-gallery .thumb-cont .thumb-info
+	background-color #333
+	padding 7px 20px
+
+#lg-gallery .thumb-cont .thumb-info .count
+	color #ffffff
+	font-weight bold
+	font-size 12px
+
+#lg-gallery .thumb-cont .thumb-info .close
+	color #FFFFFF
+	display block
+	float right !important
+	width 28px
+	position relative
+	height 28px
+	border-radius 2px
+	margin-top -4px
+	background-color rgba(0, 0, 0, 0.65)
+	transition background-color 0.3s ease 0s
+	z-index 1090
+	cursor pointer
+
+#lg-gallery .thumb-cont .thumb-info .close i:after
+	left 6px
+	position absolute
+	top 4px
+
+#lg-gallery .thumb-cont .thumb-info .close i:after
+#lg-close:after
+	content "\e01a"
+	font-family 'Slide-icons'
+	font-style normal
+	font-size 16px
+
+#lg-gallery .thumb-cont .thumb-info .close:hover
+	text-decoration none
+	background-color #000
+	background-color rgba(0, 0, 0, 1)
+
+#lg-gallery .thumb-cont .thumb
+	display inline-block !important
+	vertical-align middle
+	text-align center
+	margin-bottom 4px
+	height 50px
+	width 50px
+	opacity 0.6
+	overflow hidden
+	border-radius 3px
+	cursor pointer
+	transition border-color linear .2s, opacity linear .2s
+
+@media $media_not_xs
+	#lg-gallery .thumb-cont .thumb
+		width 94px
+		height 94px
+
+
+#lg-gallery .thumb-cont .thumb > img
+	height auto
+	max-width 100%
+
+#lg-gallery .thumb-cont .thumb.active
+#lg-gallery .thumb-cont .thumb:hover
+	opacity 1
+	border-color #ffffff
+
+
+#lg-slider .video-cont
+	display inline-block
+	max-height 100%
+	max-width 100%
+	margin 0
+	padding 0
+	width auto
+	height auto
+	vertical-align middle
+
+#lg-slider .video-cont
+	background none
+	max-width 1140px
+	max-height 100%
+	width 100%
+	box-sizing border-box
+
+#lg-slider .video
+	width 100%
+	height 0
+	padding-bottom 56.25%
+	overflow hidden
+	position relative
+
+#lg-slider .video .object
+	width 100%!important
+	height 100%!important
+	position absolute
+	top 0
+	left 0
+
+
+#lg-close
+	color #FFFFFF
+	height 28px
+	position absolute
+	right 20px
+	top 60px
+	width 28px
+	z-index 1090
+	cursor pointer
+	border-radius 2px
+	background-color rgba(0, 0, 0, 0.65)
+	transition background-color 0.3s ease
+	-webkit-backface-visibility hidden
+
+#lg-close:after
+	position absolute
+	right 6px
+	top 3px
+
+#lg-close:hover
+	text-decoration none
+	background-color #000
+
+.lg-title
+	background none repeat scroll 0 0 rgba(0, 0, 0, 0.95)
+	color #fff
+	left 0
+	position absolute
+	right 0
+	top 0
+	z-index 9
+	padding 10px 0
+
+.js-light-gallery
+	cursor pointer
