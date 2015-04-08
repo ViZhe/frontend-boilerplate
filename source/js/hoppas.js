@@ -10,10 +10,6 @@
 
 @@include('../components/popup/popup.js')
 
-@@include('../components/light-gallery/light-gallery.dom.js')
-var lightGallery = new lightGallery('.js-light-gallery');
-
-
 // window.onload =  function() {
 //
 // };
@@ -24,6 +20,9 @@ var lightGallery = new lightGallery('.js-light-gallery');
 
 
 /* jQuery */
+
+//@ @include('../components/light-gallery/light-gallery.jquery.js')
+//$('.js-light-gallery').lightGallery();
 
 // $(document).ready(function() {
 //

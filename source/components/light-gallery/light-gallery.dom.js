@@ -186,12 +186,12 @@
                     $('#lg-outer')
                     .on('click', function (event) {
                         if ($(event.target).is('.lg-slide')) {
-                            plugin.destroy(false);
+                            $this.destroy(false);
                         }
                     });
                 }
                 $('#lg-close').on('click touchend', function () {
-                    plugin.destroy(false);
+                    this.destroy(false);
                 });
             },
             getWidth: function () {
@@ -244,24 +244,47 @@
                 }
             },
             touch: function () {
-                var xStart, xEnd;
-                var $this = this;
-                $('.light-gallery').on('mousedown', function (e) {
-                    e.stopPropagation();
-                    e.preventDefault();
-                    xStart = e.pageX;
-                });
-                $('.light-gallery').on('mouseup', function (e) {
-                    e.stopPropagation();
-                    e.preventDefault();
-                    xEnd = e.pageX;
-                    if (xEnd - xStart > 20) {
-                        $this.prevSlide();
-                    } else if (xStart - xEnd > 20) {
-                        $this.nextSlide();
-                    }
-                });
-            },
+               var xStart, xEnd;
+               var $this = this;
+               $('.light-gallery').on('mousedown', function (e) {
+                   e.stopPropagation();
+                   e.preventDefault();
+                   xStart = e.pageX;
+               });
+               $('.light-gallery').on('mouseup', function (e) {
+                   e.stopPropagation();
+                   e.preventDefault();
+                   xEnd = e.pageX;
+                   if (xEnd - xStart > 20) {
+                       $this.prevSlide();
+                   } else if (xStart - xEnd > 20) {
+                       $this.nextSlide();
+                   }
+               });
+           },
+            // touch: function () {
+            //     var $this = this;
+            //     $('.light-gallery').on('mousedown', function (e) {
+            //     });
+            //     $('.light-gallery').on('mousedown', $this.touch_mousedown($this));
+            // },
+            // touch_mousedown: function ($this) {
+            //     var xStart;
+            //     xStart = $this.pageX;
+            //     $('.light-gallery').on('mouseup', $this.touch_mouseup($this, xStart));
+            //
+            // },
+            // touch_mouseup: function ($this, xStart) {
+            //     var $this = this;
+            //     var xEnd;
+            //     xEnd = $this.pageX;
+            //     if (xEnd - xStart > 20) {
+            //         $this.prevSlide();
+            //     } else if (xStart - xEnd > 20) {
+            //         $this.nextSlide();
+            //     }
+            //
+            // },
             isVideo: function (src, index) {
                 var youtube = src.match(/\/\/(?:www\.)?youtu(?:\.be|be\.com)\/(?:watch\?v=|embed\/)?([a-z0-9_\-]+)/i);
                 var vimeo = src.match(/\/\/(?:www\.)?vimeo.com\/([0-9a-z\-_]+)/i);
@@ -618,7 +641,7 @@
                                     if (!settings.showThumbByDefault && $gallery.hasClass('open')) {
                                         $gallery.removeClass('open');
                                     } else {
-                                        plugin.destroy(false);
+                                        this.destroy(false);
                                     }
                                 }
                             });
@@ -648,7 +671,6 @@
                         prevSlide: function () {
                             var $this = this;
                             index = $(".lg-slide.current").index();
-                            console.log($children.length);
                             if (index > 0) {
                                 index--;
                                 $this.slide(index);
@@ -780,6 +802,38 @@
                                 $this.animateThumb(index);
                             }, 200);
                         });
+                    },
+                    destroy: function (d) {
+                        isActive = false;
+                        d = typeof d !== 'undefined' ? false : true;
+                        settings.onBeforeClose.call(this, plugin);
+                        var lightGalleryOnT = lightGalleryOn;
+                        lightGalleryOn = false;
+                        aTiming = false;
+                        aSpeed = false;
+                        usingThumb = false;
+                        clearInterval(interval);
+                        if (d === true) {
+                            $children.off('click touch touchstart');
+                        }
+                        $('.light-gallery').off('mousedown');
+                        $('.light-gallery').off('mouseup');
+                    //    $('.light-gallery').off('mousedown', this.touch_mousedown);
+                    //    $('.light-gallery').off('mouseup', this.touch_mouseup);
+
+
+
+                        $('body').off('touchstart.lightGallery touchmove.lightGallery touchend.lightGallery');
+                        $(window).off('resize.lightGallery keyup.lightGallery');
+                        if (lightGalleryOnT === true) {
+                            $gallery.addClass('fade-m');
+                            setTimeout(function () {
+                                $galleryCont.remove();
+                                //$('body').removeClass('light-gallery');
+                            }, 500);
+                        }
+                        settings.onCloseAfter.call(this, plugin);
+
                     }
                 };
                 plugin.isActive = function () {
@@ -790,7 +844,7 @@
                     }
 
                 };
-                plugin.destroy = function (d) {
+                plugin.destroys = function (d) {
                     isActive = false;
                     d = typeof d !== 'undefined' ? false : true;
                     settings.onBeforeClose.call(this, plugin);
@@ -803,7 +857,11 @@
                     if (d === true) {
                         $children.off('click touch touchstart');
                     }
-                    $('.light-gallery').off('mousedown mouseup');
+                    $('.light-gallery').off('mousedown');
+                    $('.light-gallery').off('mouseup');
+
+
+
                     $('body').off('touchstart.lightGallery touchmove.lightGallery touchend.lightGallery');
                     $(window).off('resize.lightGallery keyup.lightGallery');
                     if (lightGalleryOnT === true) {
