@@ -19,17 +19,16 @@ function popup() {
 		el.addClass("b-popup_big") ;
 		$('.b-popup__shadow').css("margin-right", width)
 	}
-
 	el.addClass("b-popup_show") ;
 
-	$(".b-popup__shadow, .b-popup__close").on("click", function() {
-			$(".b-popup_show").removeClass("b-popup_show");
+	function close() {
+		$(this).off("click", close);
+		$(".b-popup_show").removeClass("b-popup_show");
 		setTimeout(function() {
 			body.removeClass("b-popup__body").removeAttr("style");
 			$(".b-popup__close, .b-popup__shadow").remove();
-		}, 200)
-		setTimeout(function() {
 			$("[data-popup]").on("click", popup);
 		}, 300)
-	});
+	};
+	$(".b-popup__shadow, .b-popup__close").on("click", close);
 };
