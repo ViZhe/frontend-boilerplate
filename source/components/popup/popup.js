@@ -1,21 +1,35 @@
 
-$("[data-popup]").on("click", function() {
+$("[data-popup]").on("click", popup);
+
+function popup() {
+	$("[data-popup]").off("click", popup);
 	var body = $("body");
 	var widthInner = body.width();
 	body.addClass("b-popup__body");
 	var widthOuter = body.width();
-	body.css("margin-right", widthOuter - widthInner +"px")
+	var width = widthOuter - widthInner +"px";
+	body.css("margin-right", width)
 
-	var el = $(this).data().popup;
-	var content = $(el).html();
-	$(el).html('<div class="b-popup__inner"><div class="b-popup__shadow"></div><div class="b-popup__content"></div></div>');
-	$(".b-popup__content").html(content).prepend('<div class="b-popup__close"></div>');
+	var el = $($(this).data().popup);
 
-	setTimeout(function() { $(el).addClass("b-popup_show") }, 50)
+	el.prepend('<div class="b-popup__shadow"></div>');
+	el.find(".b-popup__content").prepend('<div class="b-popup__close"></div>');
+
+	if(el.find(".b-popup__content").height() > window.innerHeight){
+		el.addClass("b-popup_big") ;
+		$('.b-popup__shadow').css("margin-right", width)
+	}
+
+	el.addClass("b-popup_show") ;
 
 	$(".b-popup__shadow, .b-popup__close").on("click", function() {
-		body.removeClass("b-popup__body").removeAttr("style");
-		$(".b-popup__close").remove();
-		$(".b-popup_show").html(content).removeClass("b-popup_show");
+			$(".b-popup_show").removeClass("b-popup_show");
+		setTimeout(function() {
+			body.removeClass("b-popup__body").removeAttr("style");
+			$(".b-popup__close, .b-popup__shadow").remove();
+		}, 200)
+		setTimeout(function() {
+			$("[data-popup]").on("click", popup);
+		}, 300)
 	});
-});
+};

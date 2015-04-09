@@ -21,50 +21,60 @@
 	overflow hidden
 
 .b-popup
-	fixed -1000% false false -1000%
-	overflow auto
-	display block
-
-.b-popup_show
 	fixed 0
 	z-index 200
-
-.b-popup__inner
+	min-width 320px
 	display flex
 	align-items center
 	justify-content center
-	min-height 100%
-	padding 20px 0
+	overflow auto
+	opacity 0
+	visibility hidden
+	transition all 0.3s ease
+
+	&::after
+		content ""
+		size false 20px
+		display block
+
+.b-popup_show
+	visibility visible
+	opacity 1
+
+.b-popup_big
+	align-items flex-start
+
 
 .b-popup__shadow
-	background rgba($black, 70%)
-	opacity 0
-	transition opacity 0.5s ease
+	fixed 0
+	background rgba($black, 90%)
 	cursor pointer
 
-	.b-popup_show &
-		fixed 0
-		opacity 1
 
 .b-popup__content
-	background $white
 	flex 0 0 auto
 	max-width 50%
 	min-width 300px
-	padding 20px
-	transform translateY(-20px)
-	transition transform 0.5s ease
+	padding 35px 10px
 	relative false
-	box-shadow 0 0 3px $black
+	transition all 0.3s ease
+	transform translateY(-40px)
 
-	if $site_border-radius != 0
-		border-radius $site_border-radius
+	&::before
+		content ""
+		absolute 20px 0
+		z-index -1
+		background $white
+		box-shadow 0px 0px 3px #000
+
+		if $site_border-radius != 0
+			border-radius $site_border-radius
 
 	.b-popup_show &
 		transform translateY(0px)
 
 .b-popup__close
-	absolute -13px -13px false false
+	absolute 7px -13px false false
 	cursor pointer
 	size 26px
 	text-align center
