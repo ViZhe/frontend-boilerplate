@@ -8,11 +8,8 @@
 * .b-popup_show				- Модификатор видимого попапа.
 *
 * .b-popup__inner			- Элемент обертка для центрирования .b-popup__content.
-* .b-popup__shadow			- Элемент, затемняющий содержимое сайта.
 * .b-popup__content			- Элемент с содержимым попапа.
 * .b-popup__close			- Кнопка закрыть попап.
-*
-* .b-popup__header			- Первый заголовок попапа.
 *
 */
 
@@ -20,61 +17,50 @@
 .b-popup__body
 	overflow hidden
 
+
 .b-popup
 	fixed 0
 	z-index 200
 	min-width 320px
-	display flex
-	align-items center
-	justify-content center
+	background rgba($black, 90%)
 	overflow auto
 	opacity 0
 	visibility hidden
 	transition all 0.3s
 
-	&::after
-		content ""
-		size false 20px
-		display block
-
 .b-popup_show
 	visibility visible
 	opacity 1
 
-.b-popup_big
-	align-items flex-start
 
-
-.b-popup__shadow
-	fixed 0
-	background rgba($black, 90%)
-	cursor pointer
+.b-popup__inner
+	display flex
+	align-items center
+	justify-content center
+	min-height 100%
+	padding 20px 0
 
 
 .b-popup__content
 	flex 0 0 auto
 	max-width 50%
 	min-width 300px
-	padding 35px 10px
+	padding 15px
 	relative false
+	background $white
+	box-shadow 0px 0px 3px #000
 	transition all 0.3s ease
 	transform translateY(-40px)
 
-	&::before
-		content ""
-		absolute 20px 0
-		z-index -1
-		background $white
-		box-shadow 0px 0px 3px #000
-
-		if $site_border-radius != 0
-			border-radius $site_border-radius
+	if $site_border-radius != 0
+		border-radius $site_border-radius
 
 	.b-popup_show &
 		transform translateY(0px)
 
+
 .b-popup__close
-	absolute 7px -13px false false
+	absolute -13px -13px false false
 	cursor pointer
 	size 26px
 	text-align center
@@ -96,7 +82,3 @@
 
 	&::after
 		transform: rotate(45deg);
-
-.b-popup__header
-	margin-top 0
-	padding-top 0
