@@ -5,7 +5,7 @@ var popup = (function () {
 	var body,
 		_this,
 		elHide,
-		items = $("[data-popup]");
+		items = $('.js-popup');
 
 	var popup = {
 		init: function () {
