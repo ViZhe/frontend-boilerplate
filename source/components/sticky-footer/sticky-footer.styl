@@ -1,0 +1,25 @@
+/*
+*
+* Прилипающий футер.
+*
+* .b-sticky-footer__body        	- Класс тега body.
+*
+* .b-sticky-footer__neighbors		- Обертка блоков на уровне контента.
+* .b-sticky-footer__item            - Обертка контента.
+*
+*/
+
+
+html
+body
+    height 100%
+
+.b-sticky-footer__body
+    display flex
+    flex-direction column
+
+.b-sticky-footer__neighbors
+    flex none
+
+.b-sticky-footer__item
+    flex 1 0 auto
