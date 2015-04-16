@@ -3,16 +3,16 @@
 
 @@include('base/dom/dom.js')
 // или
-//@ @include('base/jquery-2.1.3.js')
+// @ @include('base/jquery-2.1.3.js')
 
 
 /* dom */
 
 @@include('../components/popup/popup.js')
 
-// window.onload =  function() {
+// window.addEventListener("load", function () {
 //
-// };
+// });
 
 // $("*").on("click", function() {
 //
