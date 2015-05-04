@@ -1,10 +1,10 @@
 doctype html
 html lang="ru-RU"
 	head
-		include source/slim/chunks/base/head.slim
+		include source/slim/core/head.slim
 
 	body
-		include source/slim/chunks/base/header.slim
+		include source/slim/core/header.slim
 
 		section
 			.container: .row
@@ -21,6 +21,6 @@ html lang="ru-RU"
 					include source/components/btn/btn.slim
 					// Example
 
-		include source/slim/chunks/base/footer.slim
+		include source/slim/core/footer.slim
 
 		script src="frontend/js/hoppas.js"

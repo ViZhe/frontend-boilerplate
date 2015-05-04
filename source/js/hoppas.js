@@ -1,14 +1,16 @@
 
-/* Base */
+/* Core */
 
-@@include('base/dom/dom.js')
+@@include('core/dom/dom.js')
 // или
-// @ @include('base/jquery-2.1.3.js')
+// @ @include('core/jquery-2.1.3.js')
 
 
 /* dom */
 
 @@include('../components/popup/popup.js')
+// @@include('../components/light-gallery/light-gallery.dom.js')
+// var lightGallery = new lightGallery('.js-light-gallery');
 
 // window.addEventListener("load", function () {
 //
