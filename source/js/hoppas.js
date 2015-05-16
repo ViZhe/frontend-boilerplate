@@ -1,9 +1,9 @@
 
 /* Core */
 
-@@include('core/dom/dom.js')
+@@include('core/sprint-0.9.2.js')
 // или
-// @ @include('core/jquery-2.1.3.js')
+// @ @include('core/jquery-2.1.4.js')
 
 
 /* dom */
@@ -12,9 +12,10 @@
 // @@include('../components/light-gallery/light-gallery.dom.js')
 // var lightGallery = new lightGallery('.js-light-gallery');
 
-// window.addEventListener("load", function () {
+// $(document).ready(function() {
 //
 // });
+
 
 // $("*").on("click", function() {
 //
