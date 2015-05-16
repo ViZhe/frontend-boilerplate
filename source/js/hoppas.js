@@ -9,7 +9,7 @@
 /* dom */
 
 @@include('../components/popup/popup.js')
-// @@include('../components/light-gallery/light-gallery.dom.js')
+// @ @include('../components/light-gallery/light-gallery.dom.js')
 // var lightGallery = new lightGallery('.js-light-gallery');
 
 // $(document).ready(function() {

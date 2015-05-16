@@ -1,5 +1,5 @@
 /*
-* Sprint JavaScript Library v0.9.2
+* Sprint JavaScript Library v0.9.2 + mod by ViZhe (Barsik)
 * http://sprintjs.com
 *
 * Copyright (c) 2014, 2015 Benjamin De Cock
@@ -46,7 +46,6 @@ var Sprint;
             if (inArray(cssProperty, noPx)){
                 return value;
             }
-
             var stringValue;
             if (typeof value === 'string') {
                 stringValue = value;
@@ -183,7 +182,7 @@ var Sprint;
 
         var getSetDimension = function(obj, prop, value) {
             // get
-            if (value === null) {
+            if (value === undefined) {
                 var el = obj.get(0);
                 if (!el || el.nodeType > 1) {
                     return;
@@ -330,7 +329,7 @@ var Sprint;
             };
 
             var manipulateClass = function(method, className, bool) {
-                if (className === null) {
+                if (className === undefined) {
                     if (method === 'add') {
                         return this;
                     }
@@ -365,7 +364,7 @@ var Sprint;
                         if (!name) {
                             continue;
                         }
-                        if(bool === null) {
+                        if(bool === undefined) {
                             el.classList[method](name);
                         }else{
                             el.classList.toggle(name, bool);
@@ -538,7 +537,7 @@ var Sprint;
                 }
 
                 // get scroll position
-                if (value === null) {
+                if (value === undefined) {
                     var el = sprintObj.get(0);
                     if (!el) {
                         return;
@@ -803,7 +802,7 @@ var Sprint;
                     return;
                 }
                 var attrValue = el.getAttribute(name);
-                if (attrValue === null) {
+                if (attrValue === undefined) {
                     return undefined;
                 }
                 if (!attrValue) {
@@ -1003,7 +1002,7 @@ var Sprint;
                 return this.eq(0);
             },
             get: function(index) {
-                if (index === null) {
+                if (index === undefined) {
                     return this.dom;
                 }
                 if (index < 0) {
@@ -1053,7 +1052,7 @@ var Sprint;
                 return getSetDimension(this, 'height', value);
             },
             html: function(htmlString) {
-                if (htmlString === null) {
+                if (htmlString === undefined) {
                     var el = this.get(0);
                     if (!el) {
                         return;
@@ -1165,7 +1164,7 @@ var Sprint;
                 * Array.isArray() check on each element is a significant
                 * perf boost.
                 */
-                if (flattenArrays === null) {
+                if (flattenArrays === undefined) {
                     flattenArrays = true;
                 }
 
@@ -1370,7 +1369,7 @@ var Sprint;
                         }
                     });
                 }
-                if (value === null) {
+                if (value === undefined) {
                     var el = this.get(0);
                     if (!el) {
                         return;
@@ -1494,7 +1493,7 @@ var Sprint;
                 return Sprint(range);
             },
             text: function(content) {
-                if (content === null) {
+                if (content === undefined) {
                     var textContents = [];
                     this.each(function() {
                         textContents.push(this.textContent);
@@ -1547,7 +1546,7 @@ var Sprint;
                 return this;
             },
             val: function(value) {
-                if (value === null) {
+                if (value === undefined) {
                     var el = this.get(0);
                     if (!el) {
                         return;
@@ -1601,8 +1600,7 @@ var Sprint;
         Sprint = function(selector, context) {
             return new Init(selector, context);
         };
-
-        if (window.$ === null) {
+        if (window.$ === undefined) {
             window.$ = Sprint;
         }
     }());
