@@ -104,7 +104,7 @@ var Sprint;
             return;
         }
 
-        // Duplicate event listeners for the parent element...
+        // Duplicate event listeners for the parent element
         var listeners = getEvents(el);
         listeners && addEventListeners(listeners, clone);
 
@@ -112,7 +112,7 @@ var Sprint;
         var descendants = selectElements('*', el);
         var descendantsLen = descendants.length;
 
-        // cloneDescendants is defined later to avoid...
+        // cloneDescendants is defined later to avoid
         // calling selectElements() if not needed
         var cloneDescendants;
 
@@ -166,10 +166,10 @@ var Sprint;
 
         var getEventsToRemove = function(domElement, event) {
             /*
-            * Returns an array with the sprintEventListeners...
+            * Returns an array with the sprintEventListeners
             * events matching potentially
             * incomplete event names passed to .off().
-            * Example: .off('click.myPlugin') and .off('click.simple') would...
+            * Example: .off('click.myPlugin') and .off('click.simple') would
             * both remove a
             * 'click.myPlugin.simple' event.
             */
@@ -210,9 +210,7 @@ var Sprint;
                     return;
                 }
                 if (isFunction) {
-                    stringValue = addPx(prop,
-                                        value.call(this,
-                                                    index,
+                    stringValue = addPx(prop, value.call(this, index,
                                                     Sprint(this)[prop]()));
                 }
                 this.style[prop] = stringValue;
@@ -264,7 +262,7 @@ var Sprint;
                             if (content.nodeType) {
                                 return [content];
                             }
-                            // getElementsByTagName, getElementsByClassName,...
+                            // getElementsByTagName, getElementsByClassName,
                             // querySelectorAll
                             return toArray(content);
                         }());
@@ -730,7 +728,6 @@ var Sprint;
             }
             else if (selector instanceof NodeList ||
                 selector instanceof HTMLCollection) {
-
                 this.dom = toArray(selector);
             }
             else if (selector instanceof Init) {
