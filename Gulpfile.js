@@ -1,4 +1,5 @@
-"use strict";
+
+'use strict';
 
 /*
  *
@@ -14,7 +15,7 @@ var	gulp			= require('gulp'), // Gulp JS
 	includeFile		= require('gulp-file-include'), // Инклюдинг файлов
 	sequence 		= require('gulp-sequence'), // Последовательность выполения тасков
 
-	browserSync		= require("browser-sync"), // http://www.browsersync.io/docs/gulp/
+	browserSync		= require('browser-sync'), // http://www.browsersync.io/docs/gulp/
 	notify			= browserSync.notify,
 	reload			= browserSync.reload,
 
@@ -30,7 +31,7 @@ var	gulp			= require('gulp'), // Gulp JS
 	imagemin		= require('gulp-image'), // Минификация png, jpg, gif, svg.
 	teenypng		= require('gulp-teenypng'),  // png & jpg < 5mb / 500 шт в месяц  -  https://tinypng.com
 
-	babel			= require("gulp-babel"),
+	babel			= require('gulp-babel'),
 	uglify			= require('gulp-uglify'), // Минификация JS
 	packer			= require('gulp-packer'); // Больше сжатий богу сжатий
 
@@ -45,10 +46,10 @@ var	gulp			= require('gulp'), // Gulp JS
 function log(error) {
 	console.log([
 		'',
-		colors.red("---------- ERROR MESSAGE START ----------"),
-		colors.red.inverse("[" + error.name + " in " + error.plugin + "]"),
+		colors.red('---------- ERROR MESSAGE START ----------'),
+		colors.red.inverse('[' + error.name + ' in ' + error.plugin + ']'),
 		error.message,
-		colors.red("---------- ERROR MESSAGE END ------------"),
+		colors.red('---------- ERROR MESSAGE END ------------'),
 		''
 	].join('\n'));
 	this.end();
@@ -63,7 +64,8 @@ function log(error) {
  */
 
 gulp.task('stylus_dev', function() {
-	return gulp.src(['./source/styl/[^-]*.styl', './source/styl/fonts/[^-]*.styl'])
+	return gulp.src(['./source/styl/[^-]*.styl',
+					 './source/styl/fonts/[^-]*.styl'])
 		.pipe(stylus())
 		.on('error', log)
 		.pipe(base64({
@@ -83,7 +85,8 @@ gulp.task('stylus_dev', function() {
 
 
 gulp.task('stylus_build', function () {
-	return gulp.src(['./source/styl/[^-]*.styl', './source/styl/fonts/[^-]*.styl'])
+	return gulp.src(['./source/styl/[^-]*.styl',
+					 './source/styl/fonts/[^-]*.styl'])
 		.pipe(stylus())
 		.on('error', log)
 		.pipe(base64({
@@ -91,7 +94,8 @@ gulp.task('stylus_build', function () {
 			maxImageSize: 1024*1024 // 1 mb
 		}))
 		.pipe(urlAdjuster({
-			replace:  ['../../img/','../../frontend/img/'] // Меняем пути чтобы брать минимизированные картинки для base64
+			// Меняем пути чтобы брать минимизированные картинки для base64
+			replace:  ['../../img/','../../frontend/img/']
 		}))
 		.pipe(base64({
 			extensions: ['png','svg','jpg'],
@@ -119,7 +123,7 @@ gulp.task('stylus_build', function () {
 // Ruby 2.1.5 (2 последних чекбокса в процессе установки )
 // DevKit (распаковать в туже папку)
 //
-// Запускаем "Start Command Prompt with Ruby"
+// Запускаем 'Start Command Prompt with Ruby'
 //
 // ruby dk.rb init
 // ruby dk.rb review
@@ -213,7 +217,7 @@ gulp.task('img_build_imagemin', function () {
 
 gulp.task('img_build_teenypng', function () {
 	return gulp.src(['./source/img/**/*.{png,jpg}'])
-		.pipe(teenypng({"apikey": "fCeE49eA1dVhUEepFD0-XuqQq7bTcr3J" }))
+		.pipe(teenypng({'apikey': 'fCeE49eA1dVhUEepFD0-XuqQq7bTcr3J'}))
 		.pipe(gulp.dest('./frontend/img/'));
 });
 
@@ -228,8 +232,8 @@ gulp.task('img_build_teenypng', function () {
 gulp.task('browser-sync', function() {
 	return browserSync({
 		server: {
-			baseDir: "./",
-			proxy: "hoppas.dev",
+			baseDir: './',
+			proxy: 'hoppas.dev',
 			notify: true
 		}
 	});
