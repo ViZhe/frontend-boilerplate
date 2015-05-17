@@ -25,7 +25,7 @@ var	gulp			= require('gulp'), // Gulp JS
 	autoprefixer	= require('gulp-autoprefixer'), // Префиксы
 	cleancss		= require('gulp-cleancss'), // Минификация CSS
 
-	slim			= require('gulp-slim'),
+	jade			= require('gulp-jade'),
 
 	changed			= require('gulp-changed'), // Обрабатываем только измененные файлы(картинки)
 	imagemin		= require('gulp-image'), // Минификация png, jpg, gif, svg.
@@ -115,27 +115,13 @@ gulp.task('stylus_build', function () {
 
 /*
  *
- *	SLIM SECTION
+ *	JADE SECTION
  *
  */
 
-// http://rubyinstaller.org/downloads/
-// Ruby 2.1.5 (2 последних чекбокса в процессе установки )
-// DevKit (распаковать в туже папку)
-//
-// Запускаем 'Start Command Prompt with Ruby'
-//
-// ruby dk.rb init
-// ruby dk.rb review
-// ruby dk.rb install
-// gem source --add http://rubygems.org
-// gem install bundle slim
-//
-// (Путь до папки Ruby и DevKit)\lib\ruby\gems\2.1.0\gems\slim-3.0.2\lib\slim.rb
-// require 'slim/include'
-gulp.task('slim_dev', function () {
-	return gulp.src('./source/slim/[^-]*.slim')
-		.pipe(slim({
+gulp.task('jade_dev', function () {
+	return gulp.src('./source/tpl/[^-]*.jade')
+		.pipe(jade({
 			pretty: true
 		}))
 		.on('error', log)
@@ -143,15 +129,14 @@ gulp.task('slim_dev', function () {
 		.pipe(reload({stream:true}));
 });
 
-gulp.task('slim_build', function () {
-	return gulp.src('./source/slim/[^-]*.slim')
-		.pipe(slim({
+gulp.task('jade_build', function () {
+	return gulp.src('./source/tpl/[^-]*.jade')
+		.pipe(jade({
 			pretty: true
 		}))
 		.on('error', log)
 		.pipe(gulp.dest('./'));
 });
-
 
 
 /*
@@ -264,14 +249,14 @@ gulp.task('clean', function() {
 gulp.task('build', sequence(
 	['clean'],
 	['img_build'],
-	['stylus_build','slim_build','js_build']
+	['stylus_build','jade_build','js_build']
 ));
 
 
 // Собираем дев
 gulp.task('dev', sequence(
 	['clean'],
-	['stylus_dev','slim_dev','js_dev','img_dev']
+	['stylus_dev','jade_dev','js_dev','img_dev']
 ));
 
 
@@ -280,8 +265,8 @@ gulp.task('watch', function() {
 	watch('./source/**/*.styl', function () {
 		gulp.start(['stylus_dev']);
 	});
-	watch('./source/**/*.slim', function () {
-		gulp.start(['slim_dev']);
+	watch('./source/**/*.jade', function () {
+		gulp.start(['jade_dev']);
 	});
 	watch('./source/**/*.js', function () {
 		gulp.start(['js_dev']);
