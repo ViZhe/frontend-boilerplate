@@ -1,0 +1,22 @@
+
+env:
+    es6: true
+
+ecmaFeatures:
+    modules: true
+    arrowFunctions: true
+
+globals:
+    $: true
+    window: true
+    document: true
+
+rules:
+    max-len: 80
+    indent: [2, 4]
+    quotes: [2, "single"]
+    no-underscore-dangle: false
+    space-after-function-name: [2, "always"]
+    space-after-keywords: [2, "always"]
+    space-before-blocks: [2, "always"]
+    no-mixed-spaces-and-tabs: [2, "smart-tabs"]
