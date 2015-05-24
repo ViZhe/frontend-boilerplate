@@ -1,6 +1,4 @@
 
-'use strict';
-
 /*
  *
  *	REQUIRE SECTION
@@ -13,9 +11,11 @@ var	gulp			= require('gulp'), // Gulp JS
 	colors			= require('colors/safe'), // Раскрашиваем текст
 	watch			= require('gulp-watch'), // Следим за файлами
 	includeFile		= require('gulp-file-include'), // Инклюдинг файлов
-	sequence 		= require('gulp-sequence'), // Последовательность выполения тасков
+	// Последовательность выполения тасков
+	sequence 		= require('gulp-sequence'),
 
-	browserSync		= require('browser-sync'), // http://www.browsersync.io/docs/gulp/
+	// http://www.browsersync.io/docs/gulp/
+	browserSync		= require('browser-sync'),
 	notify			= browserSync.notify,
 	reload			= browserSync.reload,
 
@@ -27,9 +27,12 @@ var	gulp			= require('gulp'), // Gulp JS
 
 	jade			= require('gulp-jade'),
 
-	changed			= require('gulp-changed'), // Обрабатываем только измененные файлы(картинки)
-	imagemin		= require('gulp-image'), // Минификация png, jpg, gif, svg.
-	teenypng		= require('gulp-teenypng'),  // png & jpg < 5mb / 500 шт в месяц  -  https://tinypng.com
+	// Обрабатываем только измененные файлы(картинки)
+	changed			= require('gulp-changed'),
+	// Минификация png, jpg, gif, svg.
+	imagemin		= require('gulp-image'),
+	// png & jpg < 5mb / 500 шт в месяц  -  https://tinypng.com
+	teenypng		= require('gulp-teenypng'),
 
 	babel			= require('gulp-babel'),
 	uglify			= require('gulp-uglify'), // Минификация JS
@@ -43,7 +46,7 @@ var	gulp			= require('gulp'), // Gulp JS
  *
  */
 
-function log(error) {
+function log (error) {
 	console.log([
 		'',
 		colors.red('---------- ERROR MESSAGE START ----------'),
@@ -70,16 +73,16 @@ gulp.task('stylus_dev', function() {
 		.on('error', log)
 		.pipe(base64({
 			extensions: ['woff'],
-			maxImageSize: 1024*1024 // 1 mb
+			maxImageSize: 1024 * 1024 // 1 mb
 		}))
 		.pipe(urlAdjuster({
-			replace:  ['../../img/','../img/']
+			replace: ['../../img/', '../img/']
 		}))
 		.pipe(autoprefixer({
 			browser: ['> 5%', 'last 2 versions', 'android 4']
 		}))
 		.pipe(gulp.dest('./frontend/css/'))
-		.pipe(reload({stream:true}));
+		.pipe(reload({stream: true}));
 });
 
 
@@ -91,18 +94,18 @@ gulp.task('stylus_build', function () {
 		.on('error', log)
 		.pipe(base64({
 			extensions: ['woff'],
-			maxImageSize: 1024*1024 // 1 mb
+			maxImageSize: 1024 * 1024 // 1 mb
 		}))
 		.pipe(urlAdjuster({
 			// Меняем пути чтобы брать минимизированные картинки для base64
-			replace:  ['../../img/','../../frontend/img/']
+			replace: ['../../img/', '../../frontend/img/']
 		}))
 		.pipe(base64({
-			extensions: ['png','svg','jpg'],
-			maxImageSize: 10*1024 // 10 kb
+			extensions: ['png', 'svg', 'jpg'],
+			maxImageSize: 10 * 1024 // 10 kb
 		}))
 		.pipe(urlAdjuster({
-			replace:  ['../../frontend/img/','../img/']
+			replace: ['../../frontend/img/', '../img/']
 		}))
 		.pipe(autoprefixer({
 			browser: ['> 5%', 'last 2 versions', 'android 4']
@@ -126,7 +129,7 @@ gulp.task('jade_dev', function () {
 		}))
 		.on('error', log)
 		.pipe(gulp.dest('./'))
-		.pipe(reload({stream:true}));
+		.pipe(reload({stream: true}));
 });
 
 gulp.task('jade_build', function () {
@@ -151,7 +154,7 @@ gulp.task('js_dev', function () {
 		//.pipe(babel())
 		.on('error', log)
 		.pipe(gulp.dest('./frontend/js'))
-		.pipe(reload({stream:true}));
+		.pipe(reload({stream: true}));
 });
 
 
@@ -182,7 +185,7 @@ gulp.task('img_dev', function () {
 			interlaced: true
 		}))
 		.pipe(gulp.dest('./frontend/img/'))
-		.pipe(reload({stream:true}));
+		.pipe(reload({stream: true}));
 });
 
 gulp.task('img_build', sequence(
@@ -233,8 +236,8 @@ gulp.task('browser-sync', function() {
  */
 
 gulp.task('clean', function() {
-   return gulp.src(['./frontend/','./*.html'])
-      .pipe(vinylPaths(del));
+	return gulp.src(['./frontend/', './*.html'])
+		.pipe(vinylPaths(del));
 });
 
 
@@ -249,14 +252,14 @@ gulp.task('clean', function() {
 gulp.task('build', sequence(
 	['clean'],
 	['img_build'],
-	['stylus_build','jade_build','js_build']
+	['stylus_build', 'jade_build', 'js_build']
 ));
 
 
 // Собираем дев
 gulp.task('dev', sequence(
 	['clean'],
-	['stylus_dev','jade_dev','js_dev','img_dev']
+	['stylus_dev', 'jade_dev', 'js_dev', 'img_dev']
 ));
 
 

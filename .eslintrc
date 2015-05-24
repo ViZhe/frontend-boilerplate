@@ -10,10 +10,12 @@ globals:
     $: true
     window: true
     document: true
+    console: true
+    require: true
 
 rules:
     max-len: 80
-    indent: [2, 4]
+    indent: [2, "tab"]
     quotes: [2, "single"]
     no-underscore-dangle: false
     space-after-function-name: [2, "always"]
