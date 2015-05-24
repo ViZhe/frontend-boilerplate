@@ -3,11 +3,11 @@
  *	# Grid
  *
  *	$grid()				=> .col{...}.w1-12{width:8.33333%;}
- *	$grid("_postfix")		=> .col_postfix{...}.w1-12_postfix{width:8.33333%;}
+ *	$grid('_postfix')		=> .col_postfix{...}.w1-12_postfix{width:8.33333%;}
  *
  */
 
-$grid(postfix = "")
+$grid(postfix = '')
 
 	.w0-0{postfix}
 		flex 1
@@ -31,7 +31,7 @@ $grid(postfix = "")
  *
  *	offset 1 of 12			=> margin-left:8.33333%;
  *	$offset()				=> .o1-12{margin-left:8.33333%;}
- *	$offset("_postfix")		=> .o1-12_postfix{margin-left:8.33333%;}
+ *	$offset('_postfix')		=> .o1-12_postfix{margin-left:8.33333%;}
  *
  */
 
@@ -57,31 +57,31 @@ $offset(postfix)
  */
 
 linear-gradient(start, colors...)
-	if start == "top"
-		start =  "to bottom"
+	if start == 'top'
+		$start = 'to bottom'
 
-	else if start == "right"
-		start =  "to left"
+	else if start == 'right'
+		$start =  'to left'
 
-	else if start == "bottom"
-		start = "to top"
+	else if start == 'bottom'
+		$start = 'to top'
 
-	else if start == "left"
-		start = "to right"
+	else if start == 'left'
+		$start = 'to right'
 
-	else if start[0] == "top" && start[1] == "right"
-		start = "to bottom left"
+	else if start[0] == 'top' && start[1] == 'right'
+		$start = 'to bottom left'
 
-	else if start[0] == "top" && start[1] == "left"
-		start = "to  bottom right"
+	else if start[0] == 'top' && start[1] == 'left'
+		$start = 'to  bottom right'
 
-	else if start[0] == "bottom" && start[1] == "right"
-		start = "to top left"
+	else if start[0] == 'bottom' && start[1] == 'right'
+		$start = 'to top left'
 
-	else if start[0] == "bottom" && start[1] == "left"
-		start = "to top right"
+	else if start[0] == 'bottom' && start[1] == 'left'
+		$start = 'to top right'
 
-	unquote('linear-gradient(' + start + ', ' + join(', ',colors) + ')')
+	unquote('linear-gradient(' + $start + ', ' + join(', ', colors) + ')')
 
 
 /*
@@ -95,7 +95,7 @@ linear-gradient(start, colors...)
 clearfix()
 	&::before
 	&::after
-		content  ""
+		content  ''
 		display block
 
 	&::after
@@ -141,13 +141,13 @@ $pos(type, arg)
 		left arg[3] if arg[3] != false
 
 static(arg...)
-	$pos("static", arg)
+	$pos('static', arg)
 relative(arg...)
-	$pos("relative", arg)
+	$pos('relative', arg)
 absolute(arg...)
-	$pos("absolute", arg)
+	$pos('absolute', arg)
 fixed(arg...)
-	$pos("fixed", arg)
+	$pos('fixed', arg)
 
 
 /*
@@ -180,8 +180,8 @@ size(arg...)
 
 overflow(arg)
 	if arg == ellipsis
-		text-overflow ellipsis
 		overflow hidden
+		text-overflow ellipsis
 		white-space nowrap
 	else
 		overflow arg

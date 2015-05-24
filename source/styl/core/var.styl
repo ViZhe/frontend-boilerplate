@@ -4,13 +4,13 @@
 *
 */
 
-$site_font_family = "Roboto"	// Шрифт сайта.
-$site_font_size = 16px 		// Размер шрифта сайта
-$site_border-radius = 3px 		// Закругление углов (кнопки, сообщения и т.п.). Отключить = 0.
+$site_font_family = 'Roboto' // Шрифт сайта.
+$site_font_size = 16px // Размер шрифта сайта
+$site_border-radius = 3px // Закругление углов (кнопки, сообщения и т.п.). Отключить = 0.
 
 /* Ширина сайта */
 
-$site_width_lg = 1240px 			// Обычный десктоп. Фактически: 1210px
+$site_width_lg = 1240px // Обычный десктоп. Фактически: 1210px
 $site_width_md = 980px 			// Маленький десктоп. Фактически: 960px
 $site_width_sm = 750px 			// Планшеты. Фактически: 740px
 $site_width_xs = 100% 			// Смартфоны и портретные планшеты.
@@ -25,18 +25,18 @@ $site_media_xs = 768px 			// C Планшетов(альбомная) на См�
 
 /* Медиа условия */
 
-$media_for_lg-and-md = "(min-width: $site_media_sm)"
+$media_for_lg-and-md = '(min-width $site_media_sm)'
 
-$media_for_lg = "(min-width: $site_media_md)"
-$media_not_lg = "(max-width: $site_media_md - 1)"
-$media_for_md = "(min-width: $site_media_sm) and (max-width: $site_media_md - 1)"
+$media_for_lg = '(min-width $site_media_md)'
+$media_not_lg = '(max-width $site_media_md - 1)'
+$media_for_md = '(min-width $site_media_sm) and (max-width $site_media_md - 1)'
 
-$media_for_sm-and-xs = "(max-width: $site_media_sm - 1)"
-$media_not_sm-and-xs = "(min-width: $site_media_sm)"
+$media_for_sm-and-xs = '(max-width $site_media_sm - 1)'
+$media_not_sm-and-xs = '(min-width $site_media_sm)'
 
-$media_for_sm = "(min-width: $site_media_xs) and (max-width: $site_media_sm - 1)"
-$media_for_xs = "(max-width: $site_media_xs - 1)"
-$media_not_xs = "(min-width: $site_media_xs)"
+$media_for_sm = '(min-width $site_media_xs) and (max-width $site_media_sm - 1)'
+$media_for_xs = '(max-width $site_media_xs - 1)'
+$media_not_xs = '(min-width $site_media_xs)'
 
 
 /* Набор цветов */
@@ -56,34 +56,35 @@ $yellow = #F1C40F
 /* Хэш цветов для генерации цветов кнопок, текста и др. */
 
 $colors_text = {
-	black: $black,
-	blue: $blue,
-	green: $green,
-	graylight: $graylight,
-	orange: $orange,
-	purple: $purple,
-	red: $red,
+	black: $black
+	blue: $blue
+	green: $green
+	graylight: $graylight
+	orange: $orange
+	purple: $purple
+	red: $red
 	yellow: $yellow
 }
 
+
 $colors_alert = {
-	black: $black,
-	blue: $blue,
-	green: $green,
-	graylight: $graylight,
-	orange: $orange,
-	purple: $purple,
-	red: $red,
+	black: $black
+	blue: $blue
+	green: $green
+	graylight: $graylight
+	orange: $orange
+	purple: $purple
+	red: $red
 	yellow: $yellow
 }
 
 $colors_btn = {
-	black: $black,
-	blue: $blue,
-	green: $green,
-	graylight: $graylight,
-	orange: $orange,
-	purple: $purple,
-	red: $red,
+	black: $black
+	blue: $blue
+	green: $green
+	graylight: $graylight
+	orange: $orange
+	purple: $purple
+	red: $red
 	yellow: $yellow
 }

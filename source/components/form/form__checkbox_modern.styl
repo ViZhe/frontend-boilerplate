@@ -3,20 +3,20 @@
 	& .b-form__icon
 		display inline-block
 		size 45px false
-		vertical-align bottom
-		background $red
 		border-radius 10px
-		transition all .2s ease 0s
+		background $red
+		vertical-align bottom
+		transition all .2s ease 0
 
 	& .b-form__icon::after
-		content ""
 		display block
-		size 15px
-		margin 3px 0px
-		transform translateX(3px)
-		background $white
+		margin 3px 0
 		border-radius 50%
-		transition all .2s ease 0s
+		background $white
+		content ''
+		size 15px
+		transform translateX(3px)
+		transition all .2s ease 0
 
 	& :checked + .b-form__icon
 		background $green
