@@ -26,65 +26,23 @@ $site_media_xs = 768px 			// C Планшетов(альбомная) на См�
 /* Медиа условия */
 
 $media_for_lg-and-md = '(min-width $site_media_sm)'
+$media_not_lg-and-md = '(max-width $site_media_sm - 1)'
 
 $media_for_lg = '(min-width $site_media_md)'
 $media_not_lg = '(max-width $site_media_md - 1)'
+
 $media_for_md = '(min-width $site_media_sm) and (max-width $site_media_md - 1)'
+$media_not_md = '(max-width $site_media_sm - 1), (min-width $site_media_md)'
 
 $media_for_sm-and-xs = '(max-width $site_media_sm - 1)'
 $media_not_sm-and-xs = '(min-width $site_media_sm)'
 
 $media_for_sm = '(min-width $site_media_xs) and (max-width $site_media_sm - 1)'
+$media_not_sm = '(max-width $site_media_xs - 1), (min-width $site_media_sm)'
+
 $media_for_xs = '(max-width $site_media_xs - 1)'
 $media_not_xs = '(min-width $site_media_xs)'
 
-
-/* Набор цветов */
-
-$black = #000
-$blue = #1D8BDF
-$green = #66bb6a
-$gray = #939DA3
-$graylight = lighten($gray, 20%)
-$orange = #F27935
-$purple = #8E44AD
-$red = #E84C3D
-$white = #fff
-$yellow = #F1C40F
-
-
-/* Хэш цветов для генерации цветов кнопок, текста и др. */
-
-$colors_text = {
-	black: $black
-	blue: $blue
-	green: $green
-	graylight: $graylight
-	orange: $orange
-	purple: $purple
-	red: $red
-	yellow: $yellow
-}
-
-
-$colors_alert = {
-	black: $black
-	blue: $blue
-	green: $green
-	graylight: $graylight
-	orange: $orange
-	purple: $purple
-	red: $red
-	yellow: $yellow
-}
-
-$colors_btn = {
-	black: $black
-	blue: $blue
-	green: $green
-	graylight: $graylight
-	orange: $orange
-	purple: $purple
-	red: $red
-	yellow: $yellow
-}
+@media $media_not_md
+	.js-light-gallery
+		background red
