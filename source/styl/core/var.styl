@@ -4,13 +4,13 @@
 *
 */
 
-$site_font_family = 'Roboto' // Шрифт сайта.
-$site_font_size = 16px // Размер шрифта сайта
-$site_border-radius = 3px // Закругление углов (кнопки, сообщения и т.п.). Отключить = 0.
+$site_font_family = 'Roboto'	// Шрифт сайта.
+$site_font_size = 16px			// Размер шрифта сайта
+$site_border-radius = 3px 		// Закругление углов (кнопки, сообщения и т.п.). Отключить = 0.
 
 /* Ширина сайта */
 
-$site_width_lg = 1240px // Обычный десктоп. Фактически: 1210px
+$site_width_lg = 1240px			// Обычный десктоп. Фактически: 1210px
 $site_width_md = 980px 			// Маленький десктоп. Фактически: 960px
 $site_width_sm = 750px 			// Планшеты. Фактически: 740px
 $site_width_xs = 100% 			// Смартфоны и портретные планшеты.
@@ -42,7 +42,3 @@ $media_not_sm = '(max-width $site_media_xs - 1), (min-width $site_media_sm)'
 
 $media_for_xs = '(max-width $site_media_xs - 1)'
 $media_not_xs = '(min-width $site_media_xs)'
-
-@media $media_not_md
-	.js-light-gallery
-		background red
