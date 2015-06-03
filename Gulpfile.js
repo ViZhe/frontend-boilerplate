@@ -35,8 +35,7 @@ var	gulp			= require('gulp'), // Gulp JS
 	teenypng		= require('gulp-teenypng'),
 
 	babel			= require('gulp-babel'),
-	uglify			= require('gulp-uglify'), // Минификация JS
-	packer			= require('gulp-packer'); // Больше сжатий богу сжатий
+	closure			= require('gulp-closure-compiler-service'); // Google jsmin
 
 
 
@@ -162,8 +161,9 @@ gulp.task('js_build', function () {
 	return gulp.src('./source/js/[^-]*.js')
 		.pipe(includeFile())
 		//.pipe(babel())
-		.pipe(uglify())
-		.pipe(packer({base62: true, shrink: true}))
+		.pipe(closure({
+			compilation_level: 'ADVANCED_OPTIMIZATIONS'
+		}))
 		.on('error', log)
 		.pipe(gulp.dest('./frontend/js'));
 });
