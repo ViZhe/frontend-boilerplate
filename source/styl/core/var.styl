@@ -11,22 +11,24 @@ $site_border-radius = 3px 		// Закругление углов (кнопки, 
 /* Ширина сайта */
 
 $site_width_lg = 1240px			// Обычный десктоп. Фактически: 1210px
-$site_width_md = 980px 			// Маленький десктоп. Фактически: 960px
-$site_width_sm = 750px 			// Планшеты. Фактически: 740px
-$site_width_xs = 100% 			// Смартфоны и портретные планшеты.
+$site_width_md = 980px 			// Маленький десктоп и Планшет(альбом). Фактически: 960px
+$site_width_sm = 750px 			// Планшет(портрет). Фактически: 740px
+$site_width_xl = 100% 			// Смартфон(альбом).
+$site_width_xs = 100% 			// Смартфон(портрет).
 
 
 /* Точка перехода */
 
-$site_media_md = 1260px 		// C Обычного на Маленький десктоп.
-$site_media_sm = 1000px 		// C Маленького десктопа на Планшеты(альбомная).
-$site_media_xs = 768px 			// C Планшетов(альбомная) на Смартфоны и Планшеты(портретная).
+$site_media_md = 1260px 		// C Обычного на Маленький десктоп и Планшеты(альбом).
+$site_media_sm = 1000px 		// C Маленького десктопа и Планшета(альбом) на Планшет(портрет).
+$site_media_xl = 768px 			// C Планшета(портрет) на Смартфон(альбом).
+$site_media_xs = 400px 			// Cо Смартфона(альбом) на Смартфон(портрет).
 
 
 /* Медиа условия */
 
-$media_for_lg-and-md = '(min-width $site_media_sm)'
-$media_not_lg-and-md = '(max-width $site_media_sm - 1)'
+$media_for_desktop = '(min-width $site_media_sm)'
+$media_not_desktop = '(max-width $site_media_sm - 1)'
 
 $media_for_lg = '(min-width $site_media_md)'
 $media_not_lg = '(max-width $site_media_md - 1)'
@@ -34,11 +36,15 @@ $media_not_lg = '(max-width $site_media_md - 1)'
 $media_for_md = '(min-width $site_media_sm) and (max-width $site_media_md - 1)'
 $media_not_md = '(max-width $site_media_sm - 1), (min-width $site_media_md)'
 
-$media_for_sm-and-xs = '(max-width $site_media_sm - 1)'
-$media_not_sm-and-xs = '(min-width $site_media_sm)'
 
-$media_for_sm = '(min-width $site_media_xs) and (max-width $site_media_sm - 1)'
-$media_not_sm = '(max-width $site_media_xs - 1), (min-width $site_media_sm)'
+$media_for_touch = '(max-width $site_media_sm - 1)'
+$media_not_touch = '(min-width $site_media_sm)'
+
+$media_for_sm = '(min-width $site_media_xl) and (max-width $site_media_sm - 1)'
+$media_not_sm = '(max-width $site_media_xl - 1), (min-width $site_media_sm)'
+
+$media_for_xl = '(min-width $site_media_xs) and (max-width $site_media_xl - 1)'
+$media_not_xl = '(max-width $site_media_xs - 1), (min-width $site_media_xl)'
 
 $media_for_xs = '(max-width $site_media_xs - 1)'
 $media_not_xs = '(min-width $site_media_xs)'
