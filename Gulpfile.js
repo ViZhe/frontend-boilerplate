@@ -25,6 +25,8 @@ var	gulp			= require('gulp'), // Gulp JS
 	autoprefixer	= require('gulp-autoprefixer'), // Префиксы
 	cleancss		= require('gulp-cleancss'), // Минификация CSS
 
+	styledown		= require('gulp-styledown'), // Style Guide
+
 	jade			= require('gulp-jade'),
 
 	// Обрабатываем только измененные файлы(картинки)
@@ -113,12 +115,26 @@ gulp.task('stylus_build', function () {
 		.pipe(gulp.dest('./frontend/css/'));
 });
 
-gulp.task('stylus_info', function() {
-	return gulp.src(['./source/styl/[^-]*.styl'])
+
+
+/*
+ *
+ *	STYLE GUIDE SECTION
+ *
+ */
+
+gulp.task('styleguide', function() {
+	return gulp.src('./source/styl/[^-]*.styl')
 		.pipe(stylus())
-		.pipe(styleguidejs())
-		.pipe(gulp.dest('./docs/'));
+		.pipe(styledown({
+			config: './source/docs/config.styl',
+			filename: 'index.html'
+		}))
+		.pipe(gulp.dest('./frontend/docs/'))
+		.pipe(reload({stream: true}));
 });
+
+
 
 /*
  *
@@ -281,21 +297,23 @@ gulp.task('clean', function() {
 gulp.task('build', sequence(
 	['clean'],
 	['img_build'],
-	['stylus_build', 'jade_build', 'js_build']
+	['stylus_build', 'jade_build', 'js_build'],
+	['styleguide']
 ));
 
 
 // Собираем дев
 gulp.task('dev', sequence(
 	['clean'],
-	['stylus_dev', 'jade_dev', 'js_dev', 'img_dev']
+	['stylus_dev', 'jade_dev', 'js_dev', 'img_dev'],
+	['styleguide']
 ));
 
 
 // Cледим за изменениями
 gulp.task('watch', function() {
 	watch('./source/**/*.styl', function () {
-		gulp.start(['stylus_dev']);
+		gulp.start(['stylus_dev', 'styleguide']);
 	});
 	watch('./source/**/*.jade', function () {
 		gulp.start(['jade_dev']);
