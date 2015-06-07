@@ -15,6 +15,14 @@
 *
 */
 
+/*!**
+ * Btn:
+ * Кнопки.
+ *
+ * `.b-btn` — Базовый класс без модификаторов не живет.
+ *
+ *
+ */
 
 .b-btn
 	display inline-block
@@ -32,6 +40,21 @@
 
 	if $site_border-radius != 0
 		border-radius $site_border-radius
+
+
+/*!*
+ * Block:
+ * `.b-btn_block` — Делаем кнопку блочной.
+ *
+ *
+ *     @example.padded
+ *		.b-btn.b-btn_full_red.b-btn_block Нажать
+ *		br
+ *		.b-btn.b-btn_outline_green.b-btn_block Нажать
+ *		br
+ *		.b-btn.b-btn_3d_blue.b-btn_block Нажать
+ *
+ */
 
 .b-btn_block
 	display block
