@@ -1,8 +1,8 @@
-/*
-*
-* Глобальные стили.
-*
-*/
+/*!**
+ * Global:
+ * Глобальные стили.
+ *
+ */
 
 body
 	background darken($white, 5%)
@@ -23,6 +23,27 @@ a
 	&:active
 		color $red
 
+
+
+/*!*
+ * Heading:
+ * `.b-heading` —  Базовый класс.
+ *
+ * `.b-heading_level_{1-6}` — Задает стиль уровня заголовка.
+ *
+ * `.b-heading_first` — Убирает верхний отступ заголовка.
+ *
+ *
+ *     @example.padded
+ *     .b-heading.b-heading_level_1.b-heading_first Заголовок 1 уровня без верхнего отступа
+ *     .b-heading.b-heading_level_1 Заголовок 1 уровня
+ *     .b-heading.b-heading_level_2 Заголовок 2 уровня
+ *     .b-heading.b-heading_level_3 Заголовок 3 уровня
+ *     .b-heading.b-heading_level_4 Заголовок 4 уровня
+ *     .b-heading.b-heading_level_5 Заголовок 5 уровня
+ *     .b-heading.b-heading_level_6 Заголовок 6 уровня
+ *
+ */
 
 .b-heading
 	font-weight 700
@@ -62,9 +83,23 @@ a
 	padding-top 0
 
 
+
+/*!*
+ * Spacer:
+ * `.g-spacer` —  Блок в котором присваиваются отступы параграфам и спискам.
+ *
+ *
+ *		@example.padded
+ *		.g-spacer
+ *     		p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+ *     		p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+ *     		ul
+ *     			li Lorem ipsum dolor sit amet
+ *     			li Sed do eiusmod tempor incididunt ut
+ *
+ */
+
 .g-
-	&cf
-		clearfix()
 
 	&spacer
 		& p
@@ -75,6 +110,29 @@ a
 			padding-bottom 15px
 			padding-left 20px
 
+
+/*!*
+ * Float:
+ * `.g-cf` —  Сбрасывает обтекание блоков.
+ *
+ * `g-float_{right|left}` —  Делает элемент обтекаемым.
+ *
+ * `g-float_{right|left}_img` —  Модификатор добавляет отступы обтекаемому элементу.
+ *
+ *
+ *		@example.padded
+ *		.g-float_right Обтекание элемета слева
+ *		.g-float_left Обтекание элемета справа
+ *		.g-cf
+ *		img.g-float_left.g-float_left_img(src="../img/logo.png")
+ *		img.g-float_right.g-float_right_img(src="../img/logo.png")
+ *		p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+ *
+ */
+
+.g-
+	&cf
+		clearfix()
 
 	&float
 		&_left
@@ -89,6 +147,21 @@ a
 			&_img
 				margin 5px 0 10px 10px
 
+
+/*!*
+ * Hide/Show:
+ * `.g-hide` —  Прячет элемент.
+ *
+ * `.g-show` —  Показывает элемент.
+ *
+ *
+ *		@example.padded
+ *		.g-hide(style="display:block") Этот блок не видно
+ *		.g-show(style="display:none") Этот блок видно
+ *
+ */
+
+.g-
 	&hide
 		display none !important
 
@@ -96,31 +169,70 @@ a
 		display block !important
 
 
-	&align
-		&_left
-			text-align left !important
+/*!*
+ * Align:
+ * `.g-align_{left|center|right}` —  Задает выравнивание текста.
+ *
+ *
+ *		@example.padded
+ *		.g-align_left Левая выключка текста
+ *		.g-align_center Центральная выключка текста
+ *		.g-align_right Правая выключка текста
+ *
+ */
 
-		&_center
-			text-align center !important
+.g-align
+	&_left
+		text-align left !important
 
-		&_right
-			text-align right !important
+	&_center
+		text-align center !important
+
+	&_right
+		text-align right !important
 
 
-	&font
-		&_bold
-			font-weight 700 !important
+/*!*
+ * Font:
+ * `.g-font_{bold|italic|big|small}` —  Задает форматирование текста.
+ *
+ *
+ *		@example.padded
+ *		.g-font_bold Жирный текст
+ *		.g-font_italic Курсивный текст
+ *		.g-font_big Большой текст
+ *		.g-font_small Маленький текст
+ *
+ */
 
-		&_italic
-			font-style italic !important
+.g-font
+	&_bold
+		font-weight 700 !important
 
-		&_big
-			font-size 120% !important
+	&_italic
+		font-style italic !important
 
-		&_small
+	&_big
+		font-size 120% !important
+
+	&_small
 			font-size 80% !important
 
-	&color
-		for name, color in $colors_text
-			&_{name}
-				color color
+
+/*!*
+ * Color:
+ * `.g-color_{$colors_text}` —  Задает цвет текста.
+ *
+ *
+ *		@example.padded
+ *		.g-color_red Красный текст
+ *		.g-color_green Зеленый текст
+ *		.g-color_yellow Желтый текст
+ *		.g-color_graylight Серый текст
+ *
+ */
+
+.g-color
+	for name, color in $colors_text
+		&_{name}
+			color color
