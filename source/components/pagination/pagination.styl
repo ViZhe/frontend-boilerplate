@@ -1,17 +1,40 @@
-/*
-*
-* Нумерация страниц.
-*
-* .b-pagination					- Обертка пагинации.
-*
-* .b-pagination__item			- Пункт пагинации.
-*
-* .b-pagination__divider		- Разделитель для пропуска пунктов.
-* .b-pagination__active			- Активный элемент пункта пагинации.
-* .b-pagination__disable		- Отключенный элемент пункта пагинации.
-* .b-pagination__link			- Ссылка-элемент пункта пагинации.
-*
-*/
+
+/*!**
+ * Pagination:
+ *
+ */
+
+/*!*
+ * Нумерация страниц:
+ * `.b-pagination` — Обертка пагинации.
+ *
+ * `.b-pagination__item` — Пункт пагинации.
+ *
+ * `.b-pagination__link` — Ссылка-элемент.
+ *
+ * `.b-pagination__active` — Активный элемент.
+ *
+ * `.b-pagination__disable` — Отключенный элемент.
+ *
+ * `.b-pagination__divider` — Разделитель для пропуска пунктов.
+ *
+ *
+ *     @example.padded
+ *     ul.b-pagination
+ *			li.b-pagination__item: span.b-pagination__disable Назад
+ *			li.b-pagination__item: span.b-pagination__disable &lt;
+ *			li.b-pagination__item: span.b-pagination__active 1
+ *			li.b-pagination__item: a.b-pagination__link(href="") 2
+ *			li.b-pagination__item: a.b-pagination__link(href="") 3
+ *			li.b-pagination__item: a.b-pagination__link(href="") 4
+ *			li.b-pagination__item: a.b-pagination__link(href="") 5
+ *			li.b-pagination__item: span.b-pagination__divider
+ *			li.b-pagination__item: a.b-pagination__link(href="") 6
+ *			li.b-pagination__item: a.b-pagination__link(href="") 7
+ *			li.b-pagination__item: a.b-pagination__link(href="") &gt;
+ *			li.b-pagination__item: a.b-pagination__link(href="") Вперед
+ *
+ */
 
 
 .b-pagination
