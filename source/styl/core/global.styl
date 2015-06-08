@@ -86,7 +86,7 @@ a
 
 /*!*
  * Spacer:
- * `.g-spacer` —  Блок в котором присваиваются отступы параграфам и спискам.
+ * `.g-spacer` —  Блок в котором присваиваются отступы параграфам, спискам  и талицам.
  *
  *
  *		@example.padded
@@ -103,12 +103,18 @@ a
 
 	&spacer
 		& p
-			padding-bottom 15px
+			margin-bottom 15px
 
 		& ul
 		& ol
-			padding-bottom 15px
-			padding-left 20px
+			margin-bottom 15px
+			margin-left 20px
+
+		& li
+			margin-bottom 5px
+
+		& table
+			margin-bottom 15px
 
 
 /*!*
