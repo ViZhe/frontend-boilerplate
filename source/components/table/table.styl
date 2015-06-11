@@ -1,16 +1,46 @@
-/*
-*
-* Таблицы.
-*
-* .b-table							- Стандартная обертка таблицы.
-*
-* .b-table_striped					- Выделяем нечетные строчки.
-* .b-table_hovered					- Подсвечиваем строчку при наведении.
-* .b-table_nowrap					- Не ломаем текст.
 
-* .b-table__overflow				- Оборачиваем в это если нужна прокрутка на маленьких экранах.
-*
-*/
+/*!**
+ * Table:
+ *
+ */
+
+/*!*
+ * Таблицы:
+ * `.b-table` — Базовый класс таблицы.
+ *
+ * `.b-table_striped` — Выделяем нечетные строки.
+ *
+ * `.b-table_hovered` — Подсвечиваем строчку при наведении.
+ *
+ * `.b-table_nowrap` — Не ломаем текст.
+ *
+ * `.b-table__overflow` — Обертка таблицы для скролла на маленьких экранах.
+ *
+ *
+ *
+ *		@example.padded
+ *		.b-table__overflow
+ *			table.b-table.b-table_striped.b-table_hovered.b-table_nowrap
+ *				thead
+ *					tr
+ *						th Id
+ *						th Name
+ *						th Price
+ *				tbody
+ *					tr
+ *						td 01
+ *						td Lorem
+ *						td 100 000
+ *					tr
+ *						td 02
+ *						td Loremer
+ *						td 200 000
+ *					tr
+ *						td 03
+ *						td Loremes
+ *						td 300 000
+ *
+ */
 
 .b-table
 	size 100% false
