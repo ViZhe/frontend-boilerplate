@@ -1,14 +1,30 @@
 
+/*!*
+ * Append:
+ * `.b-form__append` — Обертка для присоединения блоков к полю.
+ *
+ * `.b-form__addon` — Класс присоединяемого поля.
+ *
+ *
+ *     @example.padded
+ *		label.b-form__label
+ *			.b-form__append
+ *				input.b-form__field(type="text", placeholder="Simple text input", required)
+ *				.b-form__addon.b-btn.b-btn_full_graylight Отправить
+ *
+ */
+
 .b-form__append
 	display flex
 
-if $site_border-radius != 0
-	.b-form__append
-		& .b-form__field
-		& .b-form__addon
-			margin 0
+.b-form__append
+	& .b-form__field
+	& .b-form__addon
+		margin 0
+		if $site_border-radius != 0
 			border-radius 0
 
+	if $site_border-radius != 0
 		& > :first-child
 			border-radius $site_border-radius 0 0 $site_border-radius
 

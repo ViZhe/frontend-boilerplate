@@ -4,29 +4,52 @@
 *
 * .b-form										- Класс обертка для тега form.
 *
-* .b-form__field								- Класс для текстовых полей и textarea.
-* .b-form__field_textarea						- Модификатор textarea.
-* .b-form__field_valid							- Модификатор валидного поля.
-* .b-form__field_invalid						- Модификатор поля с ошибкой.
-*
-* .b-form__radio								- Класс для соответствующего input-а.
-* .b-form__checkbox								- Класс для соответствующего input-а.
+		* .b-form__field								- Класс для текстовых полей и textarea.
+		* .b-form__field_textarea						- Модификатор textarea.
+		* .b-form__field_valid							- Модификатор валидного поля.
+		* .b-form__field_invalid						- Модификатор поля с ошибкой.
+		*
+		* .b-form__radio								- Класс для соответствующего input-а.
+		* .b-form__checkbox								- Класс для соответствующего input-а.
 *
 * .b-form__checkbox_[normal,simple,modern]		- Элемент для label, который опредеяет стиль checkbox.
 * .b-form__radio								- Элемент для label, которым обернут radio.
 *
 * .b-form__icon									- Элемент иконок.
 *
-* .b-form__label								- Класс для всех label-ов.
-* .b-form__label_disable						- Применяем вовместно с атрибутом disabled для внутреннего input.
-*
-* .b-form__group-line							- Группа элементов.
+		* .b-form__label								- Класс для всех label-ов.
+		* .b-form__label_disable						- Применяем cовместно с атрибутом disabled для внутреннего input.
+		*
+		* .b-form__group							- Группа элементов.
 *
 */
+
+/*!**
+ * Form:
+ * Формы.
+ *
+ * `.b-form` — Базовый класс тега form.
+ *
+ */
 
 .b-form
 	display block
 
+
+/*!*
+ * Label:
+ * `.b-form__label` — Класс для всех label-ов.
+ *
+ * `.b-form__label_disabled` — Отключаем элемент, нужен `disabled` для внутреннего input-а.
+ *
+ *
+ *     @example.padded
+ *		label.b-form__label Инпут
+ *			input.b-form__field(type="text", placeholder="Simple text input")
+ *		label.b-form__label.b-form__label_disabled Инпут
+ *			input.b-form__field(type="text", placeholder="Simple text input", disabled)
+ *
+ */
 
 .b-form__label
 	display block
@@ -35,7 +58,7 @@
 .b-form__label:not(:first-of-type)
 	margin-top 10px
 
-.b-form__label_disable
+.b-form__label_disabled
 	color $gray
 	cursor default
 
@@ -49,5 +72,24 @@
 	display none
 
 
-.b-form__group-line
-	margin-bottom 10px
+/*!*
+ * Group:
+ * `.b-form__group` — Объединяет группу элементов формы.
+ *
+ *
+ *     @example.padded
+ *		.b-form__group
+ *			label.b-form__label Имя
+ *				input.b-form__field(type="text", placeholder="Simple text input")
+ *			label.b-form__label Фамилия
+ *				input.b-form__field(type="text", placeholder="Simple text input")
+ *		.b-form__group
+ *			label.b-form__label Пол
+ *				input.b-form__field(type="text", placeholder="Simple text input")
+ *			label.b-form__label Возраст
+ *				input.b-form__field(type="text", placeholder="Simple text input")
+ *
+ */
+
+.b-form__group:not(:last-of-type)
+	margin-bottom 20px

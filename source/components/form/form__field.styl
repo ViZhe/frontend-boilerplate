@@ -1,4 +1,27 @@
 
+/*!*
+ * Field:
+ * `.b-form__field` — Класс для текстовых полей и textarea.
+ *
+ * `.b-form__field_textarea` — Модификатор textarea.
+ *
+ * `.b-form__field_valid` — Модификатор валидного поля.
+ *
+ * `.b-form__field_invalid` — Модификатор поля с ошибкой.
+ *
+ *
+ *     @example.padded
+ *		label.b-form__label Инпут
+ *			input.b-form__field(type="text", placeholder="Simple text input",  required)
+ *		label.b-form__label Текстовая область
+ *			textarea.b-form__field.b-form__field_textarea(placeholder="Simple textarea")
+ *		label.b-form__label Инпут валидный
+ *			input.b-form__field.b-form__field_valid(type="text", placeholder="Simple text input")
+ *		label.b-form__label Инпут с ошибкой
+ *			input.b-form__field.b-form__field_invalid(type="text", placeholder="Simple text input")
+ *
+ */
+
 .b-form__field
 	padding 5px
 	width 100%
@@ -13,6 +36,9 @@
 
 	&:focus
 		border-color $blue
+
+.b-form__field[disabled]
+	background-color lighten($graylight, 70%)
 
 .b-form__field_textarea
 	min-width 100%
