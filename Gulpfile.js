@@ -32,7 +32,7 @@ var	gulp			= require('gulp'), // Gulp JS
 	// Обрабатываем только измененные файлы(картинки)
 	changed			= require('gulp-changed'),
 	// Минификация png, jpg, gif, svg.
-	imageop			= require('gulp-image-optimization'),
+	imagemin 		= require('gulp-imagemin'),
 	// png & jpg < 5mb / 500 шт в месяц  -  https://tinypng.com
 	teenypng		= require('gulp-teenypng'),
 
@@ -225,7 +225,7 @@ gulp.task('js_build', sequence(
 gulp.task('img_dev', function () {
 	return gulp.src('./source/img/**/*')
 		.pipe(changed('./frontend/img/'))
-		.pipe(imageop({
+		.pipe(imagemin({
 			optimizationLevel: 5,
 			progressive: true,
 			interlaced: true
@@ -237,7 +237,7 @@ gulp.task('img_dev', function () {
 
 gulp.task('img_build_imagemin', function () {
 	return gulp.src(['./source/img/**/*.{svg,ico,gif}'])
-		.pipe(imageop({
+		.pipe(imagemin({
 			optimizationLevel: 5,
 			progressive: true,
 			interlaced: true
