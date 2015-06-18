@@ -1,4 +1,10 @@
+/** ==========================================================
 
+* jquery lightGallery.js v1.1.5 // 3/29/2015 + mod by ViZhe
+* http://sachinchoolur.github.io/lightGallery/
+* Released under the MIT License - http://opensource.org/licenses/mit-license.html  ---- FREE ----
+
+=========================================================/**/
 ;
 (function ($) {
     "use strict";
@@ -89,7 +95,7 @@
                             $children = $this;
                         }
                         $children.on('click', function (e) {
-                            if( settings.selector !== null ) {
+                            if (settings.selector !== null) {
                                 $children = $(settings.selector);
                             } else {
                                 var dataGroup = $this.data('group');

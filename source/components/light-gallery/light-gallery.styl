@@ -8,7 +8,7 @@
 */
 
 @font-face
-	font-family "Slide-icons"
+	font-family 'Slide-icons'
 	font-style normal
 	font-weight 400
 	src local("Slide-icons"),
@@ -39,11 +39,11 @@
 	position fixed
 	top 0
 	left 0
-	z-index 99999!important
+	z-index 99999 !important
 	overflow hidden
 	user-select none
 	opacity 1
-	transition opacity 0.35s ease
+	transition opacity .35s ease
 	background rgba(0, 0, 0, 0.98)
 
 #lg-outer .lg-slide
@@ -51,25 +51,25 @@
 
 
 #lg-gallery img
-	border none!important
+	border none !important
 
 #lg-gallery.opacity
 	opacity 1
-	transition opacity 1s ease 0s
+	transition opacity 1s ease 0
 
 #lg-gallery.opacity .thumb-cont
 	opacity 1
 
 #lg-gallery.fade-m
 	opacity 0
-	transition opacity 0.5s ease 0s
+	transition opacity .5s ease 0
 
 #lg-gallery
 	height 100%
 	opacity 0
 	width 100%
 	position relative
-	transition opacity 1s ease 0s
+	transition opacity 1s ease 0
 
 
 #lg-slider
@@ -101,7 +101,7 @@
 #lg-slider.slide .lg-slide
 #lg-slider.use-left .lg-slide
 	position absolute
-	opacity 0.4
+	opacity .4
 
 #lg-slider.fade-m .lg-slide
 	position absolute
@@ -117,7 +117,7 @@
 	z-index 9
 
 #lg-slider .lg-slide:before
-	content ""
+	content ''
 	display inline-block
 	height 50%
 	width 1px
@@ -127,36 +127,36 @@
 	transform scale3d(1, 1, 1)
 
 .lg-slide .object
-	transform scale3d(0.5, 0.5, 0.5)
-	transition transform 1s cubic-bezier(0, 0, 0.25, 1) 0s, opacity 0.5s ease 0s
+	transform scale3d(.5, .5, .5)
+	transition transform 1s cubic-bezier(0, 0, 0.25, 1) 0, opacity .5s ease 0
 
 #lg-gallery.fade-m .lg-slide .object
-	transform scale3d(0.5, 0.5, 0.5)
+	transform scale3d(.5, .5, .5)
 
 #lg-slider.fade-m.on .current
 	opacity 1
-	transition opacity 0.5s ease 0s
+	transition opacity .5s ease 0
 
 #lg-slider.fade-m .lg-slide
-	transition opacity 0.4s ease 0s
+	transition opacity .4s ease 0
 
 #lg-slider.slide .lg-slide
-	transform translate3d(100%, 0px, 0px)
+	transform translate3d(100%, 0, 0)
 
 #lg-slider.slide.on .lg-slide
 	opacity 0
 
 #lg-slider.slide .lg-slide.current
 	opacity 1 !important
-	transform translate3d(0px, 0px, 0px) !important
+	transform translate3d(0, 0, 0) !important
 
 #lg-slider.slide .lg-slide.prev-slide
 	opacity 0
-	transform translate3d(-100%, 0px, 0px)
+	transform translate3d(-100%, 0, 0)
 
 #lg-slider.slide .lg-slide.next-slide
 	opacity 0
-	transform translate3d(100%, 0px, 0px)
+	transform translate3d(100%, 0, 0)
 
 #lg-slider.use-left .lg-slide
 	left 100%
@@ -166,7 +166,7 @@
 
 #lg-slider.use-left .lg-slide.current
 	opacity 1 !important
-	left 0% !important
+	left 0 !important
 
 #lg-slider.use-left .lg-slide.prev-slide
 	opacity 0
@@ -180,7 +180,7 @@
 #lg-slider.slide.on .current
 #lg-slider.slide.on .prev-slide
 #lg-slider.slide.on .next-slide
-	transition transform 1s cubic-bezier(0, 0, 0.25, 1) 0s, opacity 1s ease 0s
+	transition transform 1s cubic-bezier(0, 0, .25, 1) 0, opacity 1s ease 0
 
 #lg-slider.speed .lg-slide
 #lg-slider.speed .current
@@ -206,7 +206,7 @@
 	vertical-align middle
 
 #lg-gallery .thumb-cont .thumb-inner
-	transition transform 1s cubic-bezier(0, 0, 0.25, 1) 0s
+	transition transform 1s cubic-bezier(0, 0, .25, 1) 0
 
 
 @keyframes rightEnd
@@ -230,11 +230,11 @@
 		left 0
 
 .lg-slide .object.right-end
-	animation rightEnd 0.3s
+	animation rightEnd .3s
 	position relative
 
 .lg-slide .object.left-end
-	animation leftEnd 0.3s
+	animation leftEnd .3s
 	position relative
 
 
@@ -271,11 +271,11 @@
 #lg-action a.disabled
 	opacity 0.6
 	cursor default
-	background-color rgba(0, 0, 0, 0.65) !important
+	background-color rgba(0, 0, 0, .65) !important
 
 #lg-action a:hover
 #lg-action a:focus
-	background-color rgba(0, 0, 0, 0.85)
+	background-color rgba(0, 0, 0, .85)
 
 #lg-action a#lg-prev:before
 #lg-action a#lg-next:after
@@ -346,8 +346,8 @@
 	height 28px
 	border-radius 2px
 	margin-top -4px
-	background-color rgba(0, 0, 0, 0.65)
-	transition background-color 0.3s ease 0s
+	background-color rgba(0, 0, 0, .65)
+	transition background-color .3s ease 0
 	z-index 1090
 	cursor pointer
 
@@ -366,7 +366,6 @@
 #lg-gallery .thumb-cont .thumb-info .close:hover
 	text-decoration none
 	background-color #000
-	background-color rgba(0, 0, 0, 1)
 
 #lg-gallery .thumb-cont .thumb
 	display inline-block !important
@@ -375,7 +374,7 @@
 	margin-bottom 4px
 	height 50px
 	width 50px
-	opacity 0.6
+	opacity .6
 	overflow hidden
 	border-radius 3px
 	cursor pointer
@@ -394,7 +393,7 @@
 #lg-gallery .thumb-cont .thumb.active
 #lg-gallery .thumb-cont .thumb:hover
 	opacity 1
-	border-color #ffffff
+	border-color #fff
 
 
 #lg-slider .video-cont
@@ -422,15 +421,15 @@
 	position relative
 
 #lg-slider .video .object
-	width 100%!important
-	height 100%!important
+	width 100% !important
+	height 100% !important
 	position absolute
 	top 0
 	left 0
 
 
 #lg-close
-	color #FFFFFF
+	color #fff
 	height 28px
 	position absolute
 	right 20px
@@ -439,7 +438,7 @@
 	z-index 1090
 	cursor pointer
 	border-radius 2px
-	background-color rgba(0, 0, 0, 0.65)
+	background-color rgba(0, 0, 0, .65)
 	transition background-color 0.3s ease
 	-webkit-backface-visibility hidden
 
@@ -453,7 +452,7 @@
 	background-color #000
 
 .lg-title
-	background none repeat scroll 0 0 rgba(0, 0, 0, 0.95)
+	background none repeat scroll 0 0 rgba(0, 0, 0, .95)
 	color #fff
 	left 0
 	position absolute
