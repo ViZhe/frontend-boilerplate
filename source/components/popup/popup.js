@@ -14,8 +14,8 @@
 			items.each( function () {
 				var el = $($(this).attr('data-popup'));
 				var content = el.html();
-				el.html('<div class="b-popup__inner">'+
-                '<div class="b-popup__content"><div class="b-popup__close">'+
+				el.html('<div class="b-popup__inner">' +
+                '<div class="b-popup__content"><div class="b-popup__close">' +
                 '</div>' + content + '</div></div>');
 			});
 			elHide = $('.b-popup__inner, .b-popup__close');
@@ -25,14 +25,14 @@
 			var widthInner = body.width();
 			body.addClass('b-popup__body');
 			var widthOuter = body.width();
-			var width = widthOuter - widthInner +'px';
+			var width = widthOuter - widthInner + 'px';
 			body.css('margin-right', width);
 		},
 		show: function () {
 			_this.body();
 			items.off('click', popup.show);
 			var el = $($(this).attr('data-popup'));
-			el.addClass('b-popup_show') ;
+			el.addClass('b-popup_show');
 			elHide.on('click', _this.hide);
 		},
 		hide: function (e) {

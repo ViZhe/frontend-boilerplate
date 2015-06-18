@@ -2,7 +2,7 @@
 *
 * Всплывающее окно (попап).
 *
-* .b-popup__body			- Вешается на body, чтобы убрать скролл.
+* .b-popup__outer			- Вешается на html и body, чтобы убрать скролл.
 *
 * .b-popup					- Стандартная обертка попапа.
 * .b-popup_show				- Модификатор видимого попапа.
@@ -14,19 +14,22 @@
 */
 
 
-.b-popup__body
+body.b-popup__outer
 	overflow hidden
 
+@media $media_for_touch
+	html.b-popup__outer
+		overflow hidden
 
 .b-popup
 	fixed 0
 	z-index 200
+	visibility hidden
 	min-width 320px
-	background rgba($black, 90%)
+	background rgba( $black, 90% )
 	overflow auto
 	opacity 0
-	visibility hidden
-	transition all 0.3s
+	transition all .3s
 
 .b-popup_show
 	visibility visible
@@ -35,25 +38,35 @@
 
 .b-popup__inner
 	display flex
+	padding 20px 0
 	align-items center
 	justify-content center
 	min-height 100%
-	padding 20px 0
 
+	@media $media_for_touch
+		padding 0
+		align-items stretch
 
 .b-popup__content
-	flex 0 0 auto
-	max-width 50%
-	min-width 300px
-	padding 15px
 	relative false
+	flex 0 0 auto
+	padding 15px
+	min-width 320px
+	max-width 1000px
+	width 70%
 	background $white
-	box-shadow 0px 0px 3px #000
-	transition all 0.3s ease
+	box-shadow 0 0 3px #000
+	transition all .3s ease
 	transform translateY(-40px)
 
 	if $site_border-radius != 0
 		border-radius $site_border-radius
+
+	@media $media_for_touch
+		width 100%
+
+		if $site_border-radius != 0
+			border-radius 0
 
 	.b-popup_show &
 		transform translateY(0px)
@@ -63,22 +76,31 @@
 	absolute -13px -13px false false
 	cursor pointer
 	size 26px
-	text-align center
-	background $white
 	border-radius 50%
+	background $white
 	box-shadow 0 0 3px $black
+	text-align center
+
+	@media $media_for_touch
+		top 0
+		right 0
+		size 40px
+		box-shadow 0 0 0 -1px
 
 	&::after
 	&::before
-		absolute 3px false false 11px
-		content ""
 		display block
+		absolute 3px false false 11px
+		content ''
 		size 4px 20px
 		background $black
 		border-radius 3px
 
+		@media $media_for_touch
+			size 8px 36px
+
 	&::before
-		transform: rotate(-45deg);
+		transform rotate(-45deg)
 
 	&::after
-		transform: rotate(45deg);
+		transform rotate(45deg)
