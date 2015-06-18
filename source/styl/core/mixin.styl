@@ -2,8 +2,8 @@
  *	=================================================
  *	# Grid
  *
- *	$grid()				=> .col{...}.w1-12{width:8.33333%;}
- *	$grid('_postfix')		=> .col_postfix{...}.w1-12_postfix{width:8.33333%;}
+ *	$grid()					=> .col{...}.w1-2{width:50%;}
+ *	$grid('_postfix')		=> .col{...}.w1-4_postfix{width:25%;}
  *
  */
 
@@ -20,6 +20,17 @@ $grid(postfix = '')
 			.w{i}-{j}{postfix}
 				width (i/j) * 100%
 
+
+/*
+ *	=================================================
+ *	# Order
+ *
+ *	$order()				=> .o1{order:1;}
+ *	$order('_postfix')		=> .o2_postfix{order:2;}
+ *
+ */
+
+$order(postfix = '')
 	for i in 1..12
 		.o{i}{postfix}
 			order i
@@ -29,16 +40,16 @@ $grid(postfix = '')
  *	=================================================
  *	# Offset
  *
- *	offset 1 of 12			=> margin-left:8.33333%;
- *	$offset()				=> .o1-12{margin-left:8.33333%;}
- *	$offset('_postfix')		=> .o1-12_postfix{margin-left:8.33333%;}
+ *	offset 1 of 10			=> margin-left:10%;
+ *	$offset()				=> .os1-2{margin-left:50%;}
+ *	$offset('_postfix')		=> .os1-4{margin-left:25%;}
  *
  */
 
 offset(arg...)
 	margin-left (arg[0]/arg[2])*100%
 
-$offset(postfix)
+$offset(postfix = '')
 	for i in 1...12
 		for j in i+1..12
 			.os{i}-{j}{postfix}
