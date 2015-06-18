@@ -319,7 +319,7 @@ gulp.task('watch', function() {
 		gulp.start(['jade_dev']);
 	});
 	watch('./source/**/*.js', function () {
-		gulp.start(['js_dev']);
+		gulp.start(['js_dev_main', 'js_dev_lib']);
 	});
 	watch('./source/img/**/*', function () {
 		gulp.start(['img_dev']);
