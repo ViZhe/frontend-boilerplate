@@ -11,6 +11,6 @@
 //
 // });
 
-// $("*").on("click", function() {
+// $('*').on('click', function() {
 //
 // });
