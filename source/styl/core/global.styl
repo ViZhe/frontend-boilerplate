@@ -227,7 +227,7 @@ a
 
 /*!*
  * Color:
- * `.g-color_{$colors_text}` —  Задает цвет текста.
+ * `.g-color_{$color_text}` —  Задает цвет текста.
  *
  *
  *		@example.padded
@@ -239,6 +239,6 @@ a
  */
 
 .g-color
-	for name, color in $colors_text
+	for name, color in $color_text
 		&_{name}
 			color color

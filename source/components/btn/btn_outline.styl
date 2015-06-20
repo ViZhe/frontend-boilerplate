@@ -1,7 +1,7 @@
 
 /*!*
  * Style — outline:
- * `.b-btn_outline_{$colors_btn}` — Задает стиль outline.
+ * `.b-btn_outline_{$color_btn}` — Задает стиль outline.
  *
  *
  *     @example.padded
@@ -12,7 +12,7 @@
  */
 
 .b-btn_outline
-	for name, color in $colors_btn
+	for name, color in $color_btn
 		&_{name}
 			border 2px solid color
 			background-color rgba(0, 0, 0, 0)

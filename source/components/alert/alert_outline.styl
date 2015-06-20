@@ -3,7 +3,7 @@
  * Style — outline:
  * `.b-alert_outline` — Сообщение с блеклым фоном и линией вокруг.
  *
- * `.b-alert_outline_{$colors_alert}` — Задает цвет блока сообщения.
+ * `.b-alert_outline_{$color_alert}` — Задает цвет блока сообщения.
  *
  *
  *     @example.padded
@@ -19,7 +19,7 @@
 	border 2px solid
 
 .b-alert_outline
-	for name, color in $colors_alert
+	for name, color in $color_alert
 		&_{name}
 			background-color lighten(color, 90%)
 			border-color color

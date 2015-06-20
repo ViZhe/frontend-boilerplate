@@ -1,16 +1,33 @@
-/*
-*
-* Наборы цветов.
-*
-*/
 
-/* Цвета проекта */
+/*!**
+ * Colors:
+ * Цвета по умолчанию.
+ *
+ */
+
+
+/*!*
+ * :
+ *     @example.padded
+ *     .row
+ *			.col.w1-5(style="padding: 15px; text-align: center; background: #000; color: #fff;") black
+ *			.col.w1-5(style="padding: 15px; text-align: center; background: #1D8BDF;") blue
+ *			.col.w1-5(style="padding: 15px; text-align: center; background: #66bb6a;") green
+ *			.col.w1-5(style="padding: 15px; text-align: center; background: #939DA3;") gray
+ *			.col.w1-5(style="padding: 15px; text-align: center; background: #A9B1B5;") graylignt
+ *			.col.w1-5(style="padding: 15px; text-align: center; background: #F27935;") orange
+ *			.col.w1-5(style="padding: 15px; text-align: center; background: #8E44AD;") purple
+ *			.col.w1-5(style="padding: 15px; text-align: center; background: #E84C3D;") red
+ *			.col.w1-5(style="padding: 15px; text-align: center; background: #fff;") white
+ *			.col.w1-5(style="padding: 15px; text-align: center; background: #F1C40F;") yellow
+ *
+ */
 
 $black = #000
 $blue = #1D8BDF
 $green = #66bb6a
 $gray = #939DA3
-$graylight = lighten($gray, 20%)
+$graylight = #A9B1B5
 $orange = #F27935
 $purple = #8E44AD
 $red = #E84C3D
@@ -18,9 +35,16 @@ $white = #fff
 $yellow = #F1C40F
 
 
+/* Цвета проекта */
+
+// $color_projet = {
+// 	$black = #000
+// }
+
+
 /* Хэш цветов для генерации цветов кнопок, текста и др. */
 
-$colors_text = {
+$color_text = {
 	black: $black
 	blue: $blue
 	green: $green
@@ -32,7 +56,7 @@ $colors_text = {
 }
 
 
-$colors_alert = {
+$color_alert = {
 	black: $black
 	blue: $blue
 	green: $green
@@ -43,7 +67,8 @@ $colors_alert = {
 	yellow: $yellow
 }
 
-$colors_btn = {
+
+$color_btn = {
 	black: $black
 	blue: $blue
 	green: $green

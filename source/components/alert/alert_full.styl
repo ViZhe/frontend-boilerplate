@@ -3,7 +3,7 @@
  * Style — full:
  * `.b-alert_full` — Сообщение с монотонным фоном.
  *
- * `.b-alert_full_{$colors_alert}` — Задает цвет блока сообщения.
+ * `.b-alert_full_{$color_alert}` — Задает цвет блока сообщения.
  *
  *
  *     @example.padded
@@ -18,6 +18,6 @@
 	color $white
 
 .b-alert_full
-	for name, color in $colors_alert
+	for name, color in $color_alert
 		&_{name}
 			background-color color
