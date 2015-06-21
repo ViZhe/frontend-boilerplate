@@ -803,4 +803,4 @@
         lightGallery.init();
         return this;
     };
-}(jQuery));
+}($));
