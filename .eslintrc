@@ -15,7 +15,7 @@ globals:
 
 rules:
     max-len: [2, 80]
-    indent: [2, "tab"]
+    indent: [2, 4]
     quotes: [2, "single"]
     no-underscore-dangle: 2
     space-after-function-name: [2, "always"]
