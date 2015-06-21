@@ -19,10 +19,13 @@
  *			input.b-form__field.b-form__field_valid(type="text", placeholder="Simple text input")
  *		label.b-form__label Инпут с ошибкой
  *			input.b-form__field.b-form__field_invalid(type="text", placeholder="Simple text input")
+ *		label.b-form__label Инпут неактивный
+ *			input.b-form__field(type="text", placeholder="Simple text input", disabled)
  *
  */
 
 .b-form__field
+	margin-top 5px
 	padding 5px
 	width 100%
 	border 2px solid $graylight
@@ -37,16 +40,17 @@
 	&:focus
 		border-color $blue
 
-.b-form__field[disabled]
-	background-color lighten($graylight, 70%)
-
 .b-form__field_textarea
 	min-width 100%
 	min-height 50px
 	max-width 100%
 
+
+.b-form__field[disabled]
+	background-color lighten($graylight, 70%)
+
 .b-form__field_valid
-	border-color $green
+	background-color rgba($green, .1)
 
 .b-form__field_invalid
-	border-color $red
+	background-color rgba($red, .1)

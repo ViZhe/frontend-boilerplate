@@ -3,20 +3,20 @@
  * Radio:
  * `.b-form__radio` — Класс на label, чтобы иконка приняла нужный вид.
  *
+ * `.b-form__radio_checked` — Модификатор выбранного состояния.
+ *
  *
  *     @example.padded
- *		label.b-form__label.b-form__radio
- *			input(type="radio", name="radioName2", checked)
- *			i.b-form__icon
- *			| Первый radio (активный)
- *		label.b-form__label.b-form__radio
- *			input(type="radio", name="radioName2")
- *			i.b-form__icon
- *			| Второй radio
- *		label.b-form__label.b-form__radio.b-form__label_disabled
- *			input(type="radio", name="radioName2", disabled)
- *			i.b-form__icon
- *			| Третий radio (отключен)
+ *		form.b-form
+ *			label.b-form__label.b-form__radio
+ *				input(type="radio", name="radioName2")
+ *				| Первый radio
+ *			label.b-form__label.b-form__radio.b-form__radio_checked
+ *				input(type="radio", name="radioName2", checked)
+ *				| Второй radio (активный)
+ *			label.b-form__label.b-form__radio.b-form__label_disabled
+ *				input(type="radio", name="radioName2", disabled)
+ *				| Третий radio (отключен)
  *
  */
 
@@ -24,13 +24,14 @@
 	font-weight normal
 	font-style normal
 	font-family 'Icon Form Radio'
-	src url('source/components/form/form__icon_radio.woff') format('woff')
+	src url('source/components/form/form__radio.woff') format('woff')
 
 
 .b-form__radio
-	& .b-form__icon::before
+	&::before
 		content '\e000'
 		font-family 'Icon Form Radio'
 
-	& :checked + .b-form__icon::before
+.b-form__radio_checked
+	&::before
 		content '\e001'

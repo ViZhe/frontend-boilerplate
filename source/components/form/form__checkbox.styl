@@ -1,0 +1,37 @@
+
+/*!*
+ * Checkbox:
+ * `.b-form__checkbox` — Класс на label, чтобы иконка приняла нужный вид.
+ *
+ * `.b-form__checkbox_checked` — Модификатор выбранного состояния.
+ *
+ *
+ *     @example.padded
+ *		.b-form
+ *			label.b-form__label.b-form__checkbox
+ *				input(type="checkbox")
+ *				| Первый checkbox
+ *			label.b-form__label.b-form__checkbox.b-form__checkbox_checked
+ *				input(type="checkbox", checked)
+ *				| Второй checkbox (активный)
+ *			label.b-form__label.b-form__checkbox.b-form__label_disabled
+ *				input(type="checkbox", disabled)
+ *				| Третий checkbox (отключен)
+ *
+ */
+
+@font-face
+	font-weight normal
+	font-style normal
+	font-family 'Icon Form Checkbox'
+	src url('source/components/form/form__checkbox.woff') format('woff')
+
+
+.b-form__checkbox
+	&::before
+		content '\e001'
+		font-family 'Icon Form Checkbox'
+
+.b-form__checkbox_checked
+	&::before
+		content '\e000'
