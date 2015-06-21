@@ -74,12 +74,12 @@ body.b-popup__outer
 
 .b-popup__close
 	absolute -13px -13px false false
-	cursor pointer
 	size 26px
 	border-radius 50%
+	text-align center
+	cursor pointer
 	background $white
 	box-shadow 0 0 3px $black
-	text-align center
 
 	@media $media_for_touch
 		top 0
@@ -89,12 +89,12 @@ body.b-popup__outer
 
 	&::after
 	&::before
-		display block
 		absolute 3px false false 11px
-		content ''
+		display block
 		size 4px 20px
-		background $black
 		border-radius 3px
+		content ''
+		background $black
 
 		@media $media_for_touch
 			size 8px 36px
