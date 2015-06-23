@@ -8,7 +8,6 @@
  */
 
 $grid(postfix = '')
-
 	.w0-0{postfix}
 		flex 1
 
@@ -50,6 +49,9 @@ offset(arg...)
 	margin-left (arg[0]/arg[2])*100%
 
 $offset(postfix = '')
+	.os0-0{postfix}
+		margin-left 0
+
 	for i in 1...12
 		for j in i+1..12
 			.os{i}-{j}{postfix}
@@ -189,8 +191,8 @@ size(arg...)
  *
  */
 
-overflow(arg)
-	if arg == ellipsis
+overflow(key)
+	if key == ellipsis
 		overflow hidden
 		text-overflow ellipsis
 		white-space nowrap
