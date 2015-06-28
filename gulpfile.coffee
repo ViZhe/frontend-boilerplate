@@ -39,6 +39,7 @@ imagemin = require('gulp-imagemin')
 # png & jpg < 5mb / 500 шт в месяц  -  https://tinypng.com
 teenypng = require('gulp-teenypng')
 babel = require('gulp-babel')
+coffee = require('gulp-coffee')
 # Google jsmin
 closure = require('gulp-closure-compiler-service')
 
@@ -171,8 +172,9 @@ gulp.task 'jade_build', ->
 ###
 
 gulp.task 'js_dev_main', ->
-    gulp.src('./source/js/[^-]*.js')
+    gulp.src('./source/js/[^-]*.coffee')
         .pipe(includeFile())
+        .pipe(coffee())
         .on('error', log)
         .pipe(gulp.dest('./frontend/js'))
         .pipe(reload(stream: true))
@@ -190,15 +192,16 @@ gulp.task 'js_dev', sequence(
 
 
 gulp.task 'js_build_main', ->
-    gulp.src('./source/js/[^-]*.js')
+    gulp.src('./source/js/[^-]*.coffee')
         .pipe(includeFile())
+        .pipe(coffee())
         .pipe(closure(compilation_level: 'ADVANCED_OPTIMIZATIONS'))
         .on('error', log)
         .pipe(gulp.dest('./frontend/js'))
 
 gulp.task 'js_build_lib', ->
     gulp.src('./source/js/lib/[^-]*.js')
-        .pipe(closure(compilation_level: 'ADVANCED_OPTIMIZATIONS'))
+        .pipe(closure(compilation_level: 'SIMPLE_OPTIMIZATIONS'))
         .on('error', log)
         .pipe(gulp.dest('./frontend/js/lib/'))
 
@@ -300,19 +303,13 @@ gulp.task 'dev', sequence(
 # Cледим за изменениями
 gulp.task 'watch', ->
     watch './source/**/*.styl', ->
-        gulp.start [
-            'stylus_dev'
-            'styleguide'
-        ]
+        gulp.start ['stylus_dev', 'styleguide']
         return
     watch './source/**/*.jade', ->
         gulp.start [ 'jade_dev' ]
         return
-    watch './source/**/*.js', ->
-        gulp.start [
-            'js_dev_main'
-            'js_dev_lib'
-        ]
+    watch ['./source/**/*.js', './source/**/*.coffee'], ->
+        gulp.start ['js_dev_main', 'js_dev_lib']
         return
     watch './source/img/**/*', ->
         gulp.start [ 'img_dev' ]
