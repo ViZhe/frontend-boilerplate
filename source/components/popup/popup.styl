@@ -14,12 +14,13 @@
 */
 
 
-body.b-popup__outer
-	overflow hidden
 
 @media $media_for_touch
-	html.b-popup__outer
+	.b-popup__outer
 		overflow hidden
+
+.b-popup__outer > body
+	overflow hidden
 
 .b-popup
 	fixed 0
