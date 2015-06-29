@@ -6,19 +6,33 @@ title
 
 meta(name="description", content="")
 
-meta(name="viewport", content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no")
-
-link(rel="shortcut icon", href="frontend/img/link-icon/favicon.png")
-
-
-link(rel="apple-touch-icon", sizes="76x76", href="frontend/img/link-icon/apple-touch-icon-76x76.png")
-link(rel="apple-touch-icon", sizes="120x120", href="frontend/img/link-icon/apple-touch-icon-120x120.png")
-link(rel="apple-touch-icon", sizes="152x152", href="frontend/img/link-icon/apple-touch-icon-152x152.png")
-link(rel="apple-touch-icon", sizes="180x180", href="frontend/img/link-icon/apple-touch-icon-180x180.png")
-meta(name="msapplication-TileImage", content="frontend/img/link-icon/windows-touch-icon-144x144.png")
-meta(name="msapplication-TileColor", content="#66bb6a")
-
+meta(name="viewport", content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no")	
+//- Apple icons
+link(rel="apple-touch-icon", sizes="57x57", href="/frontend/favicon/apple-touch-icon-57x57.png")
+link(rel="apple-touch-icon", sizes="60x60", href="/frontend/favicon/apple-touch-icon-60x60.png")
+link(rel="apple-touch-icon", sizes="72x72", href="/frontend/favicon/apple-touch-icon-72x72.png")
+link(rel="apple-touch-icon", sizes="76x76", href="/frontend/favicon/apple-touch-icon-76x76.png")
+link(rel="apple-touch-icon", sizes="114x114", href="/frontend/favicon/apple-touch-icon-114x114.png")
+link(rel="apple-touch-icon", sizes="120x120", href="/frontend/favicon/apple-touch-icon-120x120.png")
+link(rel="apple-touch-icon", sizes="144x144", href="/frontend/favicon/apple-touch-icon-144x144.png")
+link(rel="apple-touch-icon", sizes="152x152", href="/frontend/favicon/apple-touch-icon-152x152.png")
+link(rel="apple-touch-icon", sizes="180x180", href="/frontend/favicon/apple-touch-icon-180x180.png")
+//- Favicon icons	
+link(rel="shortcut icon", href="/frontend/favicon/favicon.png")
+link(rel="icon", type="image/png", sizes="16x16", href="/frontend/favicon/favicon-16x16.png")
+link(rel="icon", type="image/png", sizes="32x32", href="/frontend/favicon/favicon-32x32.png")
+link(rel="icon", type="image/png", sizes="96x96", href="/frontend/favicon/favicon-96x96.png")
+link(rel="icon", type="image/png", sizes="194x194", href="/frontend/favicon/favicon-194x194.png")
+//- Android icons	
+meta(name="theme-color", content="#66bb6a")
+link(rel="icon", type="image/png", sizes="192x192", href="/frontend/favicon/android-chrome-192x192.png")
+link(rel="manifest", href="/frontend/favicon/manifest.json")
+//- Windows icons
+meta(name="msapplication-TileColor", content="#00a300")
+meta(name="msapplication-TileImage", content="/frontend/favicon/mstile-144x144.png")
+meta(name="msapplication-config", content="/frontend/favicon/browserconfig.xml")
+//- Main CSS
 link(rel="stylesheet", href="frontend/css/hoppas.css")
-
+//- Include font 
 script
 	| !function(){function e(e,t,n){e.addEventListener?e.addEventListener(t,n,!1):e.attachEvent&&e.attachEvent("on"+t,n)}function t(e){return window.localStorage&&localStorage.font_css_cache&&localStorage.font_css_cache_file===e}function n(){if(window.localStorage&&window.XMLHttpRequest)if(t(o))a(localStorage.font_css_cache);else{var n=new XMLHttpRequest;n.open("GET",o,!0),e(n,"load",function(){4===n.readyState&&(a(n.responseText),localStorage.font_css_cache=n.responseText,localStorage.font_css_cache_file=o)}),n.send()}else{var c=document.createElement("link");c.href=o,c.rel="stylesheet",c.type="text/css",document.getElementsByTagName("head")[0].appendChild(c),document.cookie="font_css_cache"}}function a(e){var t=document.createElement("style");t.innerHTML=e,document.getElementsByTagName("head")[0].appendChild(t)}var o="frontend/css/font-roboto.css";window.localStorage&&localStorage.font_css_cache||document.cookie.indexOf("font_css_cache")>-1?n():e(window,"load",n)}();

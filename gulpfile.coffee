@@ -253,6 +253,18 @@ gulp.task 'img_build', sequence(
 
 ###
 #
+#	FAVICON SECTION
+#
+###
+
+gulp.task 'favicon', ->
+    gulp.src('./source/favicon/*')
+        .pipe(gulp.dest('./frontend/favicon/'))
+
+
+
+###
+#
 #	LOCAL SERVER SECTION
 #
 ###
@@ -288,14 +300,16 @@ gulp.task 'build', sequence(
     ['clean']
     ['img_build']
     ['stylus_build', 'jade_build', 'js_build']
+    ['favicon']
     ['styleguide']
 )
 
 
 # Собираем дев
 gulp.task 'dev', sequence(
-    ['clean'],
-    ['stylus_dev', 'jade_dev', 'js_dev', 'img_dev'],
+    ['clean']
+    ['stylus_dev', 'jade_dev', 'js_dev', 'img_dev']
+    ['favicon']
     ['styleguide']
 )
 
