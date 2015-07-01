@@ -20,7 +20,7 @@
     }
   },
   "cyclomatic_complexity": {
-    "level": "warn",
+    "level": "ignore",
     "value": 10
   },
   "duplicate_key": {
@@ -39,7 +39,7 @@
     "limitComments": true
   },
   "missing_fat_arrows": {
-    "level": "warn"
+    "level": "ignore"
   },
   "newlines_after_classes": {
     "level": "error",
@@ -98,7 +98,7 @@
     "level": "ignore"
   },
   "prefer_english_operator": {
-    "level": "warn"
+    "level": "ignore"
   },
   "space_operators": {
     "level": "error"
