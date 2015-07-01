@@ -42,7 +42,7 @@ babel = require('gulp-babel')
 coffee = require('gulp-coffee')
 # Google jsmin
 closure = require('gulp-closure-compiler-service')
-
+uglify = require('gulp-uglify')
 
 
 ###
@@ -195,13 +195,15 @@ gulp.task 'js_build_main', ->
     gulp.src('./source/js/[^-]*.coffee')
         .pipe(includeFile())
         .pipe(coffee())
-        .pipe(closure(compilation_level: 'ADVANCED_OPTIMIZATIONS'))
+        .pipe(closure(compilation_level: 'SIMPLE_OPTIMIZATIONS'))
+        .pipe(uglify())
         .on('error', log)
         .pipe(gulp.dest('./frontend/js'))
 
 gulp.task 'js_build_lib', ->
     gulp.src('./source/js/lib/[^-]*.js')
         .pipe(closure(compilation_level: 'SIMPLE_OPTIMIZATIONS'))
+        .pipe(uglify())
         .on('error', log)
         .pipe(gulp.dest('./frontend/js/lib/'))
 
