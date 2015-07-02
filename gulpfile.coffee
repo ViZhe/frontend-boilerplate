@@ -242,7 +242,7 @@ gulp.task 'img_build_imagemin', ->
 
 gulp.task 'img_build_teenypng', ->
     gulp.src(['./source/img/**/*.{png,jpg}'])
-        .pipe(teenypng('apikey': 'fCeE49eA1dVhUEepFD0-XuqQq7bTcr3J'))
+        .pipe(teenypng('apikey': '0Q30pqGuD4mYEKXFcCzCXbgXK6MWK7rR'))
         .pipe(gulp.dest('./frontend/img/'))
 
 gulp.task 'img_build', sequence(
