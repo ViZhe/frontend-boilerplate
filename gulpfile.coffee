@@ -34,8 +34,6 @@ styledown = require('gulp-styledown')
 jade = require('gulp-jade')
 # Обрабатываем только измененные файлы(картинки)
 changed = require('gulp-changed')
-# Минификация png, jpg, gif, svg.
-imagemin = require('gulp-imagemin')
 # png & jpg < 5mb / 500 шт в месяц  -  https://tinypng.com
 teenypng = require('gulp-teenypng')
 coffee = require('gulp-coffee')
@@ -78,13 +76,13 @@ gulp.task 'stylus_dev', ->
     .on('error', log)
     .pipe(base64(
         extensions: ['woff']
-        maxImageSize: 1024 * 1024
+        maxImageSize: 10 * 1024 # 10 mb
     ))
     .pipe(urlAdjuster(
         replace: ['../../img/', '../img/']
     ))
     .pipe(autoprefixer(
-        browser: ['> 5%', 'last 2 versions', 'android 4']
+        browser: ['> 5%', 'last 2 versions']
     ))
     .pipe(gulp.dest('./frontend/css/'))
     .pipe(reload(stream: true))
@@ -99,20 +97,20 @@ gulp.task 'stylus_build', ->
     .on('error', log)
     .pipe(base64(
         extensions: ['woff']
-        maxImageSize: 1024 * 1024
+        maxImageSize: 10 * 1024 # 10 mb
     ))
     .pipe(urlAdjuster(
         replace: ['../../img/', '../../frontend/img/']
     ))
     .pipe(base64(
         extensions: ['png', 'svg', 'jpg']
-        maxImageSize: 10 * 1024
+        maxImageSize: 10 * 1024 # 10 mb
     ))
     .pipe(urlAdjuster(
         replace: ['../../frontend/img/','../img/']
     ))
     .pipe(autoprefixer(
-        browser: ['> 5%', 'last 2 versions', 'android 4']
+        browser: ['> 5%', 'last 2 versions']
     ))
     .pipe(cleancss())
     .pipe(gulp.dest('./frontend/css/'))
@@ -222,33 +220,14 @@ gulp.task 'js_build', sequence(
 gulp.task 'img_dev', ->
     gulp.src('./source/img/**/*')
         .pipe(changed('./frontend/img/'))
-        .pipe(imagemin(
-            optimizationLevel: 5
-            progressive: true
-            interlaced: true
-        ))
         .pipe(gulp.dest('./frontend/img/'))
         .pipe(reload(stream: true))
 
 
-gulp.task 'img_build_imagemin', ->
-    gulp.src(['./source/img/**/*.{svg,ico,gif}'])
-        .pipe(imagemin(
-            optimizationLevel: 5
-            progressive: true
-            interlaced: true
-        ))
-        .pipe(gulp.dest('./frontend/img/'))
-
-gulp.task 'img_build_teenypng', ->
-    gulp.src(['./source/img/**/*.{png,jpg}'])
+gulp.task 'img_build', ->
+    gulp.src(['./source/img/**/*'])
         .pipe(teenypng('apikey': '0Q30pqGuD4mYEKXFcCzCXbgXK6MWK7rR'))
         .pipe(gulp.dest('./frontend/img/'))
-
-gulp.task 'img_build', sequence(
-    ['img_build_imagemin']
-    ['img_build_teenypng']
-)
 
 
 
@@ -258,8 +237,9 @@ gulp.task 'img_build', sequence(
 #
 ###
 
-gulp.task 'favicon', ->
+gulp.task 'favicon_build', ->
     gulp.src('./source/favicon/*')
+        .pipe(teenypng('apikey': '0Q30pqGuD4mYEKXFcCzCXbgXK6MWK7rR'))
         .pipe(gulp.dest('./frontend/favicon/'))
 
 
@@ -301,7 +281,7 @@ gulp.task 'build', sequence(
     ['clean']
     ['img_build']
     ['stylus_build', 'jade_build', 'js_build']
-    ['favicon']
+    ['favicon_build']
     ['styleguide']
 )
 
@@ -310,7 +290,6 @@ gulp.task 'build', sequence(
 gulp.task 'dev', sequence(
     ['clean']
     ['stylus_dev', 'jade_dev', 'js_dev', 'img_dev']
-    ['favicon']
     ['styleguide']
 )
 
