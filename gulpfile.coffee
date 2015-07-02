@@ -38,7 +38,6 @@ changed = require('gulp-changed')
 imagemin = require('gulp-imagemin')
 # png & jpg < 5mb / 500 шт в месяц  -  https://tinypng.com
 teenypng = require('gulp-teenypng')
-babel = require('gulp-babel')
 coffee = require('gulp-coffee')
 # Google jsmin
 closure = require('gulp-closure-compiler-service')
