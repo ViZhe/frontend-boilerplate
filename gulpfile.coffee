@@ -8,10 +8,8 @@ require('coffee-script')
 ###
 
 gulp = require('gulp')
-vinylPaths = require('vinyl-paths')
 del = require('del')
-# Раскрашиваем текст
-colors = require('colors/safe')
+plumber = require('gulp-plumber')
 # Следим за файлами
 watch = require('gulp-watch')
 # Инклюдинг файлов
@@ -42,24 +40,6 @@ closure = require('gulp-closure-compiler-service')
 uglify = require('gulp-uglify')
 
 
-###
-#
-#	LOG SECTION
-#
-###
-
-log = (error) ->
-    console.log [
-        ''
-        colors.red('---------- ERROR MESSAGE START ----------')
-        colors.red.inverse('[' + error.name + ' in ' + error.plugin + ']')
-        error.message
-        colors.red('---------- ERROR MESSAGE END ------------')
-        ''
-    ].join('\n')
-    @end()
-
-
 
 ###
 #
@@ -72,8 +52,8 @@ gulp.task 'stylus_dev', ->
         './source/styl/[^-]*.styl'
         './source/styl/fonts/[^-]*.styl'
     ])
+    .pipe(plumber())
     .pipe(stylus())
-    .on('error', log)
     .pipe(base64(
         extensions: ['woff']
         maxImageSize: 10 * 1024 # 10 mb
@@ -93,8 +73,8 @@ gulp.task 'stylus_build', ->
         './source/styl/[^-]*.styl'
         './source/styl/fonts/[^-]*.styl'
     ])
+    .pipe(plumber())
     .pipe(stylus())
-    .on('error', log)
     .pipe(base64(
         extensions: ['woff']
         maxImageSize: 10 * 1024 # 10 mb
@@ -126,6 +106,7 @@ gulp.task 'stylus_build', ->
 
 gulp.task 'styleguide', ->
     gulp.src('./source/styl/[^-]*.styl')
+        .pipe(plumber())
         .pipe(stylus())
         .pipe(styledown(
             config: './source/docs/config.styl'
@@ -144,20 +125,20 @@ gulp.task 'styleguide', ->
 
 gulp.task 'jade_dev', ->
     gulp.src('./source/tpl/[^-]*.jade')
+        .pipe(plumber())
         .pipe(jade(
             pretty: true
         ))
-        .on('error', log)
         .pipe(gulp.dest('./'))
         .pipe(reload(stream: true))
 
 
 gulp.task 'jade_build', ->
     gulp.src('./source/tpl/[^-]*.jade')
+        .pipe(plumber())
         .pipe(jade(
             pretty: true
         ))
-        .on('error', log)
         .pipe(gulp.dest('./'))
 
 
@@ -170,15 +151,14 @@ gulp.task 'jade_build', ->
 
 gulp.task 'js_dev_main', ->
     gulp.src('./source/js/[^-]*.coffee')
+        .pipe(plumber())
         .pipe(includeFile())
         .pipe(coffee())
-        .on('error', log)
         .pipe(gulp.dest('./frontend/js'))
         .pipe(reload(stream: true))
 
 gulp.task 'js_dev_lib', ->
     gulp.src('./source/js/lib/[^-]*.js')
-        .on('error', log)
         .pipe(gulp.dest('./frontend/js/lib/'))
         .pipe(reload(stream: true))
 
@@ -190,18 +170,18 @@ gulp.task 'js_dev', sequence(
 
 gulp.task 'js_build_main', ->
     gulp.src('./source/js/[^-]*.coffee')
+        .pipe(plumber())
         .pipe(includeFile())
         .pipe(coffee())
         .pipe(closure(compilation_level: 'SIMPLE_OPTIMIZATIONS'))
         .pipe(uglify())
-        .on('error', log)
         .pipe(gulp.dest('./frontend/js'))
 
 gulp.task 'js_build_lib', ->
     gulp.src('./source/js/lib/[^-]*.js')
+        .pipe(plumber())
         .pipe(closure(compilation_level: 'SIMPLE_OPTIMIZATIONS'))
         .pipe(uglify())
-        .on('error', log)
         .pipe(gulp.dest('./frontend/js/lib/'))
 
 gulp.task 'js_build', sequence(
@@ -265,8 +245,10 @@ gulp.task 'browser-sync', ->
 ###
 
 gulp.task 'clean', ->
-    gulp.src(['./frontend/', './*.html'])
-        .pipe(vinylPaths(del))
+    del.sync(
+        ['./frontend/', './*.html']
+        { force: true}
+    )
 
 
 
@@ -300,13 +282,13 @@ gulp.task 'watch', ->
         gulp.start ['stylus_dev', 'styleguide']
         return
     watch './source/**/*.jade', ->
-        gulp.start [ 'jade_dev' ]
+        gulp.start ['jade_dev']
         return
     watch ['./source/**/*.js', './source/**/*.coffee'], ->
         gulp.start ['js_dev_main', 'js_dev_lib']
         return
     watch './source/img/**/*', ->
-        gulp.start [ 'img_dev' ]
+        gulp.start ['img_dev']
         return
     return
 
