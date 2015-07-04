@@ -14,6 +14,8 @@ plumber = require('gulp-plumber')
 watch = require('gulp-watch')
 # Инклюдинг файлов
 includeFile = require('gulp-file-include')
+# Вставляет заголовок в файлы
+header = require('gulp-header')
 # Последовательность выполения тасков
 sequence = require('gulp-sequence')
 # http://www.browsersync.io/docs/gulp/
@@ -38,6 +40,42 @@ coffee = require('gulp-coffee')
 # Google jsmin
 closure = require('gulp-closure-compiler-service')
 uglify = require('gulp-uglify')
+
+
+
+###
+#
+#	HEADER SECTION
+#
+###
+version = require('./version.json')
+version = v: version
+headerCat = ['/*!',
+' *	@author ViZhe (Barsik^)',
+' *	@version ${v.major}.${v.minor}.${v.patch}-${v.prerelease}/${v.project}',
+' *',
+' *	                   $$____________$$',
+' *	                  $___$________$___$',
+' *	                  $_____$$$$$$_____$',
+' *	                 $_____sss___sss____$',
+' *	                $______ii_____ii_____$',
+' *	                 $_______$$$________$',
+' *	     $$$$$$$$     $_______$________$',
+' *	   $$________$       $$_________$$',
+' *	    $_________$     $___$$$$$___$',
+' *	       $______$    $__$________$__$',
+' *	       $_____$    $__$__________$__$',
+' *	      $____$   $$$$__$___hope___$__$$$$',
+' *	     $___$    $____$__$________$___$___$',
+' *	     $__$     $____$__$________$__$____$',
+' *	    $___$      $____$__$____$_$__$____$',
+' *	      $__$      $____$___$_$_____$___$',
+' *	       $___$$$$$_$___$___$_$____$___$',
+' *	          $$$$$_$____$____$_____$____$',
+' *	                $$$_$_____$______$_$$$',
+' *	                     $$$$___$$$$$',
+' */',
+''].join('\n')
 
 
 
@@ -93,6 +131,7 @@ gulp.task 'stylus_build', ->
         browser: ['> 5%', 'last 2 versions']
     ))
     .pipe(cleancss())
+    .pipe(header(headerCat, version))
     .pipe(gulp.dest('./frontend/css/'))
 
 
@@ -175,6 +214,7 @@ gulp.task 'js_build_main', ->
         .pipe(coffee())
         .pipe(closure(compilation_level: 'SIMPLE_OPTIMIZATIONS'))
         .pipe(uglify())
+        .pipe(header(headerCat, version))
         .pipe(gulp.dest('./frontend/js'))
 
 gulp.task 'js_build_lib', ->
@@ -247,7 +287,7 @@ gulp.task 'browser-sync', ->
 gulp.task 'clean', ->
     del.sync(
         ['./frontend/', './*.html']
-        { force: true}
+        force: true
     )
 
 
