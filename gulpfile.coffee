@@ -48,6 +48,7 @@ uglify = require('gulp-uglify')
 #	HEADER SECTION
 #
 ###
+
 version = require('./version.json')
 version = v: version
 headerCat = ['/*!',
