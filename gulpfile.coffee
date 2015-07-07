@@ -254,19 +254,6 @@ gulp.task 'img_build', ->
 
 ###
 #
-#	FAVICON SECTION
-#
-###
-
-gulp.task 'favicon_build', ->
-    gulp.src('./source/favicon/*')
-        .pipe(teenypng('apikey': '0Q30pqGuD4mYEKXFcCzCXbgXK6MWK7rR'))
-        .pipe(gulp.dest('./frontend/favicon/'))
-
-
-
-###
-#
 #	LOCAL SERVER SECTION
 #
 ###
