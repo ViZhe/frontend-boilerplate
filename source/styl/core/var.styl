@@ -1,12 +1,13 @@
 /*
-*
-* Глобальные переменные.
-*
-*/
+ *
+ * Глобальные переменные.
+ *
+ */
 
 $site_font_family = 'Roboto'	// Шрифт сайта.
 $site_font_size = 16px			// Размер шрифта сайта
 $site_border-radius = 3px 		// Закругление углов (кнопки, сообщения и т.п.). Отключить = 0.
+
 
 /* Ширина сайта */
 
@@ -17,7 +18,7 @@ $site_width_xl = 100% 			// Смартфон(альбом).
 $site_width_xs = 100% 			// Смартфон(портрет).
 
 
-/* Точка перехода */
+/* Точки перехода */
 
 $site_media_md = 1260px 		// C Обычного на Маленький десктоп и Планшеты(альбом).
 $site_media_sm = 1000px 		// C Маленького десктопа и Планшета(альбом) на Планшет(портрет).
@@ -42,6 +43,9 @@ $media_not_touch = '(min-width $site_media_sm)'
 
 $media_for_sm = '(min-width $site_media_xl) and (max-width $site_media_sm - 1)'
 $media_not_sm = '(max-width $site_media_xl - 1), (min-width $site_media_sm)'
+
+$media_for_x = '(max-width $site_media_xl - 1)'
+$media_not_x = '(min-width $site_media_xl)'
 
 $media_for_xl = '(min-width $site_media_xs) and (max-width $site_media_xl - 1)'
 $media_not_xl = '(max-width $site_media_xs - 1), (min-width $site_media_xl)'

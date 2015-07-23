@@ -291,7 +291,6 @@ gulp.task 'build', sequence(
     ['clean']
     ['img_build']
     ['stylus_build', 'jade_build', 'js_build']
-    ['favicon_build']
     ['styleguide']
 )
 

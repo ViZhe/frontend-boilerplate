@@ -75,7 +75,7 @@
     "level": "ignore"
   },
   "no_tabs": {
-    "level": "error"
+    "level": "ignore"
   },
   "no_throwing_strings": {
     "level": "error"
