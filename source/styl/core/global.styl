@@ -5,23 +5,23 @@
  */
 
 body
-	background darken($white, 5%)
-	min-width 320px
-	font-family $site_font_family, Arial, sans-serif
-	font-size $site_font_size
-	line-height 1.4
-	color $black
+    background darken($white, 5%)
+    min-width 320px
+    font-family $site_font_family, Arial, sans-serif
+    font-size $site_font_size
+    line-height 1.4
+    color $black
 
 a
-	text-decoration none
-	color $blue
+    text-decoration none
+    color $blue
 
-	&:hover
-	&:focus
-		color lighten(@color, 40%)
+    &:hover
+    &:focus
+        color lighten(@color, 40%)
 
-	&:active
-		color $red
+    &:active
+        color $red
 
 
 
@@ -34,53 +34,53 @@ a
  * `.b-heading_first` — Убирает верхний отступ заголовка.
  *
  *
- *     @example.padded
- *     .b-heading.b-heading_level_1.b-heading_first Заголовок 1 уровня без верхнего отступа
- *     .b-heading.b-heading_level_1 Заголовок 1 уровня
- *     .b-heading.b-heading_level_2 Заголовок 2 уровня
- *     .b-heading.b-heading_level_3 Заголовок 3 уровня
- *     .b-heading.b-heading_level_4 Заголовок 4 уровня
- *     .b-heading.b-heading_level_5 Заголовок 5 уровня
- *     .b-heading.b-heading_level_6 Заголовок 6 уровня
+ *		@example.padded
+ *		.b-heading.b-heading_level_1.b-heading_first Заголовок 1 уровня без верхнего отступа
+ *		.b-heading.b-heading_level_1 Заголовок 1 уровня
+ *		.b-heading.b-heading_level_2 Заголовок 2 уровня
+ *		.b-heading.b-heading_level_3 Заголовок 3 уровня
+ *		.b-heading.b-heading_level_4 Заголовок 4 уровня
+ *		.b-heading.b-heading_level_5 Заголовок 5 уровня
+ *		.b-heading.b-heading_level_6 Заголовок 6 уровня
  *
  */
 
 .b-heading
-	font-weight 700
-	line-height 1.1
+    font-weight 700
+    line-height 1.1
 
 .b-heading_level_1
 .b-heading_level_2
 .b-heading_level_3
-	padding-top 20px
-	padding-bottom 15px
+    padding-top 20px
+    padding-bottom 15px
 
 .b-heading_level_4
 .b-heading_level_5
 .b-heading_level_6
-	padding-top 15px
-	padding-bottom 10px
+    padding-top 15px
+    padding-bottom 10px
 
 .b-heading_level_1
-	font-size $site_font_size + 12
+    font-size $site_font_size + 12
 
 .b-heading_level_2
-	font-size $site_font_size + 10
+    font-size $site_font_size + 10
 
 .b-heading_level_3
-	font-size $site_font_size + 8
+    font-size $site_font_size + 8
 
 .b-heading_level_4
-	font-size $site_font_size + 6
+    font-size $site_font_size + 6
 
 .b-heading_level_5
-	font-size $site_font_size + 4
+    font-size $site_font_size + 4
 
 .b-heading_level_6
-	font-size $site_font_size + 2
+    font-size $site_font_size + 2
 
 .b-heading_first
-	padding-top 0
+    padding-top 0
 
 
 
@@ -91,30 +91,30 @@ a
  *
  *		@example.padded
  *		.g-spacer
- *     		p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
- *     		p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
- *     		ul
- *     			li Lorem ipsum dolor sit amet
- *     			li Sed do eiusmod tempor incididunt ut
+ *			p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+ *			p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+ *			ul
+ *				li Lorem ipsum dolor sit amet
+ *				li Sed do eiusmod tempor incididunt ut
  *
  */
 
 .g-
 
-	&spacer
-		& p
-			margin-bottom 15px
+    &spacer
+        & p
+            margin-bottom 15px
 
-		& ul
-		& ol
-			margin-bottom 15px
-			margin-left 20px
+        & ul
+        & ol
+            margin-bottom 15px
+            margin-left 20px
 
-		& li
-			margin-bottom 5px
+        & li
+            margin-bottom 5px
 
-		& table
-			margin-bottom 15px
+        & table
+            margin-bottom 15px
 
 
 /*!*
@@ -137,21 +137,21 @@ a
  */
 
 .g-
-	&cf
-		clearfix()
+    &cf
+        clearfix()
 
-	&float
-		&_left
-			float left !important
+    &float
+        &_left
+            float left !important
 
-			&_img
-				margin 5px 10px 10px 0
+            &_img
+                margin 5px 10px 10px 0
 
-		&_right
-			float right !important
+        &_right
+            float right !important
 
-			&_img
-				margin 5px 0 10px 10px
+            &_img
+                margin 5px 0 10px 10px
 
 
 /*!*
@@ -168,11 +168,11 @@ a
  */
 
 .g-
-	&hide
-		display none !important
+    &hide
+        display none !important
 
-	&show
-		display block !important
+    &show
+        display block !important
 
 
 /*!*
@@ -188,14 +188,14 @@ a
  */
 
 .g-align
-	&_left
-		text-align left !important
+    &_left
+        text-align left !important
 
-	&_center
-		text-align center !important
+    &_center
+        text-align center !important
 
-	&_right
-		text-align right !important
+    &_right
+        text-align right !important
 
 
 /*!*
@@ -212,17 +212,17 @@ a
  */
 
 .g-font
-	&_bold
-		font-weight 700 !important
+    &_bold
+        font-weight 700 !important
 
-	&_italic
-		font-style italic !important
+    &_italic
+        font-style italic !important
 
-	&_big
-		font-size 120% !important
+    &_big
+        font-size 120% !important
 
-	&_small
-			font-size 80% !important
+    &_small
+            font-size 80% !important
 
 
 /*!*
@@ -238,6 +238,6 @@ a
  */
 
 .g-color
-	for name, color in $color_text
-		&_{name}
-			color color
+    for name, color in $color_text
+        &_{name}
+            color color

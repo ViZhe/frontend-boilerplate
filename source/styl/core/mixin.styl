@@ -1,200 +1,200 @@
-/*
- *	=================================================
- *	# Grid
+
+/**
+ * Grid
  *
- *	$grid()					=> .col{...}.w1-2{width:50%;}
- *	$grid('_postfix')		=> .col{...}.w1-4_postfix{width:25%;}
+ * $grid()                  => .col{...}.w1-2{width:50%;}
+ * $grid('_postfix')        => .col{...}.w1-4_postfix{width:25%;}
  *
  */
 
 $grid(postfix = '')
-	.w0-0{postfix}
-		flex 1
+    .w0-0{postfix}
+        flex 1
 
-	.w1-1{postfix}
-		width 100%
+    .w1-1{postfix}
+        width 100%
 
-	for i in 1...12
-		for j in i+1..12
-			.w{i}-{j}{postfix}
-				width (i/j) * 100%
+    for i in 1...12
+        for j in i+1..12
+            .w{i}-{j}{postfix}
+                width (i/j) * 100%
+
 
 
 /*
- *	=================================================
- *	# Order
+ * Order
  *
- *	$order()				=> .o1{order:1;}
- *	$order('_postfix')		=> .o2_postfix{order:2;}
+ * $order()                 => .o1{order:1;}
+ * $order('_postfix')       => .o2_postfix{order:2;}
  *
  */
 
 $order(postfix = '')
-	for i in 1..12
-		.o{i}{postfix}
-			order i
+    for i in 1..12
+        .o{i}{postfix}
+            order i
 
 
-/*
- *	=================================================
- *	# Offset
+
+/**
+ * Offset
  *
- *	offset 1 of 10			=> margin-left:10%;
- *	$offset()				=> .os1-2{margin-left:50%;}
- *	$offset('_postfix')		=> .os1-4{margin-left:25%;}
+ * offset 1 of 10           => margin-left:10%;
+ * $offset()                => .os1-2{margin-left:50%;}
+ * $offset('_postfix')      => .os1-4{margin-left:25%;}
  *
  */
 
 offset(arg...)
-	margin-left (arg[0]/arg[2])*100%
+    margin-left (arg[0]/arg[2])*100%
 
 $offset(postfix = '')
-	.os0-0{postfix}
-		margin-left 0
+    .os0-0{postfix}
+        margin-left 0
 
-	for i in 1...12
-		for j in i+1..12
-			.os{i}-{j}{postfix}
-				margin-left (i/j) * 100%
+    for i in 1...12
+        for j in i+1..12
+            .os{i}-{j}{postfix}
+                margin-left (i/j) * 100%
 
 
-/*
- *	=================================================
- *	# Gradient
+
+/**
+ * Gradient
  *
- *	background linear-gradient(top, red, green, blue)
- *	background linear-gradient(bottom, red, green 50%, blue)
- *	background linear-gradient(bottom, #000, #fff 50%, #777)
- *	background-image linear-gradient(bottom left, red, green 50%, white 90%, blue)
+ * background linear-gradient(top, red, green, blue)
+ * background linear-gradient(bottom, red, green 50%, blue)
+ * background linear-gradient(bottom, #000, #fff 50%, #777)
+ * background-image linear-gradient(bottom left, red, green 50%, white 90%, blue)
  *
  */
 
 linear-gradient(start, colors...)
-	if start == 'top'
-		$start = 'to bottom'
+    if start == 'top'
+        $start = 'to bottom'
 
-	else if start == 'right'
-		$start =  'to left'
+    else if start == 'right'
+        $start =  'to left'
 
-	else if start == 'bottom'
-		$start = 'to top'
+    else if start == 'bottom'
+        $start = 'to top'
 
-	else if start == 'left'
-		$start = 'to right'
+    else if start == 'left'
+        $start = 'to right'
 
-	else if start[0] == 'top' && start[1] == 'right'
-		$start = 'to bottom left'
+    else if start[0] == 'top' && start[1] == 'right'
+        $start = 'to bottom left'
 
-	else if start[0] == 'top' && start[1] == 'left'
-		$start = 'to  bottom right'
+    else if start[0] == 'top' && start[1] == 'left'
+        $start = 'to  bottom right'
 
-	else if start[0] == 'bottom' && start[1] == 'right'
-		$start = 'to top left'
+    else if start[0] == 'bottom' && start[1] == 'right'
+        $start = 'to top left'
 
-	else if start[0] == 'bottom' && start[1] == 'left'
-		$start = 'to top right'
+    else if start[0] == 'bottom' && start[1] == 'left'
+        $start = 'to top right'
 
-	unquote('linear-gradient(' + $start + ', ' + join(', ', colors) + ')')
+    unquote('linear-gradient(' + $start + ', ' + join(', ', colors) + ')')
 
 
-/*
- *	=================================================
- *	# Reset float
+
+/**
+ * Reset float
  *
- *	clearfix()
+ * clearfix()
  *
  */
 
 clearfix()
-	&::before
-	&::after
-		content  ''
-		display block
+    &::before
+    &::after
+        display block
+        content  ''
 
-	&::after
-		clear both
+    &::after
+        clear both
 
 
-/*
- *	=================================================
- *	# Position
+
+/**
+ * Position
  *
- *	static false					=> position:static;
- *	static 10px 					=> position:static; top:10px; right:10px; bottom:10px; left:10px
- *	relative 10px 15px  			=> position:relative; top:10px; right:15px; bottom:10px; left:15px
- *	absolute 10px false				=> position:absolute; top:10px; bottom:10px
- *	fixed 10px 15px 20px false		=> position:fixed; top:10px; right:15px; bottom:20px
+ * static false                    => position:static;
+ * static 10px                     => position:static; top:10px; right:10px; bottom:10px; left:10px
+ * relative 10px 15px              => position:relative; top:10px; right:15px; bottom:10px; left:15px
+ * absolute 10px false             => position:absolute; top:10px; bottom:10px
+ * fixed 10px 15px 20px false      => position:fixed; top:10px; right:15px; bottom:20px
  *
  */
 
 $pos(type, arg)
-	position unquote(type)
-	if length(arg) == 1 && arg[0] != false
-		top arg[0]
-		right arg[0]
-		bottom arg[0]
-		left arg[0]
+    position unquote(type)
+    if length(arg) == 1 && arg[0] != false
+        top arg[0]
+        right arg[0]
+        bottom arg[0]
+        left arg[0]
 
-	else if length(arg) == 2
-		top arg[0] if arg[0] != false
-		right arg[1] if arg[1] != false
-		bottom arg[0] if arg[0] != false
-		left arg[1] if arg[1] != false
+    else if length(arg) == 2
+        top arg[0] if arg[0] != false
+        right arg[1] if arg[1] != false
+        bottom arg[0] if arg[0] != false
+        left arg[1] if arg[1] != false
 
-	else if length(arg) == 3
-		top arg[0] if arg[0] != false
-		right arg[1] if arg[1] != false
-		bottom arg[2] if arg[2] != false
-		left arg[1] if arg[1] != false
+    else if length(arg) == 3
+        top arg[0] if arg[0] != false
+        right arg[1] if arg[1] != false
+        bottom arg[2] if arg[2] != false
+        left arg[1] if arg[1] != false
 
-	else if length(arg) == 4
-		top arg[0] if arg[0] != false
-		right arg[1] if arg[1] != false
-		bottom arg[2] if arg[2] != false
-		left arg[3] if arg[3] != false
+    else if length(arg) == 4
+        top arg[0] if arg[0] != false
+        right arg[1] if arg[1] != false
+        bottom arg[2] if arg[2] != false
+        left arg[3] if arg[3] != false
 
 static(arg...)
-	$pos('static', arg)
+    $pos('static', arg)
 relative(arg...)
-	$pos('relative', arg)
+    $pos('relative', arg)
 absolute(arg...)
-	$pos('absolute', arg)
+    $pos('absolute', arg)
 fixed(arg...)
-	$pos('fixed', arg)
+    $pos('fixed', arg)
 
 
-/*
- *	=================================================
- *	# Size
+
+/**
+ * Size
  *
- *	size 10px  			=> width:10px; height:10px
- *	size 10px 15px  	=> width:10px; height:15px
- *	size 10px false		=> width:10px
- *	size false 15px		=> height:15px
+ * size 10px               => width:10px; height:10px
+ * size 10px 15px          => width:10px; height:15px
+ * size 10px false         => width:10px
+ * size false 15px         => height:15px
  *
  */
 
 size(arg...)
-	if length(arg) == 1 && arg[0] != false
-		width arg[0]
-		height arg[0]
-	else if length(arg) == 2
-		width arg[0] if arg[0] != false
-		height arg[1] if arg[1] != false
+    if length(arg) == 1 && arg[0] != false
+        width arg[0]
+        height arg[0]
+    else if length(arg) == 2
+        width arg[0] if arg[0] != false
+        height arg[1] if arg[1] != false
 
 
-/*
- *	=================================================
- *	# Overflow
+
+/**
+ * Overflow
  *
- *	overflow ellipsis
+ * overflow ellipsis
  *
  */
 
 overflow(key)
-	if key == ellipsis
-		overflow hidden
-		text-overflow ellipsis
-		white-space nowrap
-	else
-		overflow key
+    if key == ellipsis
+        overflow hidden
+        text-overflow ellipsis
+        white-space nowrap
+    else
+        overflow key
