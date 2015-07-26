@@ -167,7 +167,7 @@ gulp.task 'jade_dev', ->
     gulp.src('./source/tpl/[^-]*.jade')
         .pipe(plumber())
         .pipe(jade(
-            pretty: true
+            pretty: '    '
         ))
         .pipe(gulp.dest('./'))
         .pipe(reload(stream: true))
@@ -177,7 +177,7 @@ gulp.task 'jade_build', ->
     gulp.src('./source/tpl/[^-]*.jade')
         .pipe(plumber())
         .pipe(jade(
-            pretty: true
+            pretty: '    '
         ))
         .pipe(gulp.dest('./'))
 
