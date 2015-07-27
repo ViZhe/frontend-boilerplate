@@ -8,7 +8,7 @@
  */
 
 .b-form
-	display block
+    display block
 
 
 /*!*
@@ -18,7 +18,7 @@
  * `.b-form__label_disabled` — Отключаем элемент, нужен `disabled` для внутреннего input-а.
  *
  *
- *     @example.padded
+ *		@example.padded
  *		form.b-form
  *			label.b-form__label Инпут
  *				input.b-form__field(type="text", placeholder="Simple text input")
@@ -28,34 +28,34 @@
  */
 
 .b-form__label
-	display block
+    display block
 
 .b-form__label:not(:first-of-type)
-	margin-top 15px
+    margin-top 15px
 
 .b-form__label_disabled
-	color $gray
-	cursor default
+    color $gray
+    cursor default
 
-	&::before
-		color @color !important
+    &::before
+        color @color !important
 
 
 .b-form__radio
 .b-form__checkbox
-	display flex
-	cursor pointer
+    display flex
+    cursor pointer
 
-	&::before
-		margin-right 5px
+    &::before
+        margin-right 5px
 
-	&:hover::before
-		color $blue
+    &:hover::before
+        color $blue
 
 .b-form__radio input
 .b-form__checkbox input
-	fixed -100% false false
-	visibility hidden
+    fixed -100% false false
+    visibility hidden
 
 
 /*!*
@@ -63,7 +63,7 @@
  * `.b-form__group` — Объединяет группу элементов формы.
  *
  *
- *     @example.padded
+ *		@example.padded
  *		form.b-form
  *			.b-form__group
  *				label.b-form__label Имя
@@ -79,4 +79,4 @@
  */
 
 .b-form__group:not(:last-of-type)
-	margin-bottom 30px
+    margin-bottom 30px

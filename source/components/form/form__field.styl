@@ -10,7 +10,7 @@
  * `.b-form__field_invalid` — Модификатор поля с ошибкой.
  *
  *
- *     @example.padded
+ *		@example.padded
  *		label.b-form__label Инпут
  *			input.b-form__field(type="text", placeholder="Simple text input",  required)
  *		label.b-form__label Текстовая область
@@ -25,32 +25,32 @@
  */
 
 .b-form__field
-	margin-top 5px
-	padding 5px
-	width 100%
-	border 2px solid $graylight
-	box-shadow 0 0 0 rgba(0, 0, 0, 0)
-	background $white
-	color $black
-	transition border .5s ease 0
+    margin-top 5px
+    padding 5px
+    width 100%
+    border 2px solid $graylight
+    box-shadow 0 0 0 rgba(0, 0, 0, 0)
+    background $white
+    color $black
+    transition border .5s ease 0
 
-	if $site_border-radius != 0
-		border-radius $site_border-radius
+    if $site_border-radius != 0
+        border-radius $site_border-radius
 
-	&:focus
-		border-color $blue
+    &:focus
+        border-color $blue
 
 .b-form__field_textarea
-	min-width 100%
-	min-height 50px
-	max-width 100%
+    min-width 100%
+    min-height 50px
+    max-width 100%
 
 
 .b-form__field[disabled]
-	background-color lighten($graylight, 70%)
+    background-color lighten($graylight, 70%)
 
 .b-form__field_valid
-	background-color rgba($green, .1)
+    background-color rgba($green, .1)
 
 .b-form__field_invalid
-	background-color rgba($red, .1)
+    background-color rgba($red, .1)

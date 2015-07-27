@@ -16,92 +16,92 @@
 
 
 @media $media_for_touch
-	.b-popup__outer
-		overflow hidden
+    .b-popup__outer
+        overflow hidden
 
 .b-popup__outer > body
-	overflow hidden
+    overflow hidden
 
 .b-popup
-	fixed 0
-	z-index 200
-	visibility hidden
-	min-width 320px
-	background rgba( $black, 90% )
-	overflow auto
-	opacity 0
-	transition all .3s
+    fixed 0
+    z-index 200
+    visibility hidden
+    min-width 320px
+    background rgba( $black, 90% )
+    overflow auto
+    opacity 0
+    transition all .3s
 
 .b-popup_show
-	visibility visible
-	opacity 1
+    visibility visible
+    opacity 1
 
 
 .b-popup__inner
-	display flex
-	padding 20px 0
-	align-items center
-	justify-content center
-	min-height 100%
+    display flex
+    padding 20px 0
+    align-items center
+    justify-content center
+    min-height 100%
 
-	@media $media_for_touch
-		padding 0
-		align-items stretch
+    @media $media_for_touch
+        padding 0
+        align-items stretch
 
 .b-popup__content
-	relative false
-	flex 0 0 auto
-	padding 15px
-	min-width 320px
-	max-width 1000px
-	width 70%
-	background $white
-	box-shadow 0 0 3px $black
-	transition all .3s ease
-	transform translateY(-40px)
+    relative false
+    flex 0 0 auto
+    padding 15px
+    min-width 320px
+    max-width 1000px
+    width 70%
+    background $white
+    box-shadow 0 0 3px $black
+    transition all .3s ease
+    transform translateY(-40px)
 
-	if $site_border-radius != 0
-		border-radius $site_border-radius
+    if $site_border-radius != 0
+        border-radius $site_border-radius
 
-	@media $media_for_touch
-		width 100%
+    @media $media_for_touch
+        width 100%
 
-		if $site_border-radius != 0
-			border-radius 0
+        if $site_border-radius != 0
+            border-radius 0
 
-	.b-popup_show &
-		transform translateY(0px)
+    .b-popup_show &
+        transform translateY(0px)
 
 
 .b-popup__close
-	absolute -13px -13px false false
-	size 26px
-	border-radius 50%
-	text-align center
-	cursor pointer
-	background $white
-	box-shadow 0 0 3px $black
+    absolute -13px -13px false false
+    size 26px
+    border-radius 50%
+    text-align center
+    cursor pointer
+    background $white
+    box-shadow 0 0 3px $black
 
-	@media $media_for_touch
-		top 0
-		right 0
-		size 40px
-		box-shadow 0 0 0 -1px
+    @media $media_for_touch
+        top 0
+        right 0
+        size 40px
+        box-shadow 0 0 0 -1px
 
-	&::after
-	&::before
-		absolute 3px false false 11px
-		display block
-		size 4px 20px
-		border-radius 3px
-		content ''
-		background $black
+    &::after
+    &::before
+        absolute 3px false false 11px
+        display block
+        size 4px 20px
+        border-radius 3px
+        content ''
+        background $black
 
-		@media $media_for_touch
-			size 8px 36px
+        @media $media_for_touch
+            size 8px 36px
 
-	&::before
-		transform rotate(-45deg)
+    &::before
+        transform rotate(-45deg)
 
-	&::after
-		transform rotate(45deg)
+    &::after
+        transform rotate(45deg)

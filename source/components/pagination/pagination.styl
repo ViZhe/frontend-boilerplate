@@ -19,8 +19,8 @@
  * `.b-pagination__divider` — Разделитель для пропуска пунктов.
  *
  *
- *     @example.padded
- *     ul.b-pagination
+ *		@example.padded
+ *		ul.b-pagination
  *			li.b-pagination__item: span.b-pagination__disable Назад
  *			li.b-pagination__item: span.b-pagination__disable &lt;
  *			li.b-pagination__item: span.b-pagination__active 1
@@ -37,48 +37,48 @@
  */
 
 .b-pagination
-	display flex
-	padding 15px 0 30px
-	list-style none
-	justify-content flex-end
-	// или
-	// justify-content center
-	// или
-	// без justify-content
+    display flex
+    padding 15px 0 30px
+    list-style none
+    justify-content flex-end
+    // или
+    // justify-content center
+    // или
+    // без justify-content
 
 
 .b-pagination__item
-	margin 3px
+    margin 3px
 
 .b-pagination__divider
 .b-pagination__active
 .b-pagination__disable
 .b-pagination__link
-	display block
-	padding 5px 10px
+    display block
+    padding 5px 10px
 
-	if $site_border-radius != 0
-		border-radius $site_border-radius
+    if $site_border-radius != 0
+        border-radius $site_border-radius
 
 .b-pagination__divider
-	&::after
-		color $gray
-		content '...'
+    &::after
+        color $gray
+        content '...'
 
 .b-pagination__active
 .b-pagination__disable
-	background $gray
-	color $white
-	cursor default
+    background $gray
+    color $white
+    cursor default
 
 .b-pagination__link
-	background $blue
-	color $white !important
-	text-decoration none
+    background $blue
+    color $white !important
+    text-decoration none
 
-	&:hover
-	&:focus
-		background lighten(@background, 40%)
+    &:hover
+    &:focus
+        background lighten(@background, 40%)
 
-	&:active
-		background $red
+    &:active
+        background $red

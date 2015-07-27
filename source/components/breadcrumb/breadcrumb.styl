@@ -11,8 +11,8 @@
  * `.b-breadcrumb__item` — Пункт крошек.
  *
  *
- *     @example.padded
- *     ul.b-breadcrumb
+ *		@example.padded
+ *		ul.b-breadcrumb
  *			li.b-breadcrumb__item: a(href="") Главная
  *			li.b-breadcrumb__item: a(href="") Каталог
  *			li.b-breadcrumb__item: a(href="") Группа
@@ -23,13 +23,13 @@
 $breadcrumbs_font_size = $site_font_size - 10%
 
 .b-breadcrumb
-	display flex
-	list-style none
-	font-size $breadcrumbs_font_size
+    display flex
+    list-style none
+    font-size $breadcrumbs_font_size
 
 .b-breadcrumb__item
-	color $gray
+    color $gray
 
-	&:not(:last-of-type)::after
-		margin 0 5px
-		content '›'
+    &:not(:last-of-type)::after
+        margin 0 5px
+        content '›'
