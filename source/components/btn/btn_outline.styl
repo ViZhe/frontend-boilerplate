@@ -4,7 +4,7 @@
  * `.b-btn_outline_{$color_btn}` — Задает стиль outline.
  *
  *
- *     @example.padded
+ *		@example.padded
  *		.b-btn.b-btn_outline_red Нажать
  *		.b-btn.b-btn_outline_green Нажать
  *		.b-btn.b-btn_outline_blue Нажать
@@ -12,16 +12,16 @@
  */
 
 .b-btn_outline
-	for name, color in $color_btn
-		&_{name}
-			border 2px solid color
-			background-color rgba(0, 0, 0, 0)
-			color color
+    for name, color in $color_btn
+        &_{name}
+            border 2px solid color
+            background-color rgba(0, 0, 0, 0)
+            color color
 
-			&:hover
-			&:focus
-				background-color color
-				color $white
+            &:hover
+            &:focus
+                background-color color
+                color $white
 
-			&:active
-				background-color lighten(color, 30%)
+            &:active
+                background-color lighten(color, 30%)

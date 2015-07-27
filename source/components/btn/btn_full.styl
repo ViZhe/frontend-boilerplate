@@ -4,7 +4,7 @@
  * `.b-btn_full_{$color_btn}` — Задает стиль flat.
  *
  *
- *     @example.padded
+ *		@example.padded
  *		.b-btn.b-btn_full_red Нажать
  *		.b-btn.b-btn_full_green Нажать
  *		.b-btn.b-btn_full_blue Нажать
@@ -12,13 +12,13 @@
  */
 
 .b-btn_full
-	for name, color in $color_btn
-		&_{name}
-			background-color color
+    for name, color in $color_btn
+        &_{name}
+            background-color color
 
-			&:focus
-			&:hover
-				background-color lighten(color, 20%)
+            &:focus
+            &:hover
+                background-color lighten(color, 20%)
 
-			&:active
-				background-color lighten(color, 40%)
+            &:active
+                background-color lighten(color, 40%)

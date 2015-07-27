@@ -5,42 +5,21 @@
  *
  * `.b-btn` — Базовый класс без модификаторов не живет.
  *
- *
  */
 
 .b-btn
-	display inline-block
-	margin 5px 0
-	padding .5em 1.5em
-	border 0
-	color $white
-	vertical-align bottom
-	text-decoration none
-	font-weight 700
-	font-size $site_font_size
-	cursor pointer
-	transition all .2s
-	user-select none
+    display inline-block
+    margin 5px 0
+    padding .5em 1.5em
+    border 0
+    color $white
+    vertical-align bottom
+    text-decoration none
+    font-weight 700
+    font-size $site_font_size
+    cursor pointer
+    transition all .2s
+    user-select none
 
-	if $site_border-radius != 0
-		border-radius $site_border-radius
-
-
-/*!*
- * Block:
- * `.b-btn_block` — Делаем кнопку блочной.
- *
- *
- *     @example.padded
- *		.b-btn.b-btn_full_red.b-btn_block Нажать
- *		br
- *		.b-btn.b-btn_outline_green.b-btn_block Нажать
- *		br
- *		.b-btn.b-btn_3d_blue.b-btn_block Нажать
- *
- */
-
-.b-btn_block
-	display block
-	width 100%
-	text-align center
+    if $site_border-radius != 0
+        border-radius $site_border-radius

@@ -4,7 +4,7 @@
  * `.b-btn_3d_{$color_btn}` — Задает стиль 3d.
  *
  *
- *     @example.padded
+ *		@example.padded
  *		.b-btn.b-btn_3d_red Нажать
  *		.b-btn.b-btn_3d_green Нажать
  *		.b-btn.b-btn_3d_blue Нажать
@@ -12,20 +12,20 @@
  */
 
 .b-btn_3d
-	for name, color in $color_btn
-		&_{name}
-			background-color color
+    for name, color in $color_btn
+        &_{name}
+            background-color color
 
-			if(color == #000)
-				box-shadow 0 5px 0 0 lighten(color, 20%)
-			else
-				box-shadow 0 5px 0 0 darken(color, 20%)
+            if(color == #000)
+                box-shadow 0 5px 0 0 lighten(color, 20%)
+            else
+                box-shadow 0 5px 0 0 darken(color, 20%)
 
-			&:focus
-			&:hover
-				background-color lighten(color, 20%)
+            &:focus
+            &:hover
+                background-color lighten(color, 20%)
 
-			&:active
-				margin-top 10px
-				margin-bottom 0
-				box-shadow 0 0 0 0 color
+            &:active
+                margin-top 10px
+                margin-bottom 0
+                box-shadow 0 0 0 0 color
