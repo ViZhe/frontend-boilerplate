@@ -95,7 +95,7 @@ gulp.task 'stylus_dev', ->
     .pipe(stylus())
     .pipe(base64(
         extensions: ['woff']
-        maxImageSize: 10 * 1024 # 10 mb
+        maxImageSize: 1024 * 1024 * 10 # 10 mb
     ))
     .pipe(urlAdjuster(
         replace: ['../../img/', '../img/']
@@ -116,14 +116,14 @@ gulp.task 'stylus_build', ->
     .pipe(stylus())
     .pipe(base64(
         extensions: ['woff']
-        maxImageSize: 10 * 1024 # 10 mb
+        maxImageSize: 1024 * 1024 * 10 # 10 mb
     ))
     .pipe(urlAdjuster(
         replace: ['../../img/', '../../frontend/img/']
     ))
     .pipe(base64(
         extensions: ['png', 'svg', 'jpg']
-        maxImageSize: 10 * 1024 # 10 mb
+        maxImageSize: 1024 * 1024 # 1 mb
     ))
     .pipe(urlAdjuster(
         replace: ['../../frontend/img/','../img/']
