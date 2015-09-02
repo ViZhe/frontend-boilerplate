@@ -1,0 +1,19 @@
+
+/*!*
+ * Color:
+ * `.b-alert_color_{$color_alert}` — Задает цвет блока сообщения.
+ *
+ *
+ *		@example.padded
+ *		.b-alert.b-alert_color_blue
+ *			h5.b-heading.b-heading_level_5.b-heading_first Внимание
+ *			| Гречка дорожает! Срочно закупайтесь гречкой и талонами на интернет!!!
+ *		.b-alert.b-alert_color_blue Гречка дорожает! Срочно закупайтесь гречкой и талонами на интернет!!!
+ *
+ */
+
+.b-alert_color
+    for name, color in $color_alert
+        &_{name}
+            background-color lighten(color, 90%)
+            border-color color
