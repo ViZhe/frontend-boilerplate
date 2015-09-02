@@ -103,7 +103,7 @@ gulp.task 'stylus_dev', ->
     .pipe(autoprefixer(
         browser: ['> 5%', 'last 2 versions']
     ))
-    .pipe(gulp.dest('./frontend/css/'))
+    .pipe(gulp.dest('./app/frontend/css/'))
     .pipe(reload(stream: true))
 
 
@@ -119,21 +119,21 @@ gulp.task 'stylus_build', ->
         maxImageSize: 1024 * 1024 * 10 # 10 mb
     ))
     .pipe(urlAdjuster(
-        replace: ['../../img/', '../../frontend/img/']
+        replace: ['../../img/', '../../app/frontend/img/']
     ))
     .pipe(base64(
         extensions: ['png', 'svg', 'jpg']
         maxImageSize: 1024 * 1024 # 1 mb
     ))
     .pipe(urlAdjuster(
-        replace: ['../../frontend/img/','../img/']
+        replace: ['../../app/frontend/img/','../img/']
     ))
     .pipe(autoprefixer(
         browser: ['> 5%', 'last 2 versions']
     ))
     .pipe(cleancss())
     .pipe(header(headerCat, version))
-    .pipe(gulp.dest('./frontend/css/'))
+    .pipe(gulp.dest('./app/frontend/css/'))
 
 
 
@@ -152,7 +152,7 @@ gulp.task 'styleguide', ->
             config: './source/docs/config.styl'
             filename: 'index.html'
         ))
-        .pipe(gulp.dest('./frontend/docs/'))
+        .pipe(gulp.dest('./app/docs/'))
         .pipe(reload(stream: true))
 
 
@@ -169,7 +169,7 @@ gulp.task 'jade_dev', ->
         .pipe(jade(
             pretty: '    '
         ))
-        .pipe(gulp.dest('./'))
+        .pipe(gulp.dest('./app'))
         .pipe(reload(stream: true))
 
 
@@ -179,7 +179,7 @@ gulp.task 'jade_build', ->
         .pipe(jade(
             pretty: '    '
         ))
-        .pipe(gulp.dest('./'))
+        .pipe(gulp.dest('./app'))
 
 
 
@@ -194,12 +194,12 @@ gulp.task 'js_dev_main', ->
         .pipe(plumber())
         .pipe(includeFile())
         .pipe(coffee())
-        .pipe(gulp.dest('./frontend/js'))
+        .pipe(gulp.dest('./app/frontend/js'))
         .pipe(reload(stream: true))
 
 gulp.task 'js_dev_lib', ->
     gulp.src('./source/js/lib/[^-]*.js')
-        .pipe(gulp.dest('./frontend/js/lib/'))
+        .pipe(gulp.dest('./app/frontend/js/lib/'))
         .pipe(reload(stream: true))
 
 gulp.task 'js_dev', sequence(
@@ -216,14 +216,14 @@ gulp.task 'js_build_main', ->
         .pipe(closure(compilation_level: 'SIMPLE_OPTIMIZATIONS'))
         .pipe(uglify())
         .pipe(header(headerCat, version))
-        .pipe(gulp.dest('./frontend/js'))
+        .pipe(gulp.dest('./app/frontend/js'))
 
 gulp.task 'js_build_lib', ->
     gulp.src('./source/js/lib/[^-]*.js')
         .pipe(plumber())
         .pipe(closure(compilation_level: 'SIMPLE_OPTIMIZATIONS'))
         .pipe(uglify())
-        .pipe(gulp.dest('./frontend/js/lib/'))
+        .pipe(gulp.dest('./app/frontend/js/lib/'))
 
 gulp.task 'js_build', sequence(
     ['js_build_main']
@@ -240,15 +240,15 @@ gulp.task 'js_build', sequence(
 
 gulp.task 'img_dev', ->
     gulp.src('./source/img/**/*')
-        .pipe(changed('./frontend/img/'))
-        .pipe(gulp.dest('./frontend/img/'))
+        .pipe(changed('./app/frontend/img/'))
+        .pipe(gulp.dest('./app/frontend/img/'))
         .pipe(reload(stream: true))
 
 
 gulp.task 'img_build', ->
     gulp.src(['./source/img/**/*'])
         .pipe(teenypng('apikey': '0Q30pqGuD4mYEKXFcCzCXbgXK6MWK7rR'))
-        .pipe(gulp.dest('./frontend/img/'))
+        .pipe(gulp.dest('./app/frontend/img/'))
 
 
 
@@ -260,7 +260,7 @@ gulp.task 'img_build', ->
 
 gulp.task 'browser-sync', ->
     browserSync server:
-        baseDir: './'
+        baseDir: './app/'
         proxy: 'hoppas.dev'
         notify: true
 
@@ -274,7 +274,7 @@ gulp.task 'browser-sync', ->
 
 gulp.task 'clean', ->
     del.sync(
-        ['./frontend/', './*.html']
+        './app/'
         force: true
     )
 
