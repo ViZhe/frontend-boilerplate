@@ -15,5 +15,8 @@
 .b-alert_color
     for name, color in $color_alert
         &_{name}
-            background-color lighten(color, 90%)
-            border-color color
+            background-color lighten(color[0], 90%)
+            border-color @background-color
+            
+            if color[1]
+                color color[1]
