@@ -20,7 +20,6 @@ header = require('gulp-header')
 sequence = require('gulp-sequence')
 # http://www.browsersync.io/docs/gulp/
 browserSync = require('browser-sync')
-notify = browserSync.notify
 reload = browserSync.reload
 stylus = require('gulp-stylus')
 base64 = require('gulp-base64')
@@ -92,10 +91,9 @@ path =
 
 config =
     style:
-        src: [
-            path.src + 'styl/[^-]*.styl'
-            path.src + 'styl/fonts/[^-]*.styl'
-        ]
+        src:
+            main: path.src + 'styl/[^-]*.styl'
+            fonts: path.src + 'styl/fonts/[^-]*.styl'
         dest: path.dest + 'frontend/css/'
         watch: path.src + '**/*.styl'
     docs:
@@ -127,47 +125,72 @@ config =
 ###
 
 gulp.task 'stylus_dev', ->
-    gulp.src(config.style.src)
-    .pipe(plumber())
-    .pipe(stylus())
-    .pipe(base64(
-        extensions: ['woff']
-        maxImageSize: 1024 * 1024 * 10 # 10 mb
-    ))
-    .pipe(urlAdjuster(
-        replace: ['../../img/', '../img/']
-    ))
-    .pipe(autoprefixer(
-        browser: ['> 5%', 'last 2 versions']
-    ))
-    .pipe(gulp.dest(config.style.dest))
-    .pipe(reload(stream: true))
+    gulp.src(config.style.src.main)
+        .pipe(plumber())
+        .pipe(stylus())
+        .pipe(base64(
+            extensions: ['woff']
+            maxImageSize: 1024 * 1024 * 10 # 10 mb
+        ))
+        .pipe(urlAdjuster(
+            replace: ['../../img/', '../img/']
+        ))
+        .pipe(autoprefixer(
+            browser: ['> 5%', 'last 2 versions']
+        ))
+        .pipe(gulp.dest(config.style.dest))
+
+    gulp.src(config.style.src.fonts)
+        .pipe(plumber())
+        .pipe(stylus())
+        .pipe(base64(
+            extensions: ['woff']
+            maxImageSize: 1024 * 1024 * 10 # 10 mb
+        ))
+        .pipe(autoprefixer(
+            browser: ['> 5%', 'last 2 versions']
+        ))
+        .pipe(gulp.dest(config.style.dest))
+
 
 
 gulp.task 'stylus_build', ->
-    gulp.src(config.style.src)
-    .pipe(plumber())
-    .pipe(stylus())
-    .pipe(base64(
-        extensions: ['woff']
-        maxImageSize: 1024 * 1024 * 10 # 10 mb
-    ))
-    .pipe(urlAdjuster(
-        replace: ['../../img/', '../../app/frontend/img/']
-    ))
-    .pipe(base64(
-        extensions: ['png', 'svg', 'jpg']
-        maxImageSize: 1024 * 1024 # 1 mb
-    ))
-    .pipe(urlAdjuster(
-        replace: ['../../app/frontend/img/','../img/']
-    ))
-    .pipe(autoprefixer(
-        browser: ['> 5%', 'last 2 versions']
-    ))
-    .pipe(cleancss())
-    .pipe(header(headerCat, version))
-    .pipe(gulp.dest(config.style.dest))
+    gulp.src(config.style.src.main)
+        .pipe(plumber())
+        .pipe(stylus())
+        .pipe(base64(
+            extensions: ['woff']
+            maxImageSize: 1024 * 1024 * 10 # 10 mb
+        ))
+        .pipe(urlAdjuster(
+            replace: ['../../img/', '../../app/frontend/img/']
+        ))
+        .pipe(base64(
+            extensions: ['png', 'svg', 'jpg']
+            maxImageSize: 1024 * 1024 # 1 mb
+        ))
+        .pipe(urlAdjuster(
+            replace: ['../../app/frontend/img/','../img/']
+        ))
+        .pipe(autoprefixer(
+            browser: ['> 5%', 'last 2 versions']
+        ))
+        .pipe(cleancss())
+        .pipe(header(headerCat, version))
+        .pipe(gulp.dest(config.style.dest))
+
+    gulp.src(config.style.src.fonts)
+        .pipe(plumber())
+        .pipe(stylus())
+        .pipe(base64(
+            extensions: ['woff']
+            maxImageSize: 1024 * 1024 * 10 # 10 mb
+        ))
+        .pipe(autoprefixer(
+            browser: ['> 5%', 'last 2 versions']
+        ))
+        .pipe(cleancss())
+        .pipe(gulp.dest(config.style.dest))
 
 
 
@@ -186,7 +209,6 @@ gulp.task 'styleguide', ->
             filename: 'index.html'
         ))
         .pipe(gulp.dest(config.docs.dest))
-        .pipe(reload(stream: true))
 
 
 
@@ -196,17 +218,7 @@ gulp.task 'styleguide', ->
 #
 ###
 
-gulp.task 'jade_dev', ->
-    gulp.src(config.tpl.src)
-        .pipe(plumber())
-        .pipe(jade(
-            pretty: '    '
-        ))
-        .pipe(gulp.dest(config.tpl.dest))
-        .pipe(reload(stream: true))
-
-
-gulp.task 'jade_build', ->
+gulp.task 'jade', ->
     gulp.src(config.tpl.src)
         .pipe(plumber())
         .pipe(jade(
@@ -222,26 +234,19 @@ gulp.task 'jade_build', ->
 #
 ###
 
-gulp.task 'js_dev_main', ->
+gulp.task 'js_dev', ->
     gulp.src(config.js.src.main)
         .pipe(plumber())
         .pipe(includeFile())
         .pipe(coffee())
         .pipe(gulp.dest(config.js.dest.main))
-        .pipe(reload(stream: true))
 
-gulp.task 'js_dev_lib', ->
     gulp.src(config.js.src.lib)
-    .pipe(gulp.dest(config.js.dest.lib))
-        .pipe(reload(stream: true))
-
-gulp.task 'js_dev', sequence(
-    ['js_dev_main']
-    ['js_dev_lib']
-)
+        .pipe(gulp.dest(config.js.dest.lib))
 
 
-gulp.task 'js_build_main', ->
+
+gulp.task 'js_build', ->
     gulp.src(config.js.src.main)
         .pipe(plumber())
         .pipe(includeFile())
@@ -251,17 +256,11 @@ gulp.task 'js_build_main', ->
         .pipe(header(headerCat, version))
         .pipe(gulp.dest(config.js.dest.main))
 
-gulp.task 'js_build_lib', ->
     gulp.src(config.js.src.lib)
         .pipe(plumber())
         .pipe(closure(compilation_level: 'SIMPLE_OPTIMIZATIONS'))
         .pipe(uglify())
         .pipe(gulp.dest(config.js.dest.lib))
-
-gulp.task 'js_build', sequence(
-    ['js_build_main']
-    ['js_build_lib']
-)
 
 
 
@@ -275,7 +274,6 @@ gulp.task 'img_dev', ->
     gulp.src(config.img.src)
         .pipe(changed(config.img.dest))
         .pipe(gulp.dest(config.img.dest))
-        .pipe(reload(stream: true))
 
 
 gulp.task 'img_build', ->
@@ -287,24 +285,11 @@ gulp.task 'img_build', ->
 
 ###
 #
-#	LOCAL SERVER SECTION
+#	WORK SECTION
 #
 ###
 
-gulp.task 'browser-sync', ->
-    browserSync server:
-        baseDir: path.dest
-        proxy: 'hoppas.dev'
-        notify: true
-
-
-
-###
-#
-#	CLEAR SECTION
-#
-###
-
+# Удаляем dest
 gulp.task 'clean', ->
     del.sync(
         path.dest
@@ -312,18 +297,11 @@ gulp.task 'clean', ->
     )
 
 
-
-###
-#
-#	WORK SECTION
-#
-###
-
 # Собираем релиз
 gulp.task 'build', sequence(
     ['clean']
     ['img_build']
-    ['stylus_build', 'jade_build', 'js_build']
+    ['stylus_build', 'jade', 'js_build']
     ['styleguide']
 )
 
@@ -331,27 +309,37 @@ gulp.task 'build', sequence(
 # Собираем дев
 gulp.task 'dev', sequence(
     ['clean']
-    ['stylus_dev', 'jade_dev', 'js_dev', 'img_dev']
+    ['stylus_dev', 'jade', 'js_dev', 'img_dev']
     ['styleguide']
 )
 
 
 # Cледим за изменениями
 gulp.task 'watch', ->
-    watch config.style.watch, ->
+    watch(config.style.watch, ->
         gulp.start ['stylus_dev', 'styleguide']
         return
-    watch config.tpl.watch, ->
-        gulp.start ['jade_dev']
+    ).on('change', reload)
+    watch(config.tpl.watch, ->
+        gulp.start ['jade']
         return
-    watch config.js.watch, ->
-        gulp.start ['js_dev_main', 'js_dev_lib']
+    ).on('change', reload)
+    watch(config.js.watch, ->
+        gulp.start ['js_dev']
         return
-    watch config.img.watch, ->
+    ).on('change', reload)
+    watch(config.img.watch, ->
         gulp.start ['img_dev']
         return
+    ).on('change', reload)
     return
 
+
+# Запускаем локальный сервер
+gulp.task 'browser-sync', ->
+    browserSync server:
+        baseDir: path.dest
+        proxy: 'hoppas.dev'
 
 
 gulp.task 'default', sequence(
