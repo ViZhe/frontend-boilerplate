@@ -2,8 +2,9 @@
 gulp.task 'js_build', ->
     gulp.src(config.js.src.main)
         .pipe($.plumber())
-        .pipe($.fileInclude())
+        .pipe($.rigger())
         .pipe($.coffee())
+        .pipe($.rigger())
         .pipe($.closureCompilerService(
             compilation_level: 'SIMPLE_OPTIMIZATIONS'
         ))
