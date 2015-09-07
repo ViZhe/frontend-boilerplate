@@ -8,15 +8,12 @@ gulp.task 'watch', ->
         return
     $.watch config.tpl.watch, ->
         gulp.start ['jade']
-        reload()
         return
     $.watch config.js.watch, ->
         gulp.start ['js_dev']
-        reload()
         return
     $.watch config.img.watch, ->
         gulp.start ['img_dev']
-        reload()
         return
     $.watch 'app/**/*', ->
         reload()
