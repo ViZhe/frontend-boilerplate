@@ -7,16 +7,31 @@
 
 /*!*
  * Spacer:
- * `.b-text` —  Блок в котором присваиваются отступы параграфам, спискам  и талицам.
+ * `.b-text` — Блок в котором стилезуются теги оформления текста: p, ul, ol, li, blockquote, b, i, hr.
  *
  *
  *		@example.padded
  *		.b-text
- *			p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
- *			p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+ *			p.
+ *			   Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+ *			   sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+ *			   Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
+ *			   nisi ut aliquip ex ea commodo consequat.
  *			ul
  *				li Lorem ipsum dolor sit amet
  *				li Sed do eiusmod tempor incididunt ut
+ *			ol
+ *				li Lorem ipsum dolor sit ametsssss
+ *				li Sed do eiusmod tempor incididunt ut
+ *			blockquote
+ *			   p.
+ *			       Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+ *			       sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+ *			       Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
+ *			       nisi ut aliquip ex ea commodo consequat.
+ *			p: b Lorem ipsum dolor sit amet
+ *			p: i Lorem ipsum dolor sit amet
+ *			hr
  *
  */
 
@@ -34,3 +49,21 @@
 
     & table
         margin-bottom 15px
+
+    & blockquote
+        margin 15px 30px
+        border-left 3px solid $graylight
+        padding 15px
+
+        & p:last-child
+            margin-bottom 0
+
+    & b
+        font-weight 700
+
+    & i
+        font-style italic
+
+    & hr
+        border 1px solid $graylight
+        margin 15px 0
