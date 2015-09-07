@@ -9,7 +9,7 @@
     "commaSpace": true,
     "commentSpace": true,
     "cssLiteral": true,
-    "depthLimit": 5,
+    "depthLimit": false,
     "duplicates": false,
     "efficient": true,
     "emoji": true,
