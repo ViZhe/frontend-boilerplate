@@ -5,7 +5,6 @@ reload = $.browserSync.reload
 gulp.task 'watch', ->
     $.watch config.style.watch, ->
         gulp.start ['stylus_dev', 'styleguide']
-        reload()
         return
     $.watch config.tpl.watch, ->
         gulp.start ['jade']
@@ -17,6 +16,9 @@ gulp.task 'watch', ->
         return
     $.watch config.img.watch, ->
         gulp.start ['img_dev']
+        reload()
+        return
+    $.watch 'app/**/*', ->
         reload()
         return
     return

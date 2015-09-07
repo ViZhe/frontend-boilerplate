@@ -1,5 +1,4 @@
 
-
 version = v: require('./../version.json')
 headerCat = [
   '/*!'
