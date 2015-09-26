@@ -12,6 +12,8 @@
  *
  * `.b-popup_show` — Модификатор видимого попапа.
  *
+ * `.b-popup__shadow` — Элемент подложки под попап (затемнение фона).
+ *
  * `.b-popup__inner` — Элемент обертка для центрирования .b-popup__content.
  *
  * `.b-popup__content` — Элемент с содержимым попапа.
@@ -23,10 +25,10 @@
  *		.b-btn.b-btn_color_blue.js-popup(data-popup=".shom-sm") Покажись маленький
  *		.b-btn.b-btn_color_blue.js-popup(data-popup=".shom-lg") Покажись большой
  *
- *		.b-popup.shom-sm
+ *		.g-hide.shom-sm
  *		    div(style="height:200px;background-color:#939DA3;") Маленький
  *
- *		.b-popup.shom-lg
+ *		.g-hide.shom-lg
  *		    div(style="height:1000px;background-color:#939DA3;") Большой
  *
  */
@@ -42,27 +44,29 @@
     fixed 0
     z-index 200
     visibility hidden
-    min-width 320px
-    background rgba( $black, 90% )
     overflow auto
     opacity 0
+    min-width 320px
     transition all .3s
 
 .b-popup_show
     visibility visible
     opacity 1
 
+.b-popup__shadow
+    fixed 0
+    background rgba($black, 90%)
 
 .b-popup__inner
     display flex
-    padding 20px 0
     align-items center
     justify-content center
+    padding 20px 0
     min-height 100%
 
     @media $media_for_touch
-        padding 0
         align-items stretch
+        padding 0
 
 .b-popup__content
     relative false
