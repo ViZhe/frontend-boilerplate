@@ -74,7 +74,7 @@ linear-gradient(start, colors...)
         $start = 'to bottom'
 
     else if start == 'right'
-        $start =  'to left'
+        $start = 'to left'
 
     else if start == 'bottom'
         $start = 'to top'
@@ -86,7 +86,7 @@ linear-gradient(start, colors...)
         $start = 'to bottom left'
 
     else if start[0] == 'top' && start[1] == 'left'
-        $start = 'to  bottom right'
+        $start = 'to bottom right'
 
     else if start[0] == 'bottom' && start[1] == 'right'
         $start = 'to top left'
@@ -109,7 +109,7 @@ clearfix()
     &::before
     &::after
         display block
-        content  ''
+        content ''
 
     &::after
         clear both
@@ -178,6 +178,7 @@ size(arg...)
     if length(arg) == 1 && arg[0] != false
         width arg[0]
         height arg[0]
+
     else if length(arg) == 2
         width arg[0] if arg[0] != false
         height arg[1] if arg[1] != false
