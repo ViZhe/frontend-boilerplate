@@ -1,7 +1,13 @@
 {
   "name": "kit.hoppas",
-  "version": "1.0.1",
-  "main": "Gulpfile.coffee",
+  "version": "1.0.2/0",
+
+  "author": {
+    "name": "ViZhe (Barsik^)",
+    "email": "i@hoppas.ru"
+  },
+
+  "main": "gulpfile.coffee",
   "devDependencies": {
     "browser-sync": "^2.1.1",
     "coffee-script": "^1.9.3",
@@ -25,7 +31,9 @@
     "gulp-watch": "^4.1.1",
     "require-dir": "~0.3.0",
     "gulp-load-plugins": "~1.0.0-rc.1",
-    "gulp-rigger": "~0.5.8"
+    "gulp-rigger": "~0.5.8",
+    "svg-stylus": "0.0.2"
   },
-  "private": true
+  "private": true,
+  "license": "MIT"
 }

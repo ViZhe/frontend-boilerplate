@@ -28,17 +28,21 @@
     margin-top 5px
     padding 5px
     width 100%
-    border 2px solid $graylight
-    box-shadow 0 0 0 rgba(0, 0, 0, 0)
+    border 1px solid $graylight
     background $white
+    box-shadow 0 1px 1px 0 rgba($black, .05) inset
     color $black
-    transition border .5s ease 0
+    transition border-color .3s ease-in-out
 
     if $site_border-radius != 0
         border-radius $site_border-radius
 
+    &:not(:disabled):hover
+        border-color $gray
+
     &:focus
-        border-color $blue
+        border-color $blue !important
+        box-shadow none
 
 .b-form__field_textarea
     min-width 100%
@@ -46,11 +50,11 @@
     max-width 100%
 
 
-.b-form__field[disabled]
+.b-form__field:disabled
     background-color lighten($graylight, 70%)
 
 .b-form__field_valid
-    background-color rgba($green, .1)
+    border-color $green
 
 .b-form__field_invalid
-    background-color rgba($red, .1)
+    border-color $red

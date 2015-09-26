@@ -2,7 +2,9 @@
 gulp.task 'styleguide', ->
     gulp.src(config.docs.src)
         .pipe($.plumber())
-        .pipe($.stylus())
+        .pipe($.stylus(
+            'use': $.svgStylus()
+        ))
         .pipe($.styledown(
             config: './source/docs/config.styl'
             filename: 'index.html'

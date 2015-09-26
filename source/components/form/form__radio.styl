@@ -8,30 +8,34 @@
  *
  *		@example.padded
  *		form.b-form
- *			label.b-form__label.b-form__radio
+ *			label.b-form__label
  *				input(type="radio", name="radioName2")
- *				| Первый radio
- *			label.b-form__label.b-form__radio.b-form__radio_checked
+ *				.b-form__radio Первый radio
+ *			label.b-form__label
  *				input(type="radio", name="radioName2", checked)
- *				| Второй radio (активный)
- *			label.b-form__label.b-form__radio.b-form__label_disabled
+ *				.b-form__radio Второй radio (активный)
+ *			label.b-form__label
  *				input(type="radio", name="radioName2", disabled)
- *				| Третий radio (отключен)
+ *				.b-form__radio Третий radio (отключен)
  *
  */
 
-@font-face
-    font-weight normal
-    font-style normal
-    font-family 'Icon Form Radio'
-    src url('source/components/form/form__radio.woff') format('woff')
-
-
 .b-form__radio
-    &::before
-        content '\e000'
-        font-family 'Icon Form Radio'
+    background-image svgurl('source/img/form/form__radio_off.svg') svg(path fill $black)
 
-.b-form__radio_checked
-    &::before
-        content '\e001'
+input:not(:disabled) + .b-form__radio:hover
+    background-image svgurl('source/img/form/form__radio_off.svg') svg(path fill $red)
+
+
+input:checked + .b-form__radio
+    background-image svgurl('source/img/form/form__radio_on.svg') svg(path fill $blue)
+
+input:checked + .b-form__radio:hover
+    background-image svgurl('source/img/form/form__radio_on.svg') svg(path fill $red)
+
+
+input:disabled + .b-form__radio
+    background-image svgurl('source/img/form/form__radio_off.svg') svg(path fill $gray)
+
+input:checked:disabled + .b-form__radio
+    background-image svgurl('source/img/form/form__radio_on.svg') svg(path fill $gray)

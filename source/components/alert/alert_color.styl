@@ -16,7 +16,7 @@
     for name, color in $color_alert
         &_{name}
             background-color lighten(color[0], 90%)
-            border-color @background-color
+            border-color color[0]
 
             if color[1]
                 color color[1]

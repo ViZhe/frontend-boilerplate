@@ -1,8 +1,6 @@
 
 ## jQuery
 
-#= ../components/form/form.jquery.coffee
-
 #= ../components/popup/popup.jquery.coffee
 
 `

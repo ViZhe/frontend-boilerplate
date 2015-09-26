@@ -2,7 +2,9 @@
 gulp.task 'stylus_build', ->
     gulp.src(config.style.src.main)
         .pipe($.plumber())
-        .pipe($.stylus())
+        .pipe($.stylus(
+            'use': $.svgStylus()
+        ))
         .pipe($.base64(
             extensions: ['woff']
             maxImageSize: 1024 * 1024 * 10 # 10 mb
