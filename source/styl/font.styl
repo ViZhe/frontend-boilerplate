@@ -1,0 +1,34 @@
+
+@import 'core/var'
+
+for $font in $include_font_family
+
+    $font = split(' ', $font)
+
+    if length($font) > 1
+        $fontO = $font[0] + ' ' + $font[1]
+        $fontT = $font[0] + $font[1]
+    else
+        $fontO = $fontT = $font[0]
+
+
+    @font-face
+        font-weight 400
+        font-style normal
+        font-family $fontO
+        src local($fontO), local($fontT + '-Regular'),
+        url('./fonts/' + $fontT + '_normal.woff') format('woff')
+
+    @font-face
+        font-weight 400
+        font-style italic
+        font-family $fontO
+        src local($fontO + ' Italic'), local($fontT + '-Italic'),
+        url('./fonts/' + $fontT + '_italic.woff') format('woff')
+
+    @font-face
+        font-weight 700
+        font-style normal
+        font-family $fontO
+        src local($fontO + ' Bold'), local($fontT + '-Bold'),
+        url('./fonts/' + $fontT + '_bold.woff') format('woff')

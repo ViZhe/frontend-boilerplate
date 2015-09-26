@@ -1,9 +1,9 @@
 
-version = v: require('./../version.json')
+version = v: require('./../package.json')
 headerCat = [
   '/*!'
-  ' * @author ViZhe (Barsik^)'
-  ' * @version ${v.major}.${v.minor}.${v.patch}-${v.prerelease}/${v.project}'
+  ' * @author ${v.author.name}'
+  ' * @version ${v.version}'
   ' *'
   ' *                  $$____________$$'
   ' *                  $___$________$___$'
@@ -41,8 +41,8 @@ global['config'] =
     dest: path.dest
     style:
         src:
-            main: path.src + 'styl/[^-]*.styl'
-            fonts: path.src + 'styl/fonts/[^-]*.styl'
+            main: path.src + 'styl/hoppas.styl'
+            fonts: path.src + 'styl/font.styl'
         dest: path.dest + 'frontend/css/'
         watch: path.src + '**/*.styl'
 
