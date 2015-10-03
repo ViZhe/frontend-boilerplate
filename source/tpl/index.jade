@@ -1,19 +1,25 @@
 
+block var
+    - title = 'Main page'
+
 doctype html
 html(lang="ru-RU")
     head
         include core/head.jade
 
     body
-        include core/header.jade
-
-        section
-            .container: .row
-                .col.w0-0
-                    // Content
-
-        include core/footer.jade
+        block header
+            include core/header.jade
         
-        script(src="//yastatic.net/jquery/2.1.4/jquery.min.js")
-        script window.jQuery||document.write('<script src="frontend/js/lib/jquery-2.1.4.js"><\/script>');
-        script(src="frontend/js/hoppas.js")
+        block content
+            section
+                .container: .row
+                    .col.w0-0
+
+        block footer
+            include core/footer.jade
+        
+        block scripts
+            script(src="//yastatic.net/jquery/2.1.4/jquery.min.js")
+            script window.jQuery||document.write('<script src="frontend/js/lib/jquery-2.1.4.js"><\/script>');
+            script(src="frontend/js/hoppas.js")
