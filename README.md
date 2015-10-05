@@ -1,7 +1,7 @@
 
-#Hoppas
+#Frontend Boilerplate
 
-HTML (Jade), CSS (Stylus) Kit Starter.
+HTML (Jade), CSS (Stylus), JS(Coffee) Kit Starter.
 
 ## Поддержка браузеров
 * Последние Chrome и Firefox
@@ -16,6 +16,6 @@ npm i
  ```
 
 1) Запустить gulp
- * ```gulp``` - Cобираем dev и запускаем локальный сервер
+ * ```gulp``` - Cобираем dev и запускаем локальный сервере
  * ```gulp dev``` - Сборка для разработки
  * ```gulp build``` - Релизная сборка
