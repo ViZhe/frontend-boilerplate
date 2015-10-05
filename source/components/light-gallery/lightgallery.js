@@ -1,4 +1,4 @@
-/*! lightgallery - v1.2.0 - 2015-08-26
+/*! lightgallery - v1.2.5 - 2015-10-02
 * http://sachinchoolur.github.io/lightGallery/
 * Copyright (c) 2015 Sachin N; Licensed Apache 2.0 */
 (function($, window, document, undefined) {
@@ -56,7 +56,7 @@
 
         iframeMaxWidth: '100%',
 
-        download: false,
+        download: true,
         counter: true,
         appendCounterTo: '.lg-toolbar',
 
@@ -223,6 +223,8 @@
 
         _this.closeGallery();
 
+        _this.$el.trigger('onAfterOpen.lg');
+
         // Hide controllers if mouse doesn't move for some period
         _this.$outer.on('mousemove.lg click.lg touchstart.lg', function() {
 
@@ -284,6 +286,9 @@
 
         if (this.s.useLeft) {
             this.$outer.addClass('lg-use-left');
+
+            // Set mode lg-slide if use left is true;
+            this.s.mode = 'lg-slide';
         } else {
             this.$outer.addClass('lg-use-css3');
         }
@@ -304,6 +309,9 @@
             this.$outer.addClass('lg-css3');
         } else {
             this.$outer.addClass('lg-css');
+
+            // Set speed 0 because no animation will happen if browser doesn't support css3
+            this.s.speed = 0;
         }
 
         this.$outer.addClass(this.s.mode);
@@ -331,6 +339,9 @@
         if (this.s.download) {
             this.$outer.find('.lg-toolbar').append('<a id="lg-download" target="_blank" download class="lg-download lg-icon"></a>');
         }
+
+        // Store the current scroll top value to scroll back after closing the gallery..
+        this.prevScrollTop = $(window).scrollTop();
 
     };
 
@@ -390,10 +401,10 @@
             };
         }
 
-        var youtube = src.match(/\/\/(?:www\.)?youtu(?:\.be|be\.com)\/(?:watch\?v=|embed\/)?([a-z0-9self\-]+)/i);
-        var vimeo = src.match(/\/\/(?:www\.)?vimeo.com\/([0-9a-z\-_this]+)/i);
+        var youtube = src.match(/\/\/(?:www\.)?youtu(?:\.be|be\.com)\/(?:watch\?v=|embed\/)?([a-z0-9\-\_\%]+)/i);
+        var vimeo = src.match(/\/\/(?:www\.)?vimeo.com\/([0-9a-z\-_]+)/i);
+        var dailymotion = src.match(/\/\/(?:www\.)?dai.ly\/([0-9a-z\-_]+)/i);
 
-        // return  { youtube  :  ["//www.youtube.com/watch?v=c0asJgSyxcY", "c0asJgSyxcY"] }
         if (youtube) {
             return {
                 youtube: youtube
@@ -401,6 +412,10 @@
         } else if (vimeo) {
             return {
                 vimeo: vimeo
+            };
+        } else if (dailymotion) {
+            return {
+                dailymotion: dailymotion
             };
         }
     };
@@ -592,7 +607,7 @@
                 _this.$slide.eq(index).prepend('<div class="lg-video-cont "><div class="lg-video"></div></div>');
                 _this.$el.trigger('hasVideo.lg', [index, _src, _html]);
             } else {
-                _this.$slide.eq(index).prepend('<div class="lg-img-wrap"> <img class="lg-object lg-image" src="' + _src + '" /> </div>');
+                _this.$slide.eq(index).prepend('<div class="lg-img-wrap"><img class="lg-object lg-image" src="' + _src + '" /></div>');
             }
 
             _this.$el.trigger('onAferAppendSlide.lg', [index]);
@@ -787,22 +802,11 @@
                     _this.$el.trigger('onAfterSlide.lg', [_prevIndex, index, fromTouch, fromThumb]);
                 }, this.s.speed);
 
-                // Support non css3 browser
-                if (!_this.doCss()) {
-                    _this.$slide.fadeOut(_this.s.speed);
-                    _this.$slide.eq(index).fadeIn(_this.s.speed);
-                }
             } else {
                 _this.loadContent(index, true, _this.s.backdropDuration);
 
                 _this.lgBusy = false;
                 _this.$el.trigger('onAfterSlide.lg', [_prevIndex, index, fromTouch, fromThumb]);
-
-                // Support non css3 browser
-                if (!_this.doCss()) {
-                    _this.$slide.fadeOut(50);
-                    _this.$slide.eq(index).fadeIn(50);
-                }
             }
 
             if (this.s.download) {
@@ -898,9 +902,13 @@
         }
 
         $(window).on('keydown.lg', function(e) {
-            if (_this.s.escKey === true && e.keyCode === 27 && !_this.$outer.hasClass('lg-thumb-open')) {
+            if (_this.s.escKey === true && e.keyCode === 27) {
                 e.preventDefault();
-                _this.destroy();
+                if (!_this.$outer.hasClass('lg-thumb-open')) {
+                    _this.destroy();
+                } else {
+                    _this.$outer.removeClass('lg-thumb-open');
+                }
             }
         });
     };
@@ -1118,6 +1126,11 @@
     Plugin.prototype.mousewheel = function() {
         var _this = this;
         _this.$outer.on('mousewheel.lg', function(e) {
+
+            if (!e.deltaY) {
+                return;
+            }
+
             if (e.deltaY > 0) {
                 _this.goToPrevSlide();
             } else {
@@ -1170,6 +1183,7 @@
         var _this = this;
 
         _this.$el.trigger('onBeforeClose.lg');
+        $(window).scrollTop(_this.prevScrollTop);
 
         /**
          * if d is false or undefined destroy will only close the gallery
