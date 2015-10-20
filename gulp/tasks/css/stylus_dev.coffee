@@ -9,9 +9,6 @@ gulp.task 'stylus_dev', ->
             extensions: ['woff']
             maxImageSize: 1024 * 1024 * 10 # 10 mb
         ))
-        .pipe($.cssUrlAdjuster(
-            replace: ['../../img/', '../img/']
-        ))
         .pipe($.autoprefixer(
             browser: ['> 5%', 'last 2 versions']
         ))
