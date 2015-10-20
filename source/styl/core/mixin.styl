@@ -169,27 +169,25 @@ fixed(arg...)
  *
  * size 10px               => width:10px; height:10px
  * size 10px 15px          => width:10px; height:15px
- * size 10px false         => width:10px
- * size false 15px         => height:15px
  *
  */
 
 size(arg...)
-    if length(arg) == 1 && arg[0] != false
+    if length(arg) == 1
         width arg[0]
         height arg[0]
 
     else if length(arg) == 2
-        width arg[0] if arg[0] != false
-        height arg[1] if arg[1] != false
+        width arg[0]
+        height arg[1]
 
 
 
 /**
  * Border-radius
  *
- * border-radius()         => border-radius:3px
- * border-radius 50%      => border-radius:50%
+ * border-radius()            => border-radius:3px
+ * border-radius 50%          => border-radius:50%
  * border-radius 0 5px        => border-radius:0 5px
  * border-radius 0 5px        => border-radius:0 5px
  *
