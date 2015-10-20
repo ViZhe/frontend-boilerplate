@@ -62,39 +62,14 @@ $offset(postfix = '')
 /**
  * Gradient
  *
- * background linear-gradient(top, red, green, blue)
- * background linear-gradient(bottom, red, green 50%, blue)
- * background linear-gradient(bottom, #000, #fff 50%, #777)
- * background-image linear-gradient(bottom left, red, green 50%, white 90%, blue)
+ * gradient(180deg, red, green)
+ * gradient(270deg, red, green 50%, blue)
  *
  */
 
-linear-gradient(start, colors...)
-    if start == 'top'
-        $start = 'to bottom'
-
-    else if start == 'right'
-        $start = 'to left'
-
-    else if start == 'bottom'
-        $start = 'to top'
-
-    else if start == 'left'
-        $start = 'to right'
-
-    else if start[0] == 'top' && start[1] == 'right'
-        $start = 'to bottom left'
-
-    else if start[0] == 'top' && start[1] == 'left'
-        $start = 'to bottom right'
-
-    else if start[0] == 'bottom' && start[1] == 'right'
-        $start = 'to top left'
-
-    else if start[0] == 'bottom' && start[1] == 'left'
-        $start = 'to top right'
-
-    unquote('linear-gradient(' + $start + ', ' + join(', ', colors) + ')')
+gradient($direction, $colors...)
+    background $colors[0][0]
+    background linear-gradient($direction, unquote(join(', ', $colors)))
 
 
 
