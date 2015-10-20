@@ -173,7 +173,7 @@ fixed(arg...)
  */
 
 size(arg...)
-    if length(arg) == 1
+    if arg && length(arg) == 1
         width arg[0]
         height arg[0]
 
