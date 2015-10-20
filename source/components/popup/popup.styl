@@ -79,9 +79,7 @@
     box-shadow 0 0 3px $black
     transition all .3s ease
     transform translateY(-40px)
-
-    if $site_border-radius != 0
-        border-radius $site_border-radius
+    border-radius()
 
     @media $media_for_touch
         width 100%

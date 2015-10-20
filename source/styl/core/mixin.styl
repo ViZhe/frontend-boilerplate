@@ -186,6 +186,25 @@ size(arg...)
 
 
 /**
+ * Border-radius
+ *
+ * border-radius()         => border-radius:3px
+ * border-radius 50%      => border-radius:50%
+ * border-radius 0 5px        => border-radius:0 5px
+ * border-radius 0 5px        => border-radius:0 5px
+ *
+ */
+
+border-radius(arg...)
+    if arg || arg == 0
+        border-radius arg
+
+    else if $site_border-radius
+        border-radius $site_border-radius
+
+
+
+/**
  * Overflow
  *
  * overflow ellipsis
