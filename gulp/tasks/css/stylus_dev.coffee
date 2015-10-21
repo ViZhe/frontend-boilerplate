@@ -10,7 +10,7 @@ gulp.task 'stylus_dev', ->
             maxImageSize: 1024 * 1024 * 10 # 10 mb
         ))
         .pipe($.autoprefixer(
-            browser: ['> 5%', 'last 2 versions']
+            browser: config.style.autoprefixer.browser
         ))
         .pipe(gulp.dest(config.style.dest))
 
@@ -22,6 +22,6 @@ gulp.task 'stylus_dev', ->
             maxImageSize: 1024 * 1024 * 10 # 10 mb
         ))
         .pipe($.autoprefixer(
-            browser: ['> 5%', 'last 2 versions']
+            browser: config.style.autoprefixer.browser
         ))
         .pipe(gulp.dest(config.style.dest))

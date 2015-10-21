@@ -45,7 +45,12 @@ global['config'] =
             fonts: path.src + 'styl/font.styl'
         dest: path.dest + 'frontend/css/'
         watch: path.src + '**/*.styl'
-
+        autoprefixer:
+            browser: ['last 2 versions',
+                      'Explorer >= 10',
+                      'Android >= 4.1',
+                      'Safari >= 7',
+                      'iOS >= 7']
     docs:
         src: path.src + 'styl/[^-]*.styl'
         dest: path.dest + 'docs/'

@@ -20,7 +20,7 @@ gulp.task 'stylus_build', ->
             replace: ['../../app/frontend/img/','../img/']
         ))
         .pipe($.autoprefixer(
-            browser: ['> 5%', 'last 2 versions']
+            browser: config.style.autoprefixer.browser
         ))
         .pipe($.cleancss())
         .pipe($.header(config.headerCat, config.version))
@@ -34,7 +34,7 @@ gulp.task 'stylus_build', ->
             maxImageSize: 1024 * 1024 * 10 # 10 mb
         ))
         .pipe($.autoprefixer(
-            browser: ['> 5%', 'last 2 versions']
+            browser: config.style.autoprefixer.browser
         ))
         .pipe($.cleancss())
         .pipe(gulp.dest(config.style.dest))
