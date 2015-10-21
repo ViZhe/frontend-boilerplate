@@ -92,51 +92,30 @@ clearfix()
 
 
 /**
- * Position (DEPRECATED)
+ * Position
  *
- * static false                    => position:static;
- * static 10px                     => position:static; top:10px; right:10px; bottom:10px; left:10px
- * relative 10px 15px              => position:relative; top:10px; right:15px; bottom:10px; left:15px
- * absolute 10px false             => position:absolute; top:10px; bottom:10px
- * fixed 10px 15px 20px false      => position:fixed; top:10px; right:15px; bottom:20px
+ * static()                       => position:static;
+ * absolute(top)                  => position:absolute;top:0;
+ * relative top                   => position:relative;top:0;
+ * fixed top 10px left right      => position:fixed;top:10px;left:0;right:0;
  *
  */
 
-$pos(type, arg)
-    position unquote(type)
-    if length(arg) == 1 && arg[0] != false
-        top arg[0]
-        right arg[0]
-        bottom arg[0]
-        left arg[0]
+-pos(type, args)
+    position: unquote(type)
+    $direction = top right bottom left
+    for arg, i in args
+        if arg in $direction
+            {arg}: (args[i + 1] is a 'unit') ? args[i + 1] : 0
 
-    else if length(arg) == 2
-        top arg[0] if arg[0] != false
-        right arg[1] if arg[1] != false
-        bottom arg[0] if arg[0] != false
-        left arg[1] if arg[1] != false
-
-    else if length(arg) == 3
-        top arg[0] if arg[0] != false
-        right arg[1] if arg[1] != false
-        bottom arg[2] if arg[2] != false
-        left arg[1] if arg[1] != false
-
-    else if length(arg) == 4
-        top arg[0] if arg[0] != false
-        right arg[1] if arg[1] != false
-        bottom arg[2] if arg[2] != false
-        left arg[3] if arg[3] != false
-
-static(arg...)
-    $pos('static', arg)
-relative(arg...)
-    $pos('relative', arg)
-absolute(arg...)
-    $pos('absolute', arg)
-fixed(arg...)
-    $pos('fixed', arg)
-
+static()
+    -pos('static', arguments)
+relative()
+    -pos('relative', arguments)
+absolute()
+    -pos('absolute', arguments)
+fixed()
+    -pos('fixed', arguments)
 
 
 /**
@@ -163,7 +142,6 @@ size(arg...)
  *
  * border-radius()            => border-radius:3px
  * border-radius 50%          => border-radius:50%
- * border-radius 0 5px        => border-radius:0 5px
  * border-radius 0 5px        => border-radius:0 5px
  *
  */
