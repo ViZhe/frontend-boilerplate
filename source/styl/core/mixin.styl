@@ -62,39 +62,14 @@ $offset(postfix = '')
 /**
  * Gradient
  *
- * background linear-gradient(top, red, green, blue)
- * background linear-gradient(bottom, red, green 50%, blue)
- * background linear-gradient(bottom, #000, #fff 50%, #777)
- * background-image linear-gradient(bottom left, red, green 50%, white 90%, blue)
+ * gradient(180deg, red, green)
+ * gradient(270deg, red, green 50%, blue)
  *
  */
 
-linear-gradient(start, colors...)
-    if start == 'top'
-        $start = 'to bottom'
-
-    else if start == 'right'
-        $start = 'to left'
-
-    else if start == 'bottom'
-        $start = 'to top'
-
-    else if start == 'left'
-        $start = 'to right'
-
-    else if start[0] == 'top' && start[1] == 'right'
-        $start = 'to bottom left'
-
-    else if start[0] == 'top' && start[1] == 'left'
-        $start = 'to bottom right'
-
-    else if start[0] == 'bottom' && start[1] == 'right'
-        $start = 'to top left'
-
-    else if start[0] == 'bottom' && start[1] == 'left'
-        $start = 'to top right'
-
-    unquote('linear-gradient(' + $start + ', ' + join(', ', colors) + ')')
+gradient($direction, $colors...)
+    background $colors[0][0]
+    background linear-gradient($direction, unquote(join(', ', $colors)))
 
 
 
@@ -119,49 +94,28 @@ clearfix()
 /**
  * Position
  *
- * static false                    => position:static;
- * static 10px                     => position:static; top:10px; right:10px; bottom:10px; left:10px
- * relative 10px 15px              => position:relative; top:10px; right:15px; bottom:10px; left:15px
- * absolute 10px false             => position:absolute; top:10px; bottom:10px
- * fixed 10px 15px 20px false      => position:fixed; top:10px; right:15px; bottom:20px
+ * static()                       => position:static;
+ * absolute(top)                  => position:absolute;top:0;
+ * relative top                   => position:relative;top:0;
+ * fixed top 10px left right      => position:fixed;top:10px;left:0;right:0;
  *
  */
 
-$pos(type, arg)
-    position unquote(type)
-    if length(arg) == 1 && arg[0] != false
-        top arg[0]
-        right arg[0]
-        bottom arg[0]
-        left arg[0]
+-pos(type, args)
+    position: unquote(type)
+    $direction = top right bottom left
+    for arg, i in args
+        if arg in $direction
+            {arg}: (args[i + 1] is a 'unit') ? args[i + 1] : 0
 
-    else if length(arg) == 2
-        top arg[0] if arg[0] != false
-        right arg[1] if arg[1] != false
-        bottom arg[0] if arg[0] != false
-        left arg[1] if arg[1] != false
-
-    else if length(arg) == 3
-        top arg[0] if arg[0] != false
-        right arg[1] if arg[1] != false
-        bottom arg[2] if arg[2] != false
-        left arg[1] if arg[1] != false
-
-    else if length(arg) == 4
-        top arg[0] if arg[0] != false
-        right arg[1] if arg[1] != false
-        bottom arg[2] if arg[2] != false
-        left arg[3] if arg[3] != false
-
-static(arg...)
-    $pos('static', arg)
-relative(arg...)
-    $pos('relative', arg)
-absolute(arg...)
-    $pos('absolute', arg)
-fixed(arg...)
-    $pos('fixed', arg)
-
+static()
+    -pos('static', arguments)
+relative()
+    -pos('relative', arguments)
+absolute()
+    -pos('absolute', arguments)
+fixed()
+    -pos('fixed', arguments)
 
 
 /**
@@ -169,19 +123,35 @@ fixed(arg...)
  *
  * size 10px               => width:10px; height:10px
  * size 10px 15px          => width:10px; height:15px
- * size 10px false         => width:10px
- * size false 15px         => height:15px
  *
  */
 
 size(arg...)
-    if length(arg) == 1 && arg[0] != false
+    if arg && length(arg) == 1
         width arg[0]
         height arg[0]
 
     else if length(arg) == 2
-        width arg[0] if arg[0] != false
-        height arg[1] if arg[1] != false
+        width arg[0]
+        height arg[1]
+
+
+
+/**
+ * Border-radius
+ *
+ * border-radius()            => border-radius:3px
+ * border-radius 50%          => border-radius:50%
+ * border-radius 0 5px        => border-radius:0 5px
+ *
+ */
+
+border-radius(arg...)
+    if arg || arg == 0
+        border-radius arg
+
+    else if $site_border-radius
+        border-radius $site_border-radius
 
 
 

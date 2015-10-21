@@ -56,9 +56,7 @@
 .b-pagination__link
     display block
     padding 5px 10px
-
-    if $site_border-radius != 0
-        border-radius $site_border-radius
+    border-radius()
 
 .b-pagination__divider
     &::after

@@ -10,7 +10,7 @@ gulp.task 'stylus_build', ->
             maxImageSize: 1024 * 1024 * 10 # 10 mb
         ))
         .pipe($.cssUrlAdjuster(
-            replace: ['../../img/', '../../app/frontend/img/']
+            replace: ['../img/', '../../app/frontend/img/']
         ))
         .pipe($.base64(
             extensions: ['png', 'svg', 'jpg']
