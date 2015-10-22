@@ -33,7 +33,7 @@
  *
  */
 
-@media $media_for_touch
++media('max', sm)
     .b-popup__outer
         overflow hidden
 
@@ -64,7 +64,7 @@
     padding 20px 0
     min-height 100%
 
-    @media $media_for_touch
+    +media('max', sm)
         align-items stretch
         padding 0
 
@@ -81,7 +81,7 @@
     transform translateY(-40px)
     border-radius()
 
-    @media $media_for_touch
+    +media('max', sm)
         width 100%
 
         if $site_border-radius != 0
@@ -100,7 +100,7 @@
     background $white
     box-shadow 0 0 3px $black
 
-    @media $media_for_touch
+    +media('max', sm)
         top 0
         right 0
         size 40px
@@ -115,7 +115,7 @@
         content ''
         background $black
 
-        @media $media_for_touch
+        +media('max', sm)
             size 8px 36px
 
     &::before
