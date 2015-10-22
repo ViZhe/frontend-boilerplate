@@ -5,11 +5,11 @@
  */
 
 $site_font_family = 'Roboto' // Шрифт сайта.
-$site_font_size = 16px //       Размер шрифта сайта
+$site_font_size = 16px //       Размер шрифта сайта.
 $site_border-radius = 3px //    Закругление углов (кнопки, сообщения и т.п.). Отключить = 0.
 
 
-$include_font_family = $site_font_family //'Roboto', 'PT Serif', 'PT Sans', 'Open Sans' // Шрифты для включения в файл.
+$include_font_family = $site_font_family // Шрифты для включения в файл: 'Roboto', 'PT Serif', 'PT Sans', 'Open Sans'
 
 /* Ширина сайта */
 
@@ -26,32 +26,3 @@ $site_media_md = 1260px //      C Обычного на Маленький де�
 $site_media_sm = 1000px //      C Маленького десктопа и Планшета(альбом) на Планшет(портрет).
 $site_media_xl = 768px //       C Планшета(портрет) на Смартфон(альбом).
 $site_media_xs = 500px //       Cо Смартфона(альбом) на Смартфон(портрет).
-
-
-
-/* Медиа условия */
-
-$media_for_desktop = '(min-width $site_media_sm)'
-$media_not_desktop = '(max-width $site_media_sm - 1)'
-
-$media_for_lg = '(min-width $site_media_md)'
-$media_not_lg = '(max-width $site_media_md - 1)'
-
-$media_for_md = '(min-width $site_media_sm) and (max-width $site_media_md - 1)'
-$media_not_md = '(max-width $site_media_sm - 1), (min-width $site_media_md)'
-
-
-$media_for_touch = '(max-width $site_media_sm - 1)'
-$media_not_touch = '(min-width $site_media_sm)'
-
-$media_for_sm = '(min-width $site_media_xl) and (max-width $site_media_sm - 1)'
-$media_not_sm = '(max-width $site_media_xl - 1), (min-width $site_media_sm)'
-
-$media_for_x = '(max-width $site_media_xl - 1)'
-$media_not_x = '(min-width $site_media_xl)'
-
-$media_for_xl = '(min-width $site_media_xs) and (max-width $site_media_xl - 1)'
-$media_not_xl = '(max-width $site_media_xs - 1), (min-width $site_media_xl)'
-
-$media_for_xs = '(max-width $site_media_xs - 1)'
-$media_not_xs = '(min-width $site_media_xs)'
