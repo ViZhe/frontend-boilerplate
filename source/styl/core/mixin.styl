@@ -1,11 +1,54 @@
 
 /**
- * Grid
+ * Media
  *
- * $grid()                  => .col{...}.w1-2{width:50%;}
- * $grid('_postfix')        => .col{...}.w1-4_postfix{width:25%;}
+ * +media('min', xl)                  => xl,sm,md,lg
+ * +media('max', xl)                  => xs,xl
+ * +media('in', xl)                   => xl
+ * +media('in', xl, md)               => xl,sm,md
+ * +media('out', xl)                  => xs, sm, md ,lg
+ * +media('out', xl, sm)              => xs, md ,lg
  *
  */
+
+media(type, arg...)
+    $sizeName = {
+       md: 3
+       sm: 2
+       xl: 1
+       xs: 0
+    }
+    $sizeValue = 500px 768px 1000px 1260px
+
+    if type == 'max'
+        $media_where = '(max-width $sizeValue[$sizeName[arg[0]]] - 1)'
+
+    else if type == 'min'
+        $media_where = '(min-width $sizeValue[$sizeName[arg[0]] - 1])'
+
+    else if type == 'in'
+        $media_where_first = $sizeValue[$sizeName[arg[0]] - 1]
+        $media_where_second = (length(arg) == 1) ? $sizeValue[$sizeName[arg[0]]] - 1 : $sizeValue[$sizeName[arg[1]]] - 1
+        $media_where = '(min-width $media_where_first) and (max-width $media_where_second)'
+
+    else if type == 'out'
+        $media_where_first = $sizeValue[$sizeName[arg[0]] - 1] - 1
+        $media_where_second = (length(arg) == 1) ? $sizeValue[$sizeName[arg[0]]] : $sizeValue[$sizeName[arg[1]]]
+        $media_where = '(max-width $media_where_first), (min-width $media_where_second)'
+
+    if $media_where
+        @media $media_where
+            {block}
+
+
+
+ /**
+  * Grid
+  *
+  * $grid()                  => .col{...}.w1-2{width:50%;}
+  * $grid('_postfix')        => .col{...}.w1-4_postfix{width:25%;}
+  *
+  */
 
 $grid(postfix = '')
     .w0-0{postfix}
