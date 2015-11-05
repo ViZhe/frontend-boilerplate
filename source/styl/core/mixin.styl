@@ -45,22 +45,18 @@ media(type, arg...)
  /**
   * Grid
   *
-  * $grid()                  => .col{...}.w1-2{width:50%;}
-  * $grid('_postfix')        => .col{...}.w1-4_postfix{width:25%;}
+  * $grid()                  => .col{...}.w2{flex:0 50%;}
+  * $grid('_postfix')        => .col{...}.w4_postfix{flex:0 25%;}
   *
   */
 
 $grid(postfix = '')
-    .w0-0{postfix}
+    .w0{postfix}
         flex 1
 
-    .w1-1{postfix}
-        width 100%
-
-    for i in 1...12
-        for j in i+1..12
-            .w{i}-{j}{postfix}
-                width (i/j) * 100%
+    for i in 1..5
+        .w{i}{postfix}
+            flex 0 (1/i) * 100%
 
 
 
@@ -189,9 +185,9 @@ size(arg...)
  *
  */
 
-border-radius(arg...)
-    if arg || arg == 0
-        border-radius arg
+border-radius()
+    if length(arguments)
+        border-radius arguments
 
     else if $site_border-radius
         border-radius $site_border-radius

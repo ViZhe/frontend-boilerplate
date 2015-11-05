@@ -22,7 +22,7 @@ gulp.task 'stylus_build', ->
         .pipe($.autoprefixer(
             browser: config.style.autoprefixer.browser
         ))
-        .pipe($.cleancss())
+        .pipe($.minifyCss()) # поковырять настройки https://github.com/jakubpawlowicz/clean-css#how-to-use-clean-css-programmatically
         .pipe($.header(config.headerCat, config.version))
         .pipe(gulp.dest(config.style.dest))
 
@@ -36,5 +36,5 @@ gulp.task 'stylus_build', ->
         .pipe($.autoprefixer(
             browser: config.style.autoprefixer.browser
         ))
-        .pipe($.cleancss())
+        .pipe($.minifyCss())
         .pipe(gulp.dest(config.style.dest))

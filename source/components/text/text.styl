@@ -12,6 +12,8 @@
  *
  *		@example.padded
  *		.b-text
+ *			img.b-text__image-left(src="http://fakeimg.pl/250x300/282828/eae0d0/?text=left")
+ *			img.b-text__image-right(src="http://fakeimg.pl/250x300/282828/eae0d0/?text=right")
  *			p.
  *			   Lorem ipsum dolor sit amet, consectetur adipisicing elit,
  *			   sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
@@ -23,6 +25,7 @@
  *			ol
  *				li Lorem ipsum dolor sit ametsssss
  *				li Sed do eiusmod tempor incididunt ut
+ *			.g-cf
  *			blockquote
  *			   p.
  *			       Lorem ipsum dolor sit amet, consectetur adipisicing elit,
@@ -42,7 +45,8 @@
     & ul
     & ol
         margin-bottom 15px
-        margin-left 20px
+        margin-left 10px
+        list-style-position inside
 
     & li
         margin-bottom 5px
@@ -67,3 +71,11 @@
     & hr
         border 1px solid $graylight
         margin 15px 0
+
+    &__image-left
+        float left
+        margin 5px 10px 10px 0
+
+    &__image-right
+        float right
+        margin 5px 0 10px 10px
