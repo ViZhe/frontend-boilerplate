@@ -61,44 +61,6 @@ $grid(postfix = '')
 
 
 
-/*
- * Order
- *
- * $order()                 => .o1{order:1;}
- * $order('_postfix')       => .o2_postfix{order:2;}
- *
- */
-
-$order(postfix = '')
-    for i in 1..12
-        .o{i}{postfix}
-            order i
-
-
-
-/**
- * Offset
- *
- * offset 1 of 10           => margin-left:10%;
- * $offset()                => .os1-2{margin-left:50%;}
- * $offset('_postfix')      => .os1-4{margin-left:25%;}
- *
- */
-
-offset(arg...)
-    margin-left (arg[0]/arg[2])*100%
-
-$offset(postfix = '')
-    .os0-0{postfix}
-        margin-left 0
-
-    for i in 1...12
-        for j in i+1..12
-            .os{i}-{j}{postfix}
-                margin-left (i/j) * 100%
-
-
-
 /**
  * Gradient
  *
@@ -190,22 +152,5 @@ border-radius()
     if length(arguments)
         border-radius arguments
 
-    else if $site_border-radius
-        border-radius $site_border-radius
-
-
-
-/**
- * Overflow
- *
- * overflow ellipsis
- *
- */
-
-overflow(key)
-    if key == ellipsis
-        overflow hidden
-        text-overflow ellipsis
-        white-space nowrap
-    else
-        overflow key
+    else if $siteBorderRadius
+        border-radius $siteBorderRadius

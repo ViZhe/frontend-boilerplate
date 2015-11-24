@@ -23,12 +23,12 @@
     display flex
 
 .b-btn__group .b-btn
-    if $site_border-radius != 0
+    if $siteBorderRadius != 0
         border-radius 0
 
-    if $site_border-radius != 0
+    if $siteBorderRadius != 0
         &:first-of-type
-            border-radius $site_border-radius 0 0 $site_border-radius
+            border-radius $siteBorderRadius 0 0 $siteBorderRadius
 
         &:last-of-type
-            border-radius 0 $site_border-radius $site_border-radius 0
+            border-radius 0 $siteBorderRadius $siteBorderRadius 0

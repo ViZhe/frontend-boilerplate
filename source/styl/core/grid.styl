@@ -1,31 +1,65 @@
 
-/**
- * Сетка
- *
- */
-
 .container
-    width $site_width_lg
     margin-right auto
     margin-left auto
-
-    clearfix()
-
 
 .row
     display flex
     flex-wrap wrap
 
-    clearfix()
 
-    & .row
-        margin-right -15px
-        margin-left -15px
+.container
+    width 1240px
 
+.row .row
+    margin-right -15px
+    margin-left -15px
 
 .col
     padding-right 15px
     padding-left 15px
 
-
 $grid()
+
+
++media('in', md)
+    .container
+        width 980px
+
+    $grid('_md')
+
+
++media('in', sm)
+    .container
+        width 750px
+
+    .row .row
+        margin-right -10px
+        margin-left -10px
+
+    .col
+        padding-right 10px
+        padding-left 10px
+
+    $grid('_sm')
+
+
++media('max', xl)
+    .container
+        width 100%
+
+    .row .row
+        margin-right -5px
+        margin-left -5px
+
+    .col
+        padding-right 5px
+        padding-left 5px
+
+
++media('in', xl)
+    $grid('_xl')
+
+
++media('max', xs)
+    $grid('_xs')
