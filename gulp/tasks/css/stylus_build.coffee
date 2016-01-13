@@ -19,10 +19,8 @@ gulp.task 'stylus_build', ->
         .pipe($.cssUrlAdjuster(
             replace: ['../../app/frontend/img/','../img/']
         ))
-        .pipe($.autoprefixer(
-            browser: config.style.autoprefixer.browser
-        ))
-        .pipe($.minifyCss()) # поковырять настройки https://github.com/jakubpawlowicz/clean-css#how-to-use-clean-css-programmatically
+        .pipe($.autoprefixer(config.style.autoprefixer))
+        .pipe($.cssnano()) # поковырять настройки https://github.com/ben-eb/cssnano
         .pipe($.header(config.headerCat, config.version))
         .pipe(gulp.dest(config.style.dest))
 
@@ -33,8 +31,6 @@ gulp.task 'stylus_build', ->
             extensions: ['woff']
             maxImageSize: 1024 * 1024 * 10 # 10 mb
         ))
-        .pipe($.autoprefixer(
-            browser: config.style.autoprefixer.browser
-        ))
-        .pipe($.minifyCss())
+        .pipe($.autoprefixer(config.style.autoprefixer))
+        .pipe($.cssnano())
         .pipe(gulp.dest(config.style.dest))

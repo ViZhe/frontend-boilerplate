@@ -1,25 +1,25 @@
 
 /*!*
  * Append:
- * `.b-form__append` — Обертка для присоединения блоков к полю.
+ * `.c-form__append` — Обертка для присоединения блоков к полю.
  *
- * `.b-form__addon` — Класс присоединяемого поля.
+ * `.c-form__addon` — Класс присоединяемого поля.
  *
  *
  *		@example.padded
- *		label.b-form__label
- *			.b-form__append
- *				input.b-form__field(type="text", placeholder="Simple text input", required)
- *				.b-form__addon.b-btn.b-btn_color_green Отправить
+ *		label.c-form__label
+ *			.c-form__append
+ *				input.c-form__field(type="text", placeholder="Simple text input", required)
+ *				.c-form__addon.c-btn.c-btn_color_green Отправить
  *
  */
 
-.b-form__append
+.c-form__append
     display flex
 
-.b-form__append
-    & .b-form__field
-    & .b-form__addon
+.c-form__append
+    & .c-form__field
+    & .c-form__addon
         margin 0
 
         if $siteBorderRadius != 0
@@ -32,6 +32,6 @@
         & > :last-child
             border-radius 0 $siteBorderRadius $siteBorderRadius 0
 
-.b-form__append	.b-form__field
+.c-form__append	.c-form__field
     min-width 10%
     flex 1

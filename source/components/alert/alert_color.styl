@@ -1,18 +1,18 @@
 
 /*!*
  * Color:
- * `.b-alert_color_{$color_alert}` — Задает цвет блока сообщения.
+ * `.c-alert_color_{$color_alert}` — Задает цвет блока сообщения.
  *
  *
  *		@example.padded
- *		.b-alert.b-alert_color_blue
+ *		.c-alert.c-alert_color_blue
  *			h5.g-heading.g-heading_level_5.g-heading_first Внимание
  *			| Гречка дорожает! Срочно закупайтесь гречкой и талонами на интернет!!!
- *		.b-alert.b-alert_color_blue Гречка дорожает! Срочно закупайтесь гречкой и талонами на интернет!!!
+ *		.c-alert.c-alert_color_blue Гречка дорожает! Срочно закупайтесь гречкой и талонами на интернет!!!
  *
  */
 
-.b-alert_color
+.c-alert_color
     for name, color in $color_alert
         &_{name}
             background-color lighten(color[0], 90%)

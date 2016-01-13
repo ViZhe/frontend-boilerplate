@@ -1,41 +1,41 @@
 
 /*!*
  * Checkbox:
- * `.b-form__checkbox` — Класс на label, чтобы иконка приняла нужный вид.
+ * `.c-form__checkbox` — Класс на label, чтобы иконка приняла нужный вид.
  *
- * `.b-form__checkbox_checked` — Модификатор выбранного состояния.
+ * `.c-form__checkbox_checked` — Модификатор выбранного состояния.
  *
  *
  *		@example.padded
- *		.b-form
- *			label.b-form__label
+ *		.c-form
+ *			label.c-form__label
  *				input(type="checkbox")
- *				.b-form__checkbox Первый checkbox
- *			label.b-form__label
+ *				.c-form__checkbox Первый checkbox
+ *			label.c-form__label
  *				input(type="checkbox", checked)
- *				.b-form__checkbox Второй checkbox (активный)
- *			label.b-form__label
+ *				.c-form__checkbox Второй checkbox (активный)
+ *			label.c-form__label
  *				input(type="checkbox", disabled)
- *				.b-form__checkbox Третий checkbox (отключен)
+ *				.c-form__checkbox Третий checkbox (отключен)
  *
  */
 
-.b-form__checkbox
+.c-form__checkbox
     background-image svgurl('source/img/form/form__checkbox_off.svg') svg(path fill $black)
 
-input:not(:disabled) + .b-form__checkbox:hover
+input:not(:disabled) + .c-form__checkbox:hover
     background-image svgurl('source/img/form/form__checkbox_off.svg') svg(path fill $red)
 
 
-input:checked + .b-form__checkbox
+input:checked + .c-form__checkbox
     background-image svgurl('source/img/form/form__checkbox_on.svg') svg(path fill $blue)
 
-input:checked + .b-form__checkbox:hover
+input:checked + .c-form__checkbox:hover
     background-image svgurl('source/img/form/form__checkbox_on.svg') svg(path fill $red)
 
 
-input:disabled + .b-form__checkbox
+input:disabled + .c-form__checkbox
     background-image svgurl('source/img/form/form__checkbox_off.svg') svg(path fill $gray)
 
-input:checked:disabled + .b-form__checkbox
+input:checked:disabled + .c-form__checkbox
     background-image svgurl('source/img/form/form__checkbox_on.svg') svg(path fill $gray)

@@ -6,21 +6,21 @@
 
 /*!*
  * Таблицы:
- * `.b-table` — Базовый класс таблицы.
+ * `.c-table` — Базовый класс таблицы.
  *
- * `.b-table_striped` — Выделяем нечетные строки.
+ * `.c-table_striped` — Выделяем нечетные строки.
  *
- * `.b-table_hovered` — Подсвечиваем строчку при наведении.
+ * `.c-table_hovered` — Подсвечиваем строчку при наведении.
  *
- * `.b-table_nowrap` — Не ломаем текст.
+ * `.c-table_nowrap` — Не ломаем текст.
  *
- * `.b-table__overflow` — Обертка таблицы для скролла на маленьких экранах.
+ * `.c-table__overflow` — Обертка таблицы для скролла на маленьких экранах.
  *
  *
  *
  *		@example.padded
- *		.b-table__overflow
- *			table.b-table.b-table_striped.b-table_hovered.b-table_nowrap
+ *		.c-table__overflow
+ *			table.c-table.c-table_striped.c-table_hovered.c-table_nowrap
  *				thead
  *					tr
  *						th Id
@@ -42,7 +42,7 @@
  *
  */
 
-.b-table
+.c-table
     width 100%
 
     & thead
@@ -59,19 +59,19 @@
             border-bottom 1px solid $graylight
 
 
-.b-table_striped
+.c-table_striped
     & tbody tr:nth-of-type(2n)
         background lighten($gray, 70%)
 
 
-.b-table_hovered
+.c-table_hovered
     & tbody tr:hover
         background lighten($gray, 50%)
 
 
-.b-table_nowrap
+.c-table_nowrap
     white-space nowrap
 
 
-.b-table__overflow
+.c-table__overflow
     overflow auto

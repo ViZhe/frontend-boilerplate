@@ -30,17 +30,17 @@ hPopup = do ->
         $('body').off 'click', '.js-popup', openPopup
 
         setTimeout (->
-            $('.b-popup').addClass 'b-popup_show'
+            $('.c-popup').addClass 'b-popup_show'
         ), 100
-        $('body').on 'click', '.b-popup__shadow, .b-popup__close', closePopup
+        $('body').on 'click', '.c-popup__shadow, .c-popup__close', closePopup
 
     closePopup = ->
-        $('body').off 'click', '.b-popup__shadow,
-                                .b-popup__close', closePopup
-        $('.b-popup_show').removeClass 'b-popup_show'
+        $('body').off 'click', '.c-popup__shadow,
+                                .c-popup__close', closePopup
+        $('.c-popup_show').removeClass 'b-popup_show'
         setTimeout (->
             $('html').removeClass('b-popup__outer').removeAttr 'style'
-            $('.b-popup').remove()
+            $('.c-popup').remove()
             $('body').on 'click', '.js-popup', openPopup
         ), 300
 

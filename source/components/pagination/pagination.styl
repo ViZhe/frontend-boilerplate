@@ -6,37 +6,37 @@
 
 /*!*
  * Нумерация страниц:
- * `.b-pagination` — Обертка пагинации.
+ * `.c-pagination` — Обертка пагинации.
  *
- * `.b-pagination__item` — Пункт пагинации.
+ * `.c-pagination__item` — Пункт пагинации.
  *
- * `.b-pagination__link` — Ссылка-элемент.
+ * `.c-pagination__link` — Ссылка-элемент.
  *
- * `.b-pagination__active` — Активный элемент.
+ * `.c-pagination__active` — Активный элемент.
  *
- * `.b-pagination__disable` — Отключенный элемент.
+ * `.c-pagination__disable` — Отключенный элемент.
  *
- * `.b-pagination__divider` — Разделитель для пропуска пунктов.
+ * `.c-pagination__divider` — Разделитель для пропуска пунктов.
  *
  *
  *		@example.padded
- *		ul.b-pagination
- *			li.b-pagination__item: span.b-pagination__disable Назад
- *			li.b-pagination__item: span.b-pagination__disable &lt;
- *			li.b-pagination__item: span.b-pagination__active 1
- *			li.b-pagination__item: a.b-pagination__link(href="") 2
- *			li.b-pagination__item: a.b-pagination__link(href="") 3
- *			li.b-pagination__item: a.b-pagination__link(href="") 4
- *			li.b-pagination__item: a.b-pagination__link(href="") 5
- *			li.b-pagination__item: span.b-pagination__divider
- *			li.b-pagination__item: a.b-pagination__link(href="") 6
- *			li.b-pagination__item: a.b-pagination__link(href="") 7
- *			li.b-pagination__item: a.b-pagination__link(href="") &gt;
- *			li.b-pagination__item: a.b-pagination__link(href="") Вперед
+ *		ul.c-pagination
+ *			li.c-pagination__item: span.c-pagination__disable Назад
+ *			li.c-pagination__item: span.c-pagination__disable &lt;
+ *			li.c-pagination__item: span.c-pagination__active 1
+ *			li.c-pagination__item: a.c-pagination__link(href="") 2
+ *			li.c-pagination__item: a.c-pagination__link(href="") 3
+ *			li.c-pagination__item: a.c-pagination__link(href="") 4
+ *			li.c-pagination__item: a.c-pagination__link(href="") 5
+ *			li.c-pagination__item: span.c-pagination__divider
+ *			li.c-pagination__item: a.c-pagination__link(href="") 6
+ *			li.c-pagination__item: a.c-pagination__link(href="") 7
+ *			li.c-pagination__item: a.c-pagination__link(href="") &gt;
+ *			li.c-pagination__item: a.c-pagination__link(href="") Вперед
  *
  */
 
-.b-pagination
+.c-pagination
     display flex
     padding 15px 0 30px
     list-style none
@@ -47,29 +47,29 @@
     // без justify-content
 
 
-.b-pagination__item
+.c-pagination__item
     margin 3px
 
-.b-pagination__divider
-.b-pagination__active
-.b-pagination__disable
-.b-pagination__link
+.c-pagination__divider
+.c-pagination__active
+.c-pagination__disable
+.c-pagination__link
     display block
     padding 5px 10px
     border-radius()
 
-.b-pagination__divider
+.c-pagination__divider
     &::after
         color $gray
         content '...'
 
-.b-pagination__active
-.b-pagination__disable
+.c-pagination__active
+.c-pagination__disable
     background $gray
     color $white
     cursor default
 
-.b-pagination__link
+.c-pagination__link
     background $blue
     color $white !important
     text-decoration none

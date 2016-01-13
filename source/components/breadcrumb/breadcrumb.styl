@@ -6,28 +6,28 @@
 
 /*!*
  * Хлебные крошки:
- * `.b-breadcrumb` — Обертка хлебных крошек.
+ * `.c-breadcrumb` — Обертка хлебных крошек.
  *
- * `.b-breadcrumb__item` — Пункт крошек.
+ * `.c-breadcrumb__item` — Пункт крошек.
  *
  *
  *		@example.padded
- *		ul.b-breadcrumb
- *			li.b-breadcrumb__item: a(href="") Главная
- *			li.b-breadcrumb__item: a(href="") Каталог
- *			li.b-breadcrumb__item: a(href="") Группа
- *			li.b-breadcrumb__item Товар
+ *		ul.c-breadcrumb
+ *			li.c-breadcrumb__item: a(href="") Главная
+ *			li.c-breadcrumb__item: a(href="") Каталог
+ *			li.c-breadcrumb__item: a(href="") Группа
+ *			li.c-breadcrumb__item Товар
  *
  */
 
 $breadcrumbs_font_size = $siteFontSize - 10%
 
-.b-breadcrumb
+.c-breadcrumb
     display flex
     list-style none
     font-size $breadcrumbs_font_size
 
-.b-breadcrumb__item
+.c-breadcrumb__item
     color $gray
 
     &:not(:last-of-type)::after

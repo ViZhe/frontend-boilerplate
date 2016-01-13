@@ -1,30 +1,30 @@
 
 /*!*
  * Field:
- * `.b-form__field` — Класс для текстовых полей и textarea.
+ * `.c-form__field` — Класс для текстовых полей и textarea.
  *
- * `.b-form__field_textarea` — Модификатор textarea.
+ * `.c-form__field_textarea` — Модификатор textarea.
  *
- * `.b-form__field_valid` — Модификатор валидного поля.
+ * `.c-form__field_valid` — Модификатор валидного поля.
  *
- * `.b-form__field_invalid` — Модификатор поля с ошибкой.
+ * `.c-form__field_invalid` — Модификатор поля с ошибкой.
  *
  *
  *		@example.padded
- *		label.b-form__label Инпут
- *			input.b-form__field(type="text", placeholder="Simple text input",  required)
- *		label.b-form__label Текстовая область
- *			textarea.b-form__field.b-form__field_textarea(placeholder="Simple textarea")
- *		label.b-form__label Инпут валидный
- *			input.b-form__field.b-form__field_valid(type="text", placeholder="Simple text input")
- *		label.b-form__label Инпут с ошибкой
- *			input.b-form__field.b-form__field_invalid(type="text", placeholder="Simple text input")
- *		label.b-form__label Инпут неактивный
- *			input.b-form__field(type="text", placeholder="Simple text input", disabled)
+ *		label.c-form__label Инпут
+ *			input.c-form__field(type="text", placeholder="Simple text input",  required)
+ *		label.c-form__label Текстовая область
+ *			textarea.c-form__field.c-form__field_textarea(placeholder="Simple textarea")
+ *		label.c-form__label Инпут валидный
+ *			input.c-form__field.c-form__field_valid(type="text", placeholder="Simple text input")
+ *		label.c-form__label Инпут с ошибкой
+ *			input.c-form__field.c-form__field_invalid(type="text", placeholder="Simple text input")
+ *		label.c-form__label Инпут неактивный
+ *			input.c-form__field(type="text", placeholder="Simple text input", disabled)
  *
  */
 
-.b-form__field
+.c-form__field
     margin-top 5px
     padding 5px
     width 100%
@@ -42,18 +42,18 @@
         border-color $blue !important
         box-shadow none
 
-.b-form__field_textarea
+.c-form__field_textarea
     min-width 100%
     min-height 50px
     max-width 100%
     resize vertical
 
 
-.b-form__field:disabled
+.c-form__field:disabled
     background-color lighten($graylight, 70%)
 
-.b-form__field_valid
+.c-form__field_valid
     border-color $green
 
-.b-form__field_invalid
+.c-form__field_invalid
     border-color $red
