@@ -224,6 +224,7 @@
         "max-zoom",
         "min-zoom",
         "user-zoom",
+        "user-select",
         "orientation"
     ],
     "stackedProperties": "never",

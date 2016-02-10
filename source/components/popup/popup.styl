@@ -69,7 +69,7 @@
         padding 0
 
 .c-popup__content
-    relative false
+    relative()
     flex 0 0 auto
     padding 15px
     min-width 320px
@@ -92,13 +92,13 @@
 
 
 .c-popup__close
-    absolute -13px -13px false false
+    absolute top -13px right -13px
     size 26px
     border-radius 50%
-    text-align center
-    cursor pointer
     background $white
     box-shadow 0 0 3px $black
+    text-align center
+    cursor pointer
 
     +media('max', sm)
         top 0
@@ -108,12 +108,12 @@
 
     &::after
     &::before
-        absolute 3px false false 11px
+        absolute top 3px left 11px
         display block
         size 4px 20px
         border-radius 3px
-        content ''
         background $black
+        content ''
 
         +media('max', sm)
             size 8px 36px
