@@ -1,6 +1,6 @@
-/*! lightgallery - v1.2.5 - 2015-10-02
+/*! lightgallery - v1.2.14 - 2016-01-20
 * http://sachinchoolur.github.io/lightGallery/
-* Copyright (c) 2015 Sachin N; Licensed Apache 2.0 */
+* Copyright (c) 2016 Sachin N; Licensed Apache 2.0 */
 (function($, window, document, undefined) {
 
     'use strict';
@@ -56,9 +56,12 @@
     };
 
     Thumbnail.prototype.init = function() {
+        var _this = this;
         if (this.core.s.thumbnail && this.core.$items.length > 1) {
             if (this.core.s.showThumbByDefault) {
-                this.core.$outer.addClass('lg-thumb-open');
+                setTimeout(function(){
+                    _this.core.$outer.addClass('lg-thumb-open');
+                }, 700);
             }
 
             if (this.core.s.pullCaptionUp) {

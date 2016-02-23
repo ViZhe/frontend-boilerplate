@@ -1,6 +1,6 @@
-/*! lightgallery - v1.2.5 - 2015-10-02
+/*! lightgallery - v1.2.14 - 2016-01-20
 * http://sachinchoolur.github.io/lightGallery/
-* Copyright (c) 2015 Sachin N; Licensed Apache 2.0 */
+* Copyright (c) 2016 Sachin N; Licensed Apache 2.0 */
 (function($, window, document, undefined) {
 
     'use strict';
@@ -10,7 +10,7 @@
         mode: 'lg-slide',
 
         // Ex : 'ease'
-        cssEasing: 'cubic-bezier(0.25, 0, 0.25, 1)',
+        cssEasing: 'ease',
 
         //'for jquery animation'
         easing: 'linear',
@@ -48,6 +48,7 @@
         preload: 1,
         showAfterLoad: true,
         selector: '',
+        selectWithin: '',
         nextHtml: '',
         prevHtml: '',
 
@@ -80,6 +81,11 @@
         // lightGallery settings
         this.s = $.extend({}, defaults, options);
 
+        // When using dynamic mode, ensure dynamicEl is an array
+        if (this.s.dynamic && this.s.dynamicEl !== 'undefined' && this.s.dynamicEl.constructor === Array && !this.s.dynamicEl.length) {
+            throw ('When using dynamic mode, you must also define dynamicEl as an Array.');
+        }
+
         // lightGallery modules
         this.modules = {};
 
@@ -94,7 +100,7 @@
         // To determine browser supports for touch events;
         this.isTouch = ('ontouchstart' in document.documentElement);
 
-        // DIsable hideControlOnEnd if sildeEndAnimation is true
+        // Disable hideControlOnEnd if sildeEndAnimation is true
         if (this.s.slideEndAnimatoin) {
             this.s.hideControlOnEnd = false;
         }
@@ -106,7 +112,11 @@
             if (this.s.selector === 'this') {
                 this.$items = this.$el;
             } else if (this.s.selector !== '') {
-                this.$items = this.$el.find($(this.s.selector));
+                if (this.s.selectWithin) {
+                    this.$items = $(this.s.selectWithin).find(this.s.selector);
+                } else {
+                    this.$items = this.$el.find($(this.s.selector));
+                }
             } else {
                 this.$items = this.$el.children();
             }
@@ -436,37 +446,61 @@
      */
     Plugin.prototype.addHtml = function(index) {
         var subHtml = null;
+        var subHtmlUrl;
         if (this.s.dynamic) {
-            subHtml = this.s.dynamicEl[index].subHtml;
-        } else {
-            subHtml = this.$items.eq(index).attr('data-sub-html');
-        }
-
-        if (typeof subHtml !== 'undefined' && subHtml !== null) {
-
-            // get first letter of subhtml
-            // if first letter starts with . or # get the html form the jQuery object
-            var fL = subHtml.substring(0, 1);
-            if (fL === '.' || fL === '#') {
-                subHtml = $(subHtml).html();
+            if (this.s.dynamicEl[index].subHtmlUrl) {
+                subHtmlUrl = this.s.dynamicEl[index].subHtmlUrl;
             } else {
-                subHtml = subHtml;
+                subHtml = this.s.dynamicEl[index].subHtml;
             }
         } else {
-            subHtml = '';
+            if (this.$items.eq(index).attr('data-sub-html-url')) {
+                subHtmlUrl = this.$items.eq(index).attr('data-sub-html-url');
+            } else {
+                subHtml = this.$items.eq(index).attr('data-sub-html');
+            }
+        }
+
+        if (!subHtmlUrl) {
+            if (typeof subHtml !== 'undefined' && subHtml !== null) {
+
+                // get first letter of subhtml
+                // if first letter starts with . or # get the html form the jQuery object
+                var fL = subHtml.substring(0, 1);
+                if (fL === '.' || fL === '#') {
+                    subHtml = $(subHtml).html();
+                } else {
+                    subHtml = subHtml;
+                }
+            } else {
+                subHtml = '';
+            }
         }
 
         if (this.s.appendSubHtmlTo === '.lg-sub-html') {
-            this.$outer.find(this.s.appendSubHtmlTo).html(subHtml);
 
-            // Add lg-empty-html class if title doesn't exist
+            if (subHtmlUrl) {
+                this.$outer.find(this.s.appendSubHtmlTo).load(subHtmlUrl);
+            } else {
+                this.$outer.find(this.s.appendSubHtmlTo).html(subHtml);
+            }
+
+        } else {
+
+            if (subHtmlUrl) {
+                this.$slide.eq(index).load(subHtmlUrl);
+            } else {
+                this.$slide.eq(index).append(subHtml);
+            }
+        }
+
+        // Add lg-empty-html class if title doesn't exist
+        if (typeof subHtml !== 'undefined' && subHtml !== null) {
             if (subHtml === '') {
                 this.$outer.find(this.s.appendSubHtmlTo).addClass('lg-empty-html');
             } else {
                 this.$outer.find(this.s.appendSubHtmlTo).removeClass('lg-empty-html');
             }
-        } else {
-            this.$slide.eq(index).append(subHtml);
         }
 
         this.$el.trigger('onAfterAppendSubHtml.lg', [index]);
@@ -709,6 +743,23 @@
 
         if (!_this.lgBusy) {
 
+            if (this.s.download) {
+                var _src;
+                if (_this.s.dynamic) {
+                    _src = _this.s.dynamicEl[index].downloadUrl !== false && (_this.s.dynamicEl[index].downloadUrl || _this.s.dynamicEl[index].src);
+                } else {
+                    _src = _this.$items.eq(index).attr('data-download-url') !== 'false' && (_this.$items.eq(index).attr('data-download-url') || _this.$items.eq(index).attr('href') || _this.$items.eq(index).attr('data-src'));
+
+                }
+
+                if (_src) {
+                    $('#lg-download').attr('href', _src);
+                    _this.$outer.removeClass('lg-hide-download');
+                } else {
+                    _this.$outer.addClass('lg-hide-download');
+                }
+            }
+
             this.$el.trigger('onBeforeSlide.lg', [_prevIndex, index, fromTouch, fromThumb]);
 
             _this.lgBusy = true;
@@ -807,18 +858,6 @@
 
                 _this.lgBusy = false;
                 _this.$el.trigger('onAfterSlide.lg', [_prevIndex, index, fromTouch, fromThumb]);
-            }
-
-            if (this.s.download) {
-                var _src;
-                if (_this.s.dynamic) {
-                    _src = _this.s.dynamicEl[index].downloadUrl || _this.s.dynamicEl[index].src;
-                } else {
-                    _src = _this.$items.eq(index).attr('data-download-url') || _this.$items.eq(index).attr('href') || _this.$items.eq(index).attr('data-src');
-
-                }
-
-                $('#lg-download').attr('href', _src);
             }
 
             _this.lGalleryOn = true;
@@ -957,15 +996,17 @@
 
         var distance = endCoords - startCoords;
 
-        // reset opacity and transition duration
-        this.$outer.addClass('lg-dragging');
+        if (Math.abs(distance) > 15) {
+            // reset opacity and transition duration
+            this.$outer.addClass('lg-dragging');
 
-        // move current slide
-        this.setTranslate(this.$slide.eq(this.index), distance, 0);
+            // move current slide
+            this.setTranslate(this.$slide.eq(this.index), distance, 0);
 
-        // move next and prev slide with current slide
-        this.setTranslate($('.lg-prev-slide'), -this.$slide.eq(this.index).width() + distance, 0);
-        this.setTranslate($('.lg-next-slide'), this.$slide.eq(this.index).width() + distance, 0);
+            // move next and prev slide with current slide
+            this.setTranslate($('.lg-prev-slide'), -this.$slide.eq(this.index).width() + distance, 0);
+            this.setTranslate($('.lg-next-slide'), this.$slide.eq(this.index).width() + distance, 0);
+        }
     };
 
     Plugin.prototype.touchEnd = function(distance) {
@@ -1182,18 +1223,25 @@
 
         var _this = this;
 
-        _this.$el.trigger('onBeforeClose.lg');
+        if (!d) {
+            _this.$el.trigger('onBeforeClose.lg');
+        }
+
         $(window).scrollTop(_this.prevScrollTop);
 
         /**
          * if d is false or undefined destroy will only close the gallery
          * plugins instance remains with the element
-
+         *
          * if d is true destroy will completely remove the plugin
          */
 
         if (d) {
-            this.$items.off('click.lg click.lgcustom');
+            if (!_this.s.dynamic) {
+                // only when not using dynamic mode is $items a jquery collection
+                this.$items.off('click.lg click.lgcustom');
+            }
+
             $.removeData(_this.el, 'lightGallery');
         }
 
@@ -1227,7 +1275,10 @@
 
             $('.lg-backdrop').remove();
 
-            _this.$el.trigger('onCloseAfter.lg');
+            if (!d) {
+                _this.$el.trigger('onCloseAfter.lg');
+            }
+
         }, _this.s.backdropDuration + 50);
     };
 

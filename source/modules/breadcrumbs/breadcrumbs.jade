@@ -1,8 +1,8 @@
 
 mixin breadcrumbs(data)
-    ul.c-breadcrumbs
+    ul.m-breadcrumbs
         each page in data.list
-            li.c-breadcrumbs__item
+            li.m-breadcrumbs__item
                 if page.link
                     a(href="#{page.link}") #{page.title}
                 else

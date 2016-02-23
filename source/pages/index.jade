@@ -5,7 +5,6 @@ include ../modules/header/header
 include ../modules/footer/footer
 
 //- # Local modules
-include ../modules/breadcrumbs/breadcrumbs
 //- block modules
 
 doctype html
@@ -16,7 +15,6 @@ html(lang="ru-RU")
     body
         block header
             +header(header.default)
-            +breadcrumbs(breadcrumbs.default)
 
         block content
             section
