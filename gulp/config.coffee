@@ -39,10 +39,10 @@ global['config'] =
     headerCat: headerCat
     src: path.src
     dest: path.dest
-    style:
+    styles:
         src:
-            main: path.src + 'styl/hoppas.styl'
-            fonts: path.src + 'styl/font.styl'
+            main: path.src + 'styles/hoppas.styl'
+            fonts: path.src + 'styles/fonts/fonts.styl'
         dest: path.dest + 'frontend/css/'
         watch: path.src + '**/*.styl'
         autoprefixer:
@@ -52,24 +52,33 @@ global['config'] =
                       'Safari >= 7',
                       'iOS >= 7']
     docs:
-        src: path.src + 'styl/[^-]*.styl'
+        src: path.src + 'styles/hoppas.styl'
         dest: path.dest + 'docs/'
 
-    tpl:
-        src: path.src + 'tpl/*.jade'
-        dest: path.dest
-        watch: path.src + '**/*.jade'
-
-    js:
+    html:
+        data:
+            src: path.src + 'modules/**/data.json'
+            fileName: 'data.json'
+            dest: path.dest + 'tmp/'
+        tpl:
+            src: path.src + 'pages/*.jade'
+            pathToJson: path.dest + 'tmp/data.json'
+            dest: path.dest
+        watch: [
+            path.src + 'modules/**/data.json'
+            path.src + '**/*.jade'
+            path.src + 'modules/**/*.jade'
+        ]
+    scripts:
         src:
-            main: path.src + 'js/*.coffee'
-            lib: path.src + 'js/lib/*.js'
+            main: path.src + 'scripts/*.coffee'
+            lib: path.src + 'scripts/lib/*.js'
         dest:
             main: path.dest + 'frontend/js/'
             lib: path.dest + 'frontend/js/lib/'
         watch: path.src + '**/*.{js,coffee}'
 
-    img:
+    images:
         src: path.src + 'img/**/*'
         dest: path.dest + 'frontend/img/'
         watch: path.src + 'img/**/*'

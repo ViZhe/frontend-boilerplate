@@ -1,7 +1,8 @@
 
 # Собираем дев
-gulp.task 'dev', $.sequence(
-    ['clean']
-    ['stylus_dev', 'jade', 'js_dev', 'img_dev']
-    ['styleguide']
-)
+gulp.task 'dev', (callback) ->
+    $.sequence(
+        ['clean']
+        ['styles_dev', 'html', 'scripts_dev', 'images_dev']
+        ['styleguide']
+    ) callback

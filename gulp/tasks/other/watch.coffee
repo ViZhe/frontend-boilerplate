@@ -1,16 +1,16 @@
 
 # Cледим за изменениями
 gulp.task 'watch', ->
-    $.watch config.style.watch, ->
-        gulp.start ['stylus_dev', 'styleguide']
+    $.watch config.styles.watch, ->
+        gulp.start ['styles_dev', 'styleguide']
         return
-    $.watch config.tpl.watch, ->
-        gulp.start ['jade']
+    $.watch config.html.watch, ->
+        gulp.start ['html']
         return
-    $.watch config.js.watch, ->
-        gulp.start ['js_dev']
+    $.watch config.scripts.watch, ->
+        gulp.start ['scripts_dev']
         return
-    $.watch config.img.watch, ->
-        gulp.start ['img_dev']
+    $.watch config.images.watch, ->
+        gulp.start ['images_dev']
         return
     return

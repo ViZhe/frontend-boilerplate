@@ -35,91 +35,91 @@
 
 +media('max', sm)
     .c-popup__outer
-        overflow hidden
+        overflow: hidden
 
 .c-popup__outer > body
-    overflow hidden
+    overflow: hidden
 
 .c-popup
-    fixed 0
-    z-index 200
-    visibility hidden
-    overflow auto
-    min-width 320px
-    opacity 0
-    transition all .3s
+    fixed: 0
+    z-index: 200
+    visibility: hidden
+    overflow: auto
+    min-width: 320px
+    transition: all .3s
+    opacity: 0
 
 .c-popup_show
-    visibility visible
-    opacity 1
+    visibility: visible
+    opacity: 1
 
 .c-popup__shadow
-    fixed 0
-    background rgba($black, 90%)
+    fixed: 0
+    background: rgba($black, 90%)
 
 .c-popup__inner
-    display flex
-    align-items center
-    justify-content center
-    padding 20px 0
-    min-height 100%
+    display: flex
+    align-items: center
+    justify-content: center
+    min-height: 100%
+    padding: 20px 0
 
     +media('max', sm)
-        align-items stretch
-        padding 0
+        align-items: stretch
+        padding: 0
 
 .c-popup__content
-    relative()
-    flex 0 0 auto
-    padding 15px
-    min-width 320px
-    max-width 1000px
-    width 70%
-    background $white
-    box-shadow 0 0 3px $black
-    transition all .3s ease
-    transform translateY(-40px)
-    border-radius()
+    relative: true
+    flex: 0 0 auto
+    width: 70%
+    min-width: 320px
+    max-width: 1000px
+    padding: 15px
+    transition: all .3s ease
+    border-radius: auto
+    background: $white
+    box-shadow: 0 0 3px $black
+    transform: translateY(-40px)
 
     +media('max', sm)
-        width 100%
+        width: 100%
 
-        if $siteBorderRadius != 0
-            border-radius 0
+        if $borderRadiusDefault != 0
+            border-radius: 0
 
     .c-popup_show &
-        transform translateY(0px)
+        transform: translateY(0px)
 
 
 .c-popup__close
-    absolute top -13px right -13px
-    size 26px
-    border-radius 50%
-    background $white
-    box-shadow 0 0 3px $black
-    text-align center
-    cursor pointer
+    absolute: top -13px right -13px
+    size: 26px
+    cursor: pointer
+    text-align: center
+    border-radius: 50%
+    background: $white
+    box-shadow: 0 0 3px $black
 
     +media('max', sm)
-        top 0
-        right 0
-        size 40px
-        box-shadow 0 0 0 -1px
+        top: 0
+        right: 0
+        size: 40px
+        box-shadow: 0 0 0 -1px
 
     &::after
     &::before
-        absolute top 3px left 11px
-        display block
-        size 4px 20px
-        border-radius 3px
-        background $black
-        content ''
+        absolute: top 3px left 11px
+        display: block
+        size: 4px 20px
+        content: ''
+        border-radius: 3px
+        background: $black
 
         +media('max', sm)
-            size 8px 36px
+            size: 8px 36px
 
     &::before
-        transform rotate(-45deg)
+        transform: rotate(-45deg)
 
     &::after
-        transform rotate(45deg)
+        transform: rotate(45deg)

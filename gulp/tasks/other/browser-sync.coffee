@@ -5,4 +5,3 @@ gulp.task 'browser-sync', ->
         files: config.dest
         server:
             baseDir: config.dest
-            proxy: 'site.hoppas'

@@ -1,0 +1,9 @@
+
+mixin breadcrumbs(data)
+    ul.c-breadcrumbs
+        each page in data.list
+            li.c-breadcrumbs__item
+                if page.link
+                    a(href="#{page.link}") #{page.title}
+                else
+                    | #{page.title}

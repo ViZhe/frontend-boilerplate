@@ -8,7 +8,7 @@
  */
 
 .c-form
-    display block
+    display: block
 
 
 /*!*
@@ -28,37 +28,37 @@
  */
 
 .c-form__label
-    display block
+    display: block
 
 .c-form__label:not(:first-of-type)
-    margin-top 15px
+    margin-top: 15px
 
 .c-form__label_space_middle:not(:first-of-type)
-    margin-top 10px
+    margin-top: 10px
 
 .c-form__label_space_small:not(:first-of-type)
-    margin-top 5px
+    margin-top: 5px
 
 .c-form__label_disabled
-    color $gray
-    cursor default
+    cursor: default
+    color: $gray
 
     &::before
-        color @color !important
+        color: @color !important
 
 
 .c-form__radio
 .c-form__checkbox
-    padding-left 23px
-    background-position left center
-    background-size 15px
-    background-repeat no-repeat
-    cursor pointer
+    padding-left: 23px
+    cursor: pointer
+    background-repeat: no-repeat
+    background-position: left center
+    background-size: 15px
 
 .c-form__label input[type='radio']
 .c-form__label input[type='checkbox']
-    fixed top -100%
-    visibility hidden
+    fixed: top -100%
+    visibility: hidden
 
 
 /*!*
@@ -82,4 +82,4 @@
  */
 
 .c-form__group:not(:last-of-type)
-    margin-bottom 30px
+    margin-bottom: 30px

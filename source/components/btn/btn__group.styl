@@ -20,15 +20,15 @@
 
 .c-btn__group
     relative()
-    display flex
+    display: flex
 
 .c-btn__group .c-btn
-    if $siteBorderRadius != 0
-        border-radius 0
+    if $borderRadiusDefault != 0
+        border-radius: 0
 
-    if $siteBorderRadius != 0
+    if $borderRadiusDefault != 0
         &:first-of-type
-            border-radius $siteBorderRadius 0 0 $siteBorderRadius
+            border-radius: $borderRadiusDefault 0 0 $borderRadiusDefault
 
         &:last-of-type
-            border-radius 0 $siteBorderRadius $siteBorderRadius 0
+            border-radius: 0 $borderRadiusDefault $borderRadiusDefault 0

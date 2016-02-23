@@ -1,0 +1,35 @@
+
+/*!**
+ * Breadcrumbs:
+ *
+ */
+
+/*!*
+ * Хлебные крошки:
+ * `.c-breadcrumbs` — Обертка хлебных крошек.
+ *
+ * `.c-breadcrumbs__item` — Пункт крошек.
+ *
+ *
+ *		@example.padded
+ *		ul.c-breadcrumbs
+ *			li.c-breadcrumbs__item: a(href="") Главная
+ *			li.c-breadcrumbs__item: a(href="") Каталог
+ *			li.c-breadcrumbs__item: a(href="") Группа
+ *			li.c-breadcrumbs__item Товар
+ *
+ */
+
+$breadcrumbs_font_size = $siteFontSize - 10%
+
+.c-breadcrumbs
+    display: flex
+    list-style: none
+    font-size: $breadcrumbs_font_size
+
+.c-breadcrumbs__item
+    color: $gray
+
+    &:not(:last-of-type)::after
+        margin: 0 5px
+        content: '›'

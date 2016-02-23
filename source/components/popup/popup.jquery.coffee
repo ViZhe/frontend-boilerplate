@@ -1,10 +1,4 @@
 
-
-##
-#  for exampl: https://github.com/Toddish/Popup/blob/master/assets/js/jquery.popup.js
-# http://vodkabears.github.io/remodal/#modal
-##
-
 hPopup = do ->
     init = ->
         $('body').on 'click', '.js-popup', openPopup

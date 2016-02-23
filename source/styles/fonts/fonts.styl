@@ -1,0 +1,53 @@
+
+/**
+ * Fonts list:
+ *
+ * 'Roboto': 'r' 'i' 'b'
+ * 'PT Serif': 'r' 'i' 'b'
+ * 'PT Serif Klim': 'r' 'i' 'b' 'bi'
+ * 'PT Serif Caption': 'r'
+ * 'PT Sans': 'r' 'i' 'b'
+ * 'PT Sans Klim': 'r' 'i' 'b' 'bi'
+ * 'Open Sans': 'r' 'i' 'b'
+ *
+ */
+
+
+$include_fonts_list = {
+    'Roboto': 'r' 'i' 'b'
+}
+
+for $name, $type in $include_fonts_list
+    $file = replace(' ', '', $name)
+
+    if 'r' in $type
+        @font-face
+            font-family: $name
+            src: local($name), local($file + '-Regular'),
+            url('./' + $file + '/' + $file + '_regular.woff') format('woff')
+            font-weight: 400
+            font-style: normal
+
+    if 'i' in $type
+        @font-face
+            font-family: $name
+            src: local($name + ' Italic'), local($file + '-Italic'),
+            url('./' + $file + '/' + $file + '_italic.woff') format('woff')
+            font-weight: 400
+            font-style: italic
+
+    if 'b' in $type
+        @font-face
+            font-family: $name
+            src: local($name + ' Bold'), local($file + '-Bold'),
+            url('./' + $file + '/' + $file + '_bold.woff') format('woff')
+            font-weight: 700
+            font-style: normal
+
+    if 'bi' in $type
+        @font-face
+            font-family: $name
+            src: local($name + ' Bold Italic'), local($file + '-Bold-Italic'),
+            url('./' + $file + '/' + $file + '_bold-italic.woff') format('woff')
+            font-weight: 700
+            font-style: italic
