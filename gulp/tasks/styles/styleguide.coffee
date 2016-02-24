@@ -3,7 +3,12 @@ gulp.task 'styleguide', ->
     gulp.src(config.docs.src)
         .pipe($.plumber())
         .pipe($.stylus(
-            'use': $.svgStylus()
+            'use':
+                $.poststylus([
+                    $.postcssSvg(
+                        ei: false
+                    )
+                ])
         ))
         .pipe($.styledown(
             config: './source/docs/config.styl'

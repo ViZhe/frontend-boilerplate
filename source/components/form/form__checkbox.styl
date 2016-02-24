@@ -21,21 +21,21 @@
  */
 
 .c-form__checkbox
-    background-image: svgurl('source/img/form/form__checkbox_off.svg') svg(path fill $black)
+    background-image: svg('source/img/form/form__checkbox_off.svg', '[fill]:' + $black)
 
 input:not(:disabled) + .c-form__checkbox:hover
-    background-image: svgurl('source/img/form/form__checkbox_off.svg') svg(path fill $red)
+    background-image: svg('source/img/form/form__checkbox_off.svg', '[fill]:' + $red)
 
 
 input:checked + .c-form__checkbox
-    background-image: svgurl('source/img/form/form__checkbox_on.svg') svg(path fill $blue)
+    background-image: svg('source/img/form/form__checkbox_on.svg', '[fill]:' + $blue)
 
 input:checked + .c-form__checkbox:hover
-    background-image: svgurl('source/img/form/form__checkbox_on.svg') svg(path fill $red)
+    background-image: svg('source/img/form/form__checkbox_on.svg', '[fill]:' + $red)
 
 
 input:disabled + .c-form__checkbox
-    background-image: svgurl('source/img/form/form__checkbox_off.svg') svg(path fill $gray)
+    background-image: svg('source/img/form/form__checkbox_off.svg', '[fill]:' + $gray)
 
 input:checked:disabled + .c-form__checkbox
-    background-image: svgurl('source/img/form/form__checkbox_on.svg') svg(path fill $gray)
+    background-image: svg('source/img/form/form__checkbox_on.svg', '[fill]:' + $gray)

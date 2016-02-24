@@ -3,7 +3,12 @@ gulp.task 'styles_dev', ->
     gulp.src(config.styles.src.main)
         .pipe($.plumber())
         .pipe($.stylus(
-            'use': $.svgStylus()
+            'use':
+                $.poststylus([
+                    $.postcssSvg(
+                        ei: false
+                    )
+                ])
         ))
         .pipe($.base64(config.styles.base64.fonts))
         .pipe($.autoprefixer(config.styles.autoprefixer))
