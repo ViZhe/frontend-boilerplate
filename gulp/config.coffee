@@ -45,6 +45,10 @@ global['config'] =
             fonts: path.src + 'styles/fonts/fonts.styl'
         dest: path.dest + 'frontend/css/'
         watch: path.src + '**/*.styl'
+        base64:
+            fonts:
+                extensions: ['woff']
+                maxImageSize: 1024 * 1024 * 10 # 10 mb
         autoprefixer:
             browser: ['last 2 versions',
                       'Explorer >= 10',
@@ -69,6 +73,7 @@ global['config'] =
             path.src + '**/*.jade'
             path.src + 'modules/**/*.jade'
         ]
+
     scripts:
         src:
             main: path.src + 'scripts/*.coffee'
@@ -77,8 +82,12 @@ global['config'] =
             main: path.dest + 'frontend/js/'
             lib: path.dest + 'frontend/js/lib/'
         watch: path.src + '**/*.{js,coffee}'
+        closureCompilerService:
+            compilation_level: 'SIMPLE_OPTIMIZATIONS'
 
     images:
         src: path.src + 'img/**/*'
         dest: path.dest + 'frontend/img/'
         watch: path.src + 'img/**/*'
+        tinypngCompress:
+            key: 'R0pdfmQ54wn5qqaERw6yUgWbuhBOqhty'

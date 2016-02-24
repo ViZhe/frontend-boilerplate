@@ -5,10 +5,7 @@ gulp.task 'styles_build', ->
         .pipe($.stylus(
             'use': $.svgStylus()
         ))
-        .pipe($.base64(
-            extensions: ['woff']
-            maxImageSize: 1024 * 1024 * 10 # 10 mb
-        ))
+        .pipe($.base64(config.styles.base64.fonts))
         .pipe($.cssUrlAdjuster(
             replace: ['../img/', '../../app/frontend/img/']
         ))
@@ -17,20 +14,17 @@ gulp.task 'styles_build', ->
             maxImageSize: 30 * 1024 # 30 kb
         ))
         .pipe($.cssUrlAdjuster(
-            replace: ['../../app/frontend/img/','../img/']
+            replace: ['../../app/frontend/img/', '../img/']
         ))
         .pipe($.autoprefixer(config.styles.autoprefixer))
-        .pipe($.cssnano()) # поковырять настройки https://github.com/ben-eb/cssnano
+        .pipe($.cssnano())
         .pipe($.header(config.headerCat, config.version))
         .pipe(gulp.dest(config.styles.dest))
 
     gulp.src(config.styles.src.fonts)
         .pipe($.plumber())
         .pipe($.stylus())
-        .pipe($.base64(
-            extensions: ['woff']
-            maxImageSize: 1024 * 1024 * 10 # 10 mb
-        ))
+        .pipe($.base64(config.styles.base64.fonts))
         .pipe($.autoprefixer(config.styles.autoprefixer))
         .pipe($.cssnano(
             discardUnused:

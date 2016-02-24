@@ -1,5 +1,4 @@
 
-# Собираем релиз
 gulp.task 'build', (callback) ->
     $.sequence(
         ['clean']

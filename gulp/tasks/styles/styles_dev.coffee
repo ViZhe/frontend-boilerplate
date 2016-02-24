@@ -5,23 +5,13 @@ gulp.task 'styles_dev', ->
         .pipe($.stylus(
             'use': $.svgStylus()
         ))
-        .pipe($.base64(
-            extensions: ['woff']
-            maxImageSize: 1024 * 1024 * 10 # 10 mb
-        ))
-        .pipe($.autoprefixer(
-            browser: config.styles.autoprefixer.browser
-        ))
+        .pipe($.base64(config.styles.base64.fonts))
+        .pipe($.autoprefixer(config.styles.autoprefixer))
         .pipe(gulp.dest(config.styles.dest))
 
     gulp.src(config.styles.src.fonts)
         .pipe($.plumber())
         .pipe($.stylus())
-        .pipe($.base64(
-            extensions: ['woff']
-            maxImageSize: 1024 * 1024 * 10 # 10 mb
-        ))
-        .pipe($.autoprefixer(
-            browser: config.styles.autoprefixer.browser
-        ))
+        .pipe($.base64(config.styles.base64.fonts))
+        .pipe($.autoprefixer(config.styles.autoprefixer))
         .pipe(gulp.dest(config.styles.dest))

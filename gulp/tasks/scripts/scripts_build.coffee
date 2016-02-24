@@ -5,17 +5,13 @@ gulp.task 'scripts_build', ->
         .pipe($.rigger())
         .pipe($.coffee())
         .pipe($.rigger())
-        .pipe($.closureCompilerService(
-            compilation_level: 'SIMPLE_OPTIMIZATIONS'
-        ))
+        .pipe($.closureCompilerService(config.scripts.closureCompilerService))
         .pipe($.uglify())
         .pipe($.header(config.headerCat, config.version))
         .pipe(gulp.dest(config.scripts.dest.main))
 
     gulp.src(config.scripts.src.lib)
         .pipe($.plumber())
-        .pipe($.closureCompilerService(
-            compilation_level: 'SIMPLE_OPTIMIZATIONS'
-        ))
+        .pipe($.closureCompilerService(config.scripts.closureCompilerService))
         .pipe($.uglify())
         .pipe(gulp.dest(config.scripts.dest.lib))

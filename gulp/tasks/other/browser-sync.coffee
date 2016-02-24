@@ -1,5 +1,4 @@
 
-# Запускаем локальный сервер
 gulp.task 'browser-sync', ->
     $.browserSync
         files: config.dest

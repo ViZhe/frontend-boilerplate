@@ -1,5 +1,4 @@
 
-# Собираем дев
 gulp.task 'dev', (callback) ->
     $.sequence(
         ['clean']
