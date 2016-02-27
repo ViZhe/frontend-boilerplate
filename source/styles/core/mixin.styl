@@ -145,14 +145,13 @@ size(arg...)
  *
  * border-radius: auto         => border-radius:3px
  * border-radius: 50%          => border-radius:50%
- * border-radius: 0 5px        => border-radius:0 5px
+ * border-radius: auto 5px     => border-radius: 3px 5px
  *
  */
 
 $borderRadiusDefault ?= 3px
 border-radius(args...)
-    if 'auto' in args && $borderRadiusDefault != 0
-        border-radius: $borderRadiusDefault
-
-    else if length(args)
-        border-radius: args
+    $value = ()
+    for $name in args
+        push($value, $name == 'auto' ? $borderRadiusDefault : $name)
+    border-radius: $value
