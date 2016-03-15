@@ -11,30 +11,30 @@
  *
  */
 
-media(type, arg...)
+media($type, $arg...)
     $sizeName = {
-        lg: 4
-        md: 3
-        sm: 2
-        xl: 1
+        xl: 4
+        lg: 3
+        md: 2
+        sm: 1
         xs: 0
     }
     $sizeValue = 500px 768px 1000px 1260px
 
-    if type == 'max'
-        $media_where = '(max-width $sizeValue[$sizeName[arg[0]]] - 1)'
+    if $type == 'max'
+        $media_where = '(max-width $sizeValue[$sizeName[$arg[0]]] - 1)'
 
-    else if type == 'min'
-        $media_where = '(min-width $sizeValue[$sizeName[arg[0]] - 1])'
+    else if $type == 'min'
+        $media_where = '(min-width $sizeValue[$sizeName[$arg[0]] - 1])'
 
-    else if type == 'in'
-        $media_where_first = $sizeValue[$sizeName[arg[0]] - 1]
-        $media_where_second = (length(arg) == 1) ? $sizeValue[$sizeName[arg[0]]] - 1 : $sizeValue[$sizeName[arg[1]]] - 1
+    else if $type == 'in'
+        $media_where_first = $sizeValue[$sizeName[$arg[0]] - 1]
+        $media_where_second = (length($arg) == 1) ? $sizeValue[$sizeName[$arg[0]]] - 1 : $sizeValue[$sizeName[$arg[1]]] - 1
         $media_where = '(min-width $media_where_first) and (max-width $media_where_second)'
 
-    else if type == 'out'
-        $media_where_first = $sizeValue[$sizeName[arg[0]] - 1] - 1
-        $media_where_second = (length(arg) == 1) ? $sizeValue[$sizeName[arg[0]]] : $sizeValue[$sizeName[arg[1]]]
+    else if $type == 'out'
+        $media_where_first = $sizeValue[$sizeName[$arg[0]] - 1] - 1
+        $media_where_second = (length($arg) == 1) ? $sizeValue[$sizeName[$arg[0]]] : $sizeValue[$sizeName[$arg[1]]]
         $media_where = '(max-width $media_where_first), (min-width $media_where_second)'
 
     if $media_where
@@ -51,21 +51,22 @@ media(type, arg...)
   *
   */
 
-$grid(postfix = '')
-    .w0{postfix}
+$grid($postfix = '')
+    .w0{$postfix}
         flex: 1
 
-    for i in 1..5
-        .w{i}{postfix}
-            flex: 0 (1/i) * 100%
+    for $i in 1..5
+        .w{$i}{$postfix}
+            flex: 0 (1/$i) * 100%
 
 
 
 /**
  * Gradient
  *
- * gradient(180deg, red, green)
- * gradient(270deg, red, green 50%, blue)
+ * gradient: 180deg, red, green
+ * gradient: 180deg red green
+ * gradient: 270deg, red, green 50%, blue
  *
  */
 
@@ -96,19 +97,18 @@ clearfix()
 /**
  * Position
  *
- * static()                       => position:static;
- * absolute(top)                  => position:absolute;top:0;
- * relative top                   => position:relative;top:0;
- * fixed top 10px left right      => position:fixed;top:10px;left:0;right:0;
+ * static()                        => position:static;
+ * relative: top                   => position:relative;top:0;
+ * fixed: top 10px left right      => position:fixed;top:10px;left:0;right:0;
  *
  */
 
--pos(type, args)
-    position: unquote(type)
+-pos($type, $args)
+    position: unquote($type)
     $direction = top right bottom left
-    for arg, i in args
-        if arg in $direction
-            {arg}: (args[i + 1] is a 'unit') ? args[i + 1] : 0
+    for $arg, $i in $args
+        if $arg in $direction
+            {$arg}: ($args[$i + 1] is a 'unit') ? $args[$i + 1] : 0
 
 static()
     -pos('static', arguments)
@@ -123,20 +123,20 @@ fixed()
 /**
  * Size
  *
- * size 10px               => width:10px; height:10px
- * size 10px 15px          => width:10px; height:15px
+ * size: 10px               => width:10px; height:10px
+ * size: 10px 15px          => width:10px; height:15px
  *
  */
 
-size(arg...)
-    if arg
-        if length(arg) == 1
-            width: arg[0]
-            height: arg[0]
+size($arg...)
+    if $arg
+        if length($arg) == 1
+            width: $arg[0]
+            height: $arg[0]
 
-        else if length(arg) == 2
-            width: arg[0]
-            height: arg[1]
+        else if length($arg) == 2
+            width: $arg[0]
+            height: $arg[1]
 
 
 
@@ -150,8 +150,8 @@ size(arg...)
  */
 
 $borderRadiusDefault ?= 3px
-border-radius(args...)
+border-radius($args...)
     $value = ()
-    for $name in args
+    for $name in $args
         push($value, $name == 'auto' ? $borderRadiusDefault : $name)
     border-radius: $value

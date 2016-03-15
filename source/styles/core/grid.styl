@@ -23,14 +23,14 @@
 $grid()
 
 
-+media('in', md)
++media('in', 'lg')
     .container
         width: 980px
 
-    $grid('_md')
+    $grid('_lg')
 
 
-+media('in', sm)
++media('in', 'md')
     .container
         width: 750px
 
@@ -42,10 +42,10 @@ $grid()
         padding-right: 10px
         padding-left: 10px
 
-    $grid('_sm')
+    $grid('_md')
 
 
-+media('max', xl)
++media('max', 'sm')
     .container
         width: 100%
 
@@ -58,9 +58,9 @@ $grid()
         padding-left: 5px
 
 
-+media('in', xl)
-    $grid('_xl')
++media('in', 'sm')
+    $grid('_sm')
 
 
-+media('max', xs)
++media('max', 'xs')
     $grid('_xs')

@@ -4,14 +4,16 @@
  * Глобальные стили.
  *
  */
+html
+    font-size: $siteFontSize
 
 body
     min-width: 320px
     color: $black
     background: darken($white, 1%)
     font-family: $siteFontFamily
-    font-size: $siteFontSize
-    line-height: 1.4
+    font-size: 1em
+    line-height: 1.45
 
 a
     text-decoration: none
@@ -49,7 +51,7 @@ a
 .g-heading
     margin: 1.2em 0 .5em
     font-weight: 700
-    line-height: 1.1
+    line-height: 1.2
 
 .g-heading_level_1
     font-size: 2.6em
@@ -79,8 +81,6 @@ a
  * `.g-cf` —  Сбрасывает обтекание блоков.
  *
  * `g-float_{right|left}` —  Делает элемент обтекаемым.
- *
- * `g-float_{right|left}_img` —  Модификатор добавляет отступы обтекаемому элементу.
  *
  *
  *		@example.padded
@@ -162,7 +162,7 @@ a
 
 .g-font
     &_bold
-        font-weight: 700 !important
+        font-weight: bold !important
 
     &_italic
         font-style: italic !important
@@ -181,8 +181,6 @@ a
  *
  *		@example.padded
  *		.g-color_red Красный текст
- *		.g-color_green Зеленый текст
- *		.g-color_graylight Серый текст
  *
  */
 

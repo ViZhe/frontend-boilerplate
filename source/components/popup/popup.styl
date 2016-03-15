@@ -22,18 +22,18 @@
  *
  *
  *		@example.padded
- *		.c-btn.c-btn_color_blue.js-popup(data-popup=".shom-sm") Покажись маленький
- *		.c-btn.c-btn_color_blue.js-popup(data-popup=".shom-lg") Покажись большой
+ *		.c-btn.c-btn_color_blue.js-popup(data-popup=".shom-small") Покажись маленький
+ *		.c-btn.c-btn_color_blue.js-popup(data-popup=".shom-big") Покажись большой
  *
- *		.g-hide.shom-sm
+ *		.g-hide.shom-small
  *		    div(style="height:200px;background-color:#939DA3;") Маленький
  *
- *		.g-hide.shom-lg
+ *		.g-hide.shom-big
  *		    div(style="height:1000px;background-color:#939DA3;") Большой
  *
  */
 
-+media('max', sm)
++media('max', 'md')
     .c-popup__outer
         overflow: hidden
 
@@ -64,7 +64,7 @@
     min-height: 100%
     padding: 20px 0
 
-    +media('max', sm)
+    +media('max', 'md')
         align-items: stretch
         padding: 0
 
@@ -81,7 +81,7 @@
     box-shadow: 0 0 3px $black
     transform: translateY(-40px)
 
-    +media('max', sm)
+    +media('max', 'md')
         width: 100%
 
         if $borderRadiusDefault != 0
@@ -100,7 +100,7 @@
     background: $white
     box-shadow: 0 0 3px $black
 
-    +media('max', sm)
+    +media('max', 'md')
         top: 0
         right: 0
         size: 40px
@@ -115,7 +115,7 @@
         border-radius: 3px
         background: $black
 
-        +media('max', sm)
+        +media('max', 'md')
             size: 8px 36px
 
     &::before
