@@ -43,24 +43,6 @@ media($type, $arg...)
 
 
 
- /**
-  * Grid
-  *
-  * $grid()                  => .col{...}.w2{flex:0 50%;}
-  * $grid('_postfix')        => .col{...}.w4_postfix{flex:0 25%;}
-  *
-  */
-
-$grid($postfix = '')
-    .w0{$postfix}
-        flex: 1
-
-    for $i in 1..5
-        .w{$i}{$postfix}
-            flex: 0 (1/$i) * 100%
-
-
-
 /**
  * Gradient
  *

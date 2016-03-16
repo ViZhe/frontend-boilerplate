@@ -7,60 +7,53 @@
     display: flex
     flex-wrap: wrap
 
-
-.container
-    width: 1240px
-
-.row .row
-    margin-right: -15px
-    margin-left: -15px
-
 .col
     max-width: 100%
-    padding-right: 15px
-    padding-left: 15px
+
+
+$grid-system ?= {
+    'xl': 1240px 15px
+    'lg': 980px 15px
+    'md': 750px 10px
+    'sm': 100% 5px
+    'xs': 100% 5px
+}
+
+
+-grid-inner($arg, $mod = '')
+    .container
+        width: $arg[0]
+
+    .row .row
+        margin-right: unquote('-' + $arg[1])
+        margin-left: unquote('-' + $arg[1])
+
+    .col
+        padding-right: $arg[1]
+        padding-left: $arg[1]
+
+    .w0{$mod}
+        flex: 1
+
+    for $i in 1..5
+        .w{$i}{$mod}
+            flex: 0 (1/$i) * 100%
 
 $grid()
+    $i = 1
+    $media-var = 'in'
 
+    for $name, $arg in $grid-system
+        if $i == 1
+            -grid-inner($arg)
 
-+media('in', 'lg')
-    .container
-        width: 980px
+        else
+            $media-var = 'max' if $i == length($grid-system)
+            $mod = '_' + $name
 
-    $grid('_lg')
+            +media($media-var, $name)
+                -grid-inner($arg, $mod)
 
+        $i = $i + 1
 
-+media('in', 'md')
-    .container
-        width: 750px
-
-    .row .row
-        margin-right: -10px
-        margin-left: -10px
-
-    .col
-        padding-right: 10px
-        padding-left: 10px
-
-    $grid('_md')
-
-
-+media('max', 'sm')
-    .container
-        width: 100%
-
-    .row .row
-        margin-right: -5px
-        margin-left: -5px
-
-    .col
-        padding-right: 5px
-        padding-left: 5px
-
-
-+media('in', 'sm')
-    $grid('_sm')
-
-
-+media('max', 'xs')
-    $grid('_xs')
+$grid()
