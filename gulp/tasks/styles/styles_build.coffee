@@ -16,7 +16,7 @@ gulp.task 'styles_build', ->
         ))
         .pipe($.base64(
             extensions: ['png', 'svg', 'jpg']
-            maxImageSize: 1024 * 30 # 30 kb
+            maxImageSize: 1024 * 10 # 10 kb
         ))
         .pipe($.cssUrlAdjuster(
             replace: ['../../app/frontend/img/', '../img/']
