@@ -86,8 +86,13 @@ global['config'] =
             compilation_level: 'SIMPLE_OPTIMIZATIONS'
 
     images:
-        src: path.src + 'img/**/*'
+        src:
+            all: path.src + 'img/**/*.{png,jpg,svg}'
+            raster: path.src + 'img/**/*.{png,jpg}'
+            vector: path.src + 'img/**/*.svg'
         dest: path.dest + 'frontend/img/'
         watch: path.src + 'img/**/*'
         tinypngCompress:
-            key: 'R0pdfmQ54wn5qqaERw6yUgWbuhBOqhty'
+            key: 'bpyVDEbqDxkKyfjc0SiZk9AUJfx941I4'
+            log: true
+            summarize: true
