@@ -1,0 +1,36 @@
+
+/*!**
+ * Scroll Top:
+ *
+ */
+
+/*!*
+ * Скролл вверх:
+ * `.b-scroll-top` — Основной стиль элемента.
+ *
+ * `.b-scroll-top_show` — Добавляется скриптом.
+ *
+ *
+ *		@example.padded
+ *		.b-scroll-top.js-scroll-top
+ *
+ */
+
+.b-scroll-top
+    fixed: right 10px bottom 10px
+    visibility: hidden
+    size: 50px
+    cursor: pointer
+    transition: all ease .5s
+    opacity: 0
+    background-image: svg('source/img/scroll-top/arrow.svg', '[fill]:' + $black)
+
+    +media('max', 'xs')
+        display: none
+
+.b-scroll-top_show
+    visibility: visible
+    opacity: .5
+
+    &:hover
+        opacity: 1

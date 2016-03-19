@@ -2,6 +2,7 @@
 ## jQuery
 
 #= ../components/popup/popup.jquery.coffee
+#= ../components/scroll-top/scroll-top.coffee
 
 `
 //= ../components/light-gallery/lightgallery.js
