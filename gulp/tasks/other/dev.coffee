@@ -2,6 +2,7 @@
 gulp.task 'dev', (callback) ->
     $.sequence(
         ['clean']
-        ['styles_dev', 'html', 'scripts_dev', 'images_dev']
+        ['images_dev']
+        ['styles_dev', 'html', 'scripts_dev']
         ['styleguide']
     ) callback

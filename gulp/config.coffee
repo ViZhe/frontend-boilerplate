@@ -87,10 +87,12 @@ global['config'] =
 
     images:
         src:
-            all: path.src + 'img/**/*.{png,jpg,svg}'
+            all: path.src + 'img/**/*.{png,jpg,svg,gif}'
             raster: path.src + 'img/**/*.{png,jpg}'
             vector: path.src + 'img/**/*.svg'
-        dest: path.dest + 'frontend/img/'
+        dest:
+            default: path.dest + 'frontend/img/'
+            vector: path.src + 'img/'
         watch: path.src + 'img/**/*'
         tinypngCompress:
             key: 'bpyVDEbqDxkKyfjc0SiZk9AUJfx941I4'
