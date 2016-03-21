@@ -4,28 +4,34 @@
 [![Dependency Status](https://david-dm.org/hoppas/frontend-boilerplate/dev-status.svg)](https://david-dm.org/hoppas/frontend-boilerplate#info=devDependencies)
 
 
-## Поддержка браузеров
-* Последние Chrome и Firefox
+## Browser Support
+* latest Chrome & Firefox & Safari
 * IE10+
-* Safari 7+
-
-## Настройка gulp
-
-0) Установить зависимости
- * ```npm i```
-
-1) Запустить gulp
- * ```gulp``` - Cобираем dev и запускаем локальный сервере
- * ```gulp dev``` - Сборка для разработки
- * ```gulp build``` - Релизная сборка
 
 
-## Шрифты
-#### Основной набор символов:
+## Setup
+```
+git clone git@github.com:hoppas/frontend-boilerplate.git <projectname>
+cd <projectname>
+rm -rf .git
+npm install
+```
+
+
+## Gulp commands
+```
+gulp       // Run dev & watch &  browserSync
+gulp dev
+gulp build
+```
+
+
+## Fonts
+#### Only base characters:
 * **PT Sans Klim** (r, i, b, bi)
 * **PT Serif Klim** (r, i, b, bi)
 
-#### Стандартный набор символов:
+#### Standard characters:
 * **Open Sans** (r, i, b)
 * **PT Sans** (r, i, b)
 * **PT Serif** (r, i, b)
