@@ -7,6 +7,7 @@ gulp.task 'styles_build', ->
                 $.poststylus([
                     $.postcssSvg(
                         ei: false
+                        svgo: true
                     )
                 ])
         ))

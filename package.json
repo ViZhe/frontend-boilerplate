@@ -1,6 +1,6 @@
 {
   "name": "fb.hoppas",
-  "version": "4.0.0-beta.8",
+  "version": "4.0.0-beta.9",
   "author": {
     "name": "ViZhe (Barsik^)",
     "email": "i@hoppas.ru"
@@ -21,7 +21,7 @@
     "gulp-header": "^1.0.0",
     "gulp-jade": "^1.0.0",
     "gulp-load-plugins": "^1.0.0",
-    "gulp-merge-json": "^0.3.0",
+    "gulp-merge-json": "~0.4.0",
     "gulp-plumber": "^1.0.0",
     "gulp-rigger": "~0.5.8",
     "gulp-sequence": "~0.4.4",
