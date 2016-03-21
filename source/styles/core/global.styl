@@ -4,6 +4,12 @@
  * Глобальные стили.
  *
  */
+
+*
+::after
+::before
+    box-sizing: border-box
+
 html
     font-size: $siteFontSize
 
@@ -25,6 +31,9 @@ a
 
     &:active
         color: $red
+
+img
+    max-width: 100%
 
 
 
