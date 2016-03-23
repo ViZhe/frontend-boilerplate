@@ -7,7 +7,7 @@
  * +media('in', 'md')                   => md
  * +media('in', 'sm', 'lg')             => sm, md, lg
  * +media('out', 'md')                  => xs, sm, lg, xl
- * +media('out', 'sm', 'md')            => xs, lg ,xl
+ * +media('out', 'sm', 'md')            => xs, lg, xl
  *
  */
 
@@ -53,8 +53,8 @@ media($type, $arg...)
  */
 
 gradient($direction, $colors...)
-    background: $colors[0][0]
-    background: linear-gradient($direction, unquote(join(', ', $colors)))
+    background-color: $colors[0][0]
+    background-image: linear-gradient($direction, unquote(join(', ', $colors)))
 
 
 

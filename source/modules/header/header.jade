@@ -3,17 +3,17 @@ mixin header(data)
     header.m-header
         .container: .row
             .col.w3
-                a(href="/"): img.m-header__logo-img(src="frontend/img/logo.png" alt="")
+                a.b-header-logo(href="/"): img.b-header-logo__img(src="frontend/img/logo.png" alt="")
 
             .col.w0
-                ul.m-header-menu
+                ul.b-header-menu
                     each page in data.menu
                         if (page.active && page.active === true)
-                            - var itemActiveClass = 'm-header-menu__item_active'
-                            - var linkActiveClass = 'm-header-menu__link_active'
+                            - var itemActiveClass = 'b-header-menu__item_active'
+                            - var linkActiveClass = 'b-header-menu__link_active'
                         else
                             - var itemActiveClass = ''
                             - var linkActiveClass = ''
 
-                        li.m-header-menu__item(class="#{itemActiveClass}")
-                            a.m-header-menu__link(href="#{page.link}" class="#{linkActiveClass}") #{page.title}
+                        li.b-header-menu__item(class="#{itemActiveClass}")
+                            a.b-header-menu__link(href="#{page.link}" class="#{linkActiveClass}") #{page.title}

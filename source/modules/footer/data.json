@@ -1,0 +1,26 @@
+
+{
+    "footer": {
+        "default": {
+            "menu": {
+                "home": {
+                    "title": "Главная",
+                    "link": "home",
+                    "active": true
+                },
+                "about": {
+                    "title": "О нас",
+                    "link": "about"
+                },
+                "catalog": {
+                    "title": "Каталог",
+                    "link": "catalog"
+                },
+                "contacts": {
+                    "title": "Контакты",
+                    "link": "contacts"
+                }
+            }
+        }
+    }
+}

@@ -1,10 +1,14 @@
 
 extends index.jade
-      
+
+include ../modules/breadcrumbs/breadcrumbs
+
+
 block head
     +head(head.simple)
 
 block content
     section
         .container: .row
-            .col.w0
+            .col.w1
+                +breadcrumbs(breadcrumbs.default)
