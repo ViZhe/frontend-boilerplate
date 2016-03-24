@@ -105,13 +105,13 @@ global['config'] =
             compilation_level: 'SIMPLE_OPTIMIZATIONS'
 
     images:
-        src:
-            all: path.src + 'img/**/*'
-            raster: path.src + 'img/**/*.{png,jpg}'
-            vector: path.src + 'img/**/*.svg'
+        src: path.src + 'img/**/*'
         dest: path.dest + 'frontend/img/'
         watch: path.src + 'img/**/*'
-        tinypngCompress:
-            key: 'bpyVDEbqDxkKyfjc0SiZk9AUJfx941I4'
-            log: true
-            summarize: true
+        imagemin:
+            progressive: true
+            interlaced: true
+            svgoPlugins: [{removeViewBox: false}]
+            use: [
+                $.imageminPngquant()
+            ]

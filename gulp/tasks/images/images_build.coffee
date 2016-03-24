@@ -1,7 +1,5 @@
 
-gulp.task 'images_build', (callback) ->
-    $.sequence(
-        ['images_copy']
-        ['images_raster']
-        ['images_vector']
-    ) callback
+gulp.task 'images_build', ->
+    gulp.src(config.images.src)
+        .pipe($.imagemin(config.images.imagemin))
+        .pipe(gulp.dest(config.images.dest))
