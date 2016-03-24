@@ -23,6 +23,7 @@ gulp.task 'styles_build', ->
             replace: ['../../app/frontend/img/', '../img/']
         ))
         .pipe($.autoprefixer(config.styles.autoprefixer))
+        .pipe($.combineMq())
         .pipe($.cssnano())
         .pipe($.header(config.headerCat, config.version))
         .pipe(gulp.dest(config.styles.dest))

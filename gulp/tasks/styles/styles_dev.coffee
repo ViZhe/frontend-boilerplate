@@ -12,6 +12,7 @@ gulp.task 'styles_dev', ->
         ))
         .pipe($.base64(config.styles.base64.fonts))
         .pipe($.autoprefixer(config.styles.autoprefixer))
+        .pipe($.combineMq())
         .pipe(gulp.dest(config.styles.dest))
 
     gulp.src(config.styles.src.fonts)
