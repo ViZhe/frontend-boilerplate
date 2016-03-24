@@ -2,7 +2,7 @@
 gulp.task 'html_tpl', ->
     fs = require('fs')
     gulp.src(config.html.tpl.src)
-        .pipe($.plumber())
+        .pipe($.plumber(config.plumber))
         .pipe($.jade(
             doctype: 'HTML'
             pretty: '    '

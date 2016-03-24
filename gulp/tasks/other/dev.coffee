@@ -4,5 +4,4 @@ gulp.task 'dev', (callback) ->
         ['clean']
         ['images_dev']
         ['styles_dev', 'html', 'scripts_dev']
-        ['styleguide']
     ) callback

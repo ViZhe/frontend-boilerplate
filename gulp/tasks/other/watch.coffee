@@ -1,7 +1,7 @@
 
 gulp.task 'watch', ->
     $.watch config.styles.watch, ->
-        gulp.start ['styles_dev', 'styleguide']
+        gulp.start ['styles_dev']
         return
 
     $.watch config.html.watch, ->

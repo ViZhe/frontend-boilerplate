@@ -29,6 +29,21 @@ headerCat = [
   ''
 ].join('\n')
 
+errorHandler = (err) ->
+    $.util.log [
+        (err.name + ' in ' + err.plugin).bold.red
+        ''
+        err.message
+        ''
+    ].join('\n')
+
+    if $.util.env.beep
+        $.util.beep()
+
+    @emit 'end'
+    return
+
+
 path =
     src: './source/'
     dest: './app/'
@@ -39,6 +54,10 @@ global['config'] =
     headerCat: headerCat
     src: path.src
     dest: path.dest
+
+    plumber:
+        errorHandler: errorHandler
+
     styles:
         src:
             main: path.src + 'styles/hoppas.styl'

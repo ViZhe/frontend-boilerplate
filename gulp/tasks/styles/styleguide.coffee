@@ -1,7 +1,9 @@
 
 gulp.task 'styleguide', ->
     gulp.src(config.docs.src)
-        .pipe($.plumber())
+        .pipe($.plumber(
+            errorHandler: config.errorHandler
+        ))
         .pipe($.stylus(
             'use':
                 $.poststylus([

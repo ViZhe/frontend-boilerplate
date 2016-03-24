@@ -1,7 +1,7 @@
 
 gulp.task 'scripts_dev', ->
     gulp.src(config.scripts.src.main)
-        .pipe($.plumber())
+        .pipe($.plumber(config.plumber))
         .pipe($.rigger())
         .pipe($.coffee())
         .pipe($.rigger())
