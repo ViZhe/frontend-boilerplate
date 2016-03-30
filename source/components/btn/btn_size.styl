@@ -1,28 +1,27 @@
 
 /*!*
  * Size:
- * `.c-btn_size_lg` — Задает размер кнопки, как "большой".
- *
- * `.c-btn_size_sm` — Задает размер кнопки, как "меньше среднего".
- *
- * `.c-btn_size_xs` — Задает размер кнопки, как "маленький".
+ * `.c-btn_size_{xs|sm|md|lg}` — Set button size.
  *
  *
  *		@example.padded
- *		.c-btn.c-btn_color_red.c-btn_size_lg Нажать
+ *		.c-btn.c-btn_color_red.c-btn_size_lg Push Me
  *		br
- *		.c-btn.c-btn_color_green.c-btn_size_sm Нажать
+ *		.c-btn.c-btn_color_green.c-btn_size_sm Push Me
  *		br
- *		.c-btn.c-btn_color_blue.c-btn_size_xs Нажать
+ *		.c-btn.c-btn_color_blue.c-btn_size_xs Push Me
  *
  */
 
 .c-btn_size
     &_xs
-        font-size: $siteFontSize - 30%
+        font-size: em(12px)
 
     &_sm
-        font-size: $siteFontSize - 20%
+        font-size: em(14px)
+
+    &_md
+        font-size: em(18px)
 
     &_lg
-        font-size: $siteFontSize + 20%
+        font-size: em(20px)

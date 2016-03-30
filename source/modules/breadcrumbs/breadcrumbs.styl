@@ -20,17 +20,15 @@
  *
  */
 
-$breadcrumbs_font_size = $siteFontSize - 10%
-
 .m-breadcrumbs
     display: flex
     padding: 0
     list-style: none
-    font-size: $breadcrumbs_font_size
+    font-size: em(14px)
 
 .m-breadcrumbs__item
     color: $gray
 
     &:not(:last-of-type)::after
-        margin: 0 5px
+        margin: 0 rem(5px)
         content: '›'
