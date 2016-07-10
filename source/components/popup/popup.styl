@@ -41,7 +41,11 @@
     overflow: hidden
 
 .c-popup
-    fixed: top right bottom left
+    position: fixed
+    top: 0
+    right: 0
+    bottom: 0
+    left: 0
     z-index: 200
     visibility: hidden
     overflow: auto
@@ -54,7 +58,11 @@
     opacity: 1
 
 .c-popup__shadow
-    fixed: top right bottom left
+    position: fixed
+    top: 0
+    right: 0
+    bottom: 0
+    left: 0
     background: rgba($black, 90%)
 
 .c-popup__inner
@@ -69,7 +77,7 @@
         padding: 0
 
 .c-popup__content
-    relative: true
+    position: relative
     flex: 0 0 auto
     width: 70%
     min-width: 320px
@@ -92,7 +100,9 @@
 
 
 .c-popup__close
-    absolute: top -13px right -13px
+    position: absolute
+    top: -13px
+    right: -13px
     size: 26px
     cursor: pointer
     text-align: center
@@ -108,7 +118,9 @@
 
     &::after
     &::before
-        absolute: top 3px left 11px
+        position: absolute
+        top: 3px
+        left: 11px
         display: block
         size: 4px 20px
         content: ''

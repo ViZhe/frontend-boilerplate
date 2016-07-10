@@ -77,33 +77,6 @@ clearfix()
 
 
 /**
- * Position
- *
- * static: true                    => position:static;
- * relative: top                   => position:relative;top:0;
- * fixed: top 10px left right      => position:fixed;top:10px;left:0;right:0;
- *
- */
-
--pos($type, $args)
-    position: unquote($type)
-    $direction = top right bottom left
-    for $arg, $i in $args
-        if $arg in $direction
-            {$arg}: ($args[$i + 1] is a 'unit') ? $args[$i + 1] : 0
-
-static()
-    -pos('static', arguments)
-relative()
-    -pos('relative', arguments)
-absolute()
-    -pos('absolute', arguments)
-fixed()
-    -pos('fixed', arguments)
-
-
-
-/**
  * Size
  *
  * size: 10px               => width:10px; height:10px
