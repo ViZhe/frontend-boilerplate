@@ -15,10 +15,10 @@ const hPopup = (() => {
     width = widthOuter - widthInner + 'px'
     outer.css('margin-right', width)
   }
-  openPopup = () => {
+  openPopup = e => {
     var content, el
     overflow()
-    el = $($(this).attr('data-popup'))
+    el = $($(e.target).attr('data-popup'))
     content = el.html()
     $('body').prepend(`<div class="c-popup">
       <div class="c-popup__shadow"></div>
