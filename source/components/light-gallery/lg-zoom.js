@@ -1,4 +1,3 @@
-
 /* eslint-disable */
 
 /*! lightgallery - v1.2.21 - 2016-06-28
