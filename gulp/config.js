@@ -1,12 +1,14 @@
 
-const version = {
-  v: require('./../package.json')
-}
+import imageminPngquant from 'imagemin-pngquant'
+import util from 'gulp-util'
 
-const headerCat = v => `
+import packageJson from '../package.json'
+
+
+const headerCat = `
 /*!
- * @author ${v.author.name}
- * @version ${v.version}
+ * @author3 ${packageJson.author.name}
+ * @version ${packageJson.version}
  *
  *                  $$____________$$
  *                  $___$________$___$
@@ -33,9 +35,9 @@ const headerCat = v => `
 
 
 const errorHandler = err => {
-  $.util.log([(`${err.name} in ${err.plugin}`).bold.red, '', err.message, ''].join('\n'))
-  if ($.util.env.beep) {
-    $.util.beep()
+  util.log([(`${err.name} in ${err.plugin}`).bold.red, '', err.message, ''].join('\n'))
+  if (util.env.beep) {
+    util.beep()
   }
   this.emit('end')
 }
@@ -46,8 +48,7 @@ const path = {
   dest: './app/'
 }
 
-global.config = {
-  version,
+const config = {
   headerCat,
   src: path.src,
   dest: path.dest,
@@ -114,7 +115,9 @@ global.config = {
           removeViewBox: false
         }
       ],
-      use: [$.imageminPngquant()]
+      use: [imageminPngquant()]
     }
   }
 }
+
+export default config
