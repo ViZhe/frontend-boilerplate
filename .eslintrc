@@ -1,0 +1,22 @@
+{
+  "env": {
+    "browser": true,
+    "node": true
+  },
+  "parser": "babel-eslint",
+  "extends": [
+    "xo",
+    "xo/esnext"
+  ],
+  "plugins": ["react"],
+  "rules": {
+    "indent": [1, 2, {"SwitchCase": 1}],
+    "jsx-quotes": [1, "prefer-single"],
+    "no-multiple-empty-lines": ["error", { "max": 2, "maxEOF": 1, "maxBOF": 1}],
+    "no-unused-vars": [2, {"args": "none"}],
+    "no-warning-comments": 0,
+    "operator-linebreak": [2, "after", {"overrides": {"?": "before", ":": "before"}}],
+    "prefer-template": 0,
+    "semi": [2, "never"]
+  }
+}
