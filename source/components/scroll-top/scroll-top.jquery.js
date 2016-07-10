@@ -11,7 +11,7 @@ $(window).on('scroll', () => {
 })
 
 backToTop.on('click', () => {
-  $('body,html').animate({
+  $('body, html').animate({
     scrollTop: 0
   }, 700)
 })
