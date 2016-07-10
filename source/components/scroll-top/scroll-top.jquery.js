@@ -1,17 +1,19 @@
 
-const backToTop = $('.js-scroll-top')
+(($, window, document) => {
+  const backToTop = $('.js-scroll-top')
 
-$(window).on('scroll', () => {
-  const scrollTop = $(document).scrollTop()
-  if (scrollTop > 100) {
-    backToTop.addClass('b-scroll-top_show')
-  } else {
-    backToTop.removeClass('b-scroll-top_show')
-  }
-})
+  $(window).on('scroll', () => {
+    const scrollTop = $(document).scrollTop()
+    if (scrollTop > 100) {
+      backToTop.addClass('b-scroll-top_show')
+    } else {
+      backToTop.removeClass('b-scroll-top_show')
+    }
+  })
 
-backToTop.on('click', () => {
-  $('body, html').animate({
-    scrollTop: 0
-  }, 700)
-})
+  backToTop.on('click', () => {
+    $('body, html').animate({
+      scrollTop: 0
+    }, 700)
+  })
+})(jQuery, window, document)
