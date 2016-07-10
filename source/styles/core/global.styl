@@ -58,26 +58,25 @@
  * Float:
  * `.g-cf` —  Сбрасывает обтекание блоков.
  *
- * `g-float_{right|left}` —  Делает элемент обтекаемым.
+ * `g-float-{right|left}` —  Делает элемент обтекаемым.
  *
  *
  *		@example.padded
- *		.g-float_right Обтекание элемета слева
- *		.g-float_left Обтекание элемета справа
+ *		.g-float-right Обтекание элемета слева
+ *		.g-float-left Обтекание элемета справа
  *		.g-cf
  *		p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
  *
  */
 
-.g-
-  &cf
+.g-cf
     clearfix()
 
-  &float
-    &_left
+.g-float
+    &-left
       float: left !important
 
-    &_right
+    &-right
       float: right !important
 
 
@@ -104,65 +103,65 @@
 
 /*!*
  * Align:
- * `.g-align_{left|center|right}` —  Задает выравнивание текста.
+ * `.g-align-{left|center|right}` —  Задает выравнивание текста.
  *
  *
  *		@example.padded
- *		.g-align_left Левая выключка текста
- *		.g-align_center Центральная выключка текста
- *		.g-align_right Правая выключка текста
+ *		.g-align-left Левая выключка текста
+ *		.g-align-center Центральная выключка текста
+ *		.g-align-right Правая выключка текста
  *
  */
 
 .g-align
-  &_left
+  &-left
     text-align: left !important
 
-  &_center
+  &-center
     text-align: center !important
 
-  &_right
+  &-right
     text-align: right !important
 
 
 /*!*
  * Font:
- * `.g-font_{bold|italic|big|small}` —  Задает форматирование текста.
+ * `.g-font-{bold|italic|big|small}` —  Задает форматирование текста.
  *
  *
  *		@example.padded
- *		.g-font_bold Жирный текст
- *		.g-font_italic Курсивный текст
- *		.g-font_big Большой текст
- *		.g-font_small Маленький текст
+ *		.g-font-bold Жирный текст
+ *		.g-font-italic Курсивный текст
+ *		.g-font-big Большой текст
+ *		.g-font-small Маленький текст
  *
  */
 
 .g-font
-  &_bold
+  &-bold
     font-weight: bold !important
 
-  &_italic
+  &-italic
     font-style: italic !important
 
-  &_big
+  &-big
     font-size: 120% !important
 
-  &_small
+  &-small
     font-size: 80% !important
 
 
 /*!*
  * Color:
- * `.g-color_{$color_text}` —  Задает цвет текста.
+ * `.g-color-{$color_text}` —  Задает цвет текста.
  *
  *
  *		@example.padded
- *		.g-color_red Красный текст
+ *		.g-color-red Красный текст
  *
  */
 
 .g-color
   for $name, $color in $color_text
-    &_{$name}
+    &-{$name}
       color: $color
