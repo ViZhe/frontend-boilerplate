@@ -98,10 +98,7 @@ const config = {
       main: path.dest + 'frontend/js/',
       lib: path.dest + 'frontend/js/lib/'
     },
-    watch: path.src + '**/*.{js}',
-    closureCompilerService: {
-      compilation_level: 'SIMPLE_OPTIMIZATIONS' /* eslint camelcase: 0*/
-    }
+    watch: path.src + '**/*.{js}'
   },
   images: {
     src: path.src + 'img/**/*',

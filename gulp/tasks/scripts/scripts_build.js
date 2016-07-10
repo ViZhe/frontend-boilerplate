@@ -3,7 +3,6 @@ import gulp from 'gulp'
 import plumber from 'gulp-plumber'
 import rigger from 'gulp-rigger'
 import babel from 'gulp-babel'
-import closureCompilerService from 'gulp-closure-compiler-service'
 import uglify from 'gulp-uglify'
 import header from 'gulp-header'
 
@@ -16,14 +15,12 @@ gulp.task('scripts_build', () => {
     .pipe(rigger())
     .pipe(babel())
     .pipe(rigger())
-    .pipe(closureCompilerService(config.scripts.closureCompilerService))
     .pipe(uglify())
     .pipe(header(config.headerCat))
     .pipe(gulp.dest(config.scripts.dest.main))
 
   return gulp.src(config.scripts.src.lib)
     .pipe(plumber(config.plumber))
-    .pipe(closureCompilerService(config.scripts.closureCompilerService))
     .pipe(uglify())
     .pipe(gulp.dest(config.scripts.dest.lib))
 })
