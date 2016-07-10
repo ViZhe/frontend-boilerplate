@@ -34,7 +34,7 @@ const headerCat = `
 `
 
 
-const errorHandler = err => {
+const errorHandler = function (err) {
   util.log([(`${err.name} in ${err.plugin}`).bold.red, '', err.message, ''].join('\n'))
   if (util.env.beep) {
     util.beep()
