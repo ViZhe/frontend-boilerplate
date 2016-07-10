@@ -91,14 +91,14 @@ const config = {
   },
   scripts: {
     src: {
-      main: path.src + 'scripts/*.coffee',
+      main: path.src + 'scripts/*.js',
       lib: path.src + 'scripts/lib/*.js'
     },
     dest: {
       main: path.dest + 'frontend/js/',
       lib: path.dest + 'frontend/js/lib/'
     },
-    watch: path.src + '**/*.{js,coffee}',
+    watch: path.src + '**/*.{js}',
     closureCompilerService: {
       compilation_level: 'SIMPLE_OPTIMIZATIONS' /* eslint camelcase: 0*/
     }
