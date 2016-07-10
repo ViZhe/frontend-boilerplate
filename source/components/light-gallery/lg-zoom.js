@@ -1,4 +1,7 @@
-/*! lightgallery - v1.2.14 - 2016-01-20
+
+/* eslint-disable */
+
+/*! lightgallery - v1.2.21 - 2016-06-28
 * http://sachinchoolur.github.io/lightGallery/
 * Copyright (c) 2016 Sachin N; Licensed Apache 2.0 */
 (function($, window, document, undefined) {
@@ -8,6 +11,7 @@
     var defaults = {
         scale: 1,
         zoom: true,
+        actualSize: true,
         enableZoomAfter: 300
     };
 
@@ -35,6 +39,10 @@
 
         var _this = this;
         var zoomIcons = '<span id="lg-zoom-in" class="lg-icon"></span><span id="lg-zoom-out" class="lg-icon"></span>';
+
+        if (_this.core.s.actualSize) {
+            zoomIcons += '<span id="lg-actual-size" class="lg-icon"></span>';
+        }
 
         this.core.$outer.find('.lg-toolbar').append(zoomIcons);
 
@@ -85,7 +93,10 @@
 
             $image.css('transform', 'scale3d(' + scaleVal + ', ' + scaleVal + ', 1)').attr('data-scale', scaleVal);
 
-            $image.parent().css('transform', 'translate3d(-' + x + 'px, -' + y + 'px, 0)').attr('data-x', x).attr('data-y', y);
+            $image.parent().css({
+                left: -x + 'px',
+                top: -y + 'px'
+            }).attr('data-x', x).attr('data-y', y);
         };
 
         var callScale = function() {
@@ -102,7 +113,7 @@
             zoom(scale);
         };
 
-        var actualSize = function(event, $image, index) {
+        var actualSize = function(event, $image, index, fromIcon) {
             var w = $image.width();
             var nw;
             if (_this.core.s.dynamic) {
@@ -122,8 +133,14 @@
                 }
             }
 
-            _this.pageX = event.pageX || event.originalEvent.targetTouches[0].pageX;
-            _this.pageY = event.pageY || event.originalEvent.targetTouches[0].pageY;
+            if (fromIcon) {
+                _this.pageX = $(window).width() / 2;
+                _this.pageY = ($(window).height() / 2) + $(window).scrollTop();
+            } else {
+                _this.pageX = event.pageX || event.originalEvent.targetTouches[0].pageX;
+                _this.pageY = event.pageY || event.originalEvent.targetTouches[0].pageY;
+            }
+
             callScale();
             setTimeout(function() {
                 _this.core.$outer.removeClass('lg-grabbing').addClass('lg-grab');
@@ -177,6 +194,10 @@
                 scale += _this.core.s.scale;
                 callScale();
             }
+        });
+
+        $('#lg-actual-size').on('click.lg', function(event) {
+            actualSize(event, _this.core.$slide.eq(_this.core.index).find('.lg-image'), _this.core.index, true);
         });
 
         // Reset zoom on slide change
@@ -269,7 +290,10 @@
                 }
 
                 if ((Math.abs(endCoords.x - startCoords.x) > 15) || (Math.abs(endCoords.y - startCoords.y) > 15)) {
-                    _$el.css('transform', 'translate3d(' + distanceX + 'px, ' + distanceY + 'px, 0)');
+                    _$el.css({
+                        left: distanceX + 'px',
+                        top: distanceY + 'px'
+                    });
                 }
 
             }
@@ -357,7 +381,10 @@
                     distanceX = -Math.abs(_$el.attr('data-x'));
                 }
 
-                _$el.css('transform', 'translate3d(' + distanceX + 'px, ' + distanceY + 'px, 0)');
+                _$el.css({
+                    left: distanceX + 'px',
+                    top: distanceY + 'px'
+                });
             }
         });
 
@@ -426,7 +453,11 @@
                 distanceX = -Math.abs(_$el.attr('data-x'));
             }
 
-            _$el.css('transform', 'translate3d(' + distanceX + 'px, ' + distanceY + 'px, 0)');
+            _$el.css({
+                left: distanceX + 'px',
+                top: distanceY + 'px'
+            });
+
         }
     };
 

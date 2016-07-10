@@ -1,4 +1,6 @@
-/*! lightgallery - v1.2.14 - 2016-01-20
+/* eslint-disable */
+
+/*! lightgallery - v1.2.21 - 2016-06-28
 * http://sachinchoolur.github.io/lightGallery/
 * Copyright (c) 2016 Sachin N; Licensed Apache 2.0 */
 /**
@@ -160,12 +162,11 @@
 
         _this.interval = setInterval(function() {
             if (_this.core.index + 1 < _this.core.$items.length) {
-                _this.core.index = _this.core.index;
+                _this.core.index++;
             } else {
-                _this.core.index = -1;
+                _this.core.index = 0;
             }
 
-            _this.core.index++;
             _this.fromAuto = true;
             _this.core.slide(_this.core.index, false, false);
         }, _this.core.s.speed + _this.core.s.pause);

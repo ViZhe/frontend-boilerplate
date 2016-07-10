@@ -1,4 +1,6 @@
-/*! lightgallery - v1.2.14 - 2016-01-20
+/* eslint-disable */
+
+/*! lightgallery - v1.2.21 - 2016-06-28
 * http://sachinchoolur.github.io/lightGallery/
 * Copyright (c) 2016 Sachin N; Licensed Apache 2.0 */
 (function($, window, document, undefined) {
@@ -33,8 +35,12 @@
         hideControlOnEnd: false,
         mousewheel: true,
 
+        getCaptionFromTitleOrAlt: true,
+
         // .lg-item || '.lg-sub-html'
         appendSubHtmlTo: '.lg-sub-html',
+
+        subHtmlSelectorRelative: false,
 
         /**
          * @desc number of preload slides
@@ -414,6 +420,7 @@
         var youtube = src.match(/\/\/(?:www\.)?youtu(?:\.be|be\.com)\/(?:watch\?v=|embed\/)?([a-z0-9\-\_\%]+)/i);
         var vimeo = src.match(/\/\/(?:www\.)?vimeo.com\/([0-9a-z\-_]+)/i);
         var dailymotion = src.match(/\/\/(?:www\.)?dai.ly\/([0-9a-z\-_]+)/i);
+        var vk = src.match(/\/\/(?:www\.)?(?:vk\.com|vkontakte\.ru)\/(?:video_ext\.php\?)(.*)/i);
 
         if (youtube) {
             return {
@@ -426,6 +433,10 @@
         } else if (dailymotion) {
             return {
                 dailymotion: dailymotion
+            };
+        } else if (vk) {
+            return {
+                vk: vk
             };
         }
     };
@@ -447,6 +458,7 @@
     Plugin.prototype.addHtml = function(index) {
         var subHtml = null;
         var subHtmlUrl;
+        var $currentEle;
         if (this.s.dynamic) {
             if (this.s.dynamicEl[index].subHtmlUrl) {
                 subHtmlUrl = this.s.dynamicEl[index].subHtmlUrl;
@@ -454,10 +466,14 @@
                 subHtml = this.s.dynamicEl[index].subHtml;
             }
         } else {
-            if (this.$items.eq(index).attr('data-sub-html-url')) {
-                subHtmlUrl = this.$items.eq(index).attr('data-sub-html-url');
+            $currentEle = this.$items.eq(index);
+            if ($currentEle.attr('data-sub-html-url')) {
+                subHtmlUrl = $currentEle.attr('data-sub-html-url');
             } else {
-                subHtml = this.$items.eq(index).attr('data-sub-html');
+                subHtml = $currentEle.attr('data-sub-html');
+                if (this.s.getCaptionFromTitleOrAlt && !subHtml) {
+                    subHtml = $currentEle.attr('title') || $currentEle.find('img').first().attr('alt');
+                }
             }
         }
 
@@ -468,9 +484,11 @@
                 // if first letter starts with . or # get the html form the jQuery object
                 var fL = subHtml.substring(0, 1);
                 if (fL === '.' || fL === '#') {
-                    subHtml = $(subHtml).html();
-                } else {
-                    subHtml = subHtml;
+                    if (this.s.subHtmlSelectorRelative && !this.s.dynamic) {
+                        subHtml = $currentEle.find(subHtml).html();
+                    } else {
+                        subHtml = $(subHtml).html();
+                    }
                 }
             } else {
                 subHtml = '';

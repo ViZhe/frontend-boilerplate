@@ -1,4 +1,6 @@
-/*! lightgallery - v1.2.14 - 2016-01-20
+/* eslint-disable */
+
+/*! lightgallery - v1.2.21 - 2016-06-28
 * http://sachinchoolur.github.io/lightGallery/
 * Copyright (c) 2016 Sachin N; Licensed Apache 2.0 */
 (function($, window, document, undefined) {
@@ -33,13 +35,13 @@
         });
 
         // Listen hash change and change the slide according to slide value
-        $(window).on('hashchange', function() {
+        $(window).on('hashchange.lg.hash', function() {
             _hash = window.location.hash;
             var _idx = parseInt(_hash.split('&slide=')[1], 10);
 
             // it galleryId doesn't exist in the url close the gallery
             if ((_hash.indexOf('lg=' + _this.core.s.galleryId) > -1)) {
-                _this.core.slide(_idx);
+                _this.core.slide(_idx, false, false);
             } else if (_this.core.lGalleryOn) {
                 _this.core.destroy();
             }
@@ -48,6 +50,10 @@
     };
 
     Hash.prototype.destroy = function() {
+
+        if (!this.core.s.hash) {
+            return;
+        }
 
         // Reset to old hash value
         if (this.oldHash && this.oldHash.indexOf('lg=' + this.core.s.galleryId) < 0) {
@@ -59,6 +65,8 @@
                 window.location.hash = '';
             }
         }
+
+        this.core.$el.off('.lg.hash');
 
     };
 

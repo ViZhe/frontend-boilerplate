@@ -1,4 +1,6 @@
-/*! lightgallery - v1.2.14 - 2016-01-20
+/* eslint-disable */
+
+/*! lightgallery - v1.2.21 - 2016-06-28
 * http://sachinchoolur.github.io/lightGallery/
 * Copyright (c) 2016 Sachin N; Licensed Apache 2.0 */
 (function($, window, document, undefined) {
@@ -10,7 +12,9 @@
         youtubePlayerParams: false,
         vimeoPlayerParams: false,
         dailymotionPlayerParams: false,
-        videojs: false
+        vkPlayerParams: false,
+        videojs: false,
+        videojsOptions: {}
     };
 
     var Video = function(element) {
@@ -35,7 +39,7 @@
             if (html) {
                 if (_this.core.s.videojs) {
                     try {
-                        videojs(_this.core.$slide.eq(index).find('.lg-html5').get(0), {}, function() {
+                        videojs(_this.core.$slide.eq(index).find('.lg-html5').get(0), _this.core.s.videojsOptions, function() {
                             if (!_this.videoLoaded) {
                                 this.play();
                             }
@@ -73,7 +77,7 @@
                         if (_html) {
                             if (_this.core.s.videojs) {
                                 try {
-                                    videojs(_this.core.$slide.eq(_this.core.index).find('.lg-html5').get(0), {}, function() {
+                                    videojs(_this.core.$slide.eq(_this.core.index).find('.lg-html5').get(0), _this.core.s.videojsOptions, function() {
                                         this.play();
                                     });
                                 } catch (e) {
@@ -143,7 +147,7 @@
                         }
                     }
 
-                    $el.addClass('lg-video-palying');
+                    $el.addClass('lg-video-playing');
 
                 }
             }
@@ -168,6 +172,7 @@
             var youtubePlayer = $videoSlide.find('.lg-youtube').get(0);
             var vimeoPlayer = $videoSlide.find('.lg-vimeo').get(0);
             var dailymotionPlayer = $videoSlide.find('.lg-dailymotion').get(0);
+            var vkPlayer = $videoSlide.find('.lg-vk').get(0);
             var html5Player = $videoSlide.find('.lg-html5').get(0);
             if (youtubePlayer) {
                 youtubePlayer.contentWindow.postMessage('{"event":"command","func":"pauseVideo","args":""}', '*');
@@ -190,6 +195,8 @@
                 } else {
                     html5Player.pause();
                 }
+            } if (vkPlayer) {
+                $(vkPlayer).attr('src', $(vkPlayer).attr('src').replace('&autoplay', '&noplay'));
             }
 
             var _src;
@@ -201,7 +208,7 @@
             }
 
             var _isVideo = _this.core.isVideo(_src, index) || {};
-            if (_isVideo.youtube || _isVideo.vimeo || _isVideo.dailymotion) {
+            if (_isVideo.youtube || _isVideo.vimeo || _isVideo.dailymotion || _isVideo.vk) {
                 _this.core.$outer.addClass('lg-hide-download');
             }
 
@@ -210,7 +217,7 @@
         });
 
         _this.core.$el.on('onAfterSlide.lg.tm', function(event, prevIndex) {
-            _this.core.$slide.eq(prevIndex).removeClass('lg-video-palying');
+            _this.core.$slide.eq(prevIndex).removeClass('lg-video-playing');
         });
     };
 
@@ -263,6 +270,16 @@
             }
 
             video = html;
+
+        } else if (isVideo.vk) {
+
+            a = '&autoplay=' + autoplay;
+            if (this.core.s.vkPlayerParams) {
+                a = a + '&' + $.param(this.core.s.vkPlayerParams);
+            }
+
+            video = '<iframe class="lg-video-object lg-vk ' + addClass + '" width="560" height="315" src="http://vk.com/video_ext.php?' + isVideo.vk[1] + a + '" frameborder="0" allowfullscreen></iframe>';
+
         }
 
         return video;
