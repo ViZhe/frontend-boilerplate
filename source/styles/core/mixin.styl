@@ -12,34 +12,34 @@
  */
 
 media($type, $arg...)
-    $sizeName = {
-        xl: 4
-        lg: 3
-        md: 2
-        sm: 1
-        xs: 0
-    }
-    $sizeValue = 500px 768px 1000px 1260px
+  $sizeName = {
+    xl: 4
+    lg: 3
+    md: 2
+    sm: 1
+    xs: 0
+  }
+  $sizeValue = 500px 768px 1000px 1260px
 
-    if $type == 'max'
-        $media_where = '(max-width $sizeValue[$sizeName[$arg[0]]] - 1)'
+  if $type == 'max'
+    $media_where = '(max-width $sizeValue[$sizeName[$arg[0]]] - 1)'
 
-    else if $type == 'min'
-        $media_where = '(min-width $sizeValue[$sizeName[$arg[0]] - 1])'
+  else if $type == 'min'
+    $media_where = '(min-width $sizeValue[$sizeName[$arg[0]] - 1])'
 
-    else if $type == 'in'
-        $media_where_first = $sizeValue[$sizeName[$arg[0]] - 1]
-        $media_where_second = (length($arg) == 1) ? $sizeValue[$sizeName[$arg[0]]] - 1 : $sizeValue[$sizeName[$arg[1]]] - 1
-        $media_where = '(min-width $media_where_first) and (max-width $media_where_second)'
+  else if $type == 'in'
+    $media_where_first = $sizeValue[$sizeName[$arg[0]] - 1]
+    $media_where_second = (length($arg) == 1) ? $sizeValue[$sizeName[$arg[0]]] - 1 : $sizeValue[$sizeName[$arg[1]]] - 1
+    $media_where = '(min-width $media_where_first) and (max-width $media_where_second)'
 
-    else if $type == 'out'
-        $media_where_first = $sizeValue[$sizeName[$arg[0]] - 1] - 1
-        $media_where_second = (length($arg) == 1) ? $sizeValue[$sizeName[$arg[0]]] : $sizeValue[$sizeName[$arg[1]]]
-        $media_where = '(max-width $media_where_first), (min-width $media_where_second)'
+  else if $type == 'out'
+    $media_where_first = $sizeValue[$sizeName[$arg[0]] - 1] - 1
+    $media_where_second = (length($arg) == 1) ? $sizeValue[$sizeName[$arg[0]]] : $sizeValue[$sizeName[$arg[1]]]
+    $media_where = '(max-width $media_where_first), (min-width $media_where_second)'
 
-    if $media_where
-        @media $media_where
-            {block}
+  if $media_where
+    @media $media_where
+      {block}
 
 
 
@@ -53,8 +53,8 @@ media($type, $arg...)
  */
 
 gradient($direction, $colors...)
-    background-color: $colors[0][0]
-    background-image: linear-gradient($direction, unquote(join(', ', $colors)))
+  background-color: $colors[0][0]
+  background-image: linear-gradient($direction, unquote(join(', ', $colors)))
 
 
 
@@ -66,51 +66,51 @@ gradient($direction, $colors...)
  */
 
 clearfix()
-    &::before
-    &::after
-        display: block
-        content: ''
+  &::before
+  &::after
+    display: block
+    content: ''
 
-    &::after
-        clear: both
+  &::after
+    clear: both
 
 
 
 /**
  * Size
  *
- * size: 10px               => width:10px; height:10px
- * size: 10px 15px          => width:10px; height:15px
+ * size: 10px               => width: 10px; height: 10px
+ * size: 10px 15px          => width: 10px; height: 15px
  *
  */
 
 size($arg...)
-    if $arg
-        if length($arg) == 1
-            width: $arg[0]
-            height: $arg[0]
+  if $arg
+    if length($arg) == 1
+      width: $arg[0]
+      height: $arg[0]
 
-        else if length($arg) == 2
-            width: $arg[0]
-            height: $arg[1]
+    else if length($arg) == 2
+      width: $arg[0]
+      height: $arg[1]
 
 
 
 /**
  * Border-radius
  *
- * border-radius: auto         => border-radius:3px
- * border-radius: 50%          => border-radius:50%
+ * border-radius: auto         => border-radius: 3px
+ * border-radius: 50%          => border-radius: 50%
  * border-radius: auto 5px     => border-radius: 3px 5px
  *
  */
 
 $borderRadiusDefault ?= 3px
 border-radius($args...)
-    $value = ()
-    for $name in $args
-        push($value, $name == 'auto' ? $borderRadiusDefault : $name)
-    border-radius: $value
+  $value = ()
+  for $name in $args
+    push($value, $name == 'auto' ? $borderRadiusDefault : $name)
+  border-radius: $value
 
 
 
@@ -124,7 +124,7 @@ border-radius($args...)
 
 $siteFontSize ?= 16px
 em($value)
-    unit($value/$siteFontSize, 'em')
+  unit($value/$siteFontSize, 'em')
 
 rem($value)
-    unit($value/$siteFontSize, 'rem')
+  unit($value/$siteFontSize, 'rem')
