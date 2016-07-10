@@ -5,7 +5,7 @@
     "name": "ViZhe (Barsik^)",
     "email": "i@hoppas.ru"
   },
-  "main": "gulpfile.coffee",
+  "main": "gulpfile.js",
   "devDependencies": {
     "browser-sync": "^2.0.0",
     "coffee-script": "^1.0.0",

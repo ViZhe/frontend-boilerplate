@@ -1,6 +1,0 @@
-
-gulp.task 'browser-sync', ->
-    $.browserSync
-        files: config.dest
-        server:
-            baseDir: config.dest
