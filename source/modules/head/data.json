@@ -1,12 +1,12 @@
 
 {
-    "head": {
-        "index": {
-            "title": "Index Page",
-            "description": "Index Page"
-        },
-        "simple": {
-            "title": "Simple Page"
-        }
+  "head": {
+    "index": {
+      "title": "Index Page",
+      "description": "Index Page"
+    },
+    "simple": {
+      "title": "Simple Page"
     }
+  }
 }
