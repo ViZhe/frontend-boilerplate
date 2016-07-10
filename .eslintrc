@@ -9,7 +9,6 @@
     "xo",
     "xo/esnext"
   ],
-  "plugins": ["react"],
   "rules": {
     "indent": [1, 2, {"SwitchCase": 1}],
     "jsx-quotes": [1, "prefer-single"],
