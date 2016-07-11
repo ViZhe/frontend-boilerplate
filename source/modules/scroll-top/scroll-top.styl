@@ -17,22 +17,22 @@
  */
 
 .m-scroll-top
-    position: fixed
-    right: 10px
-    bottom: 10px
-    visibility: hidden
-    size: 50px
-    cursor: pointer
-    transition: all ease .5s
-    opacity: 0
-    background-image: svg('source/img/scroll-top/arrow.svg', '[fill]:' + $black)
+  position: fixed
+  right: 10px
+  bottom: 10px
+  visibility: hidden
+  size: 50px
+  cursor: pointer
+  transition: all ease .5s
+  opacity: 0
+  background-image: svg('source/img/scroll-top/arrow.svg', '[fill]:' + $black)
 
-    +media('max', 'xs')
-        display: none
+  +media('max', 'xs')
+    display: none
 
 .m-scroll-top_show
-    visibility: visible
-    opacity: .5
+  visibility: visible
+  opacity: .5
 
-    &:hover
-        opacity: 1
+  &:hover
+    opacity: 1
