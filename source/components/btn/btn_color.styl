@@ -12,16 +12,16 @@
  */
 
 .c-btn_color
-    for $name, $color in $color_btn
-        &_{$name}
-            background-color: $color[0]
+  for $name, $color in $color_btn
+    &_{$name}
+      background-color: $color[0]
 
-            if $color[1]
-                color: $color[1]
+      if $color[1]
+        color: $color[1]
 
-            &:focus
-            &:hover
-                background-color: lighten(@background-color, 20%)
+      &:focus
+      &:hover
+        background-color: lighten(@background-color, 20%)
 
-            &:active
-                background-color: lighten(@background-color, 40%)
+      &:active
+        background-color: lighten(@background-color, 40%)
