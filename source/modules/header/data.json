@@ -2,25 +2,25 @@
 {
   "header": {
     "default": {
-      "menu": {
-        "home": {
+      "menu": [
+        {
           "title": "Главная",
           "link": "home",
           "active": true
         },
-        "about": {
+        {
           "title": "О нас",
           "link": "about"
         },
-        "catalog": {
+        {
           "title": "Каталог",
           "link": "catalog"
         },
-        "contacts": {
+        {
           "title": "Контакты",
           "link": "contacts"
         }
-      }
+      ]
     }
   }
 }

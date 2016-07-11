@@ -2,19 +2,19 @@
 {
   "breadcrumbs": {
     "default": {
-      "list": {
-        "home": {
+      "list": [
+        {
           "title": "Главная",
           "link": "home"
         },
-        "catalog": {
+        {
           "title": "Каталог",
           "link": "catalog"
         },
-        "item": {
+        {
           "title": "Конечная страница"
         }
-      }
+      ]
     }
   }
 }
