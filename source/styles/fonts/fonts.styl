@@ -24,7 +24,7 @@ for $name, $type in $include_fonts_list
     @font-face
       font-family: $name
       src: local($name), local($file + '-Regular'),
-      url('./' + $file + '/' + $file + '_regular.woff') format('woff')
+        url('./' + $file + '/' + $file + '_regular.woff') format('woff')
       font-weight: 400
       font-style: normal
 
@@ -32,7 +32,7 @@ for $name, $type in $include_fonts_list
     @font-face
       font-family: $name
       src: local($name + ' Italic'), local($file + '-Italic'),
-      url('./' + $file + '/' + $file + '_italic.woff') format('woff')
+        url('./' + $file + '/' + $file + '_italic.woff') format('woff')
       font-weight: 400
       font-style: italic
 
@@ -40,7 +40,7 @@ for $name, $type in $include_fonts_list
     @font-face
       font-family: $name
       src: local($name + ' Bold'), local($file + '-Bold'),
-      url('./' + $file + '/' + $file + '_bold.woff') format('woff')
+        url('./' + $file + '/' + $file + '_bold.woff') format('woff')
       font-weight: 700
       font-style: normal
 
@@ -48,6 +48,6 @@ for $name, $type in $include_fonts_list
     @font-face
       font-family: $name
       src: local($name + ' Bold Italic'), local($file + '-Bold-Italic'),
-      url('./' + $file + '/' + $file + '_bold-italic.woff') format('woff')
+        url('./' + $file + '/' + $file + '_bold-italic.woff') format('woff')
       font-weight: 700
       font-style: italic
