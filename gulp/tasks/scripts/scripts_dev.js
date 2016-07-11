@@ -12,7 +12,6 @@ gulp.task('scripts_dev', () => {
     .pipe(plumber(config.plumber))
     .pipe(rigger())
     .pipe(babel())
-    .pipe(rigger())
     .pipe(gulp.dest(config.scripts.dest.main))
 
   return gulp.src(config.scripts.src.lib)

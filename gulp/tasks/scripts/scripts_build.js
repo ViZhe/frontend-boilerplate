@@ -14,7 +14,6 @@ gulp.task('scripts_build', () => {
     .pipe(plumber(config.plumber))
     .pipe(rigger())
     .pipe(babel())
-    .pipe(rigger())
     .pipe(uglify())
     .pipe(header(config.headerCat))
     .pipe(gulp.dest(config.scripts.dest.main))
