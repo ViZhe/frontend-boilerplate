@@ -11,6 +11,16 @@
 ::before
   box-sizing: border-box
 
+*
+  margin: 0
+  padding: 0
+  background-repeat: no-repeat
+
+::before
+::after
+  vertical-align: inherit
+  text-decoration: inherit
+
 html
   font-size: $siteFontSize
   -ms-text-size-adjust: 100%
@@ -44,67 +54,6 @@ progress
 video
   display: inline-block
   vertical-align: baseline
-
-article
-aside
-audio
-b
-body
-button
-canvas
-dd
-details
-div
-dl
-dt
-em
-fieldset
-figcaption
-figure
-footer
-form
-h1
-h2
-h3
-h4
-h5
-h6
-header
-html
-i
-img
-input
-label
-legend
-li
-mark
-menu
-nav
-ol
-optgroup
-p
-section
-select
-span
-strong
-sub
-summary
-sup
-table
-tbody
-td
-textarea
-tfoot
-th
-thead
-time
-tr
-ul
-video
-  margin: 0
-  padding: 0
-  border: 0
-  outline: 0
 
 button::-moz-focus-inner
 input::-moz-focus-inner
@@ -183,6 +132,16 @@ svg
   max-width: 100%
   vertical-align: middle
   border: 0
+
+select
+  -moz-appearance: none
+  -webkit-appearance: none
+
+select::-ms-expand
+  display: none
+
+select::-ms-value
+  color: currentColor
 
 svg:not(:root)
   overflow: hidden
