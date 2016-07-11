@@ -1,16 +1,16 @@
 
 mixin footer(data)
-    footer.m-footer
-        .container: .row
-            .col.w1
-                ul.b-footer-menu
-                    each page in data.menu
-                        if (page.active && page.active === true)
-                            - var itemActiveClass = 'b-footer-menu__item_active'
-                            - var linkActiveClass = 'b-footer-menu__link_active'
-                        else
-                            - var itemActiveClass = ''
-                            - var linkActiveClass = ''
+  footer.m-footer
+    .container: .row
+      .col.w1
+        ul.b-footer-menu
+          each page in data.menu
+            if (page.active && page.active === true)
+              - var itemActiveClass = 'b-footer-menu__item_active'
+              - var linkActiveClass = 'b-footer-menu__link_active'
+            else
+              - var itemActiveClass = ''
+              - var linkActiveClass = ''
 
-                        li.b-footer-menu__item(class="#{itemActiveClass}")
-                            a.b-footer-menu__link(href=`/${page.link}` class="#{linkActiveClass}") #{page.title}
+              li.b-footer-menu__item(class="#{itemActiveClass}")
+                a.b-footer-menu__link(href=`/${page.link}` class="#{linkActiveClass}") #{page.title}

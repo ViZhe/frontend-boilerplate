@@ -1,19 +1,20 @@
 
 mixin header(data)
-    header.m-header
-        .container: .row
-            .col.w3
-                a.b-header-logo(href="/"): img.b-header-logo__img(src="frontend/img/logo.png" alt="")
+  header.m-header
+    .container: .row
+      .col.w3
+        a.b-header-logo(href="/")
+          img.b-header-logo__img(src="frontend/img/logo.png" alt="")
 
-            .col.w0
-                ul.b-header-menu
-                    each page in data.menu
-                        if (page.active && page.active === true)
-                            - var itemActiveClass = 'b-header-menu__item_active'
-                            - var linkActiveClass = 'b-header-menu__link_active'
-                        else
-                            - var itemActiveClass = ''
-                            - var linkActiveClass = ''
+      .col.w0
+        ul.b-header-menu
+          each page in data.menu
+            if (page.active && page.active === true)
+              - var itemActiveClass = 'b-header-menu__item_active'
+              - var linkActiveClass = 'b-header-menu__link_active'
+            else
+              - var itemActiveClass = ''
+              - var linkActiveClass = ''
 
-                        li.b-header-menu__item(class="#{itemActiveClass}")
-                            a.b-header-menu__link(href=`/${page.link}` class="#{linkActiveClass}") #{page.title}
+            li.b-header-menu__item(class="#{itemActiveClass}")
+              a.b-header-menu__link(href=`/${page.link}` class="#{linkActiveClass}") #{page.title}
