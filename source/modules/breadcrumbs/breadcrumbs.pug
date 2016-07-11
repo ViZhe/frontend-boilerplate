@@ -4,6 +4,6 @@ mixin breadcrumbs(data)
         each page in data.list
             li.m-breadcrumbs__item
                 if page.link
-                    a(href="#{page.link}") #{page.title}
+                    a(href=`/${page.link}`) #{page.title}
                 else
                     | #{page.title}

@@ -13,4 +13,4 @@ mixin footer(data)
                             - var linkActiveClass = ''
 
                         li.b-footer-menu__item(class="#{itemActiveClass}")
-                            a.b-footer-menu__link(href="#{page.link}" class="#{linkActiveClass}") #{page.title}
+                            a.b-footer-menu__link(href=`/${page.link}` class="#{linkActiveClass}") #{page.title}

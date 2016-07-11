@@ -16,4 +16,4 @@ mixin header(data)
                             - var linkActiveClass = ''
 
                         li.b-header-menu__item(class="#{itemActiveClass}")
-                            a.b-header-menu__link(href="#{page.link}" class="#{linkActiveClass}") #{page.title}
+                            a.b-header-menu__link(href=`/${page.link}` class="#{linkActiveClass}") #{page.title}
