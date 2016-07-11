@@ -5,9 +5,9 @@
   $(window).on('scroll', () => {
     const scrollTop = $(document).scrollTop()
     if (scrollTop > 100) {
-      backToTop.addClass('b-scroll-top_show')
+      backToTop.addClass('m-scroll-top_show')
     } else {
-      backToTop.removeClass('b-scroll-top_show')
+      backToTop.removeClass('m-scroll-top_show')
     }
   })
 

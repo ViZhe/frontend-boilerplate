@@ -3,6 +3,7 @@
 include ../modules/head/head
 include ../modules/header/header
 include ../modules/footer/footer
+include ../modules/scroll-top/scroll-top
 
 //- # Local modules
 //- block modules
@@ -24,7 +25,7 @@ html(lang="ru-RU")
     block footer
       +footer(footer.default)
 
-    .b-scroll-top.js-scroll-top
+    +scroll-top()
 
     block scripts
       script(src="//yastatic.net/jquery/3.0.0/jquery.min.js")

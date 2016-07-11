@@ -3,7 +3,7 @@
 
 //= ../components/popup/popup.jquery.js
 ; // TODO: fix this hack
-//= ../components/scroll-top/scroll-top.jquery.js
+//= ../modules/scroll-top/scroll-top.jquery.js
 ; // TODO: fix this hack
 
 //= ../components/light-gallery/lightgallery.js
