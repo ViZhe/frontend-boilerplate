@@ -83,11 +83,11 @@ const config = {
       dest: path.dest + 'tmp/'
     },
     tpl: {
-      src: path.src + 'pages/*.jade',
+      src: path.src + 'pages/*.pug',
       pathToJson: path.dest + 'tmp/data.json',
       dest: path.dest
     },
-    watch: [path.src + 'modules/**/data.json', path.src + '**/*.jade', path.src + 'modules/**/*.jade']
+    watch: [path.src + 'modules/**/data.json', path.src + '**/*.pug', path.src + 'modules/**/*.pug']
   },
   scripts: {
     src: {

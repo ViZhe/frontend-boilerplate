@@ -1,7 +1,7 @@
 
 import gulp from 'gulp'
 import plumber from 'gulp-plumber'
-import jade from 'gulp-jade'
+import pug from 'gulp-pug'
 
 import config from '../../config'
 
@@ -11,7 +11,7 @@ gulp.task('html_tpl', () => {
 
   return gulp.src(config.html.tpl.src)
     .pipe(plumber(config.plumber))
-    .pipe(jade({
+    .pipe(pug({
       doctype: 'HTML',
       pretty: '    ',
       data: JSON.parse(fs.readFileSync(config.html.tpl.pathToJson, {
