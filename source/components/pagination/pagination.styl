@@ -37,41 +37,41 @@
  */
 
 .c-pagination
-    display: flex
-    margin: rem(15px) 0 rem(30px)
-    list-style: none
-    justify-content: flex-end
+  display: flex
+  margin: rem(15px) 0 rem(30px)
+  list-style: none
+  justify-content: flex-end
 
 .c-pagination__item
-    margin: 0 3px 3px
+  margin: 0 3px 3px
 
 .c-pagination__divider
 .c-pagination__active
 .c-pagination__disable
 .c-pagination__link
-    display: block
-    padding: 5px 10px
-    border-radius: auto
+  display: block
+  padding: 5px 10px
+  border-radius: auto
 
 .c-pagination__divider
-    &::after
-        content: '...'
-        color: $gray
+  &::after
+    content: '...'
+    color: $gray
 
 .c-pagination__active
 .c-pagination__disable
-    cursor: default
-    color: $white
-    background: $gray
+  cursor: default
+  color: $white
+  background: $gray
 
 .c-pagination__link
-    text-decoration: none
-    color: $white !important
-    background: $blue
+  text-decoration: none
+  color: $white !important
+  background: $blue
 
-    &:hover
-    &:focus
-        background: lighten(@background, 40%)
+  &:hover
+  &:focus
+    background: lighten(@background, 40%)
 
-    &:active
-        background: $red
+  &:active
+    background: $red
