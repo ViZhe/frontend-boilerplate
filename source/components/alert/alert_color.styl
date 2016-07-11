@@ -13,10 +13,10 @@
  */
 
 .c-alert_color
-    for $name, $color in $color_alert
-        &_{$name}
-            border-color: $color[0]
-            background-color: lighten($color[0], 90%)
+  for $name, $color in $color_alert
+    &_{$name}
+      border-color: $color[0]
+      background-color: lighten($color[0], 90%)
 
-            if $color[1]
-                color: $color[1]
+      if $color[1]
+        color: $color[1]
