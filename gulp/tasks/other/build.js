@@ -5,9 +5,9 @@ import sequence from 'gulp-sequence'
 
 gulp.task('build', callback => {
   return sequence(
-      ['clean'],
-      ['images_build'],
+      'clean',
+      'images_build',
       ['styles_build', 'html', 'scripts_build'],
-      ['styleguide']
+      'styleguide'
     )(callback)
 })
