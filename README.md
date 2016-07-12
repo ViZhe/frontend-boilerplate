@@ -1,6 +1,7 @@
 
 # Frontend Boilerplate
 
+[![Build Status](https://travis-ci.org/hoppas/frontend-boilerplate.svg?style=flat-square)](https://travis-ci.org/hoppas/frontend-boilerplate)
 [![Dependency Status](https://david-dm.org/hoppas/frontend-boilerplate/dev-status.svg)](https://david-dm.org/hoppas/frontend-boilerplate#info=devDependencies)
 
 
