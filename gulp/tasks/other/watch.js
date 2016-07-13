@@ -7,7 +7,7 @@ import config from '../../config'
 
 gulp.task('watch', () => {
   watch(config.styles.watch, () => {
-    gulp.start(['styles_dev'])
+    gulp.start(['dev:styles'])
   })
 
   watch(config.html.watch, () => {
@@ -15,10 +15,10 @@ gulp.task('watch', () => {
   })
 
   watch(config.scripts.watch, () => {
-    gulp.start(['scripts_dev'])
+    gulp.start(['dev:scripts'])
   })
 
   watch(config.images.watch, () => {
-    gulp.start(['images_dev'])
+    gulp.start(['dev:images'])
   })
 })

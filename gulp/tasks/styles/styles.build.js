@@ -14,7 +14,7 @@ import cssUrlAdjuster from 'gulp-css-url-adjuster'
 import config from '../../config'
 
 
-gulp.task('styles_build', () => {
+gulp.task('build:styles', () => {
   gulp.src(config.styles.src.main)
     .pipe(plumber(config.plumber))
     .pipe(stylus({

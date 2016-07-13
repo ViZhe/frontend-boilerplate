@@ -6,7 +6,7 @@ import pug from 'gulp-pug'
 import config from '../../config'
 
 
-gulp.task('html_tpl', () => {
+gulp.task('html:tpl', () => {
   const fs = require('fs')
 
   return gulp.src(config.html.tpl.src)

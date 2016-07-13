@@ -11,7 +11,7 @@ import combineMq from 'gulp-combine-mq'
 import config from '../../config'
 
 
-gulp.task('styles_dev', () => {
+gulp.task('dev:styles', () => {
   gulp.src(config.styles.src.main)
     .pipe(plumber(config.plumber))
     .pipe(stylus({

@@ -6,8 +6,8 @@ import sequence from 'gulp-sequence'
 gulp.task('build', callback => {
   return sequence(
       'clean',
-      'images_build',
-      ['styles_build', 'html', 'scripts_build'],
+      'build:images',
+      ['build:styles', 'html', 'build:scripts'],
       'styleguide'
     )(callback)
 })
