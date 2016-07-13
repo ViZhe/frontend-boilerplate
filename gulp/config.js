@@ -1,13 +1,14 @@
 
 import imageminPngquant from 'imagemin-pngquant'
 import util from 'gulp-util'
+import yargs from 'yargs'
 
 import packageJson from '../package.json'
 
 
 const headerCat = `
 /*!
- * @author3 ${packageJson.author.name}
+ * @author ${packageJson.author.name}
  * @version ${packageJson.version}
  *
  *                  $$____________$$
@@ -49,6 +50,7 @@ const path = {
 }
 
 const config = {
+  isProd: yargs.boolean('prod').argv.prod,
   headerCat,
   src: path.src,
   dest: path.dest,
@@ -56,17 +58,23 @@ const config = {
     errorHandler
   },
   styles: {
-    src: {
-      main: path.src + 'styles/hoppas.styl',
-      fonts: path.src + 'styles/fonts/fonts.styl'
-    },
+    src: path.src + 'styles/hoppas.styl',
     dest: path.dest + 'frontend/css/',
     watch: path.src + '**/*.styl',
     base64: {
-      fonts: {
-        extensions: ['woff'],
-        maxImageSize: 1024 * 1024 * 10
-      }
+      extensions: ['png', 'svg', 'jpg'],
+      maxImageSize: 1024 * 10
+    },
+    autoprefixer: {
+      browser: ['last 2 versions', 'Explorer >= 10', 'Android >= 4.1', 'Safari >= 7', 'iOS >= 7']
+    }
+  },
+  fonts: {
+    src: path.src + 'fonts/fonts.styl',
+    dest: path.dest + 'frontend/css/',
+    base64: {
+      extensions: ['woff'],
+      maxImageSize: 1024 * 1024 * 10
     },
     autoprefixer: {
       browser: ['last 2 versions', 'Explorer >= 10', 'Android >= 4.1', 'Safari >= 7', 'iOS >= 7']
