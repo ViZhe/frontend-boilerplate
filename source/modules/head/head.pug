@@ -4,7 +4,7 @@ mixin head(data)
   base(href="http://localhost:3000/")
 
   title #{data.title}
-  meta(name="description" content="#{data.description}")
+  meta(name="description" content=`${data.description}`)
   meta(name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no")
 
   link(rel="shortcut icon" type="image/png" sizes="16x16" href="/frontend/img/favicon/favicon-16x16.png")
