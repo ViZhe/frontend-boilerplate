@@ -9,9 +9,6 @@ notifications:
 node_js:
   - 4
 
-before_install:
-  - npm install -g gulp
-
 script:
   - gulp build
-  - gulp dev
+  - gulp build --prod
