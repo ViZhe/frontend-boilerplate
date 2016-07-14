@@ -1,5 +1,32 @@
 
-mixin header(data)
+mixin header(page)
+  -
+    var page = page || 'index'
+    var data = {
+      index: {
+        menu: [
+          {
+            title: 'Главная',
+            link: 'home',
+            active: true
+          },
+          {
+            title: 'О нас',
+            link: 'about'
+          },
+          {
+            title: 'Каталог',
+            link: 'catalog'
+          },
+          {
+            title: 'Контакты',
+            link: 'contacts'
+          }
+        ]
+      }
+    }
+
+
   header.m-header
     .container: .row
       .col.w3
@@ -8,13 +35,9 @@ mixin header(data)
 
       .col.w0
         ul.b-header-menu
-          each page in data.menu
-            if (page.active && page.active === true)
-              - var itemActiveClass = 'b-header-menu__item_active'
-              - var linkActiveClass = 'b-header-menu__link_active'
-            else
-              - var itemActiveClass = ''
-              - var linkActiveClass = ''
+          each item in data[page].menu
+            - var itemActiveClass = item.active ? 'b-header-menu__item_active' : ''
+            - var linkActiveClass = item.active ? 'b-header-menu__link_active' : ''
 
             li.b-header-menu__item(class=`${itemActiveClass}`)
-              a.b-header-menu__link(href=`/${page.link}` class=`${linkActiveClass}`) #{page.title}
+              a.b-header-menu__link(href=`/${item.link}` class=`${linkActiveClass}`) #{item.title}
