@@ -1,16 +1,39 @@
 
-mixin footer(data)
+mixin footer(page)
+  -
+    var page = page || 'index'
+    var data = {
+      index: {
+        menu: [
+          {
+            title: 'Главная',
+            link: 'home',
+            active: true
+          },
+          {
+            title: 'О нас',
+            link: 'about'
+          },
+          {
+            title: 'Каталог',
+            link: 'catalog'
+          },
+          {
+            title: 'Контакты',
+            link: 'contacts'
+          }
+        ]
+      }
+    }
+
+
   footer.m-footer
     .container: .row
       .col.w1
         ul.b-footer-menu
-          each page in data.menu
-            if (page.active && page.active === true)
-              - var itemActiveClass = 'b-footer-menu__item_active'
-              - var linkActiveClass = 'b-footer-menu__link_active'
-            else
-              - var itemActiveClass = ''
-              - var linkActiveClass = ''
+          each item in data[page].menu
+            - var itemActiveClass = item.active ? 'b-footer-menu__item_active' : ''
+            - var linkActiveClass = item.active ? 'b-footer-menu__link_active' : ''
 
             li.b-footer-menu__item(class=`${itemActiveClass}`)
-              a.b-footer-menu__link(href=`/${page.link}` class=`${linkActiveClass}`) #{page.title}
+              a.b-footer-menu__link(href=`/${item.link}` class=`${linkActiveClass}`) #{item.title}
