@@ -1,10 +1,24 @@
 
-mixin head(data)
+mixin head(page)
+  -
+    var page = page || 'index'
+    var data = {
+      index: {
+        title: 'Index Page Title',
+        description: 'Index Page Desc'
+      },
+      simple: {
+        title: 'Simple Page Title',
+        description: 'Simple Page Desc'
+      }
+    }
+
+
   meta(charset="utf-8")
   base(href="http://localhost:3000/")
 
-  title #{data.title}
-  meta(name="description" content=`${data.description}`)
+  title #{data[page].title}
+  meta(name="description" content=`${data[page].description}`)
   meta(name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no")
 
   link(sizes="16x16" href="/frontend/img/favicon/favicon-16x16.png" rel="icon shortcut" type="image/png")
