@@ -18,7 +18,7 @@ gulp.task('styles:build', Styles.build)
 gulp.task('fonts:build', Fonts.build) // TODO: fonts
 // gulp.task('styles:lint', Styles.lint) // TODO: linter for styles
 gulp.task('styles:guide', Styles.guide) // TODO: 'styles:guide' only for production
-gulp.task('html:build', gulp.series([Html.data, Html.tpl]))
+gulp.task('html:build', Html.build)
 gulp.task('images:build', Images.build)
 gulp.task('clean', Clean.delete)
 gulp.task('server', Server.run)

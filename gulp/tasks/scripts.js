@@ -9,6 +9,7 @@ import header from 'gulp-header'
 
 import config from '../config'
 
+
 /**
  * Javascript task
  * @class Scripts
