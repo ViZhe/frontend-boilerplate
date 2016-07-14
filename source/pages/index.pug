@@ -8,22 +8,24 @@ include ../modules/scroll-top/scroll-top
 //- # Local modules
 //- block modules
 
+
 doctype html
 html(lang="ru-RU")
   head
     block head
-      +head(head.index)
+      +head('index')
+
   body
     block header
-      +header(header.default)
+      +header()
 
     block content
       section
         .container: .row
-          .col.w0
+          .col.w1
 
     block footer
-      +footer(footer.default)
+      +footer()
 
     +scroll-top()
 
