@@ -1,7 +1,26 @@
 
-mixin breadcrumbs(data)
+mixin breadcrumbs(list)
+  -
+    var list = list || 'default'
+    var data = {
+      default: [
+        {
+          title: 'Главная1',
+          link: 'home'
+        },
+        {
+          title: 'Каталог',
+          link: 'catalog'
+        },
+        {
+          title: 'Конечная страница'
+        }
+      ]
+    }
+
+
   ul.m-breadcrumbs
-    each page in data.list
+    each page in data[list]
       li.m-breadcrumbs__item
         if page.link
           a(href=`/${page.link}`) #{page.title}
