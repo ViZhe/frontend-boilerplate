@@ -4,6 +4,7 @@ import gIf from 'gulp-if'
 import plumber from 'gulp-plumber'
 import rigger from 'gulp-rigger'
 import babel from 'gulp-babel'
+import concat from 'gulp-concat'
 import uglify from 'gulp-uglify'
 import header from 'gulp-header'
 
@@ -47,7 +48,7 @@ class Scripts {
   static vendor() {
     return gulp.src(config.scripts.src.lib)
       .pipe(plumber(config.plumber))
-      // TODO: add concat - .pipe(concat('vendor.js'))
+      .pipe(concat('vendor.js'))
       .pipe(gIf(config.isProd, uglify()))
       .pipe(gulp.dest(config.scripts.dest.lib))
   }
