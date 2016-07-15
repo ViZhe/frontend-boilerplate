@@ -21,9 +21,9 @@ npm install
 
 ## Gulp commands
 ```
-gulp       // Run dev & watch &  browserSync
-gulp dev
+gulp       // Run build & watch & browserSync
 gulp build
+gulp build --prod
 ```
 
 
