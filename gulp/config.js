@@ -104,7 +104,7 @@ const config = {
     },
     dest: {
       main: path.dest + 'frontend/js/',
-      lib: path.dest + 'frontend/js/lib/'
+      lib: path.dest + 'frontend/js/'
     },
     watch: path.src + '**/*.{js}'
   },
