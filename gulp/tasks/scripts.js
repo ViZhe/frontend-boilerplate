@@ -48,8 +48,8 @@ class Scripts {
   static vendor() {
     return gulp.src(config.scripts.src.lib)
       .pipe(plumber(config.plumber))
-      .pipe(concat('vendor.js'))
       .pipe(gIf(config.isProd, uglify()))
+      .pipe(concat('vendor.js'))
       .pipe(gulp.dest(config.scripts.dest.lib))
   }
 }
