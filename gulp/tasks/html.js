@@ -15,13 +15,13 @@ class Html {
    * @returns {*}
    */
   static build() {
-    return gulp.src(config.html.tpl.src)
+    return gulp.src(config.html.src)
       .pipe(plumber(config.plumber))
       .pipe(pug({
         doctype: 'HTML',
         pretty: '  '
       }))
-      .pipe(gulp.dest(config.html.tpl.dest))
+      .pipe(gulp.dest(config.html.dest))
   }
 }
 

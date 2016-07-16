@@ -9,7 +9,6 @@ import config from '../config'
  * @class Server
  */
 class Server {
-
   /**
    * Run server for development
    * @returns {*}

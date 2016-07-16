@@ -9,7 +9,6 @@ import config from '../config'
  * @class Clean
  */
 class Clean {
-
   /**
    * Delete dest folder
    * @returns {*}

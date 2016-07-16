@@ -12,7 +12,6 @@ import config from '../config'
  * @class Images
  */
 class Images {
-
   /**
    * Build images
    * @returns {*}

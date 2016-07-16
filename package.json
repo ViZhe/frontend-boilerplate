@@ -36,7 +36,6 @@
     "gulp-svgmin": "^1.2.2",
     "gulp-uglify": "^1.5.4",
     "gulp-util": "^3.0.7",
-    "gulp-watch": "^4.3.8",
     "imagemin-pngquant": "^5.0.0",
     "postcss-svg": "^1.0.6",
     "poststylus": "~0.2.3",

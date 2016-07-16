@@ -16,7 +16,6 @@ import config from '../config'
  * @class Scripts
  */
 class Scripts {
-
   // TODO: add linter
   // /**
   //  * Lint script
@@ -38,7 +37,7 @@ class Scripts {
       .pipe(babel())
       .pipe(gIf(config.isProd, uglify()))
       .pipe(gIf(config.isProd, header(config.headerCat)))
-      .pipe(gulp.dest(config.scripts.dest.main))
+      .pipe(gulp.dest(config.scripts.dest))
   }
 
   /**
@@ -46,11 +45,11 @@ class Scripts {
    * @returns {*}
    */
   static vendor() {
-    return gulp.src(config.scripts.src.lib)
+    return gulp.src(config.scripts.src.vendor)
       .pipe(plumber(config.plumber))
       .pipe(gIf(config.isProd, uglify()))
       .pipe(concat('vendor.js'))
-      .pipe(gulp.dest(config.scripts.dest.lib))
+      .pipe(gulp.dest(config.scripts.dest))
   }
 }
 

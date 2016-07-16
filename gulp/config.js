@@ -85,28 +85,20 @@ const config = {
     dest: path.dest + 'docs/'
   },
   html: {
-    data: {
-      src: path.src + 'modules/**/data.json',
-      fileName: 'data.json',
-      dest: path.dest + 'tmp/'
-    },
-    tpl: {
-      src: path.src + 'pages/*.pug',
-      pathToJson: path.dest + 'tmp/data.json',
-      dest: path.dest
-    },
-    watch: [path.src + 'modules/**/data.json', path.src + '**/*.pug', path.src + 'modules/**/*.pug']
+    src: path.src + 'pages/*.pug',
+    dest: path.dest,
+    watch: [
+      path.src + '**/*.pug',
+      path.src + 'modules/**/*.pug'
+    ]
   },
   scripts: {
     src: {
       main: path.src + 'scripts/*.js',
-      lib: path.src + 'scripts/lib/*.js'
+      vendor: path.src + 'scripts/vendor/*.js'
     },
-    dest: {
-      main: path.dest + 'frontend/js/',
-      lib: path.dest + 'frontend/js/'
-    },
-    watch: path.src + '**/*.{js}'
+    dest: path.dest + 'frontend/js/',
+    watch: path.src + '**/*.js'
   },
   images: {
     src: path.src + 'img/**/*',
@@ -115,11 +107,9 @@ const config = {
     imagemin: {
       progressive: true,
       interlaced: true,
-      svgoPlugins: [
-        {
-          removeViewBox: false
-        }
-      ],
+      svgoPlugins: [{
+        removeViewBox: false
+      }],
       use: [imageminPngquant()]
     }
   }

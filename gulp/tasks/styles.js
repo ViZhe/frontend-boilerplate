@@ -21,7 +21,6 @@ import config from '../config'
  * @class Styles
  */
 class Styles {
-
   /**
    * Build style
    * @returns {*}

@@ -15,7 +15,6 @@ import config from '../config'
  * @class Fonts
  */
 class Fonts {
-
   /**
    * Build fonts
    * @returns {*}
