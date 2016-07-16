@@ -45,8 +45,8 @@ const errorHandler = function (err) {
 
 
 const path = {
-  src: './source/',
-  dest: './app/'
+  src: 'source/',
+  dest: 'app/'
 }
 
 const config = {
@@ -60,7 +60,10 @@ const config = {
   styles: {
     src: path.src + 'styles/hoppas.styl',
     dest: path.dest + 'frontend/css/',
-    watch: path.src + '**/*.styl',
+    watch: [
+      path.src + '**/*.styl',
+      '!' + path.src + '/fonts/*.styl'
+    ],
     base64: {
       extensions: ['png', 'svg', 'jpg'],
       maxImageSize: 1024 * 10
@@ -72,6 +75,7 @@ const config = {
   fonts: {
     src: path.src + 'fonts/fonts.styl',
     dest: path.dest + 'frontend/css/',
+    watch: path.src + 'fonts/*.styl',
     base64: {
       extensions: ['woff'],
       maxImageSize: 1024 * 1024 * 10

@@ -34,6 +34,7 @@ gulp.task('build', gulp.series([
 
 gulp.task('watch', () => {
   gulp.watch(config.styles.watch, gulp.series('styles:build'))
+  gulp.watch(config.fonts.watch, gulp.series('fonts:build'))
   gulp.watch(config.html.watch, gulp.series('html:build'))
   gulp.watch(config.scripts.watch, gulp.series('scripts:build'))
   gulp.watch(config.images.watch, gulp.series('images:build'))
