@@ -32,18 +32,13 @@ class Styles {
         use: poststylus([
           postcssSvg({
             ei: false,
-            svgo: config.isProd
+            svgo: false
           })
         ])
       }))
       .pipe(base64(config.fonts.base64))
-      .pipe(gIf(config.isProd, cssUrlAdjuster({
-        replace: ['../img/', '../../app/frontend/img/']
-      })))
       .pipe(gIf(config.isProd, base64(config.styles.base64)))
-      .pipe(gIf(config.isProd, cssUrlAdjuster({
-        replace: ['../../app/frontend/img/', '../img/']
-      })))
+      .pipe(cssUrlAdjuster(config.styles.cssUrlAdjuster))
       .pipe(autoprefixer(config.styles.autoprefixer))
       .pipe(combineMq())
       .pipe(gIf(config.isProd, cssnano()))
