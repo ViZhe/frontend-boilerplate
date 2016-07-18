@@ -15,8 +15,9 @@ gulp.task('scripts:build', Scripts.build)
 gulp.task('scripts:vendor', Scripts.vendor)
 // gulp.task('scripts:lint', Scripts.lint) // TODO: scripts.lint
 gulp.task('styles:build', Styles.build)
-gulp.task('fonts:build', Fonts.build) // TODO: fonts
-// gulp.task('styles:lint', Styles.lint) // TODO: linter for styles
+gulp.task('fonts:build', Fonts.build)
+gulp.task('styles:lint', Styles.lint)
+gulp.task('styles:travis', Styles.travis)
 gulp.task('styles:guide', Styles.guide) // TODO: 'styles:guide' only for production
 gulp.task('html:build', Html.build)
 gulp.task('images:build', Images.build)
@@ -26,7 +27,7 @@ gulp.task('server', Server.run)
 gulp.task('build', gulp.series([
   'clean',
   'images:build',
-  'styles:build', 'styles:guide',
+  'styles:lint', 'styles:build', 'styles:guide',
   'fonts:build',
   'scripts:build', 'scripts:vendor',
   'html:build'

@@ -12,6 +12,7 @@ import cssnano from 'gulp-cssnano'
 import header from 'gulp-header'
 import cssUrlAdjuster from 'gulp-css-url-adjuster'
 import styledown from 'gulp-styledown'
+import stylint from 'gulp-stylint'
 
 import config from '../config'
 
@@ -26,7 +27,7 @@ class Styles {
    * @returns {*}
    */
   static build() {
-    return gulp.src(config.styles.src)
+    return gulp.src(config.styles.src.main)
       .pipe(plumber(config.plumber))
       .pipe(stylus({
         use: poststylus([
@@ -68,6 +69,28 @@ class Styles {
         indentSize: 4
       }))
       .pipe(gulp.dest(config.docs.dest))
+  }
+
+  /**
+   * Lint stylus files
+   * @returns {*}
+   */
+  static lint() {
+    return gulp.src(config.styles.src.all)
+      .pipe(stylint())
+      .pipe(stylint.reporter())
+  }
+
+  /**
+   * Drop gulp-process in the case of linting errors or warnings.
+   * @returns {*}
+   */
+  static travis() {
+    return gulp.src(config.styles.src.all)
+      .pipe(stylint())
+      .pipe(stylint.reporter('fail', {
+        failOnWarning: true
+      }))
   }
 }
 

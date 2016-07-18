@@ -12,3 +12,4 @@ node_js:
 script:
   - gulp build
   - gulp build --prod
+  - styles:travis

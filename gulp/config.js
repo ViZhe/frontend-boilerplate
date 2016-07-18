@@ -58,7 +58,10 @@ const config = {
     errorHandler
   },
   styles: {
-    src: path.src + 'styles/hoppas.styl',
+    src: {
+      main: path.src + 'styles/hoppas.styl',
+      all: path.src + '**/*.styl'
+    },
     dest: path.dest + 'frontend/css/',
     watch: [
       path.src + '**/*.styl',
