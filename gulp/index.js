@@ -1,10 +1,10 @@
 
 import gulp from 'gulp'
 
-import Styles from './tasks/styles'
 import Scripts from './tasks/scripts'
-import Html from './tasks/html'
+import Styles from './tasks/styles'
 import Fonts from './tasks/fonts'
+import Html from './tasks/html'
 import Images from './tasks/images'
 import Clean from './tasks/clean'
 import Server from './tasks/server'
@@ -13,12 +13,15 @@ import config from './config'
 
 gulp.task('scripts:build', Scripts.build)
 gulp.task('scripts:vendor', Scripts.vendor)
-// gulp.task('scripts:lint', Scripts.lint) // TODO: scripts.lint
+gulp.task('scripts:lint', Scripts.lint)
+gulp.task('scripts:travis', Scripts.travis)
+
 gulp.task('styles:build', Styles.build)
-gulp.task('fonts:build', Fonts.build)
 gulp.task('styles:lint', Styles.lint)
 gulp.task('styles:travis', Styles.travis)
 gulp.task('styles:guide', Styles.guide) // TODO: 'styles:guide' only for production
+
+gulp.task('fonts:build', Fonts.build)
 gulp.task('html:build', Html.build)
 gulp.task('images:build', Images.build)
 gulp.task('clean', Clean.delete)
@@ -29,7 +32,7 @@ gulp.task('build', gulp.series([
   'images:build',
   'styles:lint', 'styles:build', 'styles:guide',
   'fonts:build',
-  'scripts:build', 'scripts:vendor',
+  'scripts:lint', 'scripts:build', 'scripts:vendor',
   'html:build'
 ]))
 

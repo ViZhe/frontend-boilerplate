@@ -1,4 +1,4 @@
-/*eslint-disable no-unused-vars*/
+/* eslint-disable */
 /*!
  * jQuery JavaScript Library v3.1.0
  * https://jquery.com/

@@ -107,7 +107,8 @@ const config = {
   scripts: {
     src: {
       main: path.src + 'scripts/*.js',
-      vendor: path.src + 'scripts/vendor/*.js'
+      vendor: path.src + 'scripts/vendor/*.js',
+      all: path.src + '**/*.js'
     },
     dest: path.dest + 'frontend/js/',
     watch: path.src + '**/*.js'

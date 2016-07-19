@@ -13,3 +13,4 @@ script:
   - gulp build
   - gulp build --prod
   - gulp styles:travis
+  - gulp scripts:travis
