@@ -7,7 +7,7 @@ import poststylus from 'poststylus'
 import postcssSvg from 'postcss-svg'
 import base64 from 'gulp-base64'
 import autoprefixer from 'gulp-autoprefixer'
-import combineMq from 'gulp-combine-mq'
+import groupCssMediaQueries from 'gulp-group-css-media-queries'
 import cssnano from 'gulp-cssnano'
 import header from 'gulp-header'
 import cssUrlAdjuster from 'gulp-css-url-adjuster'
@@ -41,7 +41,7 @@ class Styles {
       .pipe(gIf(config.isProd, base64(config.styles.base64)))
       .pipe(cssUrlAdjuster(config.styles.cssUrlAdjuster))
       .pipe(autoprefixer(config.styles.autoprefixer))
-      .pipe(combineMq())
+      .pipe(groupCssMediaQueries())
       .pipe(gIf(config.isProd, cssnano()))
       .pipe(gIf(config.isProd, header(config.headerCat)))
       .pipe(gulp.dest(config.styles.dest))
