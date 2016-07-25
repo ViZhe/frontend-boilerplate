@@ -1,0 +1,114 @@
+
+/*!**
+ * Global:
+ * Global styles.
+ *
+ */
+
+/*!*
+ * Float:
+ * `.h-cf` —  Сбрасывает обтекание блоков.
+ *
+ * `h-float-{right|left}` —  Делает элемент обтекаемым.
+ *
+ *
+ *		@example.padded
+ *		.h-float-right Обтекание элемета слева
+ *		.h-float-left Обтекание элемета справа
+ *		.h-cf
+ *		p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+ *
+ */
+
+.h-cf
+  clearfix()
+
+.h-float-left
+  float: left !important
+
+.h-float-right
+  float: right !important
+
+
+/*!*
+ * Hide/Show:
+ * `.h-hide` —  Прячет элемент.
+ *
+ * `.h-show` —  Показывает элемент.
+ *
+ *
+ *		@example.padded
+ *		.h-hide(style="display:block") Этот блок не видно
+ *		.h-show(style="display:none") Этот блок видно
+ *
+ */
+
+.h-hide
+  display: none !important
+
+.h-show
+  display: block !important
+
+
+/*!*
+ * Align:
+ * `.h-align-{left|center|right}` —  Задает выравнивание текста.
+ *
+ *
+ *		@example.padded
+ *		.h-align-left Левая выключка текста
+ *		.h-align-center Центральная выключка текста
+ *		.h-align-right Правая выключка текста
+ *
+ */
+
+.h-align-left
+  text-align: left !important
+
+.h-align-center
+  text-align: center !important
+
+.h-align-right
+  text-align: right !important
+
+
+/*!*
+ * Font:
+ * `.h-font-{bold|italic|big|small}` —  Задает форматирование текста.
+ *
+ *
+ *		@example.padded
+ *		.h-font-bold Жирный текст
+ *		.h-font-italic Курсивный текст
+ *		.h-font-big Большой текст
+ *		.h-font-small Маленький текст
+ *
+ */
+
+.h-font-bold
+  font-weight: bold !important
+
+.h-font-italic
+  font-style: italic !important
+
+.h-font-big
+  font-size: 120% !important
+
+.h-font-small
+  font-size: 80% !important
+
+
+/*!*
+ * Color:
+ * `.h-color-{$color_text}` —  Задает цвет текста.
+ *
+ *
+ *		@example.padded
+ *		.h-color-red Красный текст
+ *
+ */
+
+.h-color
+  for $name, $color in $color_text
+    &-{$name}
+      color: $color
