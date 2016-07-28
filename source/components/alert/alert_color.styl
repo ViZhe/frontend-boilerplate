@@ -1,22 +1,25 @@
 
 /*!*
  * Color:
- * `.c-alert_color_{$color_alert}` — Задает цвет блока сообщения.
+ * `.c-alert_color_{$color_alert}` — Set color of the message box.
  *
  *
  *		@example.padded
  *		.c-alert.c-alert_color_blue
- *			h5.g-heading.g-heading_level_5.g-heading_first Внимание
- *			| Гречка дорожает! Срочно закупайтесь гречкой и талонами на интернет!!!
- *		.c-alert.c-alert_color_blue Гречка дорожает! Срочно закупайтесь гречкой и талонами на интернет!!!
+ *			h5.g-heading.g-heading_level_5.g-heading_first Note
+ *			| Buckwheat expensive! Urgently procuring buckwheat and coupons on the Internet!!!
+ *		.c-alert.c-alert_color_blue Buckwheat expensive! Urgently procuring buckwheat and coupons on the Internet!!!
  *
  */
 
-.c-alert_color
-  for $name, $color in $color_alert
-    &_{$name}
-      border-color: $color[0]
-      background-color: lighten($color[0], 90%)
+alert_color($name, $backgroundColor, $borderColor, $color = null)
+  &_color_{$name}
+    border-color: $borderColor
+    background-color: $backgroundColor
 
-      if $color[1]
-        color: $color[1]
+    if $color
+      color: $color
+
+
+.c-alert
+  alert_color('blue', lighten($blue, 90%), lighten($blue, 70%))
