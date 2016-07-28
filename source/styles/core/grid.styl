@@ -21,23 +21,23 @@ $grid-system ?= {
 
 
 -grid-inner($arg, $mod = '')
-    .container
-        width: $arg[0]
+  .container
+    width: $arg[0]
 
-    .row .row
-        margin-right: unquote('-' + $arg[1])
-        margin-left: unquote('-' + $arg[1])
+  .row .row
+    margin-right: unquote('-' + $arg[1])
+    margin-left: unquote('-' + $arg[1])
 
-    .col
-        padding-right: $arg[1]
-        padding-left: $arg[1]
+  .col
+    padding-right: $arg[1]
+    padding-left: $arg[1]
 
-    .w0{$mod}
-        flex: 1
+  .w0{$mod}
+    flex: 1
 
-    for $i in 1..5
-        .w{$i}{$mod}
-            flex: 0 (1/$i) * 100%
+  for $i in 1..5
+    .w{$i}{$mod}
+      flex: 0 (1/$i) * 100%
 
 $grid()
   $i = 1
