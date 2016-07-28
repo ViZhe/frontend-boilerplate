@@ -20,12 +20,18 @@
   position: fixed
   right: 10px
   bottom: 10px
+  z-index: 100
   visibility: hidden
-  size: 50px
+  width: 52px
+  height: 52px
   cursor: pointer
   transition: all ease .5s
   opacity: 0
+  border-radius: 50%
+  background-color: $white
   background-image: svg('source/img/scroll-top/arrow.svg', '[fill]:' + $black)
+  background-position: center center
+  background-size: 50px 50px
 
   +media('max', 'xs')
     display: none
