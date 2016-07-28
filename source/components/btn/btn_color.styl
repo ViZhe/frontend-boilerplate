@@ -11,17 +11,22 @@
  *
  */
 
-.c-btn_color
-  for $name, $color in $color_btn
-    &_{$name}
-      background-color: $color[0]
+btn_color($name, $backgroundColor, $backgroundColorHover, $backgroundColorActive, $color = null)
+  &_color_{$name}
+    background-color: $backgroundColor
 
-      if $color[1]
-        color: $color[1]
+    if $color
+      color: $color
 
-      &:focus
-      &:hover
-        background-color: lighten(@background-color, 20%)
+    &:focus
+    &:hover
+      background-color: $backgroundColorHover
 
-      &:active
-        background-color: lighten(@background-color, 40%)
+    &:active
+      background-color: $backgroundColorActive
+
+
+.c-btn
+  btn_color('blue', $blue, lighten($blue, 20%), lighten($blue, 40%))
+  btn_color('green', $green, lighten($green, 20%), lighten($green, 40%))
+  btn_color('red', $red, lighten($red, 20%), lighten($red, 40%))
