@@ -10,7 +10,7 @@
  *     label.c-form__label
  *       .c-form__append
  *         input.c-form__field(type="text" placeholder="Simple text input" required)
- *         .c-form__addon.c-btn.c-btn_color_green Отправить
+ *         .c-form__addon.c-btn.c-btn_color_green Send
  *
  */
 
@@ -18,6 +18,10 @@
   display: flex
 
 .c-form__append
+  & .c-form__field
+    flex: 1
+    min-width: 10%
+
   & .c-form__field
   & .c-form__addon
     margin: 0
@@ -31,7 +35,3 @@
 
     & > :last-child
       border-radius: 0 auto auto 0
-
-.c-form__append .c-form__field
-  flex: 1
-  min-width: 10%
