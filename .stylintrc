@@ -59,7 +59,6 @@
         "flex-basis",
         "align-self",
         "box-sizing",
-        "size",
         "width",
         "min-width",
         "max-width",

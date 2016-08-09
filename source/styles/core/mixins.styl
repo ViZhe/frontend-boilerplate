@@ -77,26 +77,6 @@ clearfix()
 
 
 /**
- * Size
- *
- * size: 10px               => width: 10px; height: 10px
- * size: 10px 15px          => width: 10px; height: 15px
- *
- */
-
-size($arg...)
-  if $arg
-    if length($arg) == 1
-      width: $arg[0]
-      height: $arg[0]
-
-    else if length($arg) == 2
-      width: $arg[0]
-      height: $arg[1]
-
-
-
-/**
  * Border-radius
  *
  * border-radius: auto         => border-radius: 3px
