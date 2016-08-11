@@ -32,14 +32,14 @@
 
 /*!*
  * Hide/Show:
- * `.h-hide` —  Прячет элемент.
+ * `.h-hide` —  Makes element hidden.
  *
- * `.h-show` —  Показывает элемент.
+ * `.h-show` —  Makes element showen.
  *
  *
  *     @example.padded
- *     .h-hide(style="display:block") Этот блок не видно
- *     .h-show(style="display:none") Этот блок видно
+ *     .h-hide(style="display:block") You don't see me
+ *     .h-show(style="display:none") You can see me
  *
  */
 
@@ -50,15 +50,31 @@
   display: block !important
 
 
+
+/*!*
+* Overflow:
+* `.h-overflow` —  Makes element scrollable.
+*
+*
+*     @example.padded
+*     .h-overflow
+*       div(style="width:5000px;height:20px;background:linear-gradient(90deg, red, green);")
+*
+*/
+.h-overflow
+  overflow: auto
+
+
+
 /*!*
  * Align:
- * `.h-align-{left|center|right}` —  Задает выравнивание текста.
+ * `.h-align-{left|center|right}` —  Sets alignment of text
  *
  *
  *     @example.padded
- *     .h-align-left Левая выключка текста
- *     .h-align-center Центральная выключка текста
- *     .h-align-right Правая выключка текста
+ *     .h-align-left Left justification of text
+ *     .h-align-center Center justification of text
+ *     .h-align-right Right justification of text
  *
  */
 
@@ -74,14 +90,14 @@
 
 /*!*
  * Font:
- * `.h-font-{bold|italic|big|small}` —  Задает форматирование текста.
+ * `.h-font-{bold|italic|big|small}` —  Sets formatting of text.
  *
  *
  *     @example.padded
- *     .h-font-bold Жирный текст
- *     .h-font-italic Курсивный текст
- *     .h-font-big Большой текст
- *     .h-font-small Маленький текст
+ *     .h-font-bold Bold text текст
+ *     .h-font-italic Italic text
+ *     .h-font-big Big text
+ *     .h-font-small Small text
  *
  */
 

@@ -14,30 +14,27 @@
  *
  * `.c-table_nowrap` — Не ломаем текст.
  *
- * `.c-table__overflow` — Обертка таблицы для скролла на маленьких экранах.
- *
  *
  *     @example.padded
- *     .c-table__overflow
- *       table.c-table.c-table_striped.c-table_hovered.c-table_nowrap
- *         thead
- *           tr
- *             th Id
- *             th Name
- *             th Price
- *         tbody
- *           tr
- *             td 01
- *             td Lorem
- *             td 100 000
- *           tr
- *             td 02
- *             td Loremer
- *             td 200 000
- *           tr
- *             td 03
- *             td Loremes
- *             td 300 000
+ *     table.c-table.c-table_striped.c-table_hovered.c-table_nowrap
+ *       thead
+ *         tr
+ *           th Id
+ *           th Name
+ *           th Price
+ *       tbody
+ *         tr
+ *           td 01
+ *           td Lorem
+ *           td 100 000
+ *         tr
+ *           td 02
+ *           td Loremer
+ *           td 200 000
+ *         tr
+ *           td 03
+ *           td Loremes
+ *           td 300 000
  *
  */
 
@@ -57,20 +54,13 @@
       padding: 5px 10px
       border-bottom: 1px solid $graylight
 
-
 .c-table_striped
   & tbody tr:nth-of-type(2n)
     background: lighten($gray, 70%)
-
 
 .c-table_hovered
   & tbody tr:hover
     background: lighten($gray, 50%)
 
-
 .c-table_nowrap
   white-space: nowrap
-
-
-.c-table__overflow
-  overflow: auto
