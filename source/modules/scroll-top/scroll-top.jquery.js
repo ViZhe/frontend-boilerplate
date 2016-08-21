@@ -1,5 +1,5 @@
 
-const hopScrollTop = function () {
+function hopScrollTop() {
   const selector = $('.js-scroll-top')
 
   $(window).on('scroll', () => {

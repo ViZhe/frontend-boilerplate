@@ -1,5 +1,5 @@
 
-const hopPopup = function () {
+function hopPopup() {
   class Popup {
     constructor() {
       $('body').on('click', '.js-popup', Popup.openPopup)
@@ -9,7 +9,7 @@ const hopPopup = function () {
       const widthInner = $html.width()
       $html.addClass('c-popup__outer')
       const widthOuter = $html.width()
-      $html.css('margin-right', widthOuter - widthInner + 'px')
+      $html.css('margin-right', `${widthOuter - widthInner}px`)
     }
     static openPopup() {
       Popup.overflow()
@@ -30,7 +30,7 @@ const hopPopup = function () {
       }), 100)
       $('body').on('click', '.c-popup__shadow, .c-popup__close', Popup.closePopup)
     }
-    static closePopup(e) {
+    static closePopup() {
       $('body').off('click', '.c-popup__shadow, .c-popup__close', Popup.closePopup)
       $('.c-popup_show').removeClass('c-popup_show')
       setTimeout((() => {

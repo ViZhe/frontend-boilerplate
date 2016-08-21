@@ -1,7 +1,7 @@
 
 /* eslint spaced-comment:0 */
 
-const lg = function () {
+function lg() {
   //= lg.js
   //= lg-hash.js
   //= lg-pager.js
