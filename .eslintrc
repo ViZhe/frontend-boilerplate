@@ -10,6 +10,8 @@
     "comma-dangle": [2, "never"],
     "semi": [2, "never"],
 
+    "import/no-extraneous-dependencies": 0,
+
     "no-console": 0
   }
 }

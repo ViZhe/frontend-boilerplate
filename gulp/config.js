@@ -35,7 +35,7 @@ const headerCat = `
 `
 
 
-const errorHandler = function (err) {
+function errorHandler(err) {
   util.log([(`${err.name} in ${err.plugin}`).bold.red, '', err.message, ''].join('\n'))
   if (util.env.beep) {
     util.beep()
@@ -59,13 +59,13 @@ const config = {
   },
   styles: {
     src: {
-      main: path.src + 'styles/hoppas.styl',
-      all: path.src + '**/*.styl'
+      main: `${path.src}styles/hoppas.styl`,
+      all: `${path.src}**/*.styl`
     },
-    dest: path.dest + 'frontend/css/',
+    dest: `${path.dest}frontend/css/`,
     watch: [
-      path.src + '**/*.styl',
-      '!' + path.src + '/fonts/*.styl'
+      `${path.src}**/*.styl`,
+      `!${path.src}fonts/*.styl`
     ],
     base64: {
       baseDir: 'app/frontend/img/',
@@ -81,9 +81,9 @@ const config = {
     }
   },
   fonts: {
-    src: path.src + 'fonts/fonts.styl',
-    dest: path.dest + 'frontend/css/',
-    watch: path.src + 'fonts/*.styl',
+    src: `${path.src}fonts/fonts.styl`,
+    dest: `${path.dest}frontend/css/`,
+    watch: `${path.src}fonts/*.styl`,
     base64: {
       extensions: ['woff'],
       maxImageSize: 1024 * 1024 * 10
@@ -93,30 +93,30 @@ const config = {
     }
   },
   docs: {
-    src: path.src + 'styles/hoppas.styl',
-    dest: path.dest + 'docs/'
+    src: `${path.src}styles/hoppas.styl`,
+    dest: `${path.dest}docs/`
   },
   html: {
-    src: path.src + 'pages/*.pug',
+    src: `${path.src}pages/*.pug`,
     dest: path.dest,
     watch: [
-      path.src + '**/*.pug',
-      path.src + 'modules/**/*.pug'
+      `${path.src}**/*.pug`,
+      `${path.src}modules/**/*.pug`
     ]
   },
   scripts: {
     src: {
-      main: path.src + 'scripts/*.js',
-      vendor: path.src + 'scripts/vendor/*.js',
-      all: path.src + '**/*.js'
+      main: `${path.src}scripts/*.js`,
+      vendor: `${path.src}scripts/vendor/*.js`,
+      all: `${path.src}**/*.js`
     },
-    dest: path.dest + 'frontend/js/',
-    watch: path.src + '**/*.js'
+    dest: `${path.dest}frontend/js/`,
+    watch: `${path.src}**/*.js`
   },
   images: {
-    src: path.src + 'img/**/*',
-    dest: path.dest + 'frontend/img/',
-    watch: path.src + 'img/**/*',
+    src: `${path.src}img/**/*`,
+    dest: `${path.dest}frontend/img/`,
+    watch: `${path.src}img/**/*`,
     imagemin: {
       progressive: true,
       interlaced: true,
