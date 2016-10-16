@@ -16,7 +16,7 @@
     "eslint": "^3.0.1",
     "eslint-config-airbnb-base": "^8.0.0",
     "eslint-plugin-babel": "^3.3.0",
-    "eslint-plugin-import": "^1.13.0",
+    "eslint-plugin-import": "^2.0.1",
     "gulp": "gulpjs/gulp#4.0",
     "gulp-autoprefixer": "^3.1.0",
     "gulp-babel": "^6.1.2",
