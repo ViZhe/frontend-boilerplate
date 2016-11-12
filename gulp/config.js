@@ -77,7 +77,7 @@ const config = {
       append: `?v=${packageJson.version}`
     },
     autoprefixer: {
-      browser: ['last 2 versions', 'Explorer >= 10', 'Android >= 4.1', 'Safari >= 7', 'iOS >= 7']
+      browsers: ['last 2 versions', 'Explorer >= 10', 'Android >= 4.1', 'Safari >= 7', 'iOS >= 7']
     }
   },
   fonts: {
@@ -89,7 +89,7 @@ const config = {
       maxImageSize: 1024 * 1024 * 10
     },
     autoprefixer: {
-      browser: ['last 2 versions', 'Explorer >= 10', 'Android >= 4.1', 'Safari >= 7', 'iOS >= 7']
+      browsers: ['last 2 versions', 'Explorer >= 10', 'Android >= 4.1', 'Safari >= 7', 'iOS >= 7']
     }
   },
   docs: {
