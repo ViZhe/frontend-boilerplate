@@ -21,7 +21,6 @@ class Styles {
         'include css': true,
         'resolve url': true
       }))
-      .pipe(base64(config.fonts.base64))
       .pipe(gIf(config.isProd, base64(config.styles.base64)))
       .pipe(autoprefixer(config.styles.autoprefixer))
       .pipe(groupCssMediaQueries())

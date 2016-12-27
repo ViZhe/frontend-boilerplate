@@ -70,7 +70,7 @@ const config = {
   },
   fonts: {
     src: `${path.src}fonts/fonts.styl`,
-    dest: `${path.dest}frontend/css/`,
+    dest: `${path.dest}css/`,
     watch: `${path.src}fonts/*.styl`,
     base64: {
       extensions: ['woff'],
@@ -98,15 +98,16 @@ const config = {
     watch: `${path.src}**/*.js`
   },
   images: {
-    src: `${path.src}img/**/*`,
-    dest: `${path.dest}frontend/img/`,
-    watch: `${path.src}img/**/*`,
+    src: `${path.src}images/**/*`,
+    dest: `${path.dest}images/`,
+    watch: `${path.src}images/**/*`,
     imagemin: {
       progressive: true,
       interlaced: true,
-      svgoPlugins: [{
-        removeViewBox: false
-      }],
+      svgoPlugins: [
+        {cleanupIDs: false},
+        {removeViewBox: false}
+      ],
       use: [imageminPngquant()]
     }
   }
