@@ -59,16 +59,13 @@ const config = {
   },
   styles: {
     src: {
-      main: `${path.src}styles/hoppas.styl`,
-      all: `${path.src}**/*.styl`
+      main: `${path.src}styles/index.styl`,
+      all: `${path.src}styles/**/*.styl`
     },
-    dest: `${path.dest}frontend/css/`,
-    watch: [
-      `${path.src}**/*.styl`,
-      `!${path.src}fonts/*.styl`
-    ],
+    dest: `${path.dest}css/`,
+    watch: `${path.src}styles/**/*.styl`,
     base64: {
-      baseDir: 'app/frontend/img/',
+      baseDir: `${path.dest}images/`,
       extensions: ['png', 'svg', 'jpg'],
       maxImageSize: 1024 * 10
     },
