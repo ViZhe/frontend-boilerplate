@@ -8,7 +8,6 @@ import autoprefixer from 'gulp-autoprefixer'
 import groupCssMediaQueries from 'gulp-group-css-media-queries'
 import cssnano from 'gulp-cssnano'
 import header from 'gulp-header'
-import cssUrlAdjuster from 'gulp-css-url-adjuster'
 import stylint from 'gulp-stylint'
 
 import config from '../config'
@@ -24,7 +23,6 @@ class Styles {
       }))
       .pipe(base64(config.fonts.base64))
       .pipe(gIf(config.isProd, base64(config.styles.base64)))
-      .pipe(cssUrlAdjuster(config.styles.cssUrlAdjuster))
       .pipe(autoprefixer(config.styles.autoprefixer))
       .pipe(groupCssMediaQueries())
       .pipe(gIf(config.isProd, cssnano()))

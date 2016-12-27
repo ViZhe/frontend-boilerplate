@@ -72,10 +72,6 @@ const config = {
       extensions: ['png', 'svg', 'jpg'],
       maxImageSize: 1024 * 10
     },
-    cssUrlAdjuster: {
-      prepend: '../img/',
-      append: `?v=${packageJson.version}`
-    },
     autoprefixer: {
       browsers: ['last 2 versions', 'Explorer >= 10', 'Android >= 4.1', 'Safari >= 7', 'iOS >= 7']
     }
