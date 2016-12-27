@@ -11,7 +11,6 @@ import groupCssMediaQueries from 'gulp-group-css-media-queries'
 import cssnano from 'gulp-cssnano'
 import header from 'gulp-header'
 import cssUrlAdjuster from 'gulp-css-url-adjuster'
-import styledown from 'gulp-styledown'
 import stylint from 'gulp-stylint'
 
 import config from '../config'
@@ -37,26 +36,6 @@ class Styles {
       .pipe(gIf(config.isProd, cssnano()))
       .pipe(gIf(config.isProd, header(config.headerCat)))
       .pipe(gulp.dest(config.styles.dest))
-  }
-
-  static guide() {
-    return gulp.src(config.docs.src)
-      .pipe(plumber({
-        errorHandler: config.errorHandler
-      }))
-      .pipe(stylus({
-        use: poststylus([
-          postcssSvg({
-            ei: false
-          })
-        ])
-      }))
-      .pipe(styledown({
-        config: './source/docs/config.styl',
-        filename: 'index.html',
-        indentSize: 4
-      }))
-      .pipe(gulp.dest(config.docs.dest))
   }
 
   static lint() {

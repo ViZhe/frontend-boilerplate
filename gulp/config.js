@@ -92,10 +92,6 @@ const config = {
       browsers: ['last 2 versions', 'Explorer >= 10', 'Android >= 4.1', 'Safari >= 7', 'iOS >= 7']
     }
   },
-  docs: {
-    src: `${path.src}styles/hoppas.styl`,
-    dest: `${path.dest}docs/`
-  },
   html: {
     src: `${path.src}pages/*.pug`,
     dest: path.dest,

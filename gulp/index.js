@@ -19,7 +19,6 @@ gulp.task('scripts:travis', Scripts.travis)
 gulp.task('styles:build', Styles.build)
 gulp.task('styles:lint', Styles.lint)
 gulp.task('styles:travis', Styles.travis)
-gulp.task('styles:guide', Styles.guide) // TODO: 'styles:guide' only for production
 
 gulp.task('fonts:build', Fonts.build)
 gulp.task('html:build', Html.build)
@@ -30,7 +29,7 @@ gulp.task('server', Server.run)
 gulp.task('build', gulp.series([
   'clean',
   'images:build',
-  'styles:lint', 'styles:build', 'styles:guide',
+  'styles:lint', 'styles:build',
   'fonts:build',
   'scripts:lint', 'scripts:build', 'scripts:vendor',
   'html:build'
