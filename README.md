@@ -28,11 +28,6 @@ gulp build --prod
 
 
 ## Fonts
-#### Only base characters:
-* **PT Sans Klim** (r, i, b, bi)
-* **PT Serif Klim** (r, i, b, bi)
-
-#### Standard characters:
 * **Open Sans** (r, i, b)
 * **PT Sans** (r, i, b)
 * **PT Serif** (r, i, b)
