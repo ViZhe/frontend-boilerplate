@@ -26,4 +26,5 @@ class Fonts {
   }
 }
 
+
 export default Fonts

@@ -16,4 +16,5 @@ class Images {
   }
 }
 
+
 export default Images
