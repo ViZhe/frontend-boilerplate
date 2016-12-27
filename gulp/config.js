@@ -3,14 +3,9 @@ import imageminPngquant from 'imagemin-pngquant'
 import util from 'gulp-util'
 import yargs from 'yargs'
 
-import packageJson from '../package.json'
-
 
 const headerCat = `
 /*!
- * @author ${packageJson.author.name}
- * @version ${packageJson.version}
- *
  *                  $$____________$$
  *                  $___$________$___$
  *                  $_____$$$$$$_____$
