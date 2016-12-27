@@ -10,15 +10,7 @@ import cssnano from 'gulp-cssnano'
 import config from '../config'
 
 
-/**
- * Fonts task
- * @class Fonts
- */
 class Fonts {
-  /**
-   * Build fonts
-   * @returns {*}
-   */
   static build() {
     return gulp.src(config.fonts.src)
       .pipe(plumber(config.plumber))

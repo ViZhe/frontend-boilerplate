@@ -12,15 +12,7 @@ import header from 'gulp-header'
 import config from '../config'
 
 
-/**
- * Javascript task
- * @class Scripts
- */
 class Scripts {
-  /**
-   * Bundle script
-   * @returns {*}
-   */
   static build() {
     return gulp.src(config.scripts.src.main)
       .pipe(plumber(config.plumber))
@@ -31,10 +23,6 @@ class Scripts {
       .pipe(gulp.dest(config.scripts.dest))
   }
 
-  /**
-   * Bundle vendor scripts
-   * @returns {*}
-   */
   static vendor() {
     return gulp.src(config.scripts.src.vendor)
       .pipe(plumber(config.plumber))
@@ -43,20 +31,12 @@ class Scripts {
       .pipe(gulp.dest(config.scripts.dest))
   }
 
-  /**
-   * Lint script
-   * @returns {*}
-   */
   static lint() {
     return gulp.src(config.scripts.src.all)
       .pipe(eslint())
       .pipe(eslint.format())
   }
 
-  /**
-   * Drop gulp-process in the case of linting errors or warnings.
-   * @returns {*}
-   */
   static travis() {
     return gulp.src(config.scripts.src.all)
       .pipe(eslint())

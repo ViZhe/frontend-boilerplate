@@ -7,15 +7,7 @@ import imagemin from 'gulp-imagemin'
 import config from '../config'
 
 
-/**
- * Images task
- * @class Images
- */
 class Images {
-  /**
-   * Build images
-   * @returns {*}
-   */
   static build() {
     return gulp.src(config.images.src)
       .pipe(changed(config.images.dest))

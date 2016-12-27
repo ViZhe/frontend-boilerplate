@@ -17,15 +17,7 @@ import stylint from 'gulp-stylint'
 import config from '../config'
 
 
-/**
- * Styles task
- * @class Styles
- */
 class Styles {
-  /**
-   * Build style
-   * @returns {*}
-   */
   static build() {
     return gulp.src(config.styles.src.main)
       .pipe(plumber(config.plumber))
@@ -47,10 +39,6 @@ class Styles {
       .pipe(gulp.dest(config.styles.dest))
   }
 
-  /**
-   * Build styleguide for style
-   * @returns {*}
-   */
   static guide() {
     return gulp.src(config.docs.src)
       .pipe(plumber({
@@ -71,20 +59,12 @@ class Styles {
       .pipe(gulp.dest(config.docs.dest))
   }
 
-  /**
-   * Lint stylus files
-   * @returns {*}
-   */
   static lint() {
     return gulp.src(config.styles.src.all)
       .pipe(stylint())
       .pipe(stylint.reporter())
   }
 
-  /**
-   * Drop gulp-process in the case of linting errors or warnings.
-   * @returns {*}
-   */
   static travis() {
     return gulp.src(config.styles.src.all)
       .pipe(stylint())

@@ -5,15 +5,8 @@ import pug from 'gulp-pug'
 
 import config from '../config'
 
-/**
- * HTML task
- * @class Html
- */
+
 class Html {
-  /**
-   * Build templates
-   * @returns {*}
-   */
   static build() {
     return gulp.src(config.html.src)
       .pipe(plumber(config.plumber))
