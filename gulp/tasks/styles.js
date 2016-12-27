@@ -3,8 +3,6 @@ import gulp from 'gulp'
 import gIf from 'gulp-if'
 import plumber from 'gulp-plumber'
 import stylus from 'gulp-stylus'
-import poststylus from 'poststylus'
-import postcssSvg from 'postcss-svg'
 import base64 from 'gulp-base64'
 import autoprefixer from 'gulp-autoprefixer'
 import groupCssMediaQueries from 'gulp-group-css-media-queries'
@@ -21,12 +19,8 @@ class Styles {
     return gulp.src(config.styles.src.main)
       .pipe(plumber(config.plumber))
       .pipe(stylus({
-        use: poststylus([
-          postcssSvg({
-            ei: false,
-            svgo: false
-          })
-        ])
+        'include css': true,
+        'resolve url': true
       }))
       .pipe(base64(config.fonts.base64))
       .pipe(gIf(config.isProd, base64(config.styles.base64)))
