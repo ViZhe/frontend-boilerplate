@@ -1,0 +1,86 @@
+
+/**
+ * Media
+ *
+ * +media('min', 'sm')                  => sm, md, lg, xl
+ * +media('max', 'sm')                  => xs, sm
+ * +media('in', 'md')                   => md
+ * +media('in', 'xs')                   => xs
+ * +media('out', 'md')                  => xs, sm, lg, xl
+ * +media('out', 'xl')                  => xs, sm, md, lg
+ *
+ */
+
+$mediaSizeXl = 'xl' 1260px
+$mediaSizeLg = 'lg' 1000px
+$mediaSizeMd = 'md' 768px
+$mediaSizeSm = 'sm' 500px
+$mediaSizeXs = 'xs' 0
+
+$mediaSystem = $mediaSizeXl $mediaSizeLg $mediaSizeMd $mediaSizeSm $mediaSizeXs
+$mediaSystemLength = length($mediaSystem) - 1
+
+media($type, $point)
+  $position = index(keys($mediaSystem), $point)
+
+  if ($type == 'max' && $position != 0) || ($type == 'in' && $position == $mediaSystemLength)
+    $mediaWhere = '(max-width $mediaSystem[$position - 1][1] - 1)'
+
+  else if ($type == 'min' && $position != $mediaSystemLength) || ($type == 'in' && $position == 0)
+    $mediaWhere = '(min-width $mediaSystem[$position][1])'
+
+  else if $type == 'in'
+    $mediaWhereFirst = $mediaSystem[$position][1]
+    $mediaWhereSecond = $mediaSystem[$position - 1][1] - 1
+    $mediaWhere = '(min-width $mediaWhereFirst) and (max-width $mediaWhereSecond)'
+
+  else if $type == 'out'
+    if ($position == $mediaSystemLength)
+      $mediaWhere = '(min-width $mediaSystem[$position - 1][1])'
+    else if ($position == 0)
+      $mediaWhere = '(max-width $mediaSystem[$position][1] - 1)'
+    else
+      $mediaWhereFirst = $mediaSystem[$position][1] - 1
+      $mediaWhereSecond = $mediaSystem[$position - 1][1]
+      $mediaWhere = '(max-width $mediaWhereFirst), (min-width $mediaWhereSecond)'
+
+  if $mediaWhere is defined
+    @media $mediaWhere
+      {block}
+  else
+    {block}
+
+
+
+/**
+ * Reset float
+ *
+ * clearfix()
+ *
+ */
+
+clearfix()
+  &::before
+  &::after
+    display: block
+    content: ''
+
+  &::after
+    clear: both
+
+
+
+/**
+ * Em/Rem
+ *
+ * margin: em(20px) rem(5px)   => margin: 1.25em 0.3125rem
+ * font-size: rem(15px)        => font-size: 1.875rem
+ *
+ */
+
+$siteFontSize ?= 16px
+em($value)
+  unit($value/$siteFontSize, 'em')
+
+rem($value)
+  unit($value/$siteFontSize, 'rem')

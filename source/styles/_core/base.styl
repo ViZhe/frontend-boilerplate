@@ -1,11 +1,4 @@
 
-/**
- * Base:
- * Unclassed HTML elements.
- *
- */
-
-
 *
 ::after
 ::before
@@ -22,16 +15,15 @@
   text-decoration: inherit
 
 html
-  font-size: $siteFontSize
-  -ms-text-size-adjust: 100%
-  -webkit-text-size-adjust: 100%
+  font-size: $baseFontSize
+  text-size-adjust: 100%
 
 body
   min-width: 320px
-  color: $black
-  background-color: $siteBackgroundColor
-  font-family: $siteFontFamily
+  background-color: $baseBackgroundColor
+  color: $baseColor
   font-size: 1em
+  font-family: $baseFontFamily
   line-height: 1.45
 
 article
@@ -60,29 +52,10 @@ input::-moz-focus-inner
   padding: 0
   border: 0
 
-a
-  text-decoration: none
-  color: $blue
-  background: transparent 0 0
-
-  &:hover
-  &:focus
-    color: lighten(@color, 40%)
-
-  &:active
-    color: $red
-
-  &:focus
-    outline: dotted thin
-
-  &:active
-  &:hover
-    outline: 0
-
 abbr[title]
-  cursor: help
-  text-decoration: none
   border-bottom: 1px dotted
+  text-decoration: none
+  cursor: help
 
 audio:not([controls])
   display: none
@@ -113,16 +86,16 @@ code
 kbd
 pre
 samp
-  font-family: monospace, monospace
   font-size: 1em
+  font-family: monospace, monospace
 
 dfn
 i
   font-style: italic
 
 mark
-  color: $black
   background: $yellow
+  color: $black
 
 progress
   vertical-align: baseline
@@ -130,8 +103,8 @@ progress
 img
 svg
   max-width: 100%
-  vertical-align: middle
   border: 0
+  vertical-align: middle
 
 select
   -moz-appearance: none
@@ -191,15 +164,19 @@ input[type=number]::-webkit-outer-spin-button
   height: auto
 
 [type='search']
-  -webkit-appearance: textfield
+  appearance: textfield
 
 [type='search']::-webkit-search-cancel-button
 [type='search']::-webkit-search-decoration
-  -webkit-appearance: none
+  appearance: none
+
+::-webkit-file-upload-button
+  appearance: button
+  font: inherit
 
 button
 html [type='button']
 [type='reset']
 [type='submit']
   cursor: pointer
-  -webkit-appearance: button
+  appearance: button

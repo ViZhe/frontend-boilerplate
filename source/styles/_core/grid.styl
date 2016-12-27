@@ -1,0 +1,49 @@
+
+$gridSizeXl = 'xl' 1240px 15px
+$gridSizeLg = 'lg' 980px 15px
+$gridSizeMd = 'md' 750px 10px
+$gridSizeSm = 'sm' 100% 5px
+$gridSizeXs = 'xs' 100% 5px
+
+$gridSystem = $gridSizeXl $gridSizeLg $gridSizeMd $gridSizeSm $gridSizeXs
+
+.l-box
+  margin-right: auto
+  margin-left: auto
+
+.l-row
+  display: flex
+  flex-wrap: wrap
+
+.l-col
+  max-width: 100%
+
+-grid-inner($width, $space, $mod = '')
+  .l-box
+    width: $width
+
+  .l-row .l-row
+    margin-right: -($space)
+    margin-left: -($space)
+
+  .l-col
+    padding-right: $space
+    padding-left: $space
+
+  .l-col_0{$mod}
+    flex: 1
+
+  for $i in 1..5
+    .l-col_{$i}{$mod}
+      flex: 0 (1/$i) * 100%
+
+$grid()
+  for $args, $index in $gridSystem
+    if $index == '0'
+      -grid-inner($args[1], $args[2])
+    else
+      $mod = '_' + $args[0]
+      +media('max', $args[0])
+        -grid-inner($args[1], $args[2], $mod)
+
+$grid()
