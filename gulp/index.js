@@ -12,7 +12,6 @@ import config from './config'
 
 
 gulp.task('scripts:build', Scripts.build)
-gulp.task('scripts:vendor', Scripts.vendor)
 gulp.task('scripts:lint', Scripts.lint)
 gulp.task('scripts:travis', Scripts.travis)
 
@@ -31,7 +30,7 @@ gulp.task('build', gulp.series([
   'images:build',
   'styles:lint', 'styles:build',
   'fonts:build',
-  'scripts:lint', 'scripts:build', 'scripts:vendor',
+  'scripts:lint', 'scripts:build',
   'html:build'
 ]))
 

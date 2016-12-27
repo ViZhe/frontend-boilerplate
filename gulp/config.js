@@ -57,7 +57,7 @@ const config = {
       main: `${path.src}styles/index.styl`,
       all: `${path.src}styles/**/*.styl`
     },
-    dest: `${path.dest}css/`,
+    dest: `${path.dest}styles/`,
     watch: `${path.src}styles/**/*.styl`,
     base64: {
       baseDir: `${path.dest}images/`,
@@ -70,7 +70,7 @@ const config = {
   },
   fonts: {
     src: `${path.src}fonts/fonts.styl`,
-    dest: `${path.dest}css/`,
+    dest: `${path.dest}styles/`,
     watch: `${path.src}fonts/*.styl`,
     base64: {
       extensions: ['woff'],
@@ -90,12 +90,11 @@ const config = {
   },
   scripts: {
     src: {
-      main: `${path.src}scripts/*.js`,
-      vendor: `${path.src}scripts/vendor/*.js`,
-      all: `${path.src}**/*.js`
+      main: `${path.src}scripts/index.js`,
+      all: `${path.src}scripts/**/*.js`
     },
-    dest: `${path.dest}frontend/js/`,
-    watch: `${path.src}**/*.js`
+    dest: `${path.dest}scripts/`,
+    watch: `${path.src}scripts/**/*.js`
   },
   images: {
     src: `${path.src}images/**/*`,

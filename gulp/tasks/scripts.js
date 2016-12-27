@@ -1,33 +1,54 @@
 
 import gulp from 'gulp'
-import gIf from 'gulp-if'
 import plumber from 'gulp-plumber'
 import eslint from 'gulp-eslint'
-import rigger from 'gulp-rigger'
-import babel from 'gulp-babel'
-import concat from 'gulp-concat'
-import uglify from 'gulp-uglify'
-import header from 'gulp-header'
+import wpStream from 'webpack-stream'
+import webpack from 'webpack'
 
 import config from '../config'
 
+
+const options = {
+  entry: {
+    index: [`./${config.scripts.src.main}`],
+    jquery: ['jquery']
+  },
+  module: {
+    rules: [
+      {
+        test: /\.js$/,
+        loader: 'babel-loader',
+        exclude: /node_modules/
+      },
+      {
+        test: require.resolve('jquery'),
+        loader: 'expose-loader?jQuery!expose-loader?$'
+      }
+    ]
+  },
+  watchOptions: {aggregateTimeout: 20},
+  plugins: [
+    new webpack.optimize.UglifyJsPlugin({
+      compress: {
+        warnings: false
+      }
+    })
+  ],
+  watch: false,
+  cache: false,
+  performance: {
+    hints: false
+  },
+  output: {
+    filename: '[name].js'
+  }
+}
 
 class Scripts {
   static build() {
     return gulp.src(config.scripts.src.main)
       .pipe(plumber(config.plumber))
-      .pipe(rigger())
-      .pipe(babel())
-      .pipe(gIf(config.isProd, uglify()))
-      .pipe(gIf(config.isProd, header(config.headerCat)))
-      .pipe(gulp.dest(config.scripts.dest))
-  }
-
-  static vendor() {
-    return gulp.src(config.scripts.src.vendor)
-      .pipe(plumber(config.plumber))
-      .pipe(gIf(config.isProd, uglify()))
-      .pipe(concat('vendor.js'))
+      .pipe(wpStream(options, webpack))
       .pipe(gulp.dest(config.scripts.dest))
   }
 
