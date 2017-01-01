@@ -57,7 +57,7 @@ const config = {
       main: `${path.src}styles/index.styl`,
       all: `${path.src}styles/**/*.styl`
     },
-    dest: `${path.dest}styles/`,
+    dest: `${path.dest}frontend/styles/`,
     watch: `${path.src}styles/**/*.styl`,
     base64: {
       baseDir: `${path.dest}images/`,
@@ -70,7 +70,7 @@ const config = {
   },
   fonts: {
     src: `${path.src}fonts/fonts.styl`,
-    dest: `${path.dest}styles/`,
+    dest: `${path.dest}frontend/styles/`,
     watch: `${path.src}fonts/*.styl`,
     base64: {
       extensions: ['woff'],
@@ -81,11 +81,11 @@ const config = {
     }
   },
   html: {
-    src: `${path.src}pages/*.pug`,
+    src: `${path.src}templates/*.ejs`,
     dest: path.dest,
     watch: [
-      `${path.src}**/*.pug`,
-      `${path.src}modules/**/*.pug`
+      `${path.src}**/*.ejs`,
+      `${path.src}modules/**/*.ejs`
     ]
   },
   scripts: {
@@ -93,12 +93,12 @@ const config = {
       main: `${path.src}scripts/index.js`,
       all: `${path.src}scripts/**/*.js`
     },
-    dest: `${path.dest}scripts/`,
+    dest: `${path.dest}frontend/scripts/`,
     watch: `${path.src}scripts/**/*.js`
   },
   images: {
     src: `${path.src}images/**/*`,
-    dest: `${path.dest}images/`,
+    dest: `${path.dest}frontend/images/`,
     watch: `${path.src}images/**/*`,
     imagemin: {
       progressive: true,
