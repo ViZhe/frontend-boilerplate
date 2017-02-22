@@ -10,7 +10,7 @@ class Html {
   static build() {
     return gulp.src(config.html.src)
       .pipe(plumber(config.plumber))
-      .pipe(ejs({}, {ext: '.html'}))
+      .pipe(ejs({}, {}, {ext: '.html'}))
       .pipe(gulp.dest(config.html.dest))
   }
 }

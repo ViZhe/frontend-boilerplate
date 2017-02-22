@@ -17,7 +17,7 @@ const headerCat = `
  *    $_________$     $___$$$$$___$
  *       $______$    $__$________$__$
  *       $_____$    $__$__________$__$
- *      $____$   $$$$__$___hope___$__$$$$
+ *      $____$   $$$$__$__________$__$$$$
  *     $___$    $____$__$________$___$___$
  *     $__$     $____$__$________$__$____$
  *    $___$      $____$__$____$_$__$____$
@@ -29,7 +29,6 @@ const headerCat = `
  */
 `
 
-
 function errorHandler(err) {
   util.log([(`${err.name} in ${err.plugin}`).bold.red, '', err.message, ''].join('\n'))
   if (util.env.beep) {
@@ -37,7 +36,6 @@ function errorHandler(err) {
   }
   this.emit('end')
 }
-
 
 const path = {
   src: 'source/',
@@ -65,7 +63,12 @@ const config = {
       maxImageSize: 1024 * 10
     },
     autoprefixer: {
-      browsers: ['last 2 versions', 'Explorer >= 10', 'Android >= 4.1', 'Safari >= 7', 'iOS >= 7']
+      browsers: [
+        '> 5%',
+        'last 2 versions',
+        'Explorer >= 10',
+        'iOS >= 7.1'
+      ]
     }
   },
   fonts: {
@@ -77,7 +80,12 @@ const config = {
       maxImageSize: 1024 * 1024 * 10
     },
     autoprefixer: {
-      browsers: ['last 2 versions', 'Explorer >= 10', 'Android >= 4.1', 'Safari >= 7', 'iOS >= 7']
+      browsers: [
+        '> 5%',
+        'last 2 versions',
+        'Explorer >= 10',
+        'iOS >= 7.1'
+      ]
     }
   },
   html: {
@@ -111,5 +119,6 @@ const config = {
     }
   }
 }
+
 
 export default config
