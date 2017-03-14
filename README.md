@@ -1,8 +1,8 @@
 
 # Frontend Boilerplate
 
-[![Build Status](https://travis-ci.org/vizhe/frontend-boilerplate.svg?branch=master)](https://travis-ci.org/vizhe/frontend-boilerplate)
-[![Dependency Status](https://david-dm.org/vizhe/frontend-boilerplate/dev-status.svg)](https://david-dm.org/vizhe/frontend-boilerplate#info=devDependencies)
+[![Build Status](https://travis-ci.org/ViZhe/frontend-boilerplate.svg?branch=master)](https://travis-ci.org/ViZhe/frontend-boilerplate)
+[![Dependency Status](https://david-dm.org/ViZhe/frontend-boilerplate/dev-status.svg)](https://david-dm.org/ViZhe/frontend-boilerplate#info=devDependencies)
 
 
 ## Browser Support
@@ -12,7 +12,7 @@
 
 ## Setup
 ```
-git clone git@github.com:vizhe/frontend-boilerplate.git <projectname>
+git clone git@github.com:ViZhe/frontend-boilerplate.git <projectname>
 cd <projectname>
 rm -rf .git
 npm install
