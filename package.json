@@ -1,9 +1,8 @@
 {
-  "name": "fb.hoppas",
+  "name": "frontend-boilerplate",
   "version": "6.0.2",
   "author": {
-    "name": "ViZhe (Barsik^)",
-    "email": "i@hoppas.ru"
+    "name": "ViZhe (Barsik^)"
   },
   "main": "gulpfile.js",
   "devDependencies": {
