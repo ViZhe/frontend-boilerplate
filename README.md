@@ -1,6 +1,8 @@
 
 # Frontend Boilerplate
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/ViZhe/frontend-boilerplate.svg)](https://greenkeeper.io/)
+
 [![Build Status](https://travis-ci.org/ViZhe/frontend-boilerplate.svg?branch=master)](https://travis-ci.org/ViZhe/frontend-boilerplate)
 [![Dependency Status](https://david-dm.org/ViZhe/frontend-boilerplate/dev-status.svg)](https://david-dm.org/ViZhe/frontend-boilerplate#info=devDependencies)
 
