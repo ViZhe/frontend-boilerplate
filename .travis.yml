@@ -11,7 +11,7 @@ node_js:
   - 7
 
 script:
-  - gulp build
-  - gulp build --prod
   - gulp styles:travis
   - gulp scripts:travis
+  - gulp build
+  - gulp build --prod
