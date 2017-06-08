@@ -2,7 +2,7 @@
   "name": "frontend-boilerplate",
   "version": "6.0.5",
   "author": {
-    "name": "ViZhe (Barsik^)"
+    "name": "ViZhe"
   },
   "main": "gulpfile.js",
   "devDependencies": {
