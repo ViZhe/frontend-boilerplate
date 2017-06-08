@@ -67,20 +67,3 @@ clearfix()
 
   &::after
     clear: both
-
-
-
-/*
- * Em/Rem
- *
- * margin: em(20px) rem(5px)   => margin: 1.25em 0.3125rem
- * font-size: rem(15px)        => font-size: 1.875rem
- *
- */
-
-$siteFontSize ?= 16px
-em($value)
-  unit($value/$siteFontSize, 'em')
-
-rem($value)
-  unit($value/$siteFontSize, 'rem')
