@@ -39,13 +39,10 @@ $gridSystem = $gridSizeXl $gridSizeLg $gridSizeMd $gridSizeSm $gridSizeXs
       flex: 0 (1/$i) * 100%
       max-width: (1/$i) * 100%
 
-$grid()
-  for $args, $index in $gridSystem
-    if $index == '0'
-      -grid-inner($args[1], $args[2])
-    else
-      $mod = '_' + $args[0]
-      +media('max', $args[0])
-        -grid-inner($args[1], $args[2], $mod)
-
-$grid()
+for $args, $index in $gridSystem
+  if $index == '0'
+    -grid-inner($args[1], $args[2])
+  else
+    $mod = '_' + $args[0]
+    +media('max', $args[0])
+      -grid-inner($args[1], $args[2], $mod)
