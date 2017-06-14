@@ -27,13 +27,7 @@ const options = {
     ]
   },
   watchOptions: {aggregateTimeout: 20},
-  plugins: [
-    new webpack.optimize.UglifyJsPlugin({
-      compress: {
-        warnings: false
-      }
-    })
-  ],
+  plugins: [],
   watch: false,
   cache: false,
   performance: {
@@ -42,6 +36,16 @@ const options = {
   output: {
     filename: '[name].js'
   }
+}
+
+if (config.isProd) {
+  options.plugins.push(
+    new webpack.optimize.UglifyJsPlugin({
+      compress: {
+        warnings: false
+      }
+    })
+  )
 }
 
 class Scripts {
