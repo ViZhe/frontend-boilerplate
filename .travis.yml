@@ -2,16 +2,15 @@
 language: node_js
 
 notifications:
-  email:
-    on_success: never
-    on_failure: never
+  email: false
 
 node_js:
-  - 6
-  - 7
   - 8
+  - 7
+  - 6
 
 before_install:
+  - npm install npm@latest
   - npm install -g greenkeeper-lockfile@1
 
 before_script:
