@@ -1,11 +1,11 @@
 
-$gridSizeXl = 'xl' 1232px 16px
-$gridSizeLg = 'lg' 992px 16px
-$gridSizeMd = 'md' 752px 16px
-$gridSizeSm = 'sm' 100% 16px
-$gridSizeXs = 'xs' 100% 16px
-
-$gridSystem = $gridSizeXl $gridSizeLg $gridSizeMd $gridSizeSm $gridSizeXs
+$gridSystem = {
+  '0': 'xl' 1332px,
+  '1': 'lg' 992px,
+  '2': 'md' 752px,
+  '3': 'sm',
+  '4': 'xs'
+}
 
 .l-box
   margin-right: auto
@@ -19,6 +19,9 @@ $gridSystem = $gridSizeXl $gridSizeLg $gridSizeMd $gridSizeSm $gridSizeXs
   max-width: 100%
 
 -grid-inner($width, $space, $mod = '')
+  $width = $width || 100%
+  $space = $space || 16px
+
   .l-box
     width: $width
 
@@ -39,7 +42,7 @@ $gridSystem = $gridSizeXl $gridSizeLg $gridSizeMd $gridSizeSm $gridSizeXs
       flex: 0 (1/$i) * 100%
       max-width: (1/$i) * 100%
 
-for $args, $index in $gridSystem
+for $index, $args in $gridSystem
   if $index == '0'
     -grid-inner($args[1], $args[2])
   else
