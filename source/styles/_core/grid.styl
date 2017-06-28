@@ -1,10 +1,10 @@
 
 $gridSystem = {
-  '0': 'xl' 1332px,
-  '1': 'lg' 992px,
-  '2': 'md' 752px,
-  '3': 'sm',
-  '4': 'xs'
+  'xl': 1232px,
+  'lg': 992px,
+  'md': 752px,
+  'sm': '',
+  'xs': ''
 }
 
 .l-box
@@ -42,10 +42,11 @@ $gridSystem = {
       flex: 0 (1/$i) * 100%
       max-width: (1/$i) * 100%
 
-for $index, $args in $gridSystem
+for $key, $args in $gridSystem
+  $index = index(keys($gridSystem), $key)
   if $index == '0'
-    -grid-inner($args[1], $args[2])
+    -grid-inner($args[0], $args[1])
   else
-    $mod = '_' + $args[0]
-    +media('max', $args[0])
-      -grid-inner($args[1], $args[2], $mod)
+    $mod = '_' + $key
+    +media('max', $key)
+      -grid-inner($args[0], $args[1], $mod)
