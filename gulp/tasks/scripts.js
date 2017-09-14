@@ -11,41 +11,39 @@ import config from '../config'
 const options = {
   entry: {
     index: [`./${config.scripts.src.main}`],
-    jquery: ['jquery']
+    jquery: ['jquery'],
   },
   module: {
     rules: [
       {
         test: /\.js$/,
         loader: 'babel-loader',
-        exclude: /node_modules/
+        exclude: /node_modules/,
       },
       {
         test: require.resolve('jquery'),
-        loader: 'expose-loader?jQuery!expose-loader?$'
-      }
-    ]
+        loader: 'expose-loader?jQuery!expose-loader?$',
+      },
+    ],
   },
   watchOptions: {aggregateTimeout: 20},
   plugins: [],
   watch: false,
   cache: false,
   performance: {
-    hints: false
+    hints: false,
   },
   output: {
-    filename: '[name].js'
-  }
+    filename: '[name].js',
+  },
 }
 
 if (config.isProd) {
-  options.plugins.push(
-    new webpack.optimize.UglifyJsPlugin({
-      compress: {
-        warnings: false
-      }
-    })
-  )
+  options.plugins.push(new webpack.optimize.UglifyJsPlugin({
+    compress: {
+      warnings: false,
+    },
+  }))
 }
 
 class Scripts {

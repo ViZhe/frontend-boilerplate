@@ -3,7 +3,7 @@ const scrollUp = (config) => {
   const options = {
     selector: '.js-scrollUp',
     class: 'scrollUp_show',
-    ...config
+    ...config,
   }
 
   const selector = $(options.selector)
@@ -19,7 +19,7 @@ const scrollUp = (config) => {
 
   selector.on('click', () => {
     $('body, html').animate({
-      scrollTop: 0
+      scrollTop: 0,
     }, 700)
   })
 }

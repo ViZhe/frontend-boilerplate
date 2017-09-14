@@ -32,7 +32,7 @@ gulp.task('build', gulp.series([
   'styles:lint', 'styles:build',
   'fonts:build',
   'scripts:lint', 'scripts:build',
-  'html:build'
+  'html:build',
 ]))
 
 gulp.task('watch', () => {
@@ -43,9 +43,7 @@ gulp.task('watch', () => {
   gulp.watch(config.images.watch, gulp.series('images:build'))
 })
 
-gulp.task('default',
-  gulp.series([
-    'build',
-    gulp.parallel(['watch', 'server'])
-  ]
-))
+gulp.task('default', gulp.series([
+  'build',
+  gulp.parallel(['watch', 'server']),
+]))

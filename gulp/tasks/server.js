@@ -10,8 +10,8 @@ class Server {
       open: false,
       files: config.dest,
       server: {
-        baseDir: config.dest
-      }
+        baseDir: config.dest,
+      },
     })
   }
 }

@@ -19,7 +19,7 @@ class Styles {
       .pipe(plumber(config.plumber))
       .pipe(stylus({
         'include css': true,
-        'resolve url': true
+        'resolve url': true,
       }))
       .pipe(gIf(config.isProd, base64(config.styles.base64)))
       .pipe(autoprefixer(config.styles.autoprefixer))
@@ -39,7 +39,7 @@ class Styles {
     return gulp.src(config.styles.src.all)
       .pipe(stylint())
       .pipe(stylint.reporter('fail', {
-        failOnWarning: true
+        failOnWarning: true,
       }))
   }
 }

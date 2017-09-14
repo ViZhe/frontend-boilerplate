@@ -39,7 +39,7 @@ function errorHandler(err) {
 
 const path = {
   src: 'source/',
-  dest: 'app/'
+  dest: 'app/',
 }
 
 const config = {
@@ -48,28 +48,28 @@ const config = {
   src: path.src,
   dest: path.dest,
   plumber: {
-    errorHandler
+    errorHandler,
   },
   styles: {
     src: {
       main: `${path.src}styles/index.styl`,
-      all: `${path.src}styles/**/*.styl`
+      all: `${path.src}styles/**/*.styl`,
     },
     dest: `${path.dest}frontend/styles/`,
     watch: `${path.src}styles/**/*.styl`,
     base64: {
       baseDir: `${path.dest}images/`,
       extensions: ['png', 'svg', 'jpg'],
-      maxImageSize: 1024 * 10
+      maxImageSize: 1024 * 10,
     },
     autoprefixer: {
       browsers: [
         '> 5%',
         'last 2 versions',
         'Explorer >= 10',
-        'iOS >= 7.1'
-      ]
-    }
+        'iOS >= 7.1',
+      ],
+    },
   },
   fonts: {
     src: `${path.src}fonts/fonts.styl`,
@@ -77,32 +77,32 @@ const config = {
     watch: `${path.src}fonts/*.styl`,
     base64: {
       extensions: ['woff'],
-      maxImageSize: 1024 * 1024 * 10
+      maxImageSize: 1024 * 1024 * 10,
     },
     autoprefixer: {
       browsers: [
         '> 5%',
         'last 2 versions',
         'Explorer >= 10',
-        'iOS >= 7.1'
-      ]
-    }
+        'iOS >= 7.1',
+      ],
+    },
   },
   html: {
     src: `${path.src}templates/*.ejs`,
     dest: path.dest,
     watch: [
       `${path.src}**/*.ejs`,
-      `${path.src}modules/**/*.ejs`
-    ]
+      `${path.src}modules/**/*.ejs`,
+    ],
   },
   scripts: {
     src: {
       main: `${path.src}scripts/index.js`,
-      all: `${path.src}scripts/**/*.js`
+      all: `${path.src}scripts/**/*.js`,
     },
     dest: `${path.dest}frontend/scripts/`,
-    watch: `${path.src}scripts/**/*.js`
+    watch: `${path.src}scripts/**/*.js`,
   },
   images: {
     src: `${path.src}images/**/*`,
@@ -113,11 +113,11 @@ const config = {
       interlaced: true,
       svgoPlugins: [
         {cleanupIDs: false},
-        {removeViewBox: false}
+        {removeViewBox: false},
       ],
-      use: [imageminPngquant()]
-    }
-  }
+      use: [imageminPngquant()],
+    },
+  },
 }
 
 

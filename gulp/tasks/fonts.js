@@ -19,8 +19,8 @@ class Fonts {
       .pipe(autoprefixer(config.fonts.autoprefixer))
       .pipe(gIf(config.isProd, cssnano({
         discardUnused: {
-          fontFace: false
-        }
+          fontFace: false,
+        },
       })))
       .pipe(gulp.dest(config.fonts.dest))
   }
