@@ -58,7 +58,7 @@ const config = {
     dest: `${path.dest}frontend/styles/`,
     watch: `${path.src}styles/**/*.styl`,
     base64: {
-      baseDir: `${path.dest}images/`,
+      baseDir: `${path.dest}frontend/media/`,
       extensions: ['png', 'svg', 'jpg'],
       maxImageSize: 1024 * 10,
     },
@@ -105,9 +105,9 @@ const config = {
     watch: `${path.src}scripts/**/*.js`,
   },
   images: {
-    src: `${path.src}images/**/*`,
-    dest: `${path.dest}frontend/images/`,
-    watch: `${path.src}images/**/*`,
+    src: `${path.src}media/**/*`,
+    dest: `${path.dest}frontend/media/`,
+    watch: `${path.src}media/**/*`,
     imagemin: {
       progressive: true,
       interlaced: true,
