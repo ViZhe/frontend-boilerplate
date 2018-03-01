@@ -5,9 +5,8 @@ notifications:
   email: false
 
 node_js:
+  - 9
   - 8
-  - 7
-  - 6
 
 before_install:
   - npm install -g npm@latest
