@@ -2,6 +2,7 @@
 /*
  * Media
  *
+ * +media('min', 500px)                 => >=500px
  * +media('min', 'sm')                  => sm, md, lg, xl
  * +media('max', 'sm')                  => xs, sm
  * +media('in', 'md')                   => md
@@ -24,8 +25,8 @@ $mediaSystemPositionMax = length($mediaSystem) - 1
 
 media($type, $point)
   $position = index(keys($mediaSystem), $point)
-  $current = $mediaSystem[$point]
-  $next = $mediaSystem[$mediaSystemArrKey[$position - 1]]
+  $current = type($point) == 'unit' ? $point : $mediaSystem[$point]
+  $next = type($point) == 'unit' ? $point + 1 :  $mediaSystem[$mediaSystemArrKey[$position - 1]]
 
   if ($type == 'max' && $position != 0) || ($type == 'in' && $position == $mediaSystemPositionMax)
     $mediaWhere = '(max-width: $next - 1)'
