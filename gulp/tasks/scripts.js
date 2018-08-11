@@ -9,6 +9,7 @@ import config from '../config'
 
 
 const options = {
+  mode: config.isProd ? 'production' : 'development',
   entry: {
     index: [`./${config.scripts.src.main}`],
     jquery: ['jquery'],
@@ -36,14 +37,6 @@ const options = {
   output: {
     filename: '[name].js',
   },
-}
-
-if (config.isProd) {
-  options.plugins.push(new webpack.optimize.UglifyJsPlugin({
-    compress: {
-      warnings: false,
-    },
-  }))
 }
 
 class Scripts {
