@@ -1,0 +1,19 @@
+
+a,
+.link {
+  color: var(--c-base-blue);
+  text-decoration: none;
+  cursor: pointer;
+  background: transparent 0 0;
+
+  &:hover,
+  &:focus {
+    text-decoration: underline;
+  }
+
+  &:hover,
+  &:focus,
+  &:active {
+    outline: 0;
+  }
+}

@@ -1,0 +1,28 @@
+
+.btn {
+  display: inline-block;
+  padding: .5rem 1rem;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.7;
+  color: var(--c-base-white);
+  text-decoration: none;
+  vertical-align: bottom;
+  cursor: pointer;
+  user-select: none;
+  background-color: var(--c-base-blue);
+  border: 0;
+  border-radius: 4px;
+  transition: all .2s;
+
+  &:hover,
+  &:focus {
+    color: var(--c-base-white);
+    text-decoration: none;
+    background-color: color(var(--c-base-blue) l(+10%));
+  }
+}
+
+.btn + .btn {
+  margin-left: .5rem;
+}

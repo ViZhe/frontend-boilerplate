@@ -2,13 +2,24 @@
 import gulp from 'gulp'
 import gIf from 'gulp-if'
 import plumber from 'gulp-plumber'
-import stylus from 'gulp-stylus'
-import base64 from 'gulp-base64'
-import autoprefixer from 'gulp-autoprefixer'
-import groupCssMediaQueries from 'gulp-group-css-media-queries'
+import sass from 'gulp-sass'
+import postcss from 'gulp-postcss'
+import postcssScss from 'postcss-scss'
+import postcssEasyImport from 'postcss-easy-import'
+import postcssColorHwb from 'postcss-color-hwb'
+import postcssColorFunction from 'postcss-color-function'
+import postcssCssVariables from 'postcss-css-variables'
+import postcssCalc from 'postcss-calc'
+import postcssAssets from 'postcss-assets'
+import postcssCustomMedia from 'postcss-custom-media'
+import postcssMediaMinmax from 'postcss-media-minmax'
+import postcssImageSetFunction from 'postcss-image-set-function'
+import postcssReporter from 'postcss-reporter'
+import cssMqpacker from 'css-mqpacker'
+import stylelint from 'stylelint'
+import autoprefixer from 'autoprefixer'
 import cssnano from 'gulp-cssnano'
 import header from 'gulp-header'
-import stylint from 'gulp-stylint'
 
 import config from '../config'
 
@@ -17,13 +28,24 @@ class Styles {
   static build() {
     return gulp.src(config.styles.src.main)
       .pipe(plumber(config.plumber))
-      .pipe(stylus({
-        'include css': true,
-        'resolve url': true,
+      .pipe(postcss([
+        postcssEasyImport({
+          extensions: ['.css', '.scss'],
+        }),
+        postcssColorHwb(),
+        postcssCssVariables(),
+        postcssColorFunction(),
+        postcssCalc(),
+        postcssAssets(config.styles.postcss.assets),
+        postcssImageSetFunction(),
+        postcssCustomMedia(),
+        postcssMediaMinmax(),
+        autoprefixer(config.styles.postcss.autoprefixer),
+        cssMqpacker(),
+      ], {
+        parser: postcssScss,
       }))
-      .pipe(gIf(config.isProd, base64(config.styles.base64)))
-      .pipe(autoprefixer(config.styles.autoprefixer))
-      .pipe(groupCssMediaQueries())
+      .pipe(sass(config.styles.sass).on('error', sass.logError))
       .pipe(gIf(config.isProd, cssnano()))
       .pipe(gIf(config.isProd, header(config.headerCat)))
       .pipe(gulp.dest(config.styles.dest))
@@ -31,16 +53,22 @@ class Styles {
 
   static lint() {
     return gulp.src(config.styles.src.all)
-      .pipe(stylint())
-      .pipe(stylint.reporter())
+      .pipe(postcss([
+        stylelint(),
+        postcssReporter({
+          clearAllMessages: true,
+        }),
+      ]))
   }
 
   static travis() {
     return gulp.src(config.styles.src.all)
-      .pipe(stylint())
-      .pipe(stylint.reporter('fail', {
-        failOnWarning: true,
-      }))
+      .pipe(postcss([
+        stylelint(),
+        postcssReporter({
+          throwError: true,
+        }),
+      ]))
   }
 }
 

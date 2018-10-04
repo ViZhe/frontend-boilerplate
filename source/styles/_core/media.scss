@@ -1,0 +1,24 @@
+
+/*
+ * xl: 1260px - ∞
+ * lg: 1000px - 1259px
+ * md: 768px 999px
+ * sm: 550px - 767px
+ * xs: 0 - 549px
+  */
+
+@custom-media --viewport-max-lg (width < 1260px);
+@custom-media --viewport-max-md (width < 1000px);
+@custom-media --viewport-max-sm (width < 768px);
+@custom-media --viewport-max-xs (width < 550px);
+
+@custom-media --viewport-min-xl (width >= 1260px);
+@custom-media --viewport-min-lg (width >= 1000px);
+@custom-media --viewport-min-md (width >= 768px);
+@custom-media --viewport-min-sm (width >= 550px);
+
+@custom-media --viewport-in-xs (width < 550px);
+@custom-media --viewport-in-sm (550px >= width < 768px);
+@custom-media --viewport-in-md (768px >= width < 1000px);
+@custom-media --viewport-in-lg (1000px >= width < 1260px);
+@custom-media --viewport-in-xl (width >= 1260px);
