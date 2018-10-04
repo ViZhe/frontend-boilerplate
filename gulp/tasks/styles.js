@@ -58,7 +58,9 @@ class Styles {
         postcssReporter({
           clearAllMessages: true,
         }),
-      ]))
+      ], {
+        parser: postcssScss,
+      }))
   }
 
   static travis() {
@@ -68,7 +70,9 @@ class Styles {
         postcssReporter({
           throwError: true,
         }),
-      ]))
+      ], {
+        parser: postcssScss,
+      }))
   }
 }
 
