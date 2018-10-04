@@ -16,7 +16,7 @@
 git clone git@github.com:ViZhe/frontend-boilerplate.git <projectname>
 cd <projectname>
 rm -rf .git
-npm install
+npm ci
 ```
 
 
