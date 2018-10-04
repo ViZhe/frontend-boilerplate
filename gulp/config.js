@@ -72,9 +72,9 @@ const config = {
     },
   },
   fonts: {
-    src: `${path.src}fonts/fonts.styl`,
+    src: `${path.src}fonts/fonts.css`,
     dest: `${path.dest}frontend/styles/`,
-    watch: `${path.src}fonts/*.styl`,
+    watch: `${path.src}fonts/*.css`,
     base64: {
       extensions: ['woff'],
       maxImageSize: 1024 * 1024 * 10,

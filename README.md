@@ -26,11 +26,3 @@ gulp       // Run build & watch & browserSync
 gulp build
 gulp build --prod
 ```
-
-
-## Fonts
-* **Open Sans** (r, i, b)
-* **PT Sans** (r, i, b)
-* **PT Serif** (r, i, b)
-* **PT Serif Caption** (r, i)
-* **Roboto** (r, i, b)
