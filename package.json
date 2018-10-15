@@ -35,7 +35,7 @@
     "gulp-util": "^3.0.7",
     "imagemin-pngquant": "^6.0.0",
     "postcss-assets": "^5.0.0",
-    "postcss-calc": "^6.0.2",
+    "postcss-calc": "^7.0.0",
     "postcss-color-function": "^4.0.1",
     "postcss-color-hwb": "^3.0.0",
     "postcss-css-variables": "^0.9.0",
