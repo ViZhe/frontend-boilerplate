@@ -1,6 +1,7 @@
 
 .btn {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
   padding: .5rem 1rem;
   font-size: 14px;
   font-weight: 700;
@@ -21,8 +22,4 @@
     text-decoration: none;
     background-color: color(var(--c-base-blue) l(+10%));
   }
-}
-
-.btn + .btn {
-  margin-left: .5rem;
 }
