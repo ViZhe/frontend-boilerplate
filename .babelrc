@@ -1,6 +1,6 @@
 {
   "presets": [
-    ["env", {
+    ["@babel/preset-env", {
       "targets": {
         "browsers": [
           "> 5%",
@@ -9,7 +9,6 @@
           "iOS >= 7.1"
         ]
       }
-    }],
-    "stage-0"
+    }]
   ]
 }
