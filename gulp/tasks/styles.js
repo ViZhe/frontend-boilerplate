@@ -41,7 +41,9 @@ class Styles {
         postcssCustomMedia(),
         postcssMediaMinmax(),
         autoprefixer(config.styles.postcss.autoprefixer),
-        cssMqpacker(),
+        cssMqpacker({
+          sort: (a, b) => a.localeCompare(b),
+        }),
       ], {
         parser: postcssScss,
       }))
