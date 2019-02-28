@@ -21,7 +21,6 @@ gulp.task('styles:travis', Styles.travis)
 
 gulp.task('fonts:build', Fonts.build)
 gulp.task('html:build', Html.build)
-gulp.task('html:buildEjs', Html.buildEjs)
 gulp.task('images:build', Images.build)
 gulp.task('clean', Clean.delete)
 gulp.task('server', Server.run)
