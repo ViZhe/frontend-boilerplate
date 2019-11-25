@@ -38,7 +38,7 @@
     "postcss-calc": "^7.0.1",
     "postcss-color-function": "^4.0.1",
     "postcss-color-hwb": "^3.0.0",
-    "postcss-css-variables": "^0.13.0",
+    "postcss-css-variables": "^0.14.0",
     "postcss-custom-media": "^7.0.7",
     "postcss-easy-import": "^3.0.0",
     "postcss-font-magician": "^2.2.1",
