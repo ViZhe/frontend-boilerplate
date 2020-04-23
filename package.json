@@ -31,7 +31,7 @@
     "gulp-imagemin": "^6.0.0",
     "gulp-plumber": "^1.2.0",
     "gulp-postcss": "^8.0.0",
-    "gulp-sass": "^4.0.2",
+    "gulp-sass": "^4.1.0",
     "gulp-util": "^3.0.7",
     "imagemin-pngquant": "^8.0.0",
     "postcss-assets": "^5.0.0",
